@@ -1,0 +1,22 @@
+# /etc/conf.d/vdr.watchdog:
+
+# Settings for external vdr watchdog
+# This watchdog checks every 8 seconds if vdr is running and
+# triggers a reload when vdr is not there
+
+# 
+# Should the watchdog be active or not
+# default: ENABLE_WATCHDOG="yes"
+#ENABLE_WATCHDOG="yes"
+
+#
+# Should the watchdog reload the dvb modules
+# when triggering a restart of vdr
+# default: WATCHDOG_RELOAD_DVB_MODULES="yes"
+#WATCHDOG_RELOAD_DVB_MODULES="yes"
+
+#
+# For debugging purposes; in which file should
+# the watchdog write a logfile
+# default: no logging into files
+#WATCHDOG_LOGFILE="/var/log/vdr-watchdogd"

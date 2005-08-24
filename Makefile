@@ -4,8 +4,8 @@ all:
 
 install:
 	mkdir -p $(DESTDIR)/etc/{conf.d,init.d}
-	install -m 0644 -o root -g root etc/conf.d/vdr $(DESTDIR)/etc/conf.d/vdr
-	install -m 0755 -o root -g root etc/init.d/vdr $(DESTDIR)/etc/init.d/vdr
+	install -m 0644 -o root -g root etc/conf.d/{vdr,vdr.watchdogd} $(DESTDIR)/etc/conf.d
+	install -m 0755 -o root -g root etc/init.d/vdr $(DESTDIR)/etc/init.d
 
 	mkdir -p $(DESTDIR)/usr/sbin
 	install -m 0755 -o root -g root usr/sbin/vdr-watchdogd $(DESTDIR)/usr/sbin

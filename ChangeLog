@@ -1,5 +1,17 @@
 # ChangeLog for gentoo-vdr-scripts
 
+*gentoo-vdr-scripts-0.1_alpha2 (14 Aug 2005)
+
+  14 Aug 2005; Matthias Schwarzott <zzam@gentoo.org>:
+  enabled watchdog to automagically find and reload dvb driver modules
+
+  14 Aug 2005; Matthias Schwarzott <zzam@gentoo.org>:
+  added watchdog handling
+  introduced debug-level, to hide some output messages
+
+  13 Aug 2005; Matthias Schwarzott <zzam@gentoo.org>:
+  corrected creation of commands.conf
+
 *gentoo-vdr-scripts-0.1_alpha1 (12 Aug 2005)
 
   12 Aug 2005; Matthias Schwarzott <zzam@gentoo.org>:

@@ -7,8 +7,13 @@
 # (default is enabled)
 #DEVICE_CHECK="disabled"
 
-# activate the watchdog timer with a timeout of SEC
-# seconds (default: 0); '0' disables the watchdog
+# switch startskript to debug-mode, set debug-level
+# default: 0
+#SCRIPT_DEBUG_LEVEL="1"
+
+# activate the (internal to vdr) watchdog timer with
+# a timeout of SEC seconds (default: 0)
+# '0' disables the watchdog
 #WATCHDOG="60"
 
 # send Dolby Digital audio to stdin of command CMD

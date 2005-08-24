@@ -1,0 +1,178 @@
+#!/bin/sh
+# insmod modules from current directory without having to install them first
+
+sync
+
+case "$1" in
+    load)
+	echo "Inserting DVB modules into kernel"
+	modprobe i2c-core
+	modprobe crc32
+	modprobe firmware_class
+	# make sure input stuff is there for IR remote controls
+	modprobe evdev
+	# vide4linux for av7110 based "full featured" cards
+	modprobe videodev
+	modprobe v4l1-compat
+	modprobe v4l2-common
+	if [ -r ./video-buf.ko ]; then
+		insmod ./video-buf.ko
+	else
+		modprobe video-buf
+	fi
+	# DVB core
+	insmod ./dvb-core.ko # dvb_net_debug=1
+	# frontend drivers
+	insmod ./dvb-pll.ko
+	insmod ./ves1x93.ko
+	insmod ./sp8870.ko
+	insmod ./cx22700.ko
+	insmod ./stv0299.ko
+	insmod ./ves1820.ko
+	insmod ./tda1004x.ko
+	insmod ./tda10021.ko
+	insmod ./dib3000-common.ko
+	insmod ./dib3000mb.ko
+	insmod ./dib3000mc.ko
+	insmod ./l64781.ko
+	insmod ./tda8083.ko
+	insmod ./cx24110.ko
+	insmod ./cx22702.ko
+	insmod ./mt312.ko
+	insmod ./mt352.ko
+	insmod ./stv0297.ko
+	insmod ./nxt2002.ko
+	insmod ./bcm3510.ko
+	insmod ./s5h1420.ko
+	insmod ./ttusbdecfe.ko
+	# saa7146 based siemens/technotrend/hauppauge cards
+	insmod ./saa7146.ko
+	insmod ./saa7146_vv.ko
+	insmod ./ttpci-eeprom.ko
+	insmod ./dvb-ttpci.ko
+	insmod ./budget-core.ko
+	insmod ./budget.ko
+	insmod ./budget-ci.ko
+	insmod ./budget-av.ko
+	# technotrend/hauppauge USB things
+	insmod ./dvb-ttusb-budget.ko
+	insmod ./ttusb_dec.ko
+
+	# technisat skystar2
+	insmod ./b2c2-flexcop.ko
+	insmod ./b2c2-flexcop-usb.ko
+	insmod ./b2c2-flexcop-pci.ko
+	# terratec CinergyT2
+	insmod ./cinergyT2.ko
+
+	insmod ./dvb-usb.ko
+	insmod ./dvb-usb-vp7045.ko
+	insmod ./dvb-usb-dtt200u.ko
+
+	insmod ./dvb-usb-dibusb-common.ko
+	insmod ./dvb-usb-dibusb-mb.ko
+	insmod ./dvb-usb-dibusb-mc.ko
+	insmod ./dvb-usb-a800.ko
+	insmod ./dvb-usb-nova-t-usb2.ko
+	insmod ./dvb-usb-umt-010.ko
+	insmod ./dvb-usb-digitv.ko
+	insmod ./dvb-usb-cxusb.ko
+	echo
+	;;
+    debug)
+	echo "Inserting DVB modules (debug) into kernel"
+	modprobe i2c-core
+	modprobe crc32
+	modprobe firmware_class
+	modprobe evdev
+	modprobe videodev
+	modprobe v4l1-compat
+	modprobe v4l2-common
+	if [ -r ./video-buf.ko ]; then
+		insmod ./video-buf.ko
+	else
+		modprobe video-buf
+	fi
+	insmod ./dvb-core.ko cam_debug=1
+	insmod ./dvb-pll.ko
+	insmod ./ves1x93.ko
+	insmod ./sp8870.ko
+	insmod ./cx22700.ko
+	insmod ./stv0299.ko
+	insmod ./ves1820.ko
+	insmod ./tda1004x.ko
+	insmod ./tda10021.ko
+	insmod ./dib3000-common.ko debug=1
+	insmod ./dib3000mb.ko debug=1
+	insmod ./dib3000mc.ko debug=1
+	insmod ./l64781.ko
+	insmod ./stv0297.ko
+	insmod ./tda8083.ko
+	insmod ./cx24110.ko
+	insmod ./mt352.ko
+	insmod ./cx22702.ko
+	insmod ./nxt2002.ko
+	insmod ./bcm3510.ko
+	insmod ./s5h1420.ko
+	insmod ./ttusbdecfe.ko
+	insmod ./saa7146.ko
+	insmod ./saa7146_vv.ko
+	insmod ./ttpci-eeprom.ko
+	insmod ./dvb-ttpci.ko debug=247
+	insmod ./budget-core.ko
+	insmod ./budget.ko
+	insmod ./budget-ci.ko
+	insmod ./budget-av.ko
+	insmod ./dvb-ttusb-budget.ko
+	insmod ./mt312.ko
+	insmod ./mt352.ko
+	insmod ./b2c2-flexcop.ko debug=0x01
+	insmod ./b2c2-flexcop-usb.ko debug=0x01
+	insmod ./b2c2-flexcop-pci.ko debug=0x01
+	insmod ./ttusb_dec.ko
+	insmod ./cinergyT2.ko
+
+	insmod ./dvb-usb.ko debug=0x33
+	insmod ./dvb-usb-vp7045.ko debug=0x03
+	insmod ./dvb-usb-dtt200u.ko debug=0x03
+
+	insmod ./dvb-usb-dibusb-common.ko debug=0x03
+	insmod ./dvb-usb-dibusb-mb.ko
+	insmod ./dvb-usb-dibusb-mc.ko
+	insmod ./dvb-usb-a800.ko
+	insmod ./dvb-usb-nova-t-usb2.ko
+	insmod ./dvb-usb-umt-010.ko
+	insmod ./dvb-usb-digitv.ko
+	insmod ./dvb-usb-cxusb.ko
+	echo
+	;;
+    unload)
+	echo "Deleting DVB modules from kernel"
+	rmmod b2c2-flexcop-usb b2c2-flexcop-pci b2c2-flexcop dvb-ttpci budget \
+		budget-av budget-ci budget-core ttusb_dec dvb-ttusb-budget \
+		ttpci-eeprom dvb-usb-nova-t-usb2.ko dvb-usb-a800.ko dvb-usb-umt-010.ko \
+		dvb-usb-dibusb-mc.ko dvb-usb-dibusb-mb.ko dvb-usb-dibusb-common.ko \
+		dvb-usb-vp7045.ko dvb-usb-dtt200u.ko dvb-usb-digitv.ko dvb-usb-cxusb.ko \
+		dvb-usb.ko
+
+# frontends
+	rmmod dib3000mb dib3000mc dib3000_common nxt2002 ves1x93 sp8870 cx22700 \
+			stv0299 ves1820 cinergyT2 ttusbdecfe tda1004x l64781 tda8083 \
+			cx24110 cx22702 stv0297 tda10021 mt352 mt312 bcm3510 dvb-pll \
+			s5h1420
+
+# chips and helpers
+	rmmod saa7146_vv saa7146 video-buf v4l2-common v4l1-compat dvb-core \
+		videodev
+
+	echo
+	;;
+    reload)
+	$0 unload && $0 load
+	;;
+    *)
+	echo "Usage$0 {load|unload|debug|reload}"
+	exit 1
+esac
+
+sync

@@ -2,11 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/media-video/vdr/files/rc.vdr,v 1.23 2005/05/11 20:17:42 zzam Exp $
 
-opts="${opts} fullrestart"
+opts="${opts} watchdogrestart"
 
 vdr_rcdir=/usr/lib/vdr/rcscript
 source ${vdr_rcdir}/functions.sh
-
 
 depend() {
 	use lircd dvbsplash
@@ -56,36 +55,39 @@ start() {
 		  -- \
 		  --daemon "${vdropts[@]}"
 	exitcode=$?
+	eend $exitcode "Failed to start vdr."
 
-	exit_msg="Failed to start vdr."
 	if [[ "${exitcode}" == "0" ]]; then
 		load_addons_prefixed post-start || exitcode=1
 	fi
-
-	eend $exitcode "${exit_msg}"
+	return $exitcode
 }
 
 stop() {
+	load_addons_prefixed pre-stop
+
 	getvdrversion
 	ebegin "Stopping vdr-${vdrversion}"
 
 	# Use --name here to allow us to kill vdr even after a new emerge
 	start-stop-daemon --stop --quiet --retry 15 --name vdr
 	eend $? "Failed to stop vdr."
+
+	load_addons_prefixed post-stop
 }
 
+watchdogrestart() {
 
-fullrestart() {
-	getvdrversion
-	ebegin "Fully restarting vdr-${vdrversion} and DVB drivers"
+	export WATCHDOG_RESTART="1"
 	/etc/init.d/vdr pause
-	/etc/init.d/vdr zap
 	sleep 2
 	test_vdr_process && /bin/killall -9 vdr
 	sleep 1
-	#sleep 5
-	#unload
-	#sleep 3
-	#load
+
+	/etc/init.d/vdr zap
+
+	load_addons_prefixed watchdog-restart
+
 	/etc/init.d/vdr start
+	unset WATCHDOG_RESTART
 }

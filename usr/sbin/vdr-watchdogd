@@ -9,7 +9,10 @@
 #
 
 #detach from terminal
-exec >/dev/null 2>/dev/null < /dev/null
+LOGFILE=${1:-/dev/null}
+exec < /dev/null
+exec >>${LOGFILE} 2>&1
+
 
 signal_stopped=0
 
@@ -28,6 +31,7 @@ sig_usr2()
 trap sig_usr1 SIGUSR1
 trap sig_usr2 SIGUSR2
 
+echo started watchdog
 while sleep 8; do
 
 	[[ -f /tmp/no-vdr-watchdog ]] && continue
@@ -36,6 +40,8 @@ while sleep 8; do
 
 	if ! pidof /usr/bin/vdr > /dev/null; then
 		logger -i -t vdrwatchdog -p local0.info "initializing full VDR restart"
-		/etc/init.d/vdr fullrestart 2>&1 >/dev/null
+		date
+		/etc/init.d/vdr watchdogrestart
 	fi
 done
+echo killed watchdog

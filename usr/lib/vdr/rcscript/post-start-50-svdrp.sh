@@ -1,6 +1,7 @@
 wait_for_svdrp() {
 	SVDRP_PORT="${SVDRP_PORT:-2001}"
 	[[ "${SVDRP_PORT}" == "0" ]] && return
+	ebegin "Checking for working vdr"
 
 	# Warten auf offenen svdrp port
 	waitfor 20 svdrpready
@@ -15,6 +16,7 @@ wait_for_svdrp() {
 		abort=2
 		;;
 	esac
+	eend ${abort} "${exit_msg}" 
 }
 
 svdrpready() {
