@@ -1,0 +1,41 @@
+#!/bin/bash
+#
+# Copyright 2003 Martin Hierling <mad@cc.fh-lippe.de>
+# Distributed under the GPL
+#
+# watchdog script to restart vdr after failure
+# to stop watchdog temporarily touch /tmp/nowatchdog
+#
+#
+
+#detach from terminal
+exec >/dev/null 2>/dev/null < /dev/null
+
+signal_stopped=0
+
+sig_usr1()
+{
+	signal_stopped=1
+	echo pausing watchdog
+}
+
+sig_usr2()
+{
+	signal_stopped=0
+	echo continuing watchdog
+}
+
+trap sig_usr1 SIGUSR1
+trap sig_usr2 SIGUSR2
+
+while sleep 8; do
+
+	[[ -f /tmp/no-vdr-watchdog ]] && continue
+
+	[[ "$signal_stopped" == "1" ]] && continue
+
+	if ! pidof /usr/bin/vdr > /dev/null; then
+		logger -i -t vdrwatchdog -p local0.info "initializing full VDR restart"
+		/etc/init.d/vdr fullrestart 2>&1 >/dev/null
+	fi
+done

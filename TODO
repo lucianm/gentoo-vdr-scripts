@@ -1,0 +1,5 @@
+TODO file for gentoo-vdr-scripts
+
+* Add record script/hooks
+* Add shutdown scripts/hooks
+* create possibility to start vdr under x (for softdevice etc.)

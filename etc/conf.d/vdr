@@ -1,0 +1,60 @@
+# /etc/conf.d/vdr:
+
+# Global config file for vdr rc-scripts
+
+# check 5 seconds for existing dvb devices, for example for slow udev
+# you need to disable this for systems which only use network input
+# (default is enabled)
+#DEVICE_CHECK="disabled"
+
+# activate the watchdog timer with a timeout of SEC
+# seconds (default: 0); '0' disables the watchdog
+#WATCHDOG="60"
+
+# send Dolby Digital audio to stdin of command CMD
+#AC3_AUDIO=""
+
+# mute audio of the primary DVB device at startup
+# (default is to unmute)
+#MUTE="1"
+
+# read config files from DIR (default is to read them
+# from /etc/vdr directory)
+#CONFIG="/etc/vdr"
+
+# use only the given DVB device (NUM = 0, 1, 2...)
+# there may be several NUMs options (default: all DVB
+# devices will be used)
+#DEVICE=""
+
+# write the EPG data into the given FILE (default is
+# /video/epg.data); use '-E-' to disable this
+# if FILE is a directory, the default EPG file will be
+# created in that directory
+#EPGFILE="/var/vdr/epg.data"
+
+# set log level (default: 3)
+# 0 = no logging, 1 = errors only,
+# 2 = errors and info, 3 = errors, info and debug
+# if logging should be done to LOG_LOCALn instead of
+# LOG_USER, add '.n' to LEVEL, as in 3.7 (n=0..7)
+#LOG="3"
+
+# use DIR as video directory (default: /video)
+#VIDEO="/video"
+
+# use PORT for SVDRP (default: 2001)
+# 0 turns off SVDRP
+#SVDRP_PORT="2001"
+
+# call CMD to shutdown the computer
+# SHUTDOWN="/usr/bin/vdrshutdown.sh"
+#SHUTDOWN_HOOK="/etc/vdr/vdrshutdown.sh"
+
+# call CMD before and after a recording
+# RECORD="/usr/bin/vdrrecord.sh"
+#RECORD_HOOK=""
+
+# load a plugin defined by the given options
+# list all plugins you want to be loaded, seperated by space
+#PLUGINS=""

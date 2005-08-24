@@ -1,0 +1,10 @@
+load()
+{
+	/sbin/modprobe dvb-ttpci
+	/sbin/modprobe b2c2-flexcop-pci
+}
+
+unload()
+{
+	/sbin/rmmod dvb_ttpci b2c2_flexcop_pci b2c2_flexcop l64781 saa7146_vv saa7146  ves1820 tda8083 stv0297 sp8870 ves1x93 ttpci_eeprom skystar2 mt352 nxt2002 mt312 dvb_core stv0299 
+}

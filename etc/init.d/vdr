@@ -1,0 +1,91 @@
+#!/sbin/runscript
+# Distributed under the terms of the GNU General Public License v2
+# $Header: /var/cvsroot/gentoo-x86/media-video/vdr/files/rc.vdr,v 1.23 2005/05/11 20:17:42 zzam Exp $
+
+opts="${opts} fullrestart"
+
+vdr_rcdir=/usr/lib/vdr/rcscript
+source ${vdr_rcdir}/functions.sh
+
+
+depend() {
+	use lircd dvbsplash
+	need net
+	after checkroot
+}
+
+start() {
+	getvdrversion
+	init_params
+
+
+	load_addons_prefixed pre-start || return 1
+
+	for PLUGIN in ${PLUGINS}; do
+		load_plugin ${PLUGIN}
+	done
+
+	if [[ "${waitconditions}" ]]; then
+		ebegin "checking for prerequisits (devices nodes etc.)" 
+		waitfor 10 wait_for_multiple_condition
+		exitcode="$?"
+		exitmsg="could not start vdr"
+		case "$exitcode" in
+			1)
+				exitmsg="${exitmsg}: ${condition_msg}"
+				;;
+			2)
+				exitmsg="${exitmsg}: Timeout, ${condition_msg}"
+				;;
+		esac
+		eend "$exitcode" "${exitmsg}" || return
+	fi
+
+	ebegin "Starting vdr-${vdrversion}"
+
+	#
+	# finally start vdr
+	# 
+	/usr/bin/dvbsplash stop 2>/dev/null >/dev/null
+	env --unset=MAIL LD_ASSUME_KERNEL=2.4.1 LOGNAME=vdr USER=vdr HOME=~vdr \
+		start-stop-daemon \
+		  --start \
+		  --chdir ~vdr \
+		  --chuid vdr \
+		  --exec /usr/bin/vdr \
+		  -- \
+		  --daemon "${vdropts[@]}"
+	exitcode=$?
+
+	exit_msg="Failed to start vdr."
+	if [[ "${exitcode}" == "0" ]]; then
+		load_addons_prefixed post-start || exitcode=1
+	fi
+
+	eend $exitcode "${exit_msg}"
+}
+
+stop() {
+	getvdrversion
+	ebegin "Stopping vdr-${vdrversion}"
+
+	# Use --name here to allow us to kill vdr even after a new emerge
+	start-stop-daemon --stop --quiet --retry 15 --name vdr
+	eend $? "Failed to stop vdr."
+}
+
+
+fullrestart() {
+	getvdrversion
+	ebegin "Fully restarting vdr-${vdrversion} and DVB drivers"
+	/etc/init.d/vdr pause
+	/etc/init.d/vdr zap
+	sleep 2
+	test_vdr_process && /bin/killall -9 vdr
+	sleep 1
+	#sleep 5
+	#unload
+	#sleep 3
+	#load
+	/etc/init.d/vdr start
+}

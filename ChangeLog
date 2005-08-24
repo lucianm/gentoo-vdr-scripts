@@ -1,0 +1,12 @@
+# ChangeLog for gentoo-vdr-scripts
+
+*gentoo-vdr-scripts-0.1_alpha1 (12 Aug 2005)
+
+  12 Aug 2005; Matthias Schwarzott <zzam@gentoo.org>:
+  added script for creation of commands.conf
+  and reccmds.conf files
+
+  27 Jul 2005; Matthias Schwarzott <zzam@gentoo.org>:
+  First created package of scripts.
+  Scripts are from either me or
+  imported from gentoo.de repository

@@ -1,0 +1,11 @@
+README for gentoo-vdr-scripts
+
+This package contains all support scripts for vdr to make
+it like a real set top box.
+
+#TODO: Not used up to now
+#Dependencies:
+#	nvram-wakeup	when being used for setting wakeup time
+
+Author:
+	Matthias Schwarzott <zzam@gentoo.org>
