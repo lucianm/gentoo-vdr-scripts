@@ -4,15 +4,18 @@
 # This watchdog checks every 8 seconds if vdr is running and
 # triggers a reload when vdr is not there
 
+# if you are searching for the vdr-internal watchdog look for
+# INTERNAL_WATCHDOG in /etc/conf.d/vdr
+
 # 
 # Should the watchdog be active or not
-# default: ENABLE_WATCHDOG="yes"
-#ENABLE_WATCHDOG="yes"
+# default: disabled = "no"
+#ENABLE_EXTERNAL_WATCHDOG="yes"
 
 #
 # Should the watchdog reload the dvb modules
 # when triggering a restart of vdr
-# default: WATCHDOG_RELOAD_DVB_MODULES="yes"
+# default: disabled = "no"
 #WATCHDOG_RELOAD_DVB_MODULES="yes"
 
 #

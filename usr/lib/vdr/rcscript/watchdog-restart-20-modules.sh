@@ -70,7 +70,7 @@ restart_load() {
 	done
 }
 
-WATCHDOG_RELOAD_DVB_MODULES=${WATCHDOG_RELOAD_DVB_MODULES:-yes}
+WATCHDOG_RELOAD_DVB_MODULES=${WATCHDOG_RELOAD_DVB_MODULES:-no}
 if [[ "${WATCHDOG_RELOAD_DVB_MODULES}" == "yes" ]]; then
 	sleep 2
 	restart_unload

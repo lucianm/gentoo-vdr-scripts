@@ -9,8 +9,9 @@ pidof=/sbin/pidof
 test -x /bin/pidof && pidof=/bin/pidof
 
 source /etc/conf.d/vdr.watchdogd
-ENABLE_WATCHDOG=${ENABLE_WATCHDOG:-yes}
+ENABLE_EXTERNAL_WATCHDOG=${ENABLE_EXTERNAL_WATCHDOG:-no}
 
+[[ -f "${vdr_rcdir}"/vdr-capabilities.sh ]] && source "${vdr_rcdir}"/vdr-capabilities.sh
 
 test_vdr_process()
 {
@@ -150,7 +151,7 @@ wait_for_multiple_condition() {
 }
 
 stop_watchdog() {
-	if [[ "${ENABLE_WATCHDOG}" == "yes" ]]; then
+	if [[ "${ENABLE_EXTERNAL_WATCHDOG}" == "yes" ]]; then
 		ebegin "Stopping vdr watchdog"
 		start-stop-daemon --stop --pidfile /var/run/vdrwatchdog.pid
 		eend $? "failed stopping watchdog"
@@ -158,7 +159,7 @@ stop_watchdog() {
 }
 
 start_watchdog() {
-	if [[ "${ENABLE_WATCHDOG}" == "yes" ]]; then
+	if [[ "${ENABLE_EXTERNAL_WATCHDOG}" == "yes" ]]; then
 		WATCHDOG_LOGFILE=${WATCHDOG_LOGFILE:-/dev/null}
 		ebegin "Starting vdr watchdog"
 		start-stop-daemon \

@@ -1,5 +1,17 @@
 # ChangeLog for gentoo-vdr-scripts
 
+*gentoo-vdr-scripts-0.1_alpha3 (18 Aug 2005)
+
+  18 Aug 2005; Matthias Schwarzott <zzam@gentoo.org> ChangeLog:
+  external watchdog per default off
+
+  18 Aug 2005; Matthias Schwarzott <zzam@gentoo.org> ChangeLog:
+  added options for setting infra-red control type
+
+  17 Aug 2005; Matthias Schwarzott <zzam@gentoo.org> ChangeLog:
+  changed comments and config-file-settings for watchdogs to make the
+  difference intern vdr watchdog - extern watchdog more clear
+
 *gentoo-vdr-scripts-0.1_alpha2 (14 Aug 2005)
 
   14 Aug 2005; Matthias Schwarzott <zzam@gentoo.org>:

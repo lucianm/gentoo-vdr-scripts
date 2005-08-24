@@ -9,6 +9,7 @@ install:
 
 	mkdir -p $(DESTDIR)/usr/sbin
 	install -m 0755 -o root -g root usr/sbin/vdr-watchdogd $(DESTDIR)/usr/sbin
+	install -m 0755 -o root -g root usr/sbin/acpi-wakeup.sh $(DESTDIR)/usr/sbin
 
 	#mkdir -p $(DESTDIR)/usr/bin
 	#install -m 0755 -o root -g root usr/bin/vdr-start $(DESTDIR)/usr/bin

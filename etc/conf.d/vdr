@@ -8,13 +8,16 @@
 #DEVICE_CHECK="disabled"
 
 # switch startskript to debug-mode, set debug-level
-# default: 0
+# default: no debug = 0
 #SCRIPT_DEBUG_LEVEL="1"
 
 # activate the (internal to vdr) watchdog timer with
-# a timeout of SEC seconds (default: 0)
+# a timeout of SEC seconds (default: disabled)
 # '0' disables the watchdog
-#WATCHDOG="60"
+#INTERNAL_WATCHDOG="60"
+
+# If you seek the settings for the extern watchdog look
+# in /etc/conf.d/vdr.watchdogd.
 
 # send Dolby Digital audio to stdin of command CMD
 #AC3_AUDIO=""
@@ -51,6 +54,11 @@
 # use PORT for SVDRP (default: 2001)
 # 0 turns off SVDRP
 #SVDRP_PORT="2001"
+
+# What IR control should be used (lirc/rcu?)
+# Usable at vdr version starting from 1.3.28
+# Default: use what was selected at compile time
+#IR_CTRL="lirc"
 
 # call CMD to shutdown the computer
 # SHUTDOWN="/usr/bin/vdrshutdown.sh"
