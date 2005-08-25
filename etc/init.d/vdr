@@ -16,7 +16,9 @@ depend() {
 start() {
 	getvdrversion
 	init_params
+	init_daemonctrl_params
 
+	add_daemonctrl_param --start --chdir ~vdr --chuid vdr --exec /usr/bin/vdr
 
 	load_addons_prefixed pre-start || return 1
 
@@ -47,13 +49,7 @@ start() {
 	# 
 	/usr/bin/dvbsplash stop 2>/dev/null >/dev/null
 	env --unset=MAIL LD_ASSUME_KERNEL=2.4.1 LOGNAME=vdr USER=vdr HOME=~vdr \
-		start-stop-daemon \
-		  --start \
-		  --chdir ~vdr \
-		  --chuid vdr \
-		  --exec /usr/bin/vdr \
-		  -- \
-		  --daemon "${vdropts[@]}"
+		start-stop-daemon "${daemonctrl_opts[@]}" -- "${vdr_opts[@]}"
 	exitcode=$?
 	eend $exitcode "Failed to start vdr."
 

@@ -23,18 +23,38 @@ getvdrversion()
 	vdrversion=$(awk '/VDRVERSION/ { gsub("\"","",$3); print $3 }' /usr/include/vdr/config.h)
 }
 
+init_daemonctrl_params()
+{
+	# init array for parameters
+	daemonctrl_idx=0
+	unset daemonctrl_opts
+	declare -a daemonctrl_opts
+}
+
+add_daemonctrl_param()
+{
+	while [[ -n "$1" ]]; do
+		daemonctrl_opts[daemonctrl_idx]="$1"
+		daemonctrl_idx=$[daemonctrl_idx+1]
+		shift;
+	done
+}
+
 init_params()
 {
 	# init array for parameters
-	opt_idx=0
-	unset vdropts
-	declare -a vdropts
+	vdr_idx=0
+	unset vdr_opts
+	declare -a vdr_opts
 }
 
 add_param()
 {
-	vdropts[opt_idx]="$1"
-	opt_idx=$[opt_idx+1]
+	while [[ -n "$1" ]]; do
+		vdr_opts[vdr_idx]="$1"
+		vdr_idx=$[vdr_idx+1]
+		shift
+	done
 }
 
 init_plugin_params()

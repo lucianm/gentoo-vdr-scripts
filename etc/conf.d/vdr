@@ -60,6 +60,9 @@
 # Default: use what was selected at compile time
 #IR_CTRL="lirc"
 
+# controlling tty
+#TERMINAL=""
+
 # call CMD to shutdown the computer
 # SHUTDOWN="/usr/bin/vdrshutdown.sh"
 #SHUTDOWN_HOOK="/etc/vdr/vdrshutdown.sh"

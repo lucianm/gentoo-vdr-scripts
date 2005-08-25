@@ -12,6 +12,13 @@ eval_standard_params() {
 	[[ -n "${SHUTDOWN_HOOK}" ]] && add_param "--shutdown=${SHUTDOWN_HOOK}"
 	[[ -n "${RECORD_HOOK}" ]] && add_param "--record=${RECORD_HOOK}"
 
+	if [[ -n "${TERMINAL}" ]]; then
+		add_param "--terminal=${TERMINAL}"
+		add_daemonctrl_param "--background"
+	else
+		add_param "--daemon"
+	fi
+
 	if [[ -n "${CAP_IRCTRL_RUNTIME_PARAM}" ]] && [[ -n "${IR_CTRL}" ]]; then
 		case "${IR_CTRL}" in
 			lirc|rcu) add_param "--${IR_CTRL}" ;;

@@ -1,6 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 
-*gentoo-vdr-scripts-0.1_alpha3 (18 Aug 2005)
+*gentoo-vdr-scripts-0.1_alpha3 (xx Aug 2005)
+
+  25 Aug 2005; Matthias Schwarzott <zzam@gentoo.org>:
+  added vdr option --terminal
 
   18 Aug 2005; Matthias Schwarzott <zzam@gentoo.org> ChangeLog:
   external watchdog per default off
