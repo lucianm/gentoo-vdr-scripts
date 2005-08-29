@@ -2,6 +2,9 @@
 
 *gentoo-vdr-scripts-0.1_alpha3 (xx Aug 2005)
 
+  29 Aug 2005; Matthias Schwarzott <zzam@gentoo.org>:
+  small cleanup of config file
+
   25 Aug 2005; Matthias Schwarzott <zzam@gentoo.org>:
   added vdr option --terminal
 
