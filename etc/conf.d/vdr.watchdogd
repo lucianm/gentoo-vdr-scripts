@@ -9,17 +9,20 @@
 
 # 
 # Should the watchdog be active or not
-# default: disabled = "no"
+#   allowed values: yes no
+#   default: no
 #ENABLE_EXTERNAL_WATCHDOG="yes"
 
 #
 # Should the watchdog reload the dvb modules
 # when triggering a restart of vdr
-# default: disabled = "no"
+#   allowed values: yes no
+#   default: no
 #WATCHDOG_RELOAD_DVB_MODULES="yes"
 
 #
 # For debugging purposes; in which file should
-# the watchdog write a logfile
-# default: no logging into files
+# the watchdog write a log
+#   allowed values: names of files
+#   default: only log to syslog
 #WATCHDOG_LOGFILE="/var/log/vdr-watchdogd"
