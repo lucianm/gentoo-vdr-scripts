@@ -96,6 +96,16 @@
 #   default: 
 #RECORD_HOOK=""
 
+# set volume at start of vdr to this value
+#   allowed values: 0-255
+#   default: leave volume unchanged
+#STARTUP_VOLUME="255"
+
+# set volume at start of vdr to this value
+#   allowed values: valid channel number in vdr
+#   default: leave channel unchanged
+#STARTUP_CHANNEL="1"
+
 # load a plugin defined by the given options
 # list all plugins you want to be loaded, seperated by space
 #   allowed values: set of plugin names
