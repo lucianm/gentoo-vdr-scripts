@@ -5,6 +5,6 @@ check_dvbdevice() {
 }
 DEVICE_CHECK=${DEVICE_CHECK:-yes}
 
-if [[ "${DEVICE_CHECK}" == "yes" ]; then
+if [[ "${DEVICE_CHECK}" == "yes" ]]; then
 	add_wait_condition check_dvbdevice
 fi

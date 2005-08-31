@@ -3,6 +3,9 @@
 *gentoo-vdr-scripts-0.1_alpha3 (xx Aug 2005)
 
   31 Aug 2005; Matthias Schwarzott <zzam@gentoo.org>:
+  fixed typo
+
+  31 Aug 2005; Matthias Schwarzott <zzam@gentoo.org>:
   added setting of startup volume and channel
 
   29 Aug 2005; Matthias Schwarzott <zzam@gentoo.org>:
