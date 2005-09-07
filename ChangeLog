@@ -1,6 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 
-*gentoo-vdr-scripts-0.1_alpha3 (xx Aug 2005)
+*gentoo-vdr-scripts-0.1_alpha3 (xx Sep 2005)
+
+  07 Sep 2005; Matthias Schwarzott <zzam@gentoo.org>:
+  made time calculation for acpi more correct
 
   31 Aug 2005; Matthias Schwarzott <zzam@gentoo.org>:
   fixed typo
