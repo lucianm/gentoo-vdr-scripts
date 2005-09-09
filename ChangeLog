@@ -1,6 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 
   09 Sep 2005; Matthias Schwarzott <zzam@gentoo.org> ChangeLog:
+  create missing video directory at start
+
+  09 Sep 2005; Matthias Schwarzott <zzam@gentoo.org> ChangeLog:
   moved default video directory to /var/vdr/video
 
 *gentoo-vdr-scripts-0.1_alpha3 (09 Sep 2005)

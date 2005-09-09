@@ -7,6 +7,11 @@ eval_standard_params() {
 	[[ -n "${EPGFILE}" ]] && add_param "--epgfile=${EPGFILE}"
 	[[ -n "${LOG}" ]] && add_param "--log=${LOG}"
 	[[ -n "${VIDEO}" ]] && VIDEO="/var/vdr/video"
+	if [[ ! -d "${VIDEO}" ]]; then
+		mkdir -p "${VIDEO}"
+		chown vdr:vdr "${VIDEO}"
+		einfo "Created directory ${VIDEO}"
+	fi
 	add_param "--video=${VIDEO}"
 	[[ -n "${SVDRP_PORT}" ]] && add_param "--port=${SVDRP_PORT}"
 
