@@ -2,7 +2,7 @@
 
 # where is our /video located?
 source /etc/conf.d/vdr
-test -z "${VIDEO}" && VIDEO=/video
+test -z "${VIDEO}" && VIDEO=/var/vdr/video
 
 # check for running programms
 CMD_LST="make gcc noad cc1 transcode vcdimager mencoder tosvcd lame vdrsync.pl tcmplex tcmplex-panteltje vdr2ac3.sh"

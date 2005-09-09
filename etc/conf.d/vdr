@@ -44,11 +44,15 @@
 #   default: use all DVB devices
 #DEVICE=""
 
-# write the EPG data into the given FILE (default is
-# /video/epg.data); use '-E-' to disable this
+# use DIR as video directory
+#   allowed values: directory names
+#   default: /var/vdr/video
+#VIDEO="/var/vdr/video"
+
+# write the EPG data into the given FILE; use '-E-' to disable this
 # if FILE is a directory, the default EPG file will be
 # created in that directory
-#   allowed values: file names
+#   allowed values: file/directory names, -E- to disable
 #   default: $VIDEO/epg.data
 #EPGFILE="/var/vdr/epg.data"
 
@@ -60,11 +64,6 @@
 #   allowed values: 0 1 2 3
 #   default: 3
 #LOG="3"
-
-# use DIR as video directory
-#   allowed values: directory names
-#   default: /video
-#VIDEO="/video"
 
 # use PORT for SVDRP (default: 2001)
 # 0 turns off SVDRP

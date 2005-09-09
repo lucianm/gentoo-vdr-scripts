@@ -18,6 +18,7 @@ install:
 	install -m 0644 -o root -g root usr/lib/vdr/rcscript/*.sh $(DESTDIR)/usr/lib/vdr/rcscript/
 
 	mkdir -p $(DESTDIR)/var/vdr
+	mkdir -p $(DESTDIR)/var/vdr/video
 
 	mkdir -p $(DESTDIR)/etc/vdr/commands
 	install -m 0644 -o root -g root etc/vdr/commands/commands.*.conf $(DESTDIR)/etc/vdr/commands

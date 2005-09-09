@@ -6,7 +6,8 @@ eval_standard_params() {
 	[[ -n "${DEVICE}" ]] && for i in ${DEVICE}; do add_param "--device=${i}"; done
 	[[ -n "${EPGFILE}" ]] && add_param "--epgfile=${EPGFILE}"
 	[[ -n "${LOG}" ]] && add_param "--log=${LOG}"
-	[[ -n "${VIDEO}" ]] && add_param "--video=${VIDEO}"
+	[[ -n "${VIDEO}" ]] && VIDEO="/var/vdr/video"
+	add_param "--video=${VIDEO}"
 	[[ -n "${SVDRP_PORT}" ]] && add_param "--port=${SVDRP_PORT}"
 
 	[[ -n "${SHUTDOWN_HOOK}" ]] && add_param "--shutdown=${SHUTDOWN_HOOK}"
