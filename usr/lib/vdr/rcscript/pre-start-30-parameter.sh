@@ -30,6 +30,10 @@ eval_standard_params() {
 			lirc|rcu) add_param "--${IR_CTRL}" ;;
 		esac
 	fi
+
+	if [[ -n "${CAP_VFAT_RUNTIME_PARAM}" ]] && [[ -n "${VFAT_FILENAMES}" ]]; then
+		add_param "--vfat"
+	fi
 }
 
 

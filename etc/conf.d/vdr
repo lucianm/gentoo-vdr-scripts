@@ -78,6 +78,13 @@
 #   default: use what was selected at compile time
 #IR_CTRL="lirc"
 
+# Change the filename-format to be vfat and samba compatible. Only necessary if
+# not set at compile time.
+# (Usable at vdr version starting from 1.3.32)
+#   allowed values: yes no
+#   default: use what was selected at compile time
+#VFAT_FILENAMES="yes"
+
 # controlling tty
 #   allowed values: names of terminals
 #   default: disabled

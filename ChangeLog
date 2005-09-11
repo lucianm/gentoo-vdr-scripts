@@ -1,5 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 
+  11 Sep 2005; Matthias Schwarzott <zzam@gentoo.org> ChangeLog:
+  enables >=vdr-1.3.32 to use vfat runtime option
+
   09 Sep 2005; Matthias Schwarzott <zzam@gentoo.org> ChangeLog:
   create missing video directory at start
 
