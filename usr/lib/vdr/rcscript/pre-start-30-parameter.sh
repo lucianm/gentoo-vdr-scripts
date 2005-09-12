@@ -6,7 +6,7 @@ eval_standard_params() {
 	[[ -n "${DEVICE}" ]] && for i in ${DEVICE}; do add_param "--device=${i}"; done
 	[[ -n "${EPGFILE}" ]] && add_param "--epgfile=${EPGFILE}"
 	[[ -n "${LOG}" ]] && add_param "--log=${LOG}"
-	[[ -n "${VIDEO}" ]] && VIDEO="/var/vdr/video"
+	[[ -z "${VIDEO}" ]] && VIDEO="/var/vdr/video"
 	if [[ ! -d "${VIDEO}" ]]; then
 		mkdir -p "${VIDEO}"
 		chown vdr:vdr "${VIDEO}"
@@ -31,7 +31,7 @@ eval_standard_params() {
 		esac
 	fi
 
-	if [[ -n "${CAP_VFAT_RUNTIME_PARAM}" ]] && [[ -n "${VFAT_FILENAMES}" ]]; then
+	if [[ -n "${CAP_VFAT_RUNTIME_PARAM}" ]] && [[ "${VFAT_FILENAMES}" == "yes" ]]; then
 		add_param "--vfat"
 	fi
 }
