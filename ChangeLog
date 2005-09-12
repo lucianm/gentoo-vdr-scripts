@@ -1,5 +1,7 @@
 # ChangeLog for gentoo-vdr-scripts
 
+*gentoo-vdr-scripts-0.1_alpha4 (12 Sep 2005)
+
   11 Sep 2005; Matthias Schwarzott <zzam@gentoo.org> ChangeLog:
   enables >=vdr-1.3.32 to use vfat runtime option
 
