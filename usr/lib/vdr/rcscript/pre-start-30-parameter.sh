@@ -15,7 +15,7 @@ eval_standard_params() {
 	add_param "--video=${VIDEO}"
 	[[ -n "${SVDRP_PORT}" ]] && add_param "--port=${SVDRP_PORT}"
 
-	[[ -n "${SHUTDOWN_HOOK}" ]] && add_param "--shutdown=${SHUTDOWN_HOOK}"
+
 	[[ -n "${RECORD_HOOK}" ]] && add_param "--record=${RECORD_HOOK}"
 
 	if [[ -n "${TERMINAL}" ]]; then
@@ -36,5 +36,13 @@ eval_standard_params() {
 	fi
 }
 
+setup_shutdown() {
+	source /etc/conf.d/vdr.shutdown
+	[[ "${SHUTDOWN_ACTIVE:-no}" == "no" ]] && return
+
+	[[ -n "${USER_SHUTDOWN_SCRIPT}" ]] && USER_SHUTDOWN_SCRIPT=/usr/lib/vdr/bin/vdrshutdown-entry.sh
+	add_param "--shutdown=${USER_SHUTDOWN_SCRIPT}"
+}
 
 eval_standard_params
+setup_shutdown

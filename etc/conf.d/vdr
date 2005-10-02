@@ -90,12 +90,6 @@
 #   default: disabled
 #TERMINAL=""
 
-# call CMD to shutdown the computer
-# SHUTDOWN="/usr/bin/vdrshutdown.sh"
-#   allowed values: names of executables
-#   default: 
-#SHUTDOWN_HOOK="/etc/vdr/vdrshutdown.sh"
-
 # call CMD before and after a recording
 # RECORD="/usr/bin/vdrrecord.sh"
 #   allowed values: names of executables

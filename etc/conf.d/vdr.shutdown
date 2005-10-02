@@ -1,0 +1,36 @@
+# Configuration settings for vdr related to shutdown
+#
+
+#
+# With this switch you can completely disable shutdown.
+# If set to no all settings in this file are disabled.
+#   allowed values: yes no
+#   default: no
+#SHUTDOWN_ACTIVE="yes"
+
+#
+# This option allows to override the set of shutdown scripts
+# coming with this installation. Use with care!
+#   allowed values: name of an executable
+#   default: use supplied scripts
+#USER_SHUTDOWN_SCRIPT=""
+
+
+#
+# All following settings can only be used if the default shutdown
+# script is not replaced with USER_SHUTDOWN_SCRIPT.
+#
+
+
+# 
+# Should the automatic shutdown after a while of inactivity
+# and after wakeup for recording be allowed?
+# allowed values: yes no
+# default: no
+#AUTOMATIC_SHUTDOWN="yes"
+
+#
+# Additional programs which should stop shutdown
+# allowed values: lists of program names
+# default: no additional programs
+#SHUTDOWN_CHECK_ADDITIONAL_PROGRAMS=""
