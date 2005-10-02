@@ -61,6 +61,7 @@ fi
 # privileged commands. Start visudo and add a line like
 #   vdr     ALL= NOPASSWD: /usr/bin/nvram-wakeup, /sbin/shutdown
 # Add /sbin/lilo, /sbin/grub-set-default, /bin/mount, /usr/sbin/vdrshutdown-acpi.sh as needed
-SUDO=/usr/bin/sudo
+#SUDO=/usr/bin/sudo
 
-${SUDO} /usr/lib/vdr/bin/
+#${SUDO} /usr/lib/vdr/bin/
+mesg "Dummy - Real shutdown not working"
