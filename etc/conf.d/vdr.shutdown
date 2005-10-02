@@ -34,3 +34,22 @@
 # allowed values: lists of program names
 # default: no additional programs
 #SHUTDOWN_CHECK_ADDITIONAL_PROGRAMS=""
+
+#
+# Method to set wakeup-time
+# allowed values: acpi nvram
+# default: acpi
+#WAKEUP_METHOD="nvram"
+
+#
+# Only used for WAKEUP_METHOD nvram when motherboard needs reboot
+# allowed values: lilo grub
+#BOOT_MANAGER="grub"
+
+#
+# Which entry in the boot manager configuration should nvram use to
+# initiate a reboot with shutdown afterwards
+# allowed values: number of entry
+#REBOOT_ENTRY_GRUB="1"
+# allowed values:
+#REBOOT_ENTRY_LILO="PowerOff"

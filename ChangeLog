@@ -1,5 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 
+  02 Oct 2005; <matze@gentoo.org> ChangeLog:
+  working wakeup time setting
+
   02 Oct 2005; Matthias Schwarzott <zzam@gentoo.org> ChangeLog:
   Install shutdown config file
 
