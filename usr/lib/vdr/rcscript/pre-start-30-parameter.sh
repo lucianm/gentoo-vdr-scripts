@@ -40,7 +40,7 @@ setup_shutdown() {
 	source /etc/conf.d/vdr.shutdown
 	[[ "${SHUTDOWN_ACTIVE:-no}" == "no" ]] && return
 
-	[[ -n "${USER_SHUTDOWN_SCRIPT}" ]] && USER_SHUTDOWN_SCRIPT=/usr/lib/vdr/bin/vdrshutdown-entry.sh
+	[[ -z "${USER_SHUTDOWN_SCRIPT}" ]] && USER_SHUTDOWN_SCRIPT=/usr/lib/vdr/bin/vdrshutdown-entry.sh
 	add_param "--shutdown=${USER_SHUTDOWN_SCRIPT}"
 }
 

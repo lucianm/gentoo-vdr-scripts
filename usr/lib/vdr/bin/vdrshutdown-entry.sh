@@ -40,7 +40,7 @@ for HOOK in $HOOKDIR/shutdown-*.sh; do
 		exit 1
 	fi
 
-	if [[ ${TRY_AGAIN -gt 0 ]]; then
+	if [[ ${TRY_AGAIN} -gt 0 ]]; then
 		if [[ ${MAX_TRY_AGAIN} -lt ${TRY_AGAIN} ]]; then
 			MAX_TRY_AGAIN=${TRY_AGAIN}
 		fi
@@ -64,4 +64,4 @@ fi
 #SUDO=/usr/bin/sudo
 
 #${SUDO} /usr/lib/vdr/bin/
-mesg "Dummy - Real shutdown not working"
+mesg "Dummy - Real shutdown not working" &
