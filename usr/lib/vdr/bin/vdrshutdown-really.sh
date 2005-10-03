@@ -15,24 +15,30 @@ VDR_WAKEUP_TIME="${1}"
 SVDRPCMD=/usr/bin/svdrpsend.pl
 
 mesg() {
+	logger $@
 	${SVDRPCMD} MESG "\"$@\""
 }
-       
+
+error_mesg() {
+	mesg "Error: $@"
+}
 
 source /etc/conf.d/vdr.shutdown
 
 WAKEUP_METHOD=${WAKEUP_METHOD:-acpi}
 
 NEED_REBOOT=0
-EXITCODE=0
+SHUTDOWN_EXITCODE=0
 
 if [[ -f ${shutdown_dir}/shutdown-wakeup-${WAKEUP_METHOD}.sh ]]; then
 	source ${shutdown_dir}/shutdown-wakeup-${WAKEUP_METHOD}.sh
+
+	set_wakeup "${VDR_WAKEUP_TIME}"
 else
-	EXITCODE=2
+	SHUTDOWN_EXITCODE=2
 fi
 
-[[ "${EXITCODE}" != "0" ]] && exit ${EXITCODE}
+[[ "${SHUTDOWN_EXITCODE}" != "0" ]] && exit ${SHUTDOWN_EXITCODE}
 
 
 if [[ "${DUMMY}" == "1" ]]; then

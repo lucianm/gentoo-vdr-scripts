@@ -3,18 +3,21 @@
 #   Various other contributors from gentoo.de
 #
 
-# Input: unix timestamp in variable VDR_WAKEUP_TIME
-
 ACPI_WAKEUP=/usr/sbin/acpi-wakeup.sh
 
 # is acpi in kernel activated?
 if [[ ! -f /proc/acpi/alarm ]]; then
-	echo error: no acpi installed
+	error_mesg "no acpi-driver installed"
+	SHUTDOWN_EXITCODE=1
+	return
 fi
 if [[ ! -x ${ACPI_WAKEUP} ]]; then
-	echo error: no acpi command
+	error_mesg "acpi-wakeup.sh not found"
+	SHUTDOWN_EXITCODE=1
 	return
 fi
 
-${ACPI_WAKEUP} ${VDR_WAKEUP_TIME}
-EXITCODE=0
+set_wakeup() {
+	${ACPI_WAKEUP} ${1}
+	SHUTDOWN_EXITCODE=$?
+}

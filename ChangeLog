@@ -1,5 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 
+  03 Oct 2005; <matze@gentoo.org> ChangeLog:
+  test for working wakeup at start of vdr
+
   03 Oct 2005; Matthias Schwarzott <zzam@gentoo.org> ChangeLog:
   Split shutdown in multiple files
 

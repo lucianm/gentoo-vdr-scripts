@@ -207,3 +207,8 @@ resume_watchdog() {
 		start_watchdog
 	fi
 }
+
+error_mesg() {
+	logger "vdr-scripts: Error: $@"
+	ewarn "Error: $@"
+}
