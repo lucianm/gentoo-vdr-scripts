@@ -12,6 +12,13 @@ fi
 
 VDR_WAKEUP_TIME="${1}"
 
+SVDRPCMD=/usr/bin/svdrpsend.pl
+
+mesg() {
+	${SVDRPCMD} MESG "\"$@\""
+}
+       
+
 source /etc/conf.d/vdr.shutdown
 
 WAKEUP_METHOD=${WAKEUP_METHOD:-acpi}
