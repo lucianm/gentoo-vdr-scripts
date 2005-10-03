@@ -9,7 +9,7 @@ create_commands_conf() {
 	if [[ ! -L "${file}" ]]; then
 		if [[ -f "${file}" ]]; then
 			mv "${file}" "${file}.backup"
-			einfo "Saved original ${file} as ${file}.backup"
+			einfo "  Saved original ${file} as ${file}.backup"
 		fi
 
 		ln -s "../../${mergedfile}" "${file}"
@@ -17,7 +17,7 @@ create_commands_conf() {
 
 	if [[ -f "${mergedfile}" ]]; then
 		if ! rm "${mergedfile}"; then
-			ewarn "Could not change ${mergedfile}"
+			ewarn "  Could not change ${mergedfile}"
 			return
 		fi
 	fi
@@ -37,10 +37,10 @@ EOT
 	done
 }
 
-ebegin "preparing vdr config files"
+ebegin "  config files"
 if [[ ! -d /var/vdr ]]; then
 	mkdir -p /var/vdr
-	ewarn "created /var/vdr"
+	ewarn "    created /var/vdr"
 fi
 create_commands_conf commands "${ORDER_COMMANDS}"
 create_commands_conf reccmds "${ORDER_RECCMDS}"

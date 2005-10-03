@@ -1,15 +1,14 @@
 wait_for_svdrp() {
 	SVDRP_PORT="${SVDRP_PORT:-2001}"
 	[[ "${SVDRP_PORT}" == "0" ]] && return
-	ebegin "Checking for working vdr"
+	ebegin "  Waiting for working vdr"
 
 	# Warten auf offenen svdrp port
 	waitfor 20 svdrpready
 
 	case "$?" in
 	1)
-		exit_msg="timeout"
-		abort=1
+		exit_msg="timeout, hoping its running good nevertheless"
 		;;
 	2)
 		exit_msg="aborted, please check logfile"

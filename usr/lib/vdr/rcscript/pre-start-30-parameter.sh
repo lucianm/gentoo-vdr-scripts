@@ -43,10 +43,10 @@ setup_shutdown() {
 	if [[ -z "${USER_SHUTDOWN_SCRIPT}" ]]; then
 		add_param "--shutdown=/usr/lib/vdr/bin/vdrshutdown-entry.sh"
 		if ! grep -q /usr/lib/vdr/bin/vdrshutdown-really.sh /etc/sudoers; then
-			ewarn "missing entry in /etc/sudoers"
+			ewarn "  missing entry in /etc/sudoers"
 			einfo
-			einfo "please add this line to your /etc/sudoers file"
-			einfo "vdr ALL=NOPASSWD:/usr/lib/vdr/bin/vdrshutdown-really.sh"
+			einfo "  please add this line to your /etc/sudoers file"
+			einfo "  vdr ALL=NOPASSWD:/usr/lib/vdr/bin/vdrshutdown-really.sh"
 		fi
 	else
 		add_param "--shutdown=${USER_SHUTDOWN_SCRIPT}"

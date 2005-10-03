@@ -14,6 +14,7 @@ depend() {
 }
 
 start() {
+	einfo "Preparing start of vdr:"
 	getvdrversion
 	init_params
 	init_daemonctrl_params
@@ -27,7 +28,7 @@ start() {
 	done
 
 	if [[ "${waitconditions}" ]]; then
-		ebegin "checking for prerequisits (devices nodes etc.)" 
+		ebegin "  Prerequisits (devices nodes etc.)" 
 		waitfor 10 wait_for_multiple_condition
 		exitcode="$?"
 		exitmsg="could not start vdr"
