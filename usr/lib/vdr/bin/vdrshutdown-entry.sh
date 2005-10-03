@@ -31,7 +31,7 @@ bg_retry() {
 
 EXITCODE=0
 MAX_TRY_AGAIN=0
-for HOOK in $HOOKDIR/shutdown-*.sh; do
+for HOOK in $HOOKDIR/pre-shutdown-*.sh; do
 	TRY_AGAIN=0
 	[[ -f "${HOOK}" ]] && source "${HOOK}" $@
 

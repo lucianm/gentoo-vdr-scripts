@@ -1,5 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 
+  03 Oct 2005; Matthias Schwarzott <zzam@gentoo.org> ChangeLog:
+  Split shutdown in multiple files
+
   02 Oct 2005; Matthias Schwarzott <zzam@gentoo.org> ChangeLog:
   added test for good sudoers-entry
 

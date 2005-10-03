@@ -49,7 +49,7 @@
 #
 # Which entry in the boot manager configuration should nvram use to
 # initiate a reboot with shutdown afterwards
-# allowed values: number of entry
+# allowed values: number of entry in config-file
 #REBOOT_ENTRY_GRUB="1"
-# allowed values:
+# allowed values: name of entry in config-file
 #REBOOT_ENTRY_LILO="PowerOff"
