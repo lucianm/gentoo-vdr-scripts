@@ -19,7 +19,8 @@ start() {
 	init_params
 	init_daemonctrl_params
 
-	add_daemonctrl_param --start --chdir ~vdr --chuid vdr --exec /usr/bin/vdr
+	[[ -z "${VDR_BIN}" ]] && VDR_BIN=/usr/bin/vdr
+	add_daemonctrl_param --start --chdir ~vdr --chuid vdr --exec ${VDR_BIN}
 
 	load_addons_prefixed pre-start || return 1
 
