@@ -2,5 +2,4 @@ TODO file for gentoo-vdr-scripts
 
 * chown terminal to vdr or other way to make --terminal work
 * Add record script/hooks
-* Add shutdown scripts/hooks
 * create possibility to start vdr under x (for softdevice etc.)
