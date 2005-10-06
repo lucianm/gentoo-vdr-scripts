@@ -20,9 +20,12 @@ install:
 	mkdir -p $(DESTDIR)/usr/lib/vdr/shutdown
 	install -m 0644 -o root -g root usr/lib/vdr/shutdown/*.sh $(DESTDIR)/usr/lib/vdr/shutdown/
 
+	mkdir -p $(DESTDIR)/usr/lib/vdr/record
+	install -m 0644 -o root -g root usr/lib/vdr/record/*.sh $(DESTDIR)/usr/lib/vdr/record/
+
 	mkdir -p $(DESTDIR)/usr/lib/vdr/bin
-	install -m 0755 -o root -g root usr/lib/vdr/bin/vdrshutdown-{entry,really}.sh $(DESTDIR)/usr/lib/vdr/bin/
-	
+	install -m 0755 -o root -g root usr/lib/vdr/bin/*.sh $(DESTDIR)/usr/lib/vdr/bin/
+
 	mkdir -p $(DESTDIR)/var/vdr
 	mkdir -p $(DESTDIR)/var/vdr/video
 

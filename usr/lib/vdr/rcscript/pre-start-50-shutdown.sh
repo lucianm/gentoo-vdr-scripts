@@ -36,7 +36,7 @@ setup_shutdown() {
 		return
 	fi
 
-	add_param "--shutdown=/usr/lib/vdr/bin/vdrshutdown-entry.sh"
+	add_param "--shutdown=/usr/lib/vdr/bin/vdrshutdown-gate.sh"
 }
 
 setup_shutdown

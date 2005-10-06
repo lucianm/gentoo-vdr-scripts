@@ -1,10 +1,17 @@
 # ChangeLog for gentoo-vdr-scripts
 
+  06 Oct 2005; Matthias Schwarzott <zzam@gentoo.org> ChangeLog:
+  added set of record-scripts
+
   03 Oct 2005; <matze@gentoo.org> ChangeLog:
   test for working wakeup at start of vdr
 
+*gentoo-vdr-scripts-0.1_alpha6 (03 Oct 2005)
+
   03 Oct 2005; Matthias Schwarzott <zzam@gentoo.org> ChangeLog:
   Split shutdown in multiple files
+
+*gentoo-vdr-scripts-0.1_alpha5 (02 Oct 2005)
 
   02 Oct 2005; Matthias Schwarzott <zzam@gentoo.org> ChangeLog:
   added test for good sudoers-entry

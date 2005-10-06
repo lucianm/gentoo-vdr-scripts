@@ -90,18 +90,12 @@
 #   default: disabled
 #TERMINAL=""
 
-# call CMD before and after a recording
-# RECORD="/usr/bin/vdrrecord.sh"
-#   allowed values: names of executables
-#   default: 
-#RECORD_HOOK=""
-
 # set volume at start of vdr to this value
 #   allowed values: 0-255
 #   default: leave volume unchanged
 #STARTUP_VOLUME="255"
 
-# set volume at start of vdr to this value
+# set channel to be switched to at start of vdr
 #   allowed values: valid channel number in vdr
 #   default: leave channel unchanged
 #STARTUP_CHANNEL="1"

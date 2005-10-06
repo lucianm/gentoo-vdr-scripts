@@ -34,6 +34,8 @@ eval_standard_params() {
 	if [[ -n "${CAP_VFAT_RUNTIME_PARAM}" ]] && [[ "${VFAT_FILENAMES}" == "yes" ]]; then
 		add_param "--vfat"
 	fi
+
+	add_param "--record=/usr/lib/vdr/bin/vdrrecord-gate.sh"
 }
 
 eval_standard_params
