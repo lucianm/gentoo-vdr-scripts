@@ -30,8 +30,8 @@ WAKEUP_METHOD=${WAKEUP_METHOD:-acpi}
 NEED_REBOOT=0
 SHUTDOWN_EXITCODE=0
 
-if [[ -f ${shutdown_dir}/shutdown-wakeup-${WAKEUP_METHOD}.sh ]]; then
-	source ${shutdown_dir}/shutdown-wakeup-${WAKEUP_METHOD}.sh
+if [[ -f ${shutdown_dir}/wakeup-${WAKEUP_METHOD}.sh ]]; then
+	source ${shutdown_dir}/wakeup-${WAKEUP_METHOD}.sh
 
 	set_wakeup "${VDR_WAKEUP_TIME}"
 else

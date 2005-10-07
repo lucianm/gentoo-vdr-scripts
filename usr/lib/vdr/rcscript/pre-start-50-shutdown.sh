@@ -1,3 +1,5 @@
+shutdown_dir=/usr/lib/vdr/shutdown
+
 shutdown_disabled() {
 	ewarn "  Disabled shutdown!"
 }
@@ -22,10 +24,10 @@ setup_shutdown() {
 		return
 	fi
 
-	if [[ -f /usr/lib/vdr/shutdown/shutdown-wakeup-${WAKEUP_METHOD}.sh ]]; then
+	if [[ -f ${shutdown_dir}/wakeup-${WAKEUP_METHOD}.sh ]]; then
 		# test if need programs are there
 		SHUTDOWN_EXITCODE=0
-		source /usr/lib/vdr/shutdown/shutdown-wakeup-${WAKEUP_METHOD}.sh
+		source ${shutdown_dir}/wakeup-${WAKEUP_METHOD}.sh
 		if [[ "${SHUTDOWN_EXITCODE}" != "0" ]]; then
 			shutdown_disabled
 			return

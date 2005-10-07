@@ -18,7 +18,7 @@ install:
 	install -m 0644 -o root -g root usr/lib/vdr/rcscript/*.sh $(DESTDIR)/usr/lib/vdr/rcscript/
 
 	mkdir -p $(DESTDIR)/usr/lib/vdr/shutdown
-	install -m 0644 -o root -g root usr/lib/vdr/shutdown/*.sh $(DESTDIR)/usr/lib/vdr/shutdown/
+	install -m 0644 -o root -g root usr/lib/vdr/shutdown/{shutdown,pre}*.sh $(DESTDIR)/usr/lib/vdr/shutdown/
 
 	mkdir -p $(DESTDIR)/usr/lib/vdr/record
 	install -m 0644 -o root -g root usr/lib/vdr/record/*.sh $(DESTDIR)/usr/lib/vdr/record/
