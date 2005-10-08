@@ -193,21 +193,6 @@ start_watchdog() {
 	fi
 }
 
-pause_watchdog() {
-	einfo "Deactivating watchdog"
-	WATCHDOG_RUNNING=0
-	killall -q --signal USR1 vdr-watchdogd && WATCHDOG_RUNNING=1
-}
-
-resume_watchdog() {
-	if [[ ${WATCHDOG_RUNNING} == 1 ]]; then
-		einfo "Reactivating watchdog"
-		killall -q --signal USR2 vdr-watchdogd
-	else
-		start_watchdog
-	fi
-}
-
 error_mesg() {
 	logger "vdr-scripts: Error: $@"
 	ewarn "Error: $@"
