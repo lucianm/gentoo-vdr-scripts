@@ -1,5 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 
+  08 Oct 2005; Matthias Schwarzott <zzam@gentoo.org> ChangeLog:
+  a bit cleanup for watchdog
+
   07 Oct 2005; Matthias Schwarzott <zzam@gentoo.org> ChangeLog:
   renamed wakeup files
 
