@@ -17,14 +17,22 @@ case "${BOOT_MANAGER}" in
 		if [ -x /sbin/grub-set-default ]; 
 		then 
 			/bin/mount /boot 
-			/sbin/grub-set-default ${REBOOT_ENTRY_GRUB}
+			if [[ -n "${REBOOT_ENTRY_GRUB}" ]]; then
+				/sbin/grub-set-default ${REBOOT_ENTRY_GRUB}
+			else
+				error_mesg "reboot entry not set, can not reboot."
+			fi
 		else
 			unsupported_msg
 			return
 		fi 
 		;;
 	lilo)
-		/sbin/lilo -R ${REBOOT_ENTRY_LILO}
+		if [[ -n "${REBOOT_ENTRY_LILO}" ]]; then
+			/sbin/lilo -R ${REBOOT_ENTRY_LILO}
+		else
+			error_mesg "reboot entry not set, can not reboot."
+		fi
 		;;
 	*)
 		unsupported_msg

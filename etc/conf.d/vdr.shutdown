@@ -25,38 +25,49 @@
 # 
 # Should the automatic shutdown after a while of inactivity
 # and after wakeup for recording be allowed?
-# allowed values: yes no
-# default: no
+#   allowed values: yes no
+#   default: no
 #AUTOMATIC_SHUTDOWN="yes"
 
 #
 # Additional programs which should stop shutdown
-# allowed values: lists of program names
-# default: no additional programs
+#   allowed values: lists of program names
+#   default: no additional programs
 #SHUTDOWN_CHECK_ADDITIONAL_PROGRAMS=""
 
 #
+# Check for users which logged in to this machine
+# when shutting down automatic.
+#   allowed values: yes no
+#   default: check for users logged into this machine
+#VDR_CHECK_LOGINS="no"
+
+
+#
 # Method to set wakeup-time
-# allowed values: acpi nvram
-# default: acpi
+#   allowed values: acpi nvram
+#   default: acpi
 #WAKEUP_METHOD="nvram"
 
 #
 # Used when nvram-wakeup does not support the motherboard by default
 # and you created your own configuration file.
-# allowed values: filenames
-# default: do not use any additional configuration file
+#   allowed values: filenames
+#   default: do not use any additional configuration file
 #NVRAM_CONFIG="/etc/nvram.conf"
 
 #
 # Only used for WAKEUP_METHOD nvram when motherboard needs reboot
-# allowed values: lilo grub
+#   allowed values: lilo grub
+#   default: no good default, stops shutdown when not set when needed
 #BOOT_MANAGER="grub"
 
 #
 # Which entry in the boot manager configuration should nvram use to
 # initiate a reboot with shutdown afterwards
-# allowed values: number of entry in config-file
+#   allowed values: number of entry in config-file
+#   default: no good default, stops shutdown
 #REBOOT_ENTRY_GRUB="1"
-# allowed values: name of entry in config-file
+#   allowed values: name of entry in config-file
+#   default: no good default, stops shutdown
 #REBOOT_ENTRY_LILO="PowerOff"
