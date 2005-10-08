@@ -16,32 +16,27 @@ exec >>${LOGFILE} 2>&1
 
 signal_stopped=0
 
-sig_usr1()
+sig_hup()
 {
-	signal_stopped=1
-	echo pausing watchdog
+	periodic_function
 }
 
-sig_usr2()
-{
-	signal_stopped=0
-	echo continuing watchdog
-}
+trap sig_hup SIGHUP
 
-trap sig_usr1 SIGUSR1
-trap sig_usr2 SIGUSR2
+periodic_function() {
+	[[ -f /tmp/no-vdr-watchdog ]] && return
 
-echo started watchdog
-while sleep 8; do
-
-	[[ -f /tmp/no-vdr-watchdog ]] && continue
-
-	[[ "$signal_stopped" == "1" ]] && continue
+	[[ "$signal_stopped" == "1" ]] && return
 
 	if ! pidof /usr/bin/vdr > /dev/null; then
 		logger -i -t vdrwatchdog -p local0.info "initializing full VDR restart"
 		date
 		/etc/init.d/vdr watchdogrestart
 	fi
+}
+
+echo started watchdog
+while sleep 8; do
+	periodic_function
 done
-echo killed watchdog
+echo ended watchdog
