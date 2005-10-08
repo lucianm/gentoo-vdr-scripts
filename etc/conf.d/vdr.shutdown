@@ -42,6 +42,13 @@
 #WAKEUP_METHOD="nvram"
 
 #
+# Used when nvram-wakeup does not support the motherboard by default
+# and you created your own configuration file.
+# allowed values: filenames
+# default: do not use any additional configuration file
+#NVRAM_CONFIG="/etc/nvram.conf"
+
+#
 # Only used for WAKEUP_METHOD nvram when motherboard needs reboot
 # allowed values: lilo grub
 #BOOT_MANAGER="grub"
