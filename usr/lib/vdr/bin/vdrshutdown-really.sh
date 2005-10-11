@@ -3,7 +3,7 @@
 #   Matthias Schwarzott <zzam@gmx.de>
 #
 
-shutdown_dir=/usr/lib/vdr/shutdown/
+source /usr/lib/vdr/rcscript/functions-shutdown.sh
 
 if [[ "${UID}" != "0" ]]; then
 	echo "This program should be run as root"
@@ -23,15 +23,13 @@ error_mesg() {
 	mesg "Error: $@"
 }
 
-source /etc/conf.d/vdr.shutdown
-
-WAKEUP_METHOD=${WAKEUP_METHOD:-acpi}
+read_shutdown_config
 
 NEED_REBOOT=0
 SHUTDOWN_EXITCODE=0
 
-if [[ -f ${shutdown_dir}/wakeup-${WAKEUP_METHOD}.sh ]]; then
-	source ${shutdown_dir}/wakeup-${WAKEUP_METHOD}.sh
+if [[ -f ${shutdown_script_dir}/wakeup-${WAKEUP_METHOD}.sh ]]; then
+	source ${shutdown_script_dir}/wakeup-${WAKEUP_METHOD}.sh
 
 	set_wakeup "${VDR_WAKEUP_TIME}"
 else
@@ -47,6 +45,6 @@ if [[ "${DUMMY}" == "1" ]]; then
 fi
 
 case "${NEED_REBOOT}" in
-	1)	source ${shutdown_dir}/shutdown-reboot.sh ;;
-	0)	source ${shutdown_dir}/shutdown-halt.sh ;;
+	1)	source ${shutdown_script_dir}/shutdown-reboot.sh ;;
+	0)	source ${shutdown_script_dir}/shutdown-halt.sh ;;
 esac
