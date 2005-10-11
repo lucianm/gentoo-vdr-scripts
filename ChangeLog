@@ -1,6 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 
   11 Oct 2005; Matthias Schwarzott <zzam@gentoo.org> ChangeLog:
+  more cosmetic changes
+
+  11 Oct 2005; Matthias Schwarzott <zzam@gentoo.org> ChangeLog:
   Small code cosmetics for shutdown, and one bugfix to always use
   default-wakeup-method acpi when noting is set.
 

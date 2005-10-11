@@ -5,11 +5,11 @@ list_wakeup_methods() {
 	local methods
 	local m
 	for m in ${shutdown_script_dir}/wakeup-*.sh; do
-		m=${m//*\wakeup-//}
-		methods="${methods} ${m}"
+		m=${m//*\/wakeup-/}
+		methods="${methods} ${m/.sh/}"
 	done
-	einfo "  Available shutdown methods: ${methods}"
-	einfo "  There may be some more methods available when activated via use flag."
+	einfo "    Available shutdown methods:${methods}"
+	einfo "    There may be some more methods available when activated via use flag."
 }
 
 shutdown_disabled() {
