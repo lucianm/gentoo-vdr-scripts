@@ -1,5 +1,7 @@
 # ChangeLog for gentoo-vdr-scripts
 
+*gentoo-vdr-scripts-0.1_alpha9 (12 Oct 2005)
+
   12 Oct 2005; Matthias Schwarzott <zzam@gentoo.org> ChangeLog:
   Preparation for better retry of failed shutdown.
 
