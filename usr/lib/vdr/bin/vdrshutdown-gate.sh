@@ -11,7 +11,10 @@ SVDRPCMD=/usr/bin/svdrpsend.pl
 NVRAM_WAKEUP=/usr/bin/nvram-wakeup
 HOOKDIR=/usr/lib/vdr/shutdown
 
-source /etc/conf.d/vdr.shutdown
+source /usr/lib/vdr/rcscript/functions-shutdown.sh
+read_shutdown_config
+
+source /usr/lib/vdr/rcscript/vdr-capabilities.sh
 
 VDR_TIMER_NEXT="${1}"
 VDR_TIMER_DELTA="${2}"
@@ -48,7 +51,13 @@ for HOOK in $HOOKDIR/pre-shutdown-*.sh; do
 done
 
 if [ ${MAX_TRY_AGAIN} -gt 0 ]; then
-	bg_retry ${MAX_TRY_AGAIN} &
+	if [[ "${CAP_SHUTDOWN_AUTO_RETRY:-0}" == "1" ]]; then
+		#shutdown will be retried automatically by vdr
+		:
+	else
+		# shutdown retry must be simulated by sleep and the power key
+		bg_retry ${MAX_TRY_AGAIN} &
+	fi
 	if [[ -n "${TRY_AGAIN_MESSAGE}" ]]; then
 		mesg "Waiting ${MAX_TRY_AGAIN}min to shutdown, because ${TRY_AGAIN_MESSAGE}" &
 	else
