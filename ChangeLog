@@ -1,5 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 
+  18 Oct 2005; Matthias Schwarzott <zzam@gentoo.org> TODO,
+  usr/lib/vdr/rcscript/pre-start-30-parameter.sh,etc/init.d/vdr:
+  TERMINAL-config-option works now.
+
 *gentoo-vdr-scripts-0.1_alpha9 (12 Oct 2005)
 
   12 Oct 2005; Matthias Schwarzott <zzam@gentoo.org> ChangeLog:

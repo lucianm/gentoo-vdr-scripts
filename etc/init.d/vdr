@@ -51,7 +51,8 @@ start() {
 	# 
 	/usr/bin/dvbsplash stop 2>/dev/null >/dev/null
 	env --unset=MAIL LD_ASSUME_KERNEL=2.4.1 LOGNAME=vdr USER=vdr HOME=~vdr \
-		start-stop-daemon "${daemonctrl_opts[@]}" -- "${vdr_opts[@]}"
+		start-stop-daemon "${daemonctrl_opts[@]}" -- "${vdr_opts[@]}" \
+		<${TERMINAL} >${TERMINAL} 2>&1 &
 	exitcode=$?
 	eend $exitcode "Failed to start vdr."
 
