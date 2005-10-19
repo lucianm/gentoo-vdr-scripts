@@ -1,5 +1,7 @@
 # ChangeLog for gentoo-vdr-scripts
 
+*gentoo-vdr-scripts-0.1_alpha10 (19 Oct 2005)
+
   19 Oct 2005; Matthias Schwarzott <zzam@gentoo.org> etc/conf.d/vdr,
   usr/lib/vdr/rcscript/post-start-50-svdrp.sh:
   added config-setting for hostname to use for svdrp startup check
