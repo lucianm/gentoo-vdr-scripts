@@ -1,5 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 
+  19 Oct 2005; Matthias Schwarzott <zzam@gentoo.org> etc/conf.d/vdr,
+  usr/lib/vdr/rcscript/post-start-50-svdrp.sh:
+  added config-setting for hostname to use for svdrp startup check
+
   18 Oct 2005; Matthias Schwarzott <zzam@gentoo.org> TODO,
   usr/lib/vdr/rcscript/pre-start-30-parameter.sh,etc/init.d/vdr:
   TERMINAL-config-option works now.

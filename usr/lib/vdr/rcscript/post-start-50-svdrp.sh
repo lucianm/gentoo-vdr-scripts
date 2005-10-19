@@ -1,5 +1,6 @@
 wait_for_svdrp() {
 	SVDRP_PORT="${SVDRP_PORT:-2001}"
+	SVDRP_HOSTNAME="${SVDRP_HOSTNAME:-localhost}"
 	[[ "${SVDRP_PORT}" == "0" ]] && return
 	ebegin "  Waiting for working vdr"
 
@@ -19,7 +20,7 @@ wait_for_svdrp() {
 }
 
 svdrpready() {
-	if /usr/bin/svdrpsend.pl -d localhost -p ${SVDRP_PORT} quit 2>/dev/null|grep -q ^220; then
+	if /usr/bin/svdrpsend.pl -d ${SVDRP_HOSTNAME} -p ${SVDRP_PORT} quit 2>/dev/null|grep -q ^220; then
 		# svdrp open and ready
 		return 0
 	fi

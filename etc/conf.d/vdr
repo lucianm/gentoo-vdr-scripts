@@ -100,6 +100,12 @@
 #   default: leave channel unchanged
 #STARTUP_CHANNEL="1"
 
+# hostname to access vdr with svdrp
+# (this normaly should not be changed)
+#   allowed values: hostname or ip-address
+#   default: use localhost
+#SVDRP_HOSTNAME="localhost"
+
 # load a plugin defined by the given options
 # list all plugins you want to be loaded, seperated by space
 #   allowed values: set of plugin names
