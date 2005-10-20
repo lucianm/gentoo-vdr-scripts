@@ -27,7 +27,7 @@ eval_standard_params() {
 	else
 		TERMINAL="/dev/null"
 	fi
-	add_daemonctrl_param "--background"
+	#add_daemonctrl_param "--background"
 
 	if [[ -n "${CAP_IRCTRL_RUNTIME_PARAM}" ]] && [[ -n "${IR_CTRL}" ]]; then
 		case "${IR_CTRL}" in
