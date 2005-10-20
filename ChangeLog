@@ -1,5 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 
+  20 Oct 2005; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/bin/vdr-bg.sh:
+  added script to start commands in background
+
   20 Oct 2005; Matthias Schwarzott <zzam@gentoo.org> ChangeLog:
   Revert last change, as it has problems with terminal-option.
 
