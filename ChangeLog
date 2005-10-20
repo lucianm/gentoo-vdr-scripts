@@ -1,5 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 
+  20 Oct 2005; Matthias Schwarzott <zzam@gentoo.org> etc/init.d/vdr,
+  usr/lib/vdr/rcscript/pre-start-30-parameter.sh:
+  Use start-stop-daemon option --background instead of &.
+
 *gentoo-vdr-scripts-0.1_alpha10 (19 Oct 2005)
 
   19 Oct 2005; Matthias Schwarzott <zzam@gentoo.org> etc/conf.d/vdr,
