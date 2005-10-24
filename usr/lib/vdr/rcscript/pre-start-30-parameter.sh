@@ -18,17 +18,6 @@ eval_standard_params() {
 
 	[[ -n "${RECORD_HOOK}" ]] && add_param "--record=${RECORD_HOOK}"
 
-	# Check if TERMINAL is set and a valid character-device
-	if [[ -n "${TERMINAL}" ]]; then
-		if [[ ! -c "${TERMINAL}" ]]; then
-			ewarn "Terminal ${TERMINAL} not existing"
-			TERMINAL="/dev/null"
-		fi
-	else
-		TERMINAL="/dev/null"
-	fi
-	#add_daemonctrl_param "--background"
-
 	if [[ -n "${CAP_IRCTRL_RUNTIME_PARAM}" ]] && [[ -n "${IR_CTRL}" ]]; then
 		case "${IR_CTRL}" in
 			lirc|rcu) add_param "--${IR_CTRL}" ;;

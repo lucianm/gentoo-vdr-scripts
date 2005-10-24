@@ -1,6 +1,12 @@
 # ChangeLog for gentoo-vdr-scripts
 
-*gentoo-vdr-scripts-0.1_alpha10 (21 Oct 2005)
+  24 Oct 2005; Matthias Schwarzott <zzam@gentoo.org>
+  etc/init.d/vdr,usr/lib/vdr/rcscript/pre-start-30-parameter.sh:
+  removed call of env
+  moved terminal-handling completely to /etc/init.d/vdr
+  use openvt to start with terminal
+
+*gentoo-vdr-scripts-0.1 (21 Oct 2005)
 
   20 Oct 2005; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/bin/vdr-bg.sh:

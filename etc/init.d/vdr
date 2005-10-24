@@ -50,10 +50,38 @@ start() {
 	# finally start vdr
 	# 
 	/usr/bin/dvbsplash stop 2>/dev/null >/dev/null
-	env --unset=MAIL LD_ASSUME_KERNEL=2.4.1 LOGNAME=vdr USER=vdr HOME=~vdr \
-		start-stop-daemon "${daemonctrl_opts[@]}" -- "${vdr_opts[@]}" \
-		<${TERMINAL} >${TERMINAL} 2>&1 &
-	exitcode=$?
+	unset MAIL
+	export LD_ASSUME_KERNEL=2.4.1
+	einfo_level2 setting LD_ASSUME_KERNEL=2.4.1
+
+	vdr_home=/var/vdr
+
+	export LOGNAME=vdr
+	export USER=vdr
+	export HOME=${vdr_home}
+
+	cd ${vdr_home}
+
+	einfo_level2 start-stop-daemon "${daemonctrl_opts[@]}" -- "${vdr_opts[@]}"
+
+	if [[ -z "${TERMINAL}" ]]; then
+		start-stop-daemon "${daemonctrl_opts[@]}" \
+			-- --daemon "${vdr_opts[@]}"
+		exitcode=$?
+	else
+		TERMINAL=${TERMINAL/\/dev\/tty/}
+		TERMINAL_DEVICE=/dev/tty${TERMINAL}
+		{
+			clear
+			einfo "Starting vdr"
+		} >${TERMINAL_DEVICE}
+
+		# strange commandline, to be fixed in next versions
+		openvt -c ${TERMINAL} -- \
+			start-stop-daemon "${daemonctrl_opts[@]}" \
+			-- "${vdr_opts[@]}"
+		exitcode=$?
+	fi
 	eend $exitcode "Failed to start vdr."
 
 	if [[ "${exitcode}" == "0" ]]; then
