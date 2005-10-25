@@ -20,7 +20,12 @@ start() {
 	init_daemonctrl_params
 
 	[[ -z "${VDR_BIN}" ]] && VDR_BIN=/usr/bin/vdr
-	add_daemonctrl_param --start --chdir ~vdr --chuid vdr --exec ${VDR_BIN}
+
+	add_daemonctrl_param --start --chdir ~vdr --exec ${VDR_BIN}
+
+	if [[ "${START_VDR_AS_ROOT}" != "YES" ]]; then
+		add_daemonctrl_param --chuid vdr
+	fi
 
 	load_addons_prefixed pre-start || return 1
 
@@ -77,7 +82,11 @@ start() {
 		} >${TERMINAL_DEVICE}
 
 		# strange commandline, to be fixed in next versions
-		openvt -c ${TERMINAL} -- \
+		openvt_opts=""
+		if [[ "${SWITCH_TO_TERMINAL}" == "yes" ]]; then
+			openvt_opts="${openvt_opts} -s"
+		fi
+		openvt -c ${TERMINAL} ${openvt_opts} -- \
 			start-stop-daemon "${daemonctrl_opts[@]}" \
 			-- "${vdr_opts[@]}"
 		exitcode=$?

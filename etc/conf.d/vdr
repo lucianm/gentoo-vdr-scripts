@@ -86,9 +86,16 @@
 #VFAT_FILENAMES="yes"
 
 # controlling tty
-#   allowed values: names of terminals
-#   default: disabled
-#TERMINAL=""
+#   allowed values: number of virtual terminal
+#   default: start vdr completely in the background
+#TERMINAL="8"
+
+# switch to used terminal
+# when attaching vdr to a terminal with setting TERMINAL
+# then switch to this terminal
+#   allowed values: yes no
+#   default: no
+#SWITCH_TO_TERMINAL="yes"
 
 # set volume at start of vdr to this value
 #   allowed values: 0-255
@@ -99,6 +106,12 @@
 #   allowed values: valid channel number in vdr
 #   default: leave channel unchanged
 #STARTUP_CHANNEL="1"
+
+# for people who really know what they do
+# and who want to start vdr as user root
+#   allowed values: YES no
+#   default: no
+#START_VDR_AS_ROOT="no"
 
 # hostname to access vdr with svdrp
 # (this normaly should not be changed)
