@@ -1,5 +1,7 @@
 # ChangeLog for gentoo-vdr-scripts
 
+*gentoo-vdr-scripts-0.2_alpha1 (29 Oct 2005)
+
   25 Oct 2005; Matthias Schwarzott <zzam@gentoo.org> ChangeLog:
   added options to switch to used terminal and to force a vdr-start as root
 
