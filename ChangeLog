@@ -1,5 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 
+  31 Oct 2005; Matthias Schwarzott <zzam@gentoo.org>
+  etc/conf.d/vdr.shutdown, usr/lib/vdr/shutdown/wakeup-nvram.sh:
+  Added config-variable to be used for nvram-options not available otherwise.
+
 *gentoo-vdr-scripts-0.2_alpha1 (29 Oct 2005)
 
   25 Oct 2005; Matthias Schwarzott <zzam@gentoo.org> ChangeLog:

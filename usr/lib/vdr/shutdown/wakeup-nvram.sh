@@ -16,6 +16,8 @@ set_wakeup() {
 
 	[[ -n "${NVRAM_CONFIG}" ]] && CMD="${CMD} -C ${NVRAM_CONFIG}"
 
+	[[ -n "${NVRAM_EXTRA_OPTIONS}" ]] && CMD="${CMD} ${NVRAM_EXTRA_OPTIONS}"
+
 	CMD="${CMD} -s ${VDR_WAKEUP_TIME}"
 
 	${CMD}

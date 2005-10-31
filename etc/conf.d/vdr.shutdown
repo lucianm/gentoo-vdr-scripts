@@ -57,6 +57,12 @@
 #NVRAM_CONFIG="/etc/nvram.conf"
 
 #
+# Set this if you need additional command line options for nvram-wakeup.
+#   allowed values: all command line options of nvram-wakeuo
+#   default: add no options
+#NVRAM_EXTRA_OPTIONS=""
+
+#
 # Only used for WAKEUP_METHOD nvram when motherboard needs reboot
 #   allowed values: lilo grub
 #   default: no good default, stops shutdown when not set when needed
