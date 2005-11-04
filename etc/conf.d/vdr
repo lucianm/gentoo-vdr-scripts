@@ -124,3 +124,8 @@
 #   allowed values: set of plugin names
 #   default: load no plugins
 #PLUGINS="femon"
+
+#   (Put only the name of the plugin inside PLUGINS. Additional command
+#    line options for plugins are put into /etc/conf.d/vdr.PLUGINNAME
+#    Either as _EXTRAOPTS="--option1 --option2". Or if special
+#    config variables are prepared these can be used.) 

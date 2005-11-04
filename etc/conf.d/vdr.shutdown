@@ -62,6 +62,9 @@
 #   default: add no options
 #NVRAM_EXTRA_OPTIONS=""
 
+#Example:
+#NVRAM_EXTRA_OPTIONS="--iwname gig_ga_7vtxh --directisa"
+
 #
 # Only used for WAKEUP_METHOD nvram when motherboard needs reboot
 #   allowed values: lilo grub
