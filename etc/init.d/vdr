@@ -56,8 +56,6 @@ start() {
 	# 
 	/usr/bin/dvbsplash stop 2>/dev/null >/dev/null
 	unset MAIL
-	export LD_ASSUME_KERNEL=2.4.1
-	einfo_level2 setting LD_ASSUME_KERNEL=2.4.1
 
 	vdr_home=/var/vdr
 

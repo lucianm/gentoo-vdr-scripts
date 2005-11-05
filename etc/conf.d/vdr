@@ -113,6 +113,12 @@
 #   default: no
 #START_VDR_AS_ROOT="no"
 
+# force the use of old linux threads
+# instead of new posix threads (NPTL)
+#   allowed values: yes no
+#   default: yes
+#FORCE_OLD_THREADS="yes"
+
 # hostname to access vdr with svdrp
 # (this normaly should not be changed)
 #   allowed values: hostname or ip-address

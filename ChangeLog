@@ -1,5 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 
+  05 Nov 2005; Matthias Schwarzott <zzam@gentoo.org>
+  +usr/lib/vdr/rcscript/pre-start-45-nptl-check.sh, etc/conf.d/vdr,
+  etc/init.d/vdr:
+  added detection of nptl-only systems for thread-handling
+
   04 Nov 2005; Matthias Schwarzott <zzam@gentoo.org> etc/conf.d/vdr,
   etc/conf.d/vdr.shutdown:
   A bit better documentation of config files.
