@@ -29,6 +29,10 @@ eval_standard_params() {
 	fi
 
 	add_param "--record=/usr/lib/vdr/bin/vdrrecord-gate.sh"
+
+	if [[ -n "${VDR_EXTRA_OPTIONS}" ]]; then
+		add_param ${VDR_EXTRA_OPTIONS}
+	fi
 }
 
 eval_standard_params

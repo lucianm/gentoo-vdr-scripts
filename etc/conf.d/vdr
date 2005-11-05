@@ -119,6 +119,12 @@
 #   default: yes
 #FORCE_OLD_THREADS="yes"
 
+# give additional options to vdr process
+# should not be necessary in normal cases.
+# please contact developers if you need
+# special parameters.
+#VDR_EXTRA_OPTIONS=""
+
 # hostname to access vdr with svdrp
 # (this normaly should not be changed)
 #   allowed values: hostname or ip-address
