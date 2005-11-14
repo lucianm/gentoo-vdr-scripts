@@ -1,5 +1,5 @@
 eval_standard_params() {
-	[[ -n "${INTERNAL_WATCHDOG}" ]] && add_param "--watchdog=${WATCHDOG}"
+	[[ -n "${INTERNAL_WATCHDOG}" ]] && add_param "--watchdog=${INTERNAL_WATCHDOG}"
 	[[ -n "${AC3_AUDIO}" ]] && add_param "--audio=${AC3_AUDIO}"
 	[[ -n "${MUTE}" ]] && add_param "--mute"
 	[[ -n "${CONFIG}" ]] && add_param "--config=${CONFIG}"

@@ -1,5 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 
+  14 Nov 2005; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/rcscript/pre-start-30-parameter.sh:
+  Corrected typo in variable name.
+
 *gentoo-vdr-scripts-0.2_alpha2 (05 Nov 2005)
 
   05 Nov 2005; Matthias Schwarzott <zzam@gentoo.org>
