@@ -6,6 +6,8 @@ check_logins() {
 	fi
 }
 
-if [[ "${VDR_USERSHUTDOWN}" == "0" && "${VDR_CHECK_LOGINS:-yes}" == "yes" ]]; then
+# "${VDR_USERSHUTDOWN}" == "0"
+
+if [[ "${VDR_CHECK_LOGINS:-yes}" == "yes" ]]; then
 	check_logins
 fi

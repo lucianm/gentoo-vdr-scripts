@@ -1,6 +1,13 @@
 # ChangeLog for gentoo-vdr-scripts
 
   14 Nov 2005; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/shutdown/pre-shutdown-10-check-allowed.sh,
+  usr/lib/vdr/shutdown/pre-shutdown-30-check-logins.sh, TODO,
+  etc/conf.d/vdr.shutdown, usr/lib/vdr/shutdown/shutdown-reboot.sh:
+  Made shutdown-config nicer, added special grub-option, check for logins at
+  every shutdown.
+
+  14 Nov 2005; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/rcscript/pre-start-30-parameter.sh:
   Corrected typo in variable name.
 

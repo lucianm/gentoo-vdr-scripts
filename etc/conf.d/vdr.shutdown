@@ -1,7 +1,12 @@
 # Configuration settings for vdr related to shutdown
 #
 
+###########################################################
+#          General Settings                               #
+###########################################################
 #
+# here you can enable/disable the complete shutdown sequence of vdr
+
 # With this switch you can completely disable shutdown.
 # If set to no all settings in this file are disabled.
 #   allowed values: yes no
@@ -9,45 +14,16 @@
 #SHUTDOWN_ACTIVE="yes"
 
 #
-# This option allows to override the set of shutdown scripts
-# coming with this installation. Use with care!
-#   allowed values: name of an executable
-#   default: use supplied scripts
-#USER_SHUTDOWN_SCRIPT=""
-
-
-#
-# All following settings can only be used if the default shutdown
-# script is not replaced with USER_SHUTDOWN_SCRIPT.
-#
-
-
-# 
-# Should the automatic shutdown after a while of inactivity
-# and after wakeup for recording be allowed?
-#   allowed values: yes no
-#   default: no
-#AUTOMATIC_SHUTDOWN="yes"
-
-#
-# Additional programs which should stop shutdown
-#   allowed values: lists of program names
-#   default: no additional programs
-#SHUTDOWN_CHECK_ADDITIONAL_PROGRAMS=""
-
-#
-# Check for users which logged in to this machine
-# when shutting down automatic.
-#   allowed values: yes no
-#   default: check for users logged into this machine
-#VDR_CHECK_LOGINS="no"
-
-
-#
 # Method to set wakeup-time
 #   allowed values: acpi nvram
 #   default: acpi
 #WAKEUP_METHOD="nvram"
+
+###########################################################
+#          nvram Settings                                 #
+###########################################################
+#
+# Only used when WAKEUP_METHOD="nvram"
 
 #
 # Used when nvram-wakeup does not support the motherboard by default
@@ -65,6 +41,13 @@
 #Example:
 #NVRAM_EXTRA_OPTIONS="--iwname gig_ga_7vtxh --directisa"
 
+###########################################################
+#          reboot Settings                                #
+###########################################################
+#
+# At the moment only used when WAKEUP_METHOD="nvram" and
+# the motherboard needs a reboot.
+
 #
 # Only used for WAKEUP_METHOD nvram when motherboard needs reboot
 #   allowed values: lilo grub
@@ -80,3 +63,45 @@
 #   allowed values: name of entry in config-file
 #   default: no good default, stops shutdown
 #REBOOT_ENTRY_LILO="PowerOff"
+
+
+###########################################################
+#          Expert Options                                 #
+###########################################################
+#
+# No need to change anything here for normal usage.
+# Every setting in here has good defaults (at least I hope so).
+
+#
+# This option allows to override the set of shutdown scripts
+# coming with this installation. Use with care!
+# (This overwrites all settings in this file).
+#   allowed values: name of an executable
+#   default: use supplied scripts
+#USER_SHUTDOWN_SCRIPT=""
+
+#
+# Should the automatic shutdown after a while of inactivity
+# and after wakeup for recording be allowed?
+#   allowed values: yes no
+#   default: yes
+#AUTOMATIC_SHUTDOWN="no"
+
+#
+# Additional programs which should stop shutdown
+#   allowed values: lists of program names
+#   default: no additional programs
+#SHUTDOWN_CHECK_ADDITIONAL_PROGRAMS=""
+
+#
+# Check for users which logged in to this machine
+# when shutting down automatic.
+#   allowed values: yes no
+#   default: yes
+#VDR_CHECK_LOGINS="no"
+
+#
+# This should normally not changed.
+#   allowed values: grub-set-default savedefault
+#   default: grub-set-default
+#GRUB_SET_REBOOT_ENTRY_METHOD="grub-set-default"
