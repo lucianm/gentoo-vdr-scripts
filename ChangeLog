@@ -1,5 +1,7 @@
 # ChangeLog for gentoo-vdr-scripts
 
+*gentoo-vdr-scripts-0.2_alpha3 (15 Nov 2005)
+
   15 Nov 2005; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/shutdown/pre-shutdown-20-check-blocking-programs.sh:
   Enable force of shutdown for running programs
