@@ -105,3 +105,12 @@
 #   allowed values: grub-set-default savedefault
 #   default: grub-set-default
 #GRUB_SET_REBOOT_ENTRY_METHOD="grub-set-default"
+
+#
+# When shutdown is aborted because of some conditions
+# like user logged into this machine and you retry
+# shutdown after less than SHUTDOWN_FORCE_DETECT_INTERVALL
+# seconds then vdr will consider this as forced shutdown.
+#   allowed values: number of seconds
+#   default: 60 seconds
+#SHUTDOWN_FORCE_DETECT_INTERVALL="60"

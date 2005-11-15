@@ -1,5 +1,13 @@
 # ChangeLog for gentoo-vdr-scripts
 
+  15 Nov 2005; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/shutdown/pre-shutdown-10-check-allowed.sh,
+  usr/lib/vdr/shutdown/pre-shutdown-20-check-blocking-programs.sh,
+  usr/lib/vdr/shutdown/pre-shutdown-30-check-logins.sh,
+  etc/conf.d/vdr.shutdown, usr/lib/vdr/bin/vdrshutdown-gate.sh,
+  usr/lib/vdr/rcscript/functions-shutdown.sh:
+  added possibility to force a shutdown
+
   14 Nov 2005; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/shutdown/pre-shutdown-10-check-allowed.sh,
   usr/lib/vdr/shutdown/pre-shutdown-30-check-logins.sh, TODO,
