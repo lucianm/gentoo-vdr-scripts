@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 
   15 Nov 2005; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/shutdown/pre-shutdown-20-check-blocking-programs.sh:
+  Enable force of shutdown for running programs
+
+  15 Nov 2005; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/rcscript/pre-start-30-parameter.sh, etc/conf.d/vdr:
   Made config-file nicer and changed default for INTERNAL_WATCHDOG to 60s.
 
