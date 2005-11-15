@@ -23,7 +23,7 @@ VDR_TIMER_FILENAME="${4}"
 VDR_USERSHUTDOWN="${5}"
 
 mesg() {
-	${SVDRPCMD} MESG "\"$@\""
+	${SVDRPCMD} MESG "${1}"
 }
 
 bg_retry() {
@@ -45,13 +45,15 @@ shutdown_abort_can_force() {
 	if [[ "${VDR_USERSHUTDOWN}" == "0" ]]; then
 		# normal way, do retry
 		shutdown_abort "${1}"
-	else if [[ "${THIS_SHUTDOWN_IS_FORCED}" == "1" ]]; then
-		# this is the forced way, ignore this abort
-		echo FORCED: ${1}
-		FORCE_COUNT=$[FORCE_COUNT+1]
 	else
-		ABORT_MESSAGE="${1}"
-		SHUTDOWN_ABORT="1"
+		if [[ "${THIS_SHUTDOWN_IS_FORCED}" == "1" ]]; then
+			# this is the forced way, ignore this abort
+			echo FORCED: ${1}
+			FORCE_COUNT=$[FORCE_COUNT+1]
+		else
+			ABORT_MESSAGE="${1}"
+			SHUTDOWN_ABORT="1"
+		fi
 	fi
 }
 
@@ -69,11 +71,13 @@ init_shutdown_force() {
 		THIS_SHUTDOWN_IS_FORCED="1"
 	fi
 
-	rm "${shutdown_force_file}"
+	[[ -f "${shutdown_force_file}" ]] && rm "${shutdown_force_file}"
 	FORCE_COUNT=0
+	SHUTDOWN_CAN_FORCE=1
 }
 
 write_force_file() {
+	local shutdown_force_file=/var/vdr/last-shutdown-abort
 	echo "${NOW}" > "${shutdown_force_file}"
 }
 
@@ -84,8 +88,7 @@ SHUTDOWN_CAN_FORCE=0
 MAX_TRY_AGAIN=0
 
 if [[ "${VDR_USERSHUTDOWN}" == "1" ]]; then
-	init_shutdown_force_file
-	SHUTDOWN_CAN_FORCE=1
+	init_shutdown_force
 fi
 
 for HOOK in $HOOKDIR/pre-shutdown-*.sh; do
@@ -105,7 +108,7 @@ for HOOK in $HOOKDIR/pre-shutdown-*.sh; do
 done
 
 if [[ "${SHUTDOWN_ABORT}" == "1" ]]; then
-	if [[ "${SHUTDOWN_ABORT_CAN_FORCE}" == "1" ]]; then
+	if [[ "${SHUTDOWN_CAN_FORCE}" == "1" ]]; then
 		write_force_file
 		(
 			mesg "Shutdown stopped, because ${ABORT_MESSAGE}"
@@ -128,7 +131,7 @@ if [[ "${SHUTDOWN_ABORT}" == "1" ]]; then
 fi
 
 if [[ "${THIS_SHUTDOWN_IS_FORCED}" == "1" && "${FORCE_COUNT}" -gt 0 ]]; then
-	mesg "Shuting down, this is forced by user"
+	mesg "Shuting down, this is forced by user" &
 fi
 
 # You have to edit sudo-permissions to grant vdr permission to execute
