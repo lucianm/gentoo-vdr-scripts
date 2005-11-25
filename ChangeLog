@@ -1,5 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 
+  25 Nov 2005; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/shutdown/shutdown-reboot.sh:
+  corrected bootmanager handling at reboot
+
 *gentoo-vdr-scripts-0.2_alpha3 (15 Nov 2005)
 
   15 Nov 2005; Matthias Schwarzott <zzam@gentoo.org>
