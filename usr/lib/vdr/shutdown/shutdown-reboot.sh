@@ -8,35 +8,32 @@ if [[ -z "${BOOT_MANAGER}" ]]; then
 	return
 fi
 
-unsupported_msg() {
-	echo "Not supported up to now. Please contact zzam@gentoo.org or zzam at irc freenode."
-}
-
 case "${BOOT_MANAGER}" in
 	grub)
-		if [ -x /sbin/grub-set-default ]; 
-		then 
-			/bin/mount /boot 
-			if [[ -n "${REBOOT_ENTRY_GRUB}" ]]; then
-				GRUB_SET_REBOOT_ENTRY_METHOD="${GRUB_SET_REBOOT_ENTRY_METHOD:-grub-set-default}"
-				case "${GRUB_SET_REBOOT_ENTRY_METHOD}" in
-					grub-set-default)
-						/sbin/grub-set-default ${REBOOT_ENTRY_GRUB}
-						;;
-					savedefault)
+		/bin/mount /boot 
+		if [[ -n "${REBOOT_ENTRY_GRUB}" ]]; then
+			case "${GRUB_SET_REBOOT_ENTRY_METHOD:=grub-set-default}" in
+				grub-set-default)
+					if [[ -x /sbin/grub-set-default ]]; then
+						/sbin/grub-set-default "${REBOOT_ENTRY_GRUB}"
+					else
+						error_mesg "command grub-set-default not found!"
+					fi
+					;;
+				savedefault)
+					if [[ -x /sbin/grub ]]; then
 						echo "savedefault --default=${REBOOT_ENTRY_GRUB} --once" | /sbin/grub --batch
-						;;
-					*)
-						error_mesg "Unknown grub method ${GRUB_SET_REBOOT_ENTRY_METHOD}."
-						;;
-				esac
-			else
-				error_mesg "reboot entry not set, can not reboot."
-			fi
+					else
+						error_mesg "command grub-set-default not found!"
+					fi
+					;;
+				*)
+					error_mesg "Unknown grub method ${GRUB_SET_REBOOT_ENTRY_METHOD}."
+					;;
+			esac
 		else
-			unsupported_msg
-			return
-		fi 
+			error_mesg "reboot entry not set, can not reboot."
+		fi
 		;;
 	lilo)
 		if [[ -n "${REBOOT_ENTRY_LILO}" ]]; then
@@ -46,7 +43,7 @@ case "${BOOT_MANAGER}" in
 		fi
 		;;
 	*)
-		unsupported_msg
+		error_mesg "Unsupported boot manager ${BOOT_MANAGER}"
 		return
 		;;
 esac
