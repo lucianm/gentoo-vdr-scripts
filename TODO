@@ -1,8 +1,4 @@
 TODO file for gentoo-vdr-scripts
 
 * create possibility to start vdr under x (for softdevice etc.)
-* when trying shutdown and there are users logged into this machine then:
-  + when automatic shutdown: stop and retry after some minutes
-  + when user-shutdown: stop and do not retry
-  + when user-shutdown and there was a retry max X minutes before warn and shutdown
 
