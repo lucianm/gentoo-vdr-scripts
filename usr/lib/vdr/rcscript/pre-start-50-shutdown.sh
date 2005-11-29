@@ -1,6 +1,4 @@
 
-source /usr/lib/vdr/rcscript/functions-shutdown.sh
-
 list_wakeup_methods() {
 	local methods
 	local m
@@ -16,7 +14,8 @@ shutdown_disabled() {
 	ewarn "  Disabled shutdown!"
 }
 
-setup_shutdown() {
+addon_main() {
+	source /usr/lib/vdr/rcscript/functions-shutdown.sh
 	read_shutdown_config
 	[[ "${SHUTDOWN_ACTIVE}" == "no" ]] && return
 
@@ -56,4 +55,3 @@ setup_shutdown() {
 	add_param "--shutdown=/usr/lib/vdr/bin/vdrshutdown-gate.sh"
 }
 
-setup_shutdown

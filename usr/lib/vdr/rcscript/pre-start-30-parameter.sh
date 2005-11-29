@@ -1,4 +1,4 @@
-eval_standard_params() {
+addon_main() {
 	add_param "--watchdog=${INTERNAL_WATCHDOG:-60}"
 	[[ -n "${AC3_AUDIO}" ]] && add_param "--audio=${AC3_AUDIO}"
 	[[ -n "${MUTE}" ]] && add_param "--mute"
@@ -34,5 +34,3 @@ eval_standard_params() {
 		add_param ${VDR_EXTRA_OPTIONS}
 	fi
 }
-
-eval_standard_params

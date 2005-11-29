@@ -31,4 +31,7 @@ svdrpready() {
 	return 1
 }
 
-wait_for_svdrp
+addon_main() {
+	wait_for_svdrp
+}
+

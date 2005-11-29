@@ -1,5 +1,23 @@
 # ChangeLog for gentoo-vdr-scripts
 
+  29 Nov 2005; Matthias Schwarzott <zzam@gentoo.org>
+  +usr/lib/vdr/rcscript/post-stop-05-plugins.sh,
+  +usr/lib/vdr/rcscript/post-start-05-plugins.sh,
+  usr/lib/vdr/rcscript/pre-stop-10-watchdog.sh,
+  usr/lib/vdr/rcscript/pre-start-20-dvb-device.sh,
+  usr/lib/vdr/rcscript/watchdog-restart-20-modules.sh,
+  usr/lib/vdr/rcscript/pre-start-30-parameter.sh,
+  usr/lib/vdr/rcscript/pre-start-40-config-files.sh,
+  usr/lib/vdr/rcscript/pre-start-45-nptl-check.sh,
+  usr/lib/vdr/rcscript/pre-start-50-shutdown.sh,
+  usr/lib/vdr/rcscript/post-start-50-svdrp.sh,
+  usr/lib/vdr/rcscript/post-start-90-watchdog.sh,
+  +usr/lib/vdr/rcscript/pre-stop-95-plugins.sh,
+  +usr/lib/vdr/rcscript/pre-start-95-plugins.sh,
+  +usr/lib/vdr/rcscript/pre-start-98-wait-conditions.sh, etc/init.d/vdr,
+  usr/lib/vdr/rcscript/functions.sh:
+  created functions called in each addon
+
   25 Nov 2005; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/shutdown/shutdown-reboot.sh:
   corrected bootmanager handling at reboot

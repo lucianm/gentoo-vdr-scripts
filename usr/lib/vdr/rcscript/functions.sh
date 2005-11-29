@@ -1,6 +1,7 @@
 
 test -z "${vdr_rcdir}" && vdr_rcdir=/usr/lib/vdr/rcscripts
-SCRIPT_DEBUG_LEVEL=${SCRIPT_DEBUG_LEVEL:-0}
+: ${SCRIPT_DEBUG_LEVEL:=0}
+SCRIPT_API=2
 
 plugin_dir=/usr/lib/vdr/plugins
 test -d ${plugin_dir} || plugin_dir=/usr/lib/vdr
@@ -76,9 +77,12 @@ add_plugin_param()
 #
 load_addons_prefixed()
 {
+	local prefix=${1}
+	local call_func=${2:-addon_main}
+	local basename=""
 	abort=0
-	for addon in ${vdr_rcdir}/${1}-*.sh; do
-		[[ -f "${addon}" ]] && source "${addon}"
+	for addon in ${vdr_rcdir}/${prefix}-*.sh; do
+		load_addon ${addon} ${call_func}
 		[[ "$abort" != "0" ]] && break
 	done
 	return $abort
@@ -86,15 +90,27 @@ load_addons_prefixed()
 
 load_addon()
 {
-	[[ -f "${vdr_rcdir}/${1}.sh" ]] && source "${vdr_rcdir}/${1}.sh"
+	local addon=${1}
+	local call_func=${2:-addon_main}
+	eval "${call_func}"'() { einfo_level2 called undefined ${call_func} for ${addon_main}; }'
+
+	# source addon
+	if [[ -f "${addon}" ]]; then
+		source ${addon}
+	else
+		[[ -f "${vdr_rcdir}/${addon}.sh" ]] && source "${vdr_rcdir}/${addon}.sh"
+	fi
+
+	# execute requested function
+	eval ${call_func}
 	return $abort
 }
 
 load_plugin()
 {
 	local PLUGIN="${1}"
+	local call_func="${2}"
 	if [[ ! -f "${plugin_dir}/libvdr-${PLUGIN}.so.${vdrversion}" ]]; then
-		ewarn "Plugin ${PLUGIN} not found, starting without it."
 		return 1
 	fi
 
@@ -102,11 +118,8 @@ load_plugin()
 	if [[ -f /etc/conf.d/vdr.${PLUGIN} ]]; then
 		source /etc/conf.d/vdr.${PLUGIN}
 	fi
-	init_plugin_params ${PLUGIN}
-	add_plugin_param "--plugin=${PLUGIN}"
-	load_addon plugin-${PLUGIN}
 
-	add_param "${vdrplugin_opts[*]} ${_EXTRAOPTS}"
+	load_addon plugin-${PLUGIN} ${call_func}
 }
 
 einfo_level1() {
