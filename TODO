@@ -1,5 +1,12 @@
 TODO file for gentoo-vdr-scripts
 
+* Add Script for remote-plugin
+
+* UTF-8 work around
+
+* writing time at system-shutdown without vdr having the power button
+  (for example when calling "init 0")
+
 * Create possibility to start vdr under x (for softdevice etc.)
 
 * Sort commands.conf files by user-preferences and not strictly alphabetically.
