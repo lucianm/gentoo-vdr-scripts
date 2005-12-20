@@ -1,5 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 
+  20 Dec 2005; Matthias Schwarzott <zzam@gentoo.org> ChangeLog:
+  added warning on osd when vdr was restarted by watchdog
+
   20 Dec 2005; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/bin/vdrshutdown-gate.sh,
   usr/lib/vdr/bin/vdrshutdown-really.sh,

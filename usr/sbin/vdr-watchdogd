@@ -32,6 +32,7 @@ periodic_function() {
 		logger -i -t vdrwatchdog -p local0.info "initializing full VDR restart"
 		date
 		/etc/init.d/vdr watchdogrestart
+		/usr/bin/svdrpsend.pl mesg "Warning: vdr was restarted by watchdog."
 	fi
 }
 
