@@ -1,5 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 
+  20 Dec 2005; Matthias Schwarzott <zzam@gentoo.org>
+  +usr/lib/vdr/rcscript/pre-start-45-utf8-check.sh, TODO:
+  added utf8-workaround
+
   29 Nov 2005; Matthias Schwarzott <zzam@gentoo.org>
   +usr/lib/vdr/rcscript/post-stop-05-plugins.sh,
   +usr/lib/vdr/rcscript/post-start-05-plugins.sh,
