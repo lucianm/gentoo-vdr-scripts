@@ -1,6 +1,8 @@
 TODO file for gentoo-vdr-scripts
 
-* Add Script for remote-plugin
+* Find out about acpi-problems
+
+* eventually integrate settime
 
 * UTF-8 work around
 
