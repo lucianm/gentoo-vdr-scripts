@@ -143,3 +143,6 @@ fi
 
 SUDO=/usr/bin/sudo
 ${SUDO} /usr/lib/vdr/bin/vdrshutdown-really.sh ${VDR_TIMER_NEXT}
+
+date +%s > /var/vdr/shutdown-time-written
+

@@ -1,6 +1,12 @@
 # ChangeLog for gentoo-vdr-scripts
 
   20 Dec 2005; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/bin/vdrshutdown-gate.sh,
+  usr/lib/vdr/bin/vdrshutdown-really.sh,
+  usr/lib/vdr/shutdown/wakeup-nvram.sh:
+  can remember reboot-setting even if shutdown aborted
+
+  20 Dec 2005; Matthias Schwarzott <zzam@gentoo.org>
   +usr/lib/vdr/rcscript/pre-start-45-utf8-check.sh, TODO:
   added utf8-workaround
 

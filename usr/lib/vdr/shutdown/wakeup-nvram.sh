@@ -39,7 +39,7 @@ set_wakeup() {
 		# for some other boards, we only need this after changing the
 		# status flag, i.e. from enabled to disabled or the other way.
 		SHUTDOWN_EXITCODE=0
-		NEED_REBOOT=1
+		set_reboot_needed
 		;;
 
 		2) 

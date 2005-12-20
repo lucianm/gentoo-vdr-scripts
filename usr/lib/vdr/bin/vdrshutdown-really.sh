@@ -25,8 +25,26 @@ error_mesg() {
 
 read_shutdown_config
 
-NEED_REBOOT=0
 SHUTDOWN_EXITCODE=0
+
+set_reboot_needed() {
+	date +%s > /var/vdr/shutdown-need-reboot
+}
+
+read_reboot_setting() {
+	NEED_REBOOT=0
+	[[ -e /var/vdr/shutdown-need-reboot ]] || return
+	local TSTAMP=$(</var/vdr/shutdown-need-reboot)
+	local NOW=$(date +%s)
+
+	local REBOOT_SET_AGO=$(( NOW-TSTAMP ))
+	local UPTIME=$(</proc/uptime)
+	UPTIME=${UPTIME/.*/}
+
+	if [[ ${REBOOT_SET_AGO} -lt ${UPTIME} ]]; then
+		NEED_REBOOT=1
+	fi
+}
 
 if [[ -f ${shutdown_script_dir}/wakeup-${WAKEUP_METHOD}.sh ]]; then
 	source ${shutdown_script_dir}/wakeup-${WAKEUP_METHOD}.sh
@@ -43,6 +61,8 @@ if [[ "${DUMMY}" == "1" ]]; then
 	mesg "Dummy - not shutting down"
 	exit 0
 fi
+
+read_reboot_setting
 
 case "${NEED_REBOOT}" in
 	1)	source ${shutdown_script_dir}/shutdown-reboot.sh ;;
