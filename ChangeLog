@@ -1,5 +1,7 @@
 # ChangeLog for gentoo-vdr-scripts
 
+*gentoo-vdr-scripts-0.2_alpha4 (21 Dec 2005)
+
   20 Dec 2005; Matthias Schwarzott <zzam@gentoo.org> ChangeLog:
   added warning on osd when vdr was restarted by watchdog
 
