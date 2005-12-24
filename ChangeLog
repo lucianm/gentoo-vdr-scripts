@@ -1,5 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 
+  24 Dec 2005; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/shutdown/pre-shutdown-20-check-blocking-programs.sh:
+  added dvdauthor to list of shutdown-blocking programs
+
 *gentoo-vdr-scripts-0.2_alpha4 (21 Dec 2005)
 
   20 Dec 2005; Matthias Schwarzott <zzam@gentoo.org> ChangeLog:
