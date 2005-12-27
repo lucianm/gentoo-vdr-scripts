@@ -56,7 +56,7 @@ setAlarm()
 		timestr=$(date ${dateparam} --date="1970-01-01 00:00:00 UTC + ${t} seconds" +"%Y-%m-%d %H:%M:00")
 	else
 		# This hopefully deactivates wakeup
-		timestr="0003-10-20 99:00:00"
+		timestr="2003-10-20 99:00:00"
 	fi
 
 	[[ -z "${timestr}" ]] && return

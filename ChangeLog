@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 
   27 Dec 2005; Matthias Schwarzott <zzam@gentoo.org>
+  usr/sbin/acpi-wakeup.sh:
+  Changed disabling wakeup, problem reported by ilmusy from vdr-portal.de
+
+  27 Dec 2005; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/shutdown/pre-shutdown-20-check-blocking-programs.sh:
   added more shutdown-blockers
 
