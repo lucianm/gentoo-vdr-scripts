@@ -1,5 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 
+  28 Dec 2005; Matthias Schwarzott <zzam@gentoo.org> etc/init.d/vdr:
+  corrected bug with wrong call order of functions in stop-script
+
   28 Dec 2005; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/rcscript/pre-start-40-config-files.sh, Makefile, TODO,
   usr/lib/vdr/bin/vdrshutdown-gate.sh,

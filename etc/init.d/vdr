@@ -78,9 +78,10 @@ start() {
 }
 
 stop() {
+	getvdrversion
+
 	load_addons_prefixed pre-stop
 
-	getvdrversion
 	ebegin "Stopping vdr-${vdrversion}"
 
 	# Use --name here to allow us to kill vdr even after a new emerge
