@@ -1,5 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 
+  28 Dec 2005; Matthias Schwarzott <zzam@gentoo.org> Makefile:
+  added chown to Makefile
+
   27 Dec 2005; Matthias Schwarzott <zzam@gentoo.org>
   usr/sbin/acpi-wakeup.sh:
   Changed disabling wakeup, problem reported by ilmusy from vdr-portal.de
