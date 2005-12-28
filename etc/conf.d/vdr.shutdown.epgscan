@@ -1,0 +1,14 @@
+# Configuration settings for vdr related to shutdown
+#
+
+# This seting causes an epg-scan at least every 24h when shutting down
+# automatically.
+#   allowed values: yes no
+#   default: no 
+#SHUTDOWN_ACTIVE="yes"
+
+# Time to wait for epgscan in minutes.
+#   allowed values: integer value
+#   default: 10minutes
+#VDR_SHUTDOWN_EPGSCAN_TIME="10"
+
