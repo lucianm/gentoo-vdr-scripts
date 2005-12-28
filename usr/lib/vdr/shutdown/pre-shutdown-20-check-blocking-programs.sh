@@ -10,3 +10,8 @@ for PROG in ${SHUTDOWN_CHECK_PROGRAMS} ${SHUTDOWN_CHECK_ADDITIONAL_PROGRAMS}; do
 		break
 	fi
 done
+
+if ${PIDOF} -x vdrshutdown-periodic-thread.sh >/dev/null; then
+	shutdown_abort "periodic shutdown-thread is running"
+fi
+

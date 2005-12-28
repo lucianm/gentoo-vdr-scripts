@@ -32,17 +32,25 @@ bg_retry() {
 	${SVDRPCMD} hitk power
 }
 
+is_auto_shutdown() {
+	test "${VDR_USERSHUTDOWN}" == "0"
+}
+
+is_user_shutdown() {
+	test "${VDR_USERSHUTDOWN}" == "1"
+}
+
 shutdown_abort() {
 	ABORT_MESSAGE="${1}"
 	SHUTDOWN_ABORT="1"
 	SHUTDOWN_CAN_FORCE="0"
-	if [[ "${VDR_USERSHUTDOWN}" == "0" ]]; then
+	if is_auto_shutdown; then
 		TRY_AGAIN="10"
 	fi
 }
 
 shutdown_abort_can_force() {
-	if [[ "${VDR_USERSHUTDOWN}" == "0" ]]; then
+	if is_auto_shutdown; then
 		# normal way, do retry
 		shutdown_abort "${1}"
 	else
@@ -87,7 +95,7 @@ SHUTDOWN_ABORT=0
 SHUTDOWN_CAN_FORCE=0
 MAX_TRY_AGAIN=0
 
-if [[ "${VDR_USERSHUTDOWN}" == "1" ]]; then
+if is_user_shutdown; then
 	init_shutdown_force
 fi
 
