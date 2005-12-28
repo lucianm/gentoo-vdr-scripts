@@ -33,7 +33,7 @@ TODO file for gentoo-vdr-scripts
    
   This thread runs under a name for which is explicitly checked when shutdown so that
   it will not shutdown when it is not finished.
-  It writes the time it finished into a file (perhaps under /var/vdr)
+  It writes the time it finished into a file (under /var/vdr/shutdown-data)
 
   When doing shutdown and the last finish-time read from file is not longer ago than XXmin
   then it will not be started again and shutdown continues.

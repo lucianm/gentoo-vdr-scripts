@@ -28,13 +28,13 @@ read_shutdown_config
 SHUTDOWN_EXITCODE=0
 
 set_reboot_needed() {
-	date +%s > /var/vdr/shutdown-need-reboot
+	date +%s > ${shutdown_data_dir}/shutdown-need-reboot
 }
 
 read_reboot_setting() {
 	NEED_REBOOT=0
-	[[ -e /var/vdr/shutdown-need-reboot ]] || return
-	local TSTAMP=$(</var/vdr/shutdown-need-reboot)
+	[[ -e ${shutdown_data_dir}/shutdown-need-reboot ]] || return
+	local TSTAMP=$(<${shutdown_data_dir}/shutdown-need-reboot)
 	local NOW=$(date +%s)
 
 	local REBOOT_SET_AGO=$(( NOW-TSTAMP ))

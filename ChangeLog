@@ -1,5 +1,12 @@
 # ChangeLog for gentoo-vdr-scripts
 
+  28 Dec 2005; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/rcscript/pre-start-40-config-files.sh, Makefile, TODO,
+  usr/lib/vdr/bin/vdrshutdown-gate.sh,
+  usr/lib/vdr/bin/vdrshutdown-really.sh,
+  usr/lib/vdr/rcscript/functions-shutdown.sh:
+  made extra tmp-directores for shutdown and config-file-merging
+
   28 Dec 2005; Matthias Schwarzott <zzam@gentoo.org> Makefile:
   added chown to Makefile
 

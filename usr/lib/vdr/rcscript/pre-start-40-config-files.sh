@@ -3,17 +3,21 @@ create_commands_conf() {
 	local bname="${1}"
 	local order="${2}"
 	local file="${CONFIG}/${bname}.conf"
-	local mergedfile="/var/vdr/${bname}.conf"
+	local mergedfile="/var/vdr/merged-config-files/${bname}.conf"
 	local sdir="/etc/vdr/${bname}"
 
-	if [[ ! -L "${file}" ]]; then
+	if [[ -L "${file}" ]]; then
+		# remove link
+		rm "${file}"
+	else
+		# no link
 		if [[ -f "${file}" ]]; then
 			mv "${file}" "${file}.backup"
 			einfo "  Saved original ${file} as ${file}.backup"
 		fi
-
-		ln -s "../../${mergedfile}" "${file}"
 	fi
+
+	ln -s "../../${mergedfile}" "${file}"
 
 	if [[ -f "${mergedfile}" ]]; then
 		if ! rm "${mergedfile}"; then
@@ -40,7 +44,8 @@ EOT
 addon_main() {
 	ebegin "  config files"
 	if [[ ! -d /var/vdr ]]; then
-		mkdir -p /var/vdr
+		mkdir -p /var/vdr/{shutdown-data,merged-config-files}
+		chown vdr:vdr -R /var/vdr
 		ewarn "    created /var/vdr"
 	fi
 	create_commands_conf commands "${ORDER_COMMANDS}"

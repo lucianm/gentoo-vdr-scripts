@@ -1,4 +1,5 @@
 shutdown_script_dir=/usr/lib/vdr/shutdown
+shutdown_data_dir=/var/vdr/shutdown-data
 
 read_shutdown_config() {
 	source /etc/conf.d/vdr.shutdown

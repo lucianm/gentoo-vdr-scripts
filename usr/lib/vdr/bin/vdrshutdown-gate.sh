@@ -59,7 +59,7 @@ shutdown_abort_can_force() {
 
 init_shutdown_force() {
 	# detect if this could be a forced shutdown
-	local shutdown_force_file=/var/vdr/last-shutdown-abort
+	local shutdown_force_file=${shutdown_data_dir}/last-shutdown-abort
 
 	local LAST_SHUTDOWN_ABORT=0
 	if [[ -f "${shutdown_force_file}" ]]; then
@@ -77,7 +77,7 @@ init_shutdown_force() {
 }
 
 write_force_file() {
-	local shutdown_force_file=/var/vdr/last-shutdown-abort
+	local shutdown_force_file=${shutdown_data_dir}/last-shutdown-abort
 	echo "${NOW}" > "${shutdown_force_file}"
 }
 
@@ -144,5 +144,5 @@ fi
 SUDO=/usr/bin/sudo
 ${SUDO} /usr/lib/vdr/bin/vdrshutdown-really.sh ${VDR_TIMER_NEXT}
 
-date +%s > /var/vdr/shutdown-time-written
+date +%s > ${shutdown_data_dir}/shutdown-time-written
 
