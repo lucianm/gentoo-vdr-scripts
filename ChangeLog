@@ -1,5 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 
+  29 Dec 2005; Matthias Schwarzott <zzam@gentoo.org>
+  usr/sbin/acpi-wakeup.sh:
+  changed date-specification a bit to work with newest coreutils
+
   28 Dec 2005; Matthias Schwarzott <zzam@gentoo.org>
   +usr/lib/vdr/shutdown/periodic-50-epgscan.sh, Makefile,
   +etc/conf.d/vdr.shutdown.epgscan:

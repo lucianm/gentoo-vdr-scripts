@@ -53,7 +53,7 @@ setAlarm()
 		local t=$[Next-300]
 
 		[[ "${CLOCK}" == "UTC" ]] && dateparam="-u"
-		timestr=$(date ${dateparam} --date="1970-01-01 00:00:00 UTC + ${t} seconds" +"%Y-%m-%d %H:%M:00")
+		timestr=$(date ${dateparam} --date="1970-01-01 UTC ${t} seconds" +"%Y-%m-%d %H:%M:00")
 	else
 		# This hopefully deactivates wakeup
 		timestr="2003-10-20 99:00:00"
