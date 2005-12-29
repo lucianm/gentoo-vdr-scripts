@@ -1,5 +1,7 @@
 # ChangeLog for gentoo-vdr-scripts
 
+*gentoo-vdr-scripts-0.2_alpha5 (29 Dec 2005)
+
   29 Dec 2005; Matthias Schwarzott <zzam@gentoo.org>
   usr/sbin/acpi-wakeup.sh:
   changed date-specification a bit to work with newest coreutils
