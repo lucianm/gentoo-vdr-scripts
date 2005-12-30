@@ -32,6 +32,24 @@ bg_retry() {
 	${SVDRPCMD} hitk power
 }
 
+retry_shutdown() {
+	local when=${MAX_TRY_AGAIN}
+
+	if [[ -n "${CAP_SHUTDOWN_SVDRP}" ]]; then
+		${SVDRPCMD} DOWN "${when}"
+		return
+	fi
+
+	if [[ "${CAP_SHUTDOWN_AUTO_RETRY:-0}" == "1" ]]; then
+		return
+	fi
+	
+	# shutdown retry must be simulated by sleep and the power key
+	#as vdr itself is not able
+	bg_retry ${when} &
+	return
+}
+															
 is_auto_shutdown() {
 	test "${VDR_USERSHUTDOWN}" == "0"
 }
@@ -126,11 +144,7 @@ if [[ "${SHUTDOWN_ABORT}" == "1" ]]; then
 	fi
 
 	if [ ${MAX_TRY_AGAIN} -gt 0 ]; then
-		if [[ "${CAP_SHUTDOWN_AUTO_RETRY:-0}" == "0" ]]; then
-			# shutdown retry must be simulated by sleep and the power key
-			#as vdr itself is not able
-			bg_retry ${MAX_TRY_AGAIN} &
-		fi
+		retry_shutdown ${MAX_TRY_AGAIN}
 		mesg "Shutdown retries soon, because ${ABORT_MESSAGE}" &
 	fi
 
