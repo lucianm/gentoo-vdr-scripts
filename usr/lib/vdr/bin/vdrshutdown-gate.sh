@@ -22,6 +22,8 @@ VDR_TIMER_CHANNEL="${3}"
 VDR_TIMER_FILENAME="${4}"
 VDR_USERSHUTDOWN="${5}"
 
+: ${DEFAULT_RETRY_TIME:=10}
+
 mesg() {
 	${SVDRPCMD} MESG "${1}"
 }
@@ -62,28 +64,24 @@ is_user_shutdown() {
 	test "${VDR_USERSHUTDOWN}" == "1"
 }
 
-shutdown_abort() {
+shutdown_common() {
 	ABORT_MESSAGE="${1}"
 	SHUTDOWN_ABORT="1"
+	TRY_AGAIN="${DEFAULT_RETRY_TIME}"
+}
+
+shutdown_abort() {
+	shutdown_common "${1}"
 	SHUTDOWN_CAN_FORCE="0"
-	if is_auto_shutdown; then
-		TRY_AGAIN="10"
-	fi
 }
 
 shutdown_abort_can_force() {
-	if is_auto_shutdown; then
-		# normal way, do retry
-		shutdown_abort "${1}"
+	if [[ "${THIS_SHUTDOWN_IS_FORCED}" == "1" ]]; then
+		# this is the forced way, ignore this abort
+		echo FORCED: ${1}
+		FORCE_COUNT=$[FORCE_COUNT+1]
 	else
-		if [[ "${THIS_SHUTDOWN_IS_FORCED}" == "1" ]]; then
-			# this is the forced way, ignore this abort
-			echo FORCED: ${1}
-			FORCE_COUNT=$[FORCE_COUNT+1]
-		else
-			ABORT_MESSAGE="${1}"
-			SHUTDOWN_ABORT="1"
-		fi
+		shutdown_common "${1}"
 	fi
 }
 

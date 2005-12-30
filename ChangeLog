@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 
   30 Dec 2005; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/bin/vdrshutdown-gate.sh:
+  code cosmetics
+
+  30 Dec 2005; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/shutdown/pre-shutdown-99-periodic-thread.sh,
   usr/lib/vdr/bin/vdrshutdown-periodic-thread.sh:
   base time-calculation on thread end-time, not start-time
