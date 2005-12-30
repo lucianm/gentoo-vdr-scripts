@@ -1,10 +1,10 @@
-source /etc/conf.d/vdr.shutdown.epgscan
+source /etc/conf.d/vdr.periodic.epgscan
 
-: ${VDR_SHUTDOWN_EPGSCAN:=no}
-: ${VDR_SHUTDOWN_EPGSCAN_TIME:=10}
+: ${PERIODIC_EPGSCAN:=no}
+: ${PERIODIC_EPGSCAN_DURATION:=10}
 
-if [[ ${VDR_SHUTDOWN_EPGSCAN} == "yes" ]]; then
+if [[ ${PERIODIC_EPGSCAN} == "yes" ]]; then
 	/usr/bin/svdrpsend.pl SCAN
-	sleep ${VDR_SHUTDOWN_EPGSCAN_TIME}m
+	sleep ${PERIODIC_EPGSCAN_DURATION}m
 fi
 

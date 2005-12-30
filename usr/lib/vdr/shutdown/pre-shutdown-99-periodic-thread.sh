@@ -1,3 +1,5 @@
+source /etc/conf.d/vdr.periodic.general
+
 PERIODIC_THREAD_ENDTIME=${shutdown_data_dir}/periodic_thread_last_ended
 
 
@@ -8,9 +10,9 @@ check_periodic_thread()
 		shutdown_abort_can_force "periodic jobs are waiting"
 	fi
 	
-	: ${ENABLE_SHUTDOWN_PERIODIC_THREAD:=no}
+	: ${ENABLE_SHUTDOWN_PERIODIC_JOBS:=no}
 	
-	[[ ${ENABLE_SHUTDOWN_PERIODIC_THREAD} == "yes" ]] || return
+	[[ ${ENABLE_SHUTDOWN_PERIODIC_JOBS} == "yes" ]] || return
 
 	[[ "${SHUTDOWN_ABORT}" == "1" ]] && return
 

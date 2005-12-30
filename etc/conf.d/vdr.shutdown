@@ -73,13 +73,6 @@
 # Every setting in here has good defaults (at least I hope so).
 
 #
-# Enable some special functions when shutting down automatically.
-# (i.e. running some epg-scan and feeding vdradmin-autotimer)
-#   allowed values: yes no
-#   default: no
-#ENABLE_SHUTDOWN_PERIODIC_THREAD=yes
-
-#
 # This option allows to override the set of shutdown scripts
 # coming with this installation. Use with care!
 # (This overwrites all settings in this file).

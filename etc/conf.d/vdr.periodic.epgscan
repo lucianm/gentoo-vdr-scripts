@@ -5,10 +5,10 @@
 # automatically.
 #   allowed values: yes no
 #   default: no 
-#SHUTDOWN_ACTIVE="yes"
+#PERIODIC_EPGSCAN="yes"
 
 # Time to wait for epgscan in minutes.
 #   allowed values: integer value
 #   default: 10minutes
-#VDR_SHUTDOWN_EPGSCAN_TIME="10"
+#PERIODIC_EPGSCAN_DURATION="10"
 

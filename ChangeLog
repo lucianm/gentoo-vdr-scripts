@@ -1,6 +1,13 @@
 # ChangeLog for gentoo-vdr-scripts
 
   30 Dec 2005; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/shutdown/periodic-50-epgscan.sh,
+  usr/lib/vdr/shutdown/pre-shutdown-99-periodic-thread.sh,
+  +etc/conf.d/vdr.periodic.epgscan, -etc/conf.d/vdr.shutdown.epgscan,
+  +etc/conf.d/vdr.periodic.general, etc/conf.d/vdr.shutdown:
+  changed configuration-settings for periodic jobs
+
+  30 Dec 2005; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/bin/vdrshutdown-periodic-thread.sh:
   added missing function
 

@@ -1,0 +1,10 @@
+# Configuration settings for vdr related to periodic jobs
+#
+
+#
+# Enable some special functions when shutting down automatically.
+# (i.e. running some epg-scan and feeding vdradmin-autotimer)
+#   allowed values: yes no
+#   default: no
+#ENABLE_SHUTDOWN_PERIODIC_JOBS=yes
+
