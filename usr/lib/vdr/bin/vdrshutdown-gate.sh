@@ -36,7 +36,11 @@ retry_shutdown() {
 	local when=${MAX_TRY_AGAIN}
 
 	if [[ -n "${CAP_SHUTDOWN_SVDRP}" ]]; then
-		${SVDRPCMD} DOWN "${when}"
+		if [[ ${when} -gt 5 ]]; then
+			${SVDRPCMD} DOWN $((when-5))
+		else
+			${SVDRPCMD} DOWN
+		fi
 		return
 	fi
 

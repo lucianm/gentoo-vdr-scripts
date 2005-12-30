@@ -12,7 +12,7 @@ check_periodic_thread()
 	is_auto_shutdown || return
 
 	local NOW=$(date +%s)
-	local MINIMAL_THREAD_CALL_DELTA=$(( 3600*24 ))
+	local MINIMAL_THREAD_CALL_DELTA=$(( 3600*20 ))
 
 	local LAST_THREAD_START=0
 	[[ -f ${PERIODIC_THREAD_STARTTIME} ]] && LAST_THREAD_START=$(<${PERIODIC_THREAD_STARTTIME})
