@@ -9,3 +9,11 @@ for HOOK in ${THREAD_DIR}/periodic-*.sh; do
 done
 mesg "periodic thread finished"
 
+sleep 3s
+
+if [[ "${CAP_SHUTDOWN_SVDRP}" == "1" ]]; then
+	svdrpsend.pl DOWN
+else
+	svdrpsend.pl hitk power
+fi
+

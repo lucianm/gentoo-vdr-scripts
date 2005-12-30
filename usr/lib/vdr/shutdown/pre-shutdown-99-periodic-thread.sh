@@ -3,6 +3,11 @@ PERIODIC_THREAD_STARTTIME=${shutdown_data_dir}/periodic_thread_last_started
 
 check_periodic_thread()
 {
+	local PIDOF=pidof
+	if ${PIDOF} -x vdrshutdown-periodic-thread.sh >/dev/null; then
+		shutdown_abort_can_force "periodic shutdown-thread is running"
+	fi
+	
 	: ${ENABLE_SHUTDOWN_PERIODIC_THREAD:=no}
 	
 	[[ ${ENABLE_SHUTDOWN_PERIODIC_THREAD} == "yes" ]] || return
