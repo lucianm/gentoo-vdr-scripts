@@ -2,6 +2,10 @@
 
   30 Dec 2005; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/bin/vdrshutdown-gate.sh:
+  added message queue
+
+  30 Dec 2005; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/bin/vdrshutdown-gate.sh:
   code cosmetics
 
   30 Dec 2005; Matthias Schwarzott <zzam@gentoo.org>

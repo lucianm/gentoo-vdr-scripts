@@ -24,14 +24,32 @@ VDR_USERSHUTDOWN="${5}"
 
 : ${DEFAULT_RETRY_TIME:=10}
 
-mesg() {
-	${SVDRPCMD} MESG "${1}"
+queue_add_wait() {
+	: ${qindex:=1}
+	svdrpqueue[${qindex}]="sleep ${1}"
+	qindex=$((qindex+1))
 }
 
-bg_retry() {
+svdrp_add_queue() {
+	: ${qindex:=1}
+	logger "vdrshutdown-gate sending per svdrp: ${1}"
+	svdrpqueue[${qindex}]="${SVDRPCMD} ${1}"
+	qindex=$((qindex+1))
+}
+
+svdrp_queue_handler() {
 	exec >/dev/null 2>/dev/null </dev/null
-	sleep ${1}m
-	${SVDRPCMD} hitk power
+	for ((i=1; i<=$qindex; i++)) do
+		${svdrpqueue[$i]}
+	done
+}
+
+mesg() {
+	${SVDRPCMD} MESG ${1}
+}
+
+mesg_q() {
+	svdrp_add_queue "MESG ${1}"
 }
 
 retry_shutdown() {
@@ -39,9 +57,9 @@ retry_shutdown() {
 
 	if [[ -n "${CAP_SHUTDOWN_SVDRP}" ]]; then
 		if [[ ${when} -gt 5 ]]; then
-			${SVDRPCMD} DOWN $((when-5))
+			svdrp_add_queue "DOWN $((when-5))"
 		else
-			${SVDRPCMD} DOWN
+			svdrp_add_queue "DOWN"
 		fi
 		return
 	fi
@@ -52,7 +70,8 @@ retry_shutdown() {
 	
 	# shutdown retry must be simulated by sleep and the power key
 	#as vdr itself is not able
-	bg_retry ${when} &
+	queue_add_wait ${when}m
+	svdrp_add_queue "hitk power"
 	return
 }
 															
@@ -109,6 +128,12 @@ write_force_file() {
 	echo "${NOW}" > "${shutdown_force_file}"
 }
 
+exit_cleanup()
+{
+	svdrp_queue_handler &
+	exit ${1}
+}
+
 THIS_SHUTDOWN_IS_FORCED="0"
 EXITCODE=0
 SHUTDOWN_ABORT=0
@@ -124,8 +149,8 @@ for HOOK in $HOOKDIR/pre-shutdown-*.sh; do
 	[[ -f "${HOOK}" ]] && source "${HOOK}" $@
 
 	if [[ "${EXITCODE}" != "0" ]]; then
-		mesg "Shutdown aborted: ${ABORT_MESSAGE}" &
-		exit 1
+		mesg_q "Shutdown aborted: ${ABORT_MESSAGE}" &
+		exit_cleanup 1
 	fi
 
 	if [[ ${TRY_AGAIN} -gt 0 ]]; then
@@ -136,37 +161,36 @@ for HOOK in $HOOKDIR/pre-shutdown-*.sh; do
 done
 
 if [[ "${SHUTDOWN_ABORT}" == "1" ]]; then
+	mesg_q "Shutdown stopped, because ${ABORT_MESSAGE}"
 	if [[ "${SHUTDOWN_CAN_FORCE}" == "1" ]]; then
 		write_force_file
-		(
-			mesg "Shutdown stopped, because ${ABORT_MESSAGE}"
-			sleep 3
-			mesg "You can force a shutdown with pressing power again"
-		) &
+		queue_add_wait 3s
+		mesg_q "You can force a shutdown with pressing power again"
 	fi
 
 	if [ ${MAX_TRY_AGAIN} -gt 0 ]; then
+		queue_add_wait 3s
+		mesg_q "Shutdown is retried soon"
 		retry_shutdown ${MAX_TRY_AGAIN}
-		mesg "Shutdown retries soon, because ${ABORT_MESSAGE}" &
 	fi
 
-
-	exit 0
+	exit_cleanup 0
 fi
 
 if [[ "${THIS_SHUTDOWN_IS_FORCED}" == "1" && "${FORCE_COUNT}" -gt 0 ]]; then
-	mesg "Shutting down, shutdown forced by user." &
+	mesg_q "Shutting down, shutdown forced by user." &
 fi
 
 # You have to edit sudo-permissions to grant vdr permission to execute
 # privileged commands. Start visudo and add a line like
 #   vdr     ALL= NOPASSWD: /usr/lib/vdr/bin/vdrshutdown-really.sh
 
-#mesg "Dummy - Real shutdown not working" &
+#mesg_q "Dummy - Real shutdown not working"
 
 
 SUDO=/usr/bin/sudo
 ${SUDO} /usr/lib/vdr/bin/vdrshutdown-really.sh ${VDR_TIMER_NEXT}
 
 date +%s > ${shutdown_data_dir}/shutdown-time-written
+exit_cleanup 0
 
