@@ -5,7 +5,7 @@ check_periodic_thread()
 {
 	local PIDOF=pidof
 	if ${PIDOF} -x vdrshutdown-periodic-thread.sh >/dev/null; then
-		shutdown_abort_can_force "periodic shutdown-thread is running"
+		shutdown_abort_can_force "periodic jobs are waiting"
 	fi
 	
 	: ${ENABLE_SHUTDOWN_PERIODIC_THREAD:=no}
@@ -27,9 +27,9 @@ check_periodic_thread()
 	[[ ${DELTA} -lt ${MINIMAL_THREAD_CALL_DELTA} ]] && return
 	
 	# can take longer time
-	/usr/lib/vdr/bin/vdr-bg.sh /usr/lib/vdr/shutdown/vdrshutdown-periodic-thread.sh &
+	/usr/lib/vdr/bin/vdr-bg.sh /usr/lib/vdr/bin/vdrshutdown-periodic-thread.sh &
 	
-	exit 0
+	shutdown_abort "periodic jobs are waiting"
 }
 
 check_periodic_thread
