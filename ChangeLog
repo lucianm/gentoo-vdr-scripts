@@ -1,5 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 
+  03 Jan 2006; Matthias Schwarzott <zzam@gentoo.org>
+  etc/conf.d/vdr.shutdown:
+  added new reboot-script to config-file
+
   03 Jan 2006; Matthias Schwarzott <zzam@gentoo.org> Makefile,
   +etc/init.d/wakeup-reboot-halt, usr/lib/vdr/shutdown/shutdown-reboot.sh:
   new method to do reboot without modifying bootmanager

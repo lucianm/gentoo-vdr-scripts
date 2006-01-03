@@ -51,7 +51,7 @@
 #
 # Only used for WAKEUP_METHOD nvram when motherboard needs reboot
 #   allowed values: lilo grub
-#   default: no good default, stops shutdown when not set when needed
+#   default: use a special startup-script to shutdown the system, works good but needs a bit more time
 #BOOT_MANAGER="grub"
 
 #
