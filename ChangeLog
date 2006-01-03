@@ -1,5 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 
+  03 Jan 2006; Matthias Schwarzott <zzam@gentoo.org> +README.shutdown-jobs,
+  TODO:
+  a bit cleanup of documentation
+
   03 Jan 2006; Matthias Schwarzott <zzam@gentoo.org>
   etc/conf.d/vdr.shutdown:
   added new reboot-script to config-file

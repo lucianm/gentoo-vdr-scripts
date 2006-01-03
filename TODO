@@ -1,7 +1,5 @@
 TODO file for gentoo-vdr-scripts
 
-* Find out about acpi-problems
-
 * eventually integrate settime
 
 * writing time at system-shutdown without vdr having the power button
@@ -12,31 +10,6 @@ TODO file for gentoo-vdr-scripts
 * Sort commands.conf files by user-preferences and not strictly alphabetically.
 * Skip some commands.conf files or specific entries out of some files by
   special criteria.
-
-* Thread before shutdown - With possibility to plug in some addons
-  This thread will be started when
-    + it is sure it can do the shutdown (nothing is against it)
-    + and it is an automatic shutdown (perhaps changed in future)
-    + and this thread has not been finished in the last XXmin
-
-  When decided not to run this thread
-    shutdown continues
-  else
-    shutdown is aborted (with normal retry mechanism).
-    
-  This thread can do various things
-    + do an epg-scan svdrp-SCAN or switch channel-ranges per CHAN)
-    + fetch epg from external providers tvmovie hoerzu (when online)
-    + fetch epg from infosat or nxtvepg
-    + go over all recordings and start noad for those which have not had it already
-    + trigger the xxv oder vdradmin autotimer
-   
-  This thread runs under a name for which is explicitly checked when shutdown so that
-  it will not shutdown when it is not finished.
-  It writes the time it finished into a file (under /var/vdr/shutdown-data)
-
-  When doing shutdown and the last finish-time read from file is not longer ago than XXmin
-  then it will not be started again and shutdown continues.
 
 * writing an API-document for all addon-scripts
   + plugin-rc-addons (run under root normally)
