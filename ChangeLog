@@ -1,5 +1,7 @@
 # ChangeLog for gentoo-vdr-scripts
 
+*gentoo-vdr-scripts-0.2 (03 Jan 2006)
+
   03 Jan 2006; Matthias Schwarzott <zzam@gentoo.org> +README.shutdown-jobs,
   TODO:
   a bit cleanup of documentation
