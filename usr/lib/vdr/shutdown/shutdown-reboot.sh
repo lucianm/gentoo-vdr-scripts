@@ -4,11 +4,19 @@
 #
 
 if [[ -z "${BOOT_MANAGER}" ]]; then
-	error_mesg "Bootmanager not set, can not reboot."
-	return
+	BOOT_MANAGER="none"
 fi
 
 case "${BOOT_MANAGER}" in
+	none)
+		local STATEFILE=/var/vdr/shutdown-data/special_script_should_shutdown
+
+		touch ${STATEFILE}
+
+		if [[ ! -L /etc/runlevels/boot/wakeup-reboot-halt ]]; then
+			rc-update add wakeup-reboot-halt boot
+		fi
+		;;
 	grub)
 		/bin/mount /boot 
 		if [[ -n "${REBOOT_ENTRY_GRUB}" ]]; then
