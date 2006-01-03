@@ -9,7 +9,7 @@ fi
 
 case "${BOOT_MANAGER}" in
 	none)
-		local STATEFILE=/var/vdr/shutdown-data/special_script_should_shutdown
+		STATEFILE=/var/vdr/shutdown-data/special_script_should_shutdown
 
 		touch ${STATEFILE}
 
