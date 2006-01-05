@@ -5,18 +5,26 @@ PERIODIC_THREAD_ENDTIME=${shutdown_data_dir}/periodic_thread_last_ended
 
 check_periodic_thread()
 {
-	local PIDOF=pidof
-	if ${PIDOF} -x vdrshutdown-periodic-thread.sh >/dev/null; then
-		shutdown_abort_can_force "periodic jobs are waiting"
-	fi
-	
+	# test if periodic thread is activated
 	: ${ENABLE_SHUTDOWN_PERIODIC_JOBS:=no}
-	
 	[[ ${ENABLE_SHUTDOWN_PERIODIC_JOBS} == "yes" ]] || return
 
-	[[ "${SHUTDOWN_ABORT}" == "1" ]] && return
+	# when periodic-thread runs
+	local PIDOF=pidof
+	if ${PIDOF} -x vdrshutdown-periodic-thread.sh >/dev/null; then
+		# stop shutdown which can be forced
+		shutdown_abort_can_force "periodic jobs are waiting"
 
-	is_auto_shutdown || return
+		# kill it if forced
+		if [[ ${THIS_SHUTDOWN_IS_FORCED} == 1 ]]; then
+			killall vdrshutdown-periodic-thread.sh
+		fi
+	fi
+
+	# do not continue if shutdown is forced
+	[[ ${THIS_SHUTDOWN_IS_FORCED} == 1 ]] && return
+
+	#is_auto_shutdown || return
 
 	local NOW=$(date +%s)
 	local MINIMAL_THREAD_CALL_DELTA=$(( 3600*20 ))
@@ -26,12 +34,15 @@ check_periodic_thread()
 	
 	local DELTA=$(( NOW-LAST_THREAD_END ))
 
+	# do not start if has been run in the last 20 hours
 	[[ ${DELTA} -lt ${MINIMAL_THREAD_CALL_DELTA} ]] && return
-	
+
+	# starting thread aborts shutdown
+	shutdown_abort "periodic jobs are waiting"
+	disable_auto_retry
+
 	# can take longer time
 	/usr/lib/vdr/bin/vdr-bg.sh /usr/lib/vdr/bin/vdrshutdown-periodic-thread.sh &
-	
-	shutdown_abort "periodic jobs are waiting"
 }
 
 check_periodic_thread

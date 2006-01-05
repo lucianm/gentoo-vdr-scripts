@@ -24,6 +24,7 @@ VDR_USERSHUTDOWN="${5}"
 
 : ${DEFAULT_RETRY_TIME:=10}
 
+
 queue_add_wait() {
 	: ${qindex:=1}
 	svdrpqueue[${qindex}]="sleep ${1}"
@@ -39,8 +40,13 @@ svdrp_add_queue() {
 
 svdrp_queue_handler() {
 	exec >/dev/null 2>/dev/null </dev/null
-	for ((i=1; i<=$qindex; i++)) do
-		${svdrpqueue[$i]}
+
+	for ((i=1; i < qindex ; i++))
+	do
+		# retry until success
+		while ! ${svdrpqueue[$i]}; do
+			sleep 1
+		done
 	done
 }
 
@@ -135,10 +141,15 @@ exit_cleanup()
 }
 
 THIS_SHUTDOWN_IS_FORCED="0"
-EXITCODE=0
+EXITCODE="-"
 SHUTDOWN_ABORT=0
 SHUTDOWN_CAN_FORCE=0
 MAX_TRY_AGAIN=0
+ENABLE_AUTO_RETRY=1
+
+disable_auto_retry() {
+	ENABLE_AUTO_RETRY=0
+}
 
 if is_user_shutdown; then
 	init_shutdown_force
@@ -148,9 +159,9 @@ for HOOK in $HOOKDIR/pre-shutdown-*.sh; do
 	TRY_AGAIN=0
 	[[ -f "${HOOK}" ]] && source "${HOOK}" $@
 
-	if [[ "${EXITCODE}" != "0" ]]; then
-		mesg_q "Shutdown aborted: ${ABORT_MESSAGE}" &
-		exit_cleanup 1
+	if [[ "${EXITCODE}" != "-" ]]; then
+		mesg_q "Shutdown aborted: ${ABORT_MESSAGE}"
+		exit_cleanup ${EXITCODE} 
 	fi
 
 	if [[ ${TRY_AGAIN} -gt 0 ]]; then
@@ -168,17 +179,17 @@ if [[ "${SHUTDOWN_ABORT}" == "1" ]]; then
 		mesg_q "You can force a shutdown with pressing power again"
 	fi
 
-	if [ ${MAX_TRY_AGAIN} -gt 0 ]; then
+	if [[ ${MAX_TRY_AGAIN} -gt 0 ]]; then
 		queue_add_wait 3s
 		mesg_q "Shutdown is retried soon"
-		retry_shutdown ${MAX_TRY_AGAIN}
+		[[ ${ENABLE_AUTO_RETRY} == 1 ] && retry_shutdown ${MAX_TRY_AGAIN}
 	fi
 
 	exit_cleanup 0
 fi
 
 if [[ "${THIS_SHUTDOWN_IS_FORCED}" == "1" && "${FORCE_COUNT}" -gt 0 ]]; then
-	mesg_q "Shutting down, shutdown forced by user." &
+	mesg_q "Shutting down, shutdown forced by user."
 fi
 
 # You have to edit sudo-permissions to grant vdr permission to execute
