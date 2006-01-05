@@ -7,7 +7,8 @@ list_wakeup_methods() {
 		methods="${methods} ${m/.sh/}"
 	done
 	einfo "    Available shutdown methods:${methods}"
-	einfo "    There may be some more methods available when activated via use flag."
+	einfo "    There are some useflags to enable more shutdown methods."
+	einfo "    You have to reemerge gentoo-vdr-scripts with the new use-flags set."
 }
 
 shutdown_disabled() {
