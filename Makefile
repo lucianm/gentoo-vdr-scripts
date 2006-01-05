@@ -23,6 +23,9 @@ install:
 	install -m 0644 -o root -g root usr/lib/vdr/shutdown/{shutdown,pre,periodic}*.sh $(DESTDIR)/usr/lib/vdr/shutdown/
 	install -m 0644 -o root -g root usr/lib/vdr/shutdown/wakeup-acpi.sh $(DESTDIR)/usr/lib/vdr/shutdown/
 
+	mkdir -p $(DESTDIR)/usr/lib/vdr/inc
+	install -m 0644 -o root -g root usr/lib/vdr/inc/*.sh $(DESTDIR)/usr/lib/vdr/inc/
+	
 	mkdir -p $(DESTDIR)/usr/lib/vdr/record
 	install -m 0644 -o root -g root usr/lib/vdr/record/*.sh $(DESTDIR)/usr/lib/vdr/record/
 

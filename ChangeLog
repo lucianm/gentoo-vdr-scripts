@@ -1,6 +1,17 @@
 # ChangeLog for gentoo-vdr-scripts
 
   05 Jan 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/rcscript/pre-start-50-shutdown.sh, Makefile,
+  etc/init.d/vdr, usr/lib/vdr/bin/vdrshutdown-gate.sh,
+  usr/lib/vdr/bin/vdrshutdown-periodic-thread.sh,
+  usr/lib/vdr/bin/vdrshutdown-really.sh,
+  +usr/lib/vdr/inc/shutdown-functions.sh,
+  -usr/lib/vdr/rcscript/functions-shutdown.sh
+  +usr/lib/vdr/inc/rc-functions.sh
+  --usr/lib/vdr/rcscript/functions.sh:
+  moved include-files
+
+  05 Jan 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/rcscript/pre-start-50-shutdown.sh:
   Make it clearer how to get more shutdown/wakeup-methods.
 

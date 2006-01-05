@@ -16,7 +16,7 @@ shutdown_disabled() {
 }
 
 addon_main() {
-	source /usr/lib/vdr/rcscript/functions-shutdown.sh
+	source /usr/lib/vdr/inc/shutdown-functions.sh
 	read_shutdown_config
 	[[ "${SHUTDOWN_ACTIVE}" == "no" ]] && return
 
