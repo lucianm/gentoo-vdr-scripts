@@ -1,5 +1,7 @@
 # ChangeLog for gentoo-vdr-scripts
 
+*gentoo-vdr-scripts-0.2.1 (06 Jan 2006)
+
   06 Jan 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/bin/vdrshutdown-gate.sh:
   show message on OSD when doing shutdown
