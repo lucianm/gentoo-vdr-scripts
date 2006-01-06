@@ -182,7 +182,7 @@ if [[ "${SHUTDOWN_ABORT}" == "1" ]]; then
 	if [[ ${MAX_TRY_AGAIN} -gt 0 ]]; then
 		queue_add_wait 3s
 		mesg_q "Shutdown is retried soon"
-		[[ ${ENABLE_AUTO_RETRY} == 1 ] && retry_shutdown ${MAX_TRY_AGAIN}
+		[[ ${ENABLE_AUTO_RETRY} == 1 ]] && retry_shutdown ${MAX_TRY_AGAIN}
 	fi
 
 	exit_cleanup 0
