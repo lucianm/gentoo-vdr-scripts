@@ -190,6 +190,8 @@ fi
 
 if [[ "${THIS_SHUTDOWN_IS_FORCED}" == "1" && "${FORCE_COUNT}" -gt 0 ]]; then
 	mesg_q "Shutting down, shutdown forced by user."
+else
+	mesg_q "Shutting down now"
 fi
 
 # You have to edit sudo-permissions to grant vdr permission to execute
