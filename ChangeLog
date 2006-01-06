@@ -1,5 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 
+  06 Jan 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/rcscript/pre-start-40-config-files.sh,
+  +usr/lib/vdr/inc/commands-functions.sh:
+  moved commands-file handling into seperate file
+
   05 Jan 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/rcscript/pre-start-50-shutdown.sh, Makefile,
   etc/init.d/vdr, usr/lib/vdr/bin/vdrshutdown-gate.sh,
