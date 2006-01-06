@@ -1,5 +1,5 @@
 
-test -z "${vdr_rcdir}" && vdr_rcdir=/usr/lib/vdr/rcscripts
+: ${vdr_rcdir:=/usr/lib/vdr/rcscript}
 : ${SCRIPT_DEBUG_LEVEL:=0}
 SCRIPT_API=2
 

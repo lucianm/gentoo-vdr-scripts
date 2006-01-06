@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 
   06 Jan 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/inc/commands-functions.sh, usr/lib/vdr/inc/rc-functions.sh:
+  some small fixes for changes before
+
+  06 Jan 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/rcscript/pre-start-40-config-files.sh,
   +usr/lib/vdr/inc/commands-functions.sh:
   moved commands-file handling into seperate file
