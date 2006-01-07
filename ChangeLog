@@ -1,5 +1,7 @@
 # ChangeLog for gentoo-vdr-scripts
 
+*gentoo-vdr-scripts-0.2.2 (07 Jan 2006)
+
   07 Jan 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/inc/commands-functions.sh,
   +usr/lib/vdr/inc/language-functions.sh:
