@@ -1,4 +1,8 @@
+source /usr/lib/vdr/inc/language-functions.sh
+
 merge_commands_conf() {
+	[[ -z ${VDR_LANGUAGE} ]] && read_vdr_language
+
 	local CONFIG="${CONFIG:-/etc/vdr}"
 	local sdir="${1}"
 	local destfile="${2}"
@@ -23,10 +27,16 @@ merge_commands_conf() {
 EOT
 	test -d "${sdir}" || return 1
 	SFILES=$(echo ${sdir}/*.conf)
+	local f
+	local inputf
 	for f in ${SFILES}; do
 		[[ -f "${f}" ]] || continue
-		echo "# source : ${f}" >> "${mergedfile}"
-		cat "${f}" >> "${mergedfile}"
+		inputf="${f}"
+
+		[[ -f "${f}.${VDR_LANGUAGE}" ]] && inputf="${f}.${VDR_LANGUAGE}"
+
+		echo "# source : ${inputf}" >> "${mergedfile}"
+		cat "${inputf}" >> "${mergedfile}"
 		echo >> "${mergedfile}"
 	done
 
