@@ -1,3 +1,4 @@
+# $Id$
 # Author:
 #   Matthias Schwarzott <zzam@gmx.de>
 #   Various other contributors from gentoo.de

@@ -1,3 +1,4 @@
+# $Id$
 source /usr/lib/vdr/inc/language-functions.sh
 
 merge_commands_conf() {

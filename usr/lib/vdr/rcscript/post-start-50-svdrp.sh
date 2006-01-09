@@ -1,3 +1,4 @@
+# $Id$
 wait_for_svdrp() {
 	SVDRP_PORT="${SVDRP_PORT:-2001}"
 	SVDRP_HOSTNAME="${SVDRP_HOSTNAME:-localhost}"

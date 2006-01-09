@@ -1,3 +1,4 @@
+# $Id$
 addon_main() {
 	if [[ "${FORCE_OLD_THREADS:-yes}" == "yes" ]]; then
 		# Test wheather force of old pthreads will work

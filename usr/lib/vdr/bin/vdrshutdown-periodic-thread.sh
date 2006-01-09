@@ -1,4 +1,5 @@
 #!/bin/bash
+# $Id$
 source /usr/lib/vdr/inc/shutdown-functions.sh
 
 source /usr/lib/vdr/rcscript/vdr-capabilities.sh

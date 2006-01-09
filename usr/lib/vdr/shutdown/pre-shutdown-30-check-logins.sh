@@ -1,3 +1,4 @@
+# $Id$
 check_logins() {
 	local NR=$(who | wc -l)
 	if [[ "${NR}" -gt "0" ]]; then

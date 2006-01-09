@@ -1,3 +1,4 @@
+# $Id$
 check_dvbdevice() {
 	[[ -e /dev/dvb/adapter0/frontend0 ]] && return 0
 	condition_msg="dvb device not found"

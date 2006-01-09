@@ -1,3 +1,4 @@
+# $Id$
 addon_main() {
 	for PLUGIN in ${PLUGINS}; do
 		init_plugin_params ${PLUGIN}

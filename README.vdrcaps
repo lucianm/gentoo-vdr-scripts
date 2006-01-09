@@ -1,3 +1,4 @@
+# $Id$
 subset of all possible settings in /usr/lib/vdr/rcscript/vdr-capabilities.sh
 
 CAP_SHUTDOWN_SVDRP		- vdr has svdrp command DOWN to trigger a suto-hutdown after inactivity

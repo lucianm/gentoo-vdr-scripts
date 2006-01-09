@@ -1,4 +1,5 @@
 #!/bin/bash
+# $Id$
 
 ##
 # based on vdrshutdown-acpi.pl

@@ -1,3 +1,4 @@
+# $Id$
 do_unload() {
 	local mod=${1}
 	modprobe -r ${mod}

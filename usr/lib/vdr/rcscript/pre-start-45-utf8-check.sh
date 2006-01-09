@@ -1,3 +1,4 @@
+# $Id$
 addon_main() {
 	[[ -n ${CAP_UTF8} ]] && return
 

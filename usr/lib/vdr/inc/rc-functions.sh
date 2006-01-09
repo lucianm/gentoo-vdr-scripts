@@ -1,3 +1,4 @@
+# $Id$
 
 : ${vdr_rcdir:=/usr/lib/vdr/rcscript}
 : ${SCRIPT_DEBUG_LEVEL:=0}

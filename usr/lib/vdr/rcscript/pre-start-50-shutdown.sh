@@ -1,3 +1,4 @@
+# $Id$
 
 list_wakeup_methods() {
 	local methods

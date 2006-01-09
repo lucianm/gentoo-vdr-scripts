@@ -1,3 +1,4 @@
+# $Id$
 addon_main() {
 	add_param "--watchdog=${INTERNAL_WATCHDOG:-60}"
 	[[ -n "${AC3_AUDIO}" ]] && add_param "--audio=${AC3_AUDIO}"

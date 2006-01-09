@@ -1,3 +1,4 @@
+# $Id$
 read_vdr_language() {
 	local OSDLANG
 	local LANG_TAB

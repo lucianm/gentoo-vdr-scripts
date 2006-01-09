@@ -1,3 +1,4 @@
+# $Id$
 addon_main() {
 	if [[ "${START_VDR_AS_ROOT}" == "YES" ]]; then
 		if [[ -n ${CAP_CHUID} ]]; then

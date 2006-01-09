@@ -1,3 +1,4 @@
+# $Id$
 addon_main() {
 	if [[ "${waitconditions}" ]]; then
 		ebegin "  Prerequisits (devices nodes etc.)" 

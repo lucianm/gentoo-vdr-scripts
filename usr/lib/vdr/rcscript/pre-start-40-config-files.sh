@@ -1,3 +1,4 @@
+# $Id$
 source /usr/lib/vdr/inc/commands-functions.sh
 
 addon_main() {

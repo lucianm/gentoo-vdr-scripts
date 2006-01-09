@@ -1,3 +1,4 @@
+# $Id$
 shutdown_script_dir=/usr/lib/vdr/shutdown
 shutdown_data_dir=/var/vdr/shutdown-data
 

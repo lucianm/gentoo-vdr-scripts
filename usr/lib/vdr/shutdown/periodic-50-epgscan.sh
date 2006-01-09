@@ -1,3 +1,4 @@
+# $Id$
 source /etc/conf.d/vdr.periodic.epgscan
 
 : ${PERIODIC_EPGSCAN:=no}
