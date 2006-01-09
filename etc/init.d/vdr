@@ -22,10 +22,7 @@ start() {
 
 	add_daemonctrl_param --start --chdir ~vdr --exec ${VDR_BIN}
 
-	if [[ "${START_VDR_AS_ROOT}" != "YES" ]]; then
-		add_daemonctrl_param --chuid vdr
-	fi
-
+	
 	load_addons_prefixed pre-start || return 1
 
 	ebegin "Starting vdr-${vdrversion}"

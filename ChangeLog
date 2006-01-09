@@ -1,5 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 
+  09 Jan 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +usr/lib/vdr/rcscript/pre-start-10-chuid.sh, TODO, etc/init.d/vdr:
+  enable use of chuid integrated into vdr-1.3.38
+
   09 Jan 2006; Matthias Schwarzott <zzam@gentoo.org> README.shutdown-jobs,
   +README.vdrcaps, TODO:
   documentation updates
