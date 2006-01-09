@@ -1,5 +1,7 @@
 Short description of concept of shutdown-thread
 
+This is implemented, at least from side of the scripts.
+Missing are handlers for epg-update from outside and autotimer-kicking.
 
 * Thread before shutdown - With possibility to plug in some addons
   This thread will be started when

@@ -1,0 +1,9 @@
+subset of all possible settings in /usr/lib/vdr/rcscript/vdr-capabilities.sh
+
+CAP_SHUTDOWN_SVDRP		- vdr has svdrp command DOWN to trigger a suto-hutdown after inactivity
+CAP_SHUTDOWN_AUTO_RETRY		- vdr itself automatically retries shutdown after 10min
+CAP_IRCTRL_RUNTIME_PARAM	- parametere --lirc and --rcu present
+CAP_VFAT_RUNTIME_PARAM		- parameter --vfat present
+CAP_UTF8			- vdr can cope with UTF8 itself
+CAP_CHUID			- vdr can change UID itself (starting from vdr-1.3.38)
+
