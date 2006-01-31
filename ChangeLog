@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  31 Jan 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/bin/vdrshutdown-gate.sh:
+  set default shutdown retry time to 5min
+
   21 Jan 2006; Matthias Schwarzott <zzam@gentoo.org> etc/conf.d/vdr:
   corrected wrong comment in config-file
 
