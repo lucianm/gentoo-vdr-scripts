@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  12 Feb 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/rcscript/pre-start-40-config-files.sh:
+  replaced /usr/bin/sed by /bin/sed
+
   31 Jan 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/rcscript/pre-start-10-chuid.sh:
   corrected error in handling of chuid-option for newer vdr-versions
