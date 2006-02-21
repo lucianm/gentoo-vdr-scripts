@@ -6,6 +6,8 @@
 SVDRPCMD=/usr/bin/svdrpsend.pl
 HOOKDIR=/usr/lib/vdr/record
 
+source /usr/lib/vdr/inc/functions.sh
+
 mesg() {
 	${SVDRPCMD} MESG "\"$@\""
 }

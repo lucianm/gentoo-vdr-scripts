@@ -4,7 +4,8 @@
 
 opts="${opts} watchdogrestart"
 
-source /usr/lib/vdr/inc/rc-functions.sh
+source /usr/lib/vdr/inc/functions.sh
+include rc-functions
 
 depend() {
 	use lircd dvbsplash

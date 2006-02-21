@@ -1,6 +1,14 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  21 Feb 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/rcscript/pre-start-50-shutdown.sh, etc/init.d/vdr,
+  usr/lib/vdr/bin/vdrrecord-gate.sh, usr/lib/vdr/bin/vdrshutdown-gate.sh,
+  usr/lib/vdr/bin/vdrshutdown-periodic-thread.sh,
+  usr/lib/vdr/bin/vdrshutdown-really.sh,
+  usr/lib/vdr/inc/commands-functions.sh, +usr/lib/vdr/inc/functions.sh:
+  created loader for shell include files
+
   12 Feb 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/rcscript/pre-start-40-config-files.sh:
   replaced /usr/bin/sed by /bin/sed

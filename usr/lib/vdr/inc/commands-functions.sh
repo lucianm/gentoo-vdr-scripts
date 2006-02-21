@@ -1,5 +1,5 @@
 # $Id$
-source /usr/lib/vdr/inc/language-functions.sh
+include language-functions
 
 merge_commands_conf() {
 	[[ -z ${VDR_LANGUAGE} ]] && read_vdr_language

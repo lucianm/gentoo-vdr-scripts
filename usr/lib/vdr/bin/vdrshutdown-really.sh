@@ -4,7 +4,8 @@
 #   Matthias Schwarzott <zzam@gmx.de>
 #
 
-source /usr/lib/vdr/inc/shutdown-functions.sh
+source /usr/lib/vdr/inc/functions.sh
+include shutdown-functions
 
 if [[ "${UID}" != "0" ]]; then
 	echo "This program should be run as root"
