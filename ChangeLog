@@ -1,6 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  21 Feb 2006; Matthias Schwarzott <zzam@gentoo.org> etc/conf.d/vdr:
+  added correction of comments in conf-file already added to 0.2.2 ebuild
+
   21 Feb 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/rcscript/pre-start-50-shutdown.sh, etc/init.d/vdr,
   usr/lib/vdr/bin/vdrrecord-gate.sh, usr/lib/vdr/bin/vdrshutdown-gate.sh,
