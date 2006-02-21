@@ -1,6 +1,14 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  21 Feb 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/rcscript/post-stop-05-plugins.sh,
+  usr/lib/vdr/rcscript/post-start-05-plugins.sh,
+  usr/lib/vdr/rcscript/pre-stop-95-plugins.sh,
+  usr/lib/vdr/rcscript/pre-start-95-plugins.sh,
+  +usr/lib/vdr/inc/plugin-functions.sh, usr/lib/vdr/inc/rc-functions.sh:
+  copied some plugin-load-functions to its own file
+
   21 Feb 2006; Matthias Schwarzott <zzam@gentoo.org> etc/conf.d/vdr:
   added correction of comments in conf-file already added to 0.2.2 ebuild
 

@@ -59,20 +59,6 @@ add_param()
 	done
 }
 
-init_plugin_params()
-{
-	# init array for parameters
-	plugin_opt_idx=0
-	unset vdrplugin_opts
-	declare -a vdrplugin_opts
-}
-
-add_plugin_param()
-{
-	vdrplugin_opts[plugin_opt_idx]="$1"
-	plugin_opt_idx=$[plugin_opt_idx+1]
-}
-
 #
 # void load_addons_prefixed(char *prefix)
 #
@@ -105,22 +91,6 @@ load_addon()
 	# execute requested function
 	eval ${call_func}
 	return $abort
-}
-
-load_plugin()
-{
-	local PLUGIN="${1}"
-	local call_func="${2}"
-	if [[ ! -f "${plugin_dir}/libvdr-${PLUGIN}.so.${vdrversion}" ]]; then
-		return 1
-	fi
-
-	unset _EXTRAOPTS
-	if [[ -f /etc/conf.d/vdr.${PLUGIN} ]]; then
-		source /etc/conf.d/vdr.${PLUGIN}
-	fi
-
-	load_addon plugin-${PLUGIN} ${call_func}
 }
 
 einfo_level1() {
