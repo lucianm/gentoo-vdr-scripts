@@ -35,10 +35,8 @@ load_plugin()
 init_plugin_params()
 {
 	# init array for parameters
-	plugin_opt_idx=0
-	unset vdrplugin_opts
-	declare -a vdrplugin_opts
-	add_plugin_param "--plugin=${PLUGIN}"
+	plugin_opt_idx=1
+	vdrplugin_opts=("--plugin=${1}")
 }
 
 add_plugin_param()
