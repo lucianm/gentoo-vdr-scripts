@@ -25,8 +25,6 @@ error_mesg() {
 	mesg "Error: $@"
 }
 
-read_shutdown_config
-
 SHUTDOWN_EXITCODE=0
 
 set_reboot_needed() {

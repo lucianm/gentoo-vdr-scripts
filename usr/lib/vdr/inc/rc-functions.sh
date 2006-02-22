@@ -13,7 +13,7 @@ test -x /bin/pidof && pidof=/bin/pidof
 source /etc/conf.d/vdr.watchdogd
 ENABLE_EXTERNAL_WATCHDOG=${ENABLE_EXTERNAL_WATCHDOG:-no}
 
-[[ -f "${vdr_rcdir}"/vdr-capabilities.sh ]] && source "${vdr_rcdir}"/vdr-capabilities.sh
+read_caps
 
 test_vdr_process()
 {

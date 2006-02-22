@@ -1,4 +1,4 @@
-# $Id: rc-functions.sh 133 2006-01-09 20:54:04Z zzam $
+# $Id$
 
 include()
 {
@@ -9,5 +9,11 @@ include()
 
 	source /usr/lib/vdr/inc/${name}.sh
 	eval ${vname}=1
+}
+
+read_caps()
+{
+	local capfile=/usr/lib/vdr/rcscript/vdr-capabilities.sh
+	[[ -f "${capfile}" ]] && source ${capfile}
 }
 

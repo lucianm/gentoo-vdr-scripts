@@ -18,7 +18,6 @@ shutdown_disabled() {
 
 addon_main() {
 	include shutdown-functions
-	read_shutdown_config
 	[[ "${SHUTDOWN_ACTIVE}" == "no" ]] && return
 
 	if [[ -n "${USER_SHUTDOWN_SCRIPT}" ]]; then

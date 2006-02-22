@@ -15,9 +15,7 @@ HOOKDIR=/usr/lib/vdr/shutdown
 source /usr/lib/vdr/inc/functions.sh
 include shutdown-functions
 
-read_shutdown_config
-
-source /usr/lib/vdr/rcscript/vdr-capabilities.sh
+read_caps
 
 VDR_TIMER_NEXT="${1}"
 VDR_TIMER_DELTA="${2}"

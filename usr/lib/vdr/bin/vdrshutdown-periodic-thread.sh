@@ -3,8 +3,7 @@
 
 source /usr/lib/vdr/inc/functions.sh
 include shutdown-functions
-
-source /usr/lib/vdr/rcscript/vdr-capabilities.sh
+read_caps
 
 THREAD_DIR=/usr/lib/vdr/shutdown
 PERIODIC_THREAD_ENDTIME=${shutdown_data_dir}/periodic_thread_last_ended

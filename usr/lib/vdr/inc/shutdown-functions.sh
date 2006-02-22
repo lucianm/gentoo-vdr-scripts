@@ -8,3 +8,6 @@ read_shutdown_config() {
 	WAKEUP_METHOD="${WAKEUP_METHOD:-acpi}"
 	SHUTDOWN_FORCE_DETECT_INTERVALL="${SHUTDOWN_FORCE_DETECT_INTERVALL:-60}"
 }
+
+read_shutdown_config
+
