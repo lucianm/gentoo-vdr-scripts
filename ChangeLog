@@ -2,6 +2,10 @@
 # $Id$
 
   28 Feb 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/inc/language-functions.sh:
+  only read setup.conf if existing
+
+  28 Feb 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/rcscript/pre-start-45-nptl-check.sh:
   changed debug-message for NPTL-off to be less confusing
 
