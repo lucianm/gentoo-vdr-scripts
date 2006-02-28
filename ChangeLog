@@ -2,6 +2,10 @@
 # $Id$
 
   28 Feb 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/inc/rc-functions.sh:
+  do not print message about not defined function in addon
+
+  28 Feb 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/inc/language-functions.sh:
   only read setup.conf if existing
 

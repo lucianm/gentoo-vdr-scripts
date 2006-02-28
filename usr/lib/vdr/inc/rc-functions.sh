@@ -79,7 +79,7 @@ load_addon()
 {
 	local addon=${1}
 	local call_func=${2:-addon_main}
-	eval "${call_func}() { einfo_level2 called undefined ${call_func} for ${addon}; }"
+	eval "${call_func}() { :; }"
 
 	# source addon
 	if [[ -f "${addon}" ]]; then
