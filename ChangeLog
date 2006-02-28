@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  28 Feb 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/rcscript/pre-start-45-nptl-check.sh:
+  changed debug-message for NPTL-off to be less confusing
+
   22 Feb 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/rcscript/pre-start-50-shutdown.sh,
   usr/lib/vdr/bin/vdrshutdown-gate.sh,
