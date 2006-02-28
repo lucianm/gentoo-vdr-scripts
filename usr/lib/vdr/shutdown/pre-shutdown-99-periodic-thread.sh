@@ -17,13 +17,13 @@ check_periodic_thread()
 		shutdown_abort_can_force "periodic jobs are waiting"
 
 		# kill it if forced
-		if [[ ${THIS_SHUTDOWN_IS_FORCED} == 1 ]]; then
+		if is_forced_shutdown; then
 			killall vdrshutdown-periodic-thread.sh
 		fi
 	fi
 
 	# do not continue if shutdown is forced
-	[[ ${THIS_SHUTDOWN_IS_FORCED} == 1 ]] && return
+	is_forced_shutdown && return
 
 	#is_auto_shutdown || return
 
@@ -39,7 +39,7 @@ check_periodic_thread()
 	[[ ${DELTA} -lt ${MINIMAL_THREAD_CALL_DELTA} ]] && return
 
 	# starting thread aborts shutdown
-	shutdown_abort "periodic jobs are waiting"
+	shutdown_abort_can_force "periodic jobs are waiting"
 	disable_auto_retry
 
 	# can take longer time

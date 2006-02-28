@@ -90,6 +90,10 @@ is_user_shutdown() {
 	test "${VDR_USERSHUTDOWN}" == "1"
 }
 
+is_forced_shutdown() {
+	test "${THIS_SHUTDOWN_IS_FORCED}" == "1"
+}
+
 shutdown_common() {
 	ABORT_MESSAGE="${1}"
 	SHUTDOWN_ABORT="1"
@@ -176,12 +180,12 @@ if [[ "${SHUTDOWN_ABORT}" == "1" ]]; then
 	mesg_q "Shutdown stopped, because ${ABORT_MESSAGE}"
 	if [[ "${SHUTDOWN_CAN_FORCE}" == "1" ]]; then
 		write_force_file
-		queue_add_wait 3s
+		queue_add_wait 1s
 		mesg_q "You can force a shutdown with pressing power again"
 	fi
 
 	if [[ ${MAX_TRY_AGAIN} -gt 0 ]]; then
-		queue_add_wait 3s
+		queue_add_wait 1s
 		mesg_q "Shutdown is retried soon"
 		[[ ${ENABLE_AUTO_RETRY} == 1 ]] && retry_shutdown ${MAX_TRY_AGAIN}
 	fi

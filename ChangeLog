@@ -2,6 +2,11 @@
 # $Id$
 
   28 Feb 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/shutdown/pre-shutdown-99-periodic-thread.sh,
+  usr/lib/vdr/bin/vdrshutdown-gate.sh:
+  cosmetics on shutdown-code
+
+  28 Feb 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/inc/rc-functions.sh:
   do not print message about not defined function in addon
 
