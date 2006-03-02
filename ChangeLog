@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  02 Mar 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/rcscript/pre-start-30-parameter.sh, TODO, etc/conf.d/vdr:
+  Set default log-level to 1
+
   28 Feb 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/shutdown/pre-shutdown-99-periodic-thread.sh,
   usr/lib/vdr/bin/vdrshutdown-gate.sh:

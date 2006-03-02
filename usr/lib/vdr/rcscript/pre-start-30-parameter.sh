@@ -6,7 +6,7 @@ addon_main() {
 	[[ -n "${CONFIG}" ]] && add_param "--config=${CONFIG}"
 	[[ -n "${DEVICE}" ]] && for i in ${DEVICE}; do add_param "--device=${i}"; done
 	[[ -n "${EPGFILE}" ]] && add_param "--epgfile=${EPGFILE}"
-	[[ -n "${LOG}" ]] && add_param "--log=${LOG}"
+	add_param "--log=${LOG:-1}"
 	[[ -z "${VIDEO}" ]] && VIDEO="/var/vdr/video"
 	if [[ ! -d "${VIDEO}" ]]; then
 		mkdir -p "${VIDEO}"

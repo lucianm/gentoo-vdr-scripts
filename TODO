@@ -27,14 +27,10 @@ $Id$
   was compiled against with those installed
   store files with md5sums under /usr/lib/vdr/checksums
 
-* default log-level 0
-
 * log writer
   i.e. failed plugins
   log reader in commands
   svdrp-mesg "log-available"
-
-* remote-plugin: default: autodetect
 
 * documentation
 
