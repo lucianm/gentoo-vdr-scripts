@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  04 Mar 2006; Matthias Schwarzott <zzam@gentoo.org> Makefile,
+  +etc/vdr/commands/commands.custom.conf.de:
+  added example for translated commands-file
+
   04 Mar 2006; Matthias Schwarzott <zzam@gentoo.org> +etc/conf.d/vdr.cd-dvd:
   Added config-file for cd&dvd devices used by some plugins
 

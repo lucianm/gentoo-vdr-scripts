@@ -37,7 +37,7 @@ install:
 	chown vdr:vdr -R $(DESTDIR)/var/vdr
 
 	mkdir -p $(DESTDIR)/etc/vdr/commands
-	install -m 0644 -o vdr -g vdr etc/vdr/commands/commands.*.conf $(DESTDIR)/etc/vdr/commands
+	install -m 0644 -o vdr -g vdr etc/vdr/commands/commands.*.conf* $(DESTDIR)/etc/vdr/commands
 	mkdir -p $(DESTDIR)/etc/vdr/reccmds
 	install -m 0644 -o vdr -g vdr etc/vdr/reccmds/reccmds.*.conf $(DESTDIR)/etc/vdr/reccmds
 	chown vdr:vdr -R $(DESTDIR)/etc/vdr
