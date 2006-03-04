@@ -1,0 +1,28 @@
+# $Id$
+# /etc/conf.d/vdr.cd-dvd:
+
+# Settings for plugins using cd/dvd-drives
+
+#
+# Which device should be used for reading CD
+#   allowed values: names of devices
+#   default: /dev/cdrom
+#VDR_CDREADER="/dev/cdrom"
+
+#
+# Which device should be used for writing CDs
+#   allowed values: names of devices
+#   default: /dev/cdrw
+#VDR_CDWRITER="/dev/cdrw"
+
+#
+# Which device should be used for reading DVDs
+#   allowed values: names of devices
+#   default: /dev/dvd
+#VDR_DVDREADER="/dev/dvd"
+
+#
+# Which device should be used for writing DVDs
+#   allowed values: names of devices
+#   default: /dev/dvd
+#VDR_DVDWRITER="/dev/dvd"
