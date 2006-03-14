@@ -64,11 +64,11 @@ add_param()
 #
 load_addons_prefixed()
 {
-	local prefix=${1}
+	addon_prefix=${1}
 	local call_func=${2:-addon_main}
 	local basename=""
 	abort=0
-	for addon in ${vdr_rcdir}/${prefix}-*.sh; do
+	for addon in ${vdr_rcdir}/${addon_prefix}-*.sh; do
 		load_addon ${addon} ${call_func}
 		[[ "$abort" != "0" ]] && break
 	done

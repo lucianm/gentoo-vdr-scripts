@@ -1,6 +1,29 @@
 # $Id$
 
 
+init_plugin_loader() {
+	PLUGIN_CHECK_MD5=no
+
+	if ! which md5sum >/dev/null 2>&1; then
+		return
+	fi
+
+	if [[ ! -d /var/vdr/tmp ]]; then
+		mkdir /var/vdr/tmp
+		chown vdr:vdr /var/vdr/tmp
+	fi
+
+	vdr_checksum=/var/vdr/tmp/header-md5-vdr
+
+	rm ${vdr_checksum} 2>/dev/null
+	(
+		cd /usr/include/vdr
+		md5sum *.h libsi/*.h|sort --key=2
+	) > ${vdr_checksum}
+
+	PLUGIN_CHECK_MD5=yes
+}
+
 check_plugin() {
 	local PLUGIN="${1}"
 	local plugin_file="${plugin_dir}/libvdr-${PLUGIN}.so.${vdrversion}"
@@ -8,6 +31,14 @@ check_plugin() {
 	if [[ ! -f "${plugin_file}" ]]; then
 		skip_plugin "${PLUGIN}" "plugin not found"
 		return
+	fi
+
+	local plugin_checksum_file=/usr/lib/vdr/checksums/header-md5-vdr-${PLUGIN}
+	if [[ "${PLUGIN_CHECK_MD5}" == "yes" && -e ${plugin_checksum_file} ]]; then
+		if ! diff ${vdr_checksum} ${plugin_checksum_file} >/dev/null; then
+			skip_plugin "${PLUGIN}" "plugin compiled against wrong vdr-patchlevel"
+			return
+		fi
 	fi
 
 	#if ldd ${plugin_file} 2>/dev/null | grep -q "not found"; then
@@ -48,7 +79,9 @@ add_plugin_param()
 skip_plugin() {
 	SKIP_PLUGIN=1
 	if [[ -n "${1}" ]]; then
-		einfo "Skipped loading Plugin ${1}: ${2}"
+		[[ "${addon_prefix}" == "pre-start" ]] && einfo "Skipped loading Plugin ${1}: ${2}"
 	fi
 }
+
+init_plugin_loader
 

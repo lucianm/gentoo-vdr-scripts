@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  14 Mar 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/inc/plugin-functions.sh, usr/lib/vdr/inc/rc-functions.sh:
+  added check for mismatching patchlevel (=wrong header files) of plugins
+
 *gentoo-vdr-scripts-0.2.4 (05 Mar 2006)
 
   04 Mar 2006; Matthias Schwarzott <zzam@gentoo.org> Makefile,
