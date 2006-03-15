@@ -13,13 +13,17 @@ init_plugin_loader() {
 		chown vdr:vdr /var/vdr/tmp
 	fi
 
-	vdr_checksum=/var/vdr/tmp/header-md5-vdr
+	vdr_checksum=/usr/lib/vdr/checksums/header-md5-vdr
 
-	rm ${vdr_checksum} 2>/dev/null
-	(
-		cd /usr/include/vdr
-		md5sum *.h libsi/*.h|sort --key=2
-	) > ${vdr_checksum}
+	if [[ ! -f ${vdr_checksum} ]]; then
+		vdr_checksum=/var/vdr/tmp/header-md5-vdr
+
+		rm ${vdr_checksum} 2>/dev/null
+		(
+			cd /usr/include/vdr
+			md5sum *.h libsi/*.h|LC_ALL=C sort --key=2
+		) > ${vdr_checksum}
+	fi
 
 	PLUGIN_CHECK_MD5=yes
 }

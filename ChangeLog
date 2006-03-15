@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  15 Mar 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/inc/plugin-functions.sh:
+  use consistent sort order for checksums - use existing vdr checksum if possible
+
   14 Mar 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/inc/plugin-functions.sh, usr/lib/vdr/inc/rc-functions.sh:
   added check for mismatching patchlevel (=wrong header files) of plugins
