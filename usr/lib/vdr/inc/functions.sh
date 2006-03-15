@@ -17,3 +17,5 @@ read_caps()
 	[[ -f "${capfile}" ]] && source ${capfile}
 }
 
+include message-functions
+

@@ -179,5 +179,5 @@ start_watchdog() {
 
 error_mesg() {
 	logger "vdr-scripts: Error: $@"
-	ewarn "Error: $@"
+	vdr_eerror "$@"
 }

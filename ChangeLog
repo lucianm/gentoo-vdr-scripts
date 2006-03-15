@@ -1,6 +1,15 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  15 Mar 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/rcscript/pre-start-50-shutdown.sh,
+  +usr/lib/vdr/rcscript/post-start-92-messages.sh,
+  +etc/vdr/commands/commands.system.conf,
+  +etc/vdr/commands/commands.system.conf.de, usr/lib/vdr/inc/functions.sh,
+  +usr/lib/vdr/inc/message-functions.sh,
+  usr/lib/vdr/inc/plugin-functions.sh, usr/lib/vdr/inc/rc-functions.sh:
+  First version of log-management
+
   15 Mar 2006; Matthias Schwarzott <zzam@gentoo.org> Makefile, README:
   added packaging make-target dist
 

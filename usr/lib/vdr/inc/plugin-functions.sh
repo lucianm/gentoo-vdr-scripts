@@ -40,7 +40,7 @@ check_plugin() {
 	local plugin_checksum_file=/usr/lib/vdr/checksums/header-md5-vdr-${PLUGIN}
 	if [[ "${PLUGIN_CHECK_MD5}" == "yes" && -e ${plugin_checksum_file} ]]; then
 		if ! diff ${vdr_checksum} ${plugin_checksum_file} >/dev/null; then
-			skip_plugin "${PLUGIN}" "plugin compiled against wrong vdr-patchlevel"
+			skip_plugin "${PLUGIN}" "wrong vdr-patchlevel"
 			return
 		fi
 	fi
@@ -82,8 +82,13 @@ add_plugin_param()
 
 skip_plugin() {
 	SKIP_PLUGIN=1
-	if [[ -n "${1}" ]]; then
-		[[ "${addon_prefix}" == "pre-start" ]] && eerror "Skipped loading Plugin ${1}: ${2}"
+	if [[ -n "${1}" && "${addon_prefix}" == "pre-start" ]]; then
+
+		# einmal Kopfzeile anzeigen
+		[[ ${SKIP_PLUGIN_HEADER_PRINTED} != 1 ]] && vdr_eerror "Unable to load these plugins:"
+		SKIP_PLUGIN_HEADER_PRINTED=1
+		
+		vdr_eerror "  ${1}: ${2}"
 	fi
 }
 
