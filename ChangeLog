@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  15 Mar 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
+  usr/lib/vdr/inc/plugin-functions.sh:
+  set to higher warn level in skip_plugin, on suggestion by M.Guenther
+
   15 Mar 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/inc/plugin-functions.sh:
   use consistent sort order for checksums - use existing vdr checksum if possible

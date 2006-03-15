@@ -83,7 +83,7 @@ add_plugin_param()
 skip_plugin() {
 	SKIP_PLUGIN=1
 	if [[ -n "${1}" ]]; then
-		[[ "${addon_prefix}" == "pre-start" ]] && einfo "Skipped loading Plugin ${1}: ${2}"
+		[[ "${addon_prefix}" == "pre-start" ]] && eerror "Skipped loading Plugin ${1}: ${2}"
 	fi
 }
 
