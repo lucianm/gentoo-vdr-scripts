@@ -3,6 +3,18 @@
 all:
 	@echo nothing to compile
 
+VERSION = $(shell grep '^Version' README | awk '{ print $$2 }')
+TMPDIR = /tmp
+ARCHIVE = gentoo-vdr-scripts-$(VERSION)
+PACKAGE = $(ARCHIVE)
+
+dist:
+	@-rm -rf $(TMPDIR)/$(ARCHIVE)
+	@svn export . $(TMPDIR)/$(ARCHIVE)
+	@tar cjf $(PACKAGE).tar.bz2 -C $(TMPDIR) $(ARCHIVE)
+	@-rm -rf $(TMPDIR)/$(ARCHIVE)
+	@echo Distribution package created as $(PACKAGE).tar.bz2
+						
 install:
 	mkdir -p $(DESTDIR)/etc/conf.d
 	mkdir -p $(DESTDIR)/etc/init.d
