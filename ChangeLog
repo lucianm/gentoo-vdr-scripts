@@ -1,6 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  18 Mar 2006; Matthias Schwarzott <zzam@gentoo.org> +README.shutdown:
+  added description of shutdown-addon-modules
+
   15 Mar 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/rcscript/pre-start-50-shutdown.sh,
   +usr/lib/vdr/rcscript/post-start-92-messages.sh,

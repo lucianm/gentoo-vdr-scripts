@@ -1,0 +1,103 @@
+API description for shutdown
+
+
+Almost all code related to shutdown is stored under
+/usr/lib/vdr/shutdown/
+
+=================
+= wakeup-modules:
+=================
+
+
+Wakeup-modules are named wakeup-${NAME}.sh
+
+The used wakeup-module is selected by WAKEUP_METHOD in /etc/conf.d/vdr.shutdown.
+Here acpi is used by default if nothing has been set.
+
+The module is sourced by the bash. The wakeup-module is executed as user root.
+
+
+The Main part of the wakeup-module:
+
+The main part (executed when sourcing) should only check weather a shutdown with this module is possible.
+i.e. check for existence of used programms ...
+
+Usable functions:
+
+void error_mesg(string message)
+	Sets an error message
+
+
+Output variables:
+	SHUTDOWN_EXITCODE - When set to nonzero this means shutdown/setting wakeup time is not possible
+
+
+
+Example:
+
+if [[ ! -x needed_program ]]; then
+	error_mesg "no acpi-driver installed"
+	SHUTDOWN_EXITCODE=1
+fi
+
+
+The function set_wakeup:
+
+
+set_wakeup()
+{
+	# add code here
+}
+
+Usable functions:
+
+void error_mesg(string message)
+	Sets an error message
+
+void set_reboot_needed(void)
+	Call when you must to reboot for setting the time.
+
+Input Variables:
+	VDR_WAKEUP_TIME - Time to wakeup in Unix-Format (Seconds since 1970-01-01 UTC)
+
+Output Variables:
+	SHUTDOWN_EXITCODE - For signaling that wakeup-time could not be set
+
+
+=====================
+= pre-shutdown-hooks:
+=====================
+
+It is possible to insert code in the shutdown-procedure.
+Most time this will be used to check for conditions which should
+prevent a shutdown.
+
+Usable functions:
+
+bool is_auto_shutdown(void)
+	Returns true if this shutdown is triggered by minuserinactivity or after a timer-recording
+
+bool is_user_shutdown(void)
+	Returns true if this shutdown is triggered by the user pressing on power.
+
+void shutdown_abort(string message)
+	Forces shutdown to abort and sets a message why it must be aborted.
+
+void shutdown_abort_can_force(string message)
+	Same function as shutdown_abort. Shutdown is aborted.
+	But if user presses the power-button again inside a minute (configurable) then shutdown
+	is forced meaning this condition will not stop shutdown then.
+
+bool is_forced_shutdown(void)
+	Returns true if this shutdown has been forced in the sense of shutdown_abort_can_force.
+
+
+void disable_auto_retry(void)
+	Disables the auto-retry of a failed shutdown. Most times only for internal usage.
+
+
+Ouput Variables:
+	TRY_AGAIN - Sets the time in minutes to wait before shutdown is retried.
+	EXITCODE - Used for special abort cases
+
+
