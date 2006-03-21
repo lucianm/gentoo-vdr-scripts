@@ -115,3 +115,11 @@
 #   allowed values: number of seconds
 #   default: 60 seconds
 #SHUTDOWN_FORCE_DETECT_INTERVALL="60"
+
+#
+# When shutdown is aborted the default-time to retry
+# the shutdown
+#   allowed values: number of minutes
+#   default: 10 minutes
+#SHUTDOWN_DEFAULT_RETRY_TIME="10"
+

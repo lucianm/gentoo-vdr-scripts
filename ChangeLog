@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  21 Mar 2006; Matthias Schwarzott <zzam@gentoo.org>
+  etc/conf.d/vdr.shutdown, usr/lib/vdr/bin/vdrshutdown-gate.sh:
+  made shutdown retry time configurable
+
   18 Mar 2006; Matthias Schwarzott <zzam@gentoo.org> +README.shutdown:
   added description of shutdown-addon-modules
 

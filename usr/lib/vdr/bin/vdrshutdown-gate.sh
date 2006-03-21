@@ -23,7 +23,7 @@ VDR_TIMER_CHANNEL="${3}"
 VDR_TIMER_FILENAME="${4}"
 VDR_USERSHUTDOWN="${5}"
 
-: ${DEFAULT_RETRY_TIME:=5}
+: ${SHUTDOWN_DEFAULT_RETRY_TIME:=10}
 
 
 queue_add_wait() {
@@ -97,7 +97,7 @@ is_forced_shutdown() {
 shutdown_common() {
 	ABORT_MESSAGE="${1}"
 	SHUTDOWN_ABORT="1"
-	TRY_AGAIN="${DEFAULT_RETRY_TIME}"
+	TRY_AGAIN="${SHUTDOWN_DEFAULT_RETRY_TIME}"
 }
 
 shutdown_abort() {
