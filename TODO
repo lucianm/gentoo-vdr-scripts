@@ -16,22 +16,11 @@ $Id$
 * writing an API-document for all addon-scripts
   + plugin-rc-addons (run under root normally)
   + normal addons (root)
-  + shutdown-checks (vdr)
-  + wakeup-methods (root)
   + wait-functions (-)
 
 * rewrite shutdown-part
 
-* check for compatibility of vdr and plugins
-  this should work by compariang the headers the plugin
-  was compiled against with those installed
-  store files with md5sums under /usr/lib/vdr/checksums
-
-* log writer
-  i.e. failed plugins
-  log reader in commands
-  svdrp-mesg "log-available"
-
 * documentation
 
+* log more errors to special log-file
 
