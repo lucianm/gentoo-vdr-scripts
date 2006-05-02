@@ -30,7 +30,7 @@ init_plugin_loader() {
 
 check_plugin() {
 	local PLUGIN="${1}"
-	local plugin_file="${plugin_dir}/libvdr-${PLUGIN}.so.${vdrversion}"
+	local plugin_file="${plugin_dir}/libvdr-${PLUGIN}.so.${APIVERSION}"
 
 	if [[ ! -f "${plugin_file}" ]]; then
 		skip_plugin "${PLUGIN}" "plugin not found"

@@ -22,7 +22,9 @@ test_vdr_process()
 
 getvdrversion()
 {
-	vdrversion=$(awk '/VDRVERSION/ { gsub("\"","",$3); print $3 }' /usr/include/vdr/config.h)
+	VDRVERSION=$(awk -F'"' '/define VDRVERSION/ {print $2}' /usr/include/vdr/config.h)
+	APIVERSION=$(awk -F'"' '/define APIVERSION/ {print $2}' /usr/include/vdr/config.h)
+	[[ -z ${APIVERSION} ]] && APIVERSION="${VDRVERSION}"
 }
 
 init_daemonctrl_params()

@@ -26,7 +26,7 @@ start() {
 	
 	load_addons_prefixed pre-start || return 1
 
-	ebegin "Starting vdr-${vdrversion}"
+	ebegin "Starting vdr-${VDRVERSION}"
 
 	#
 	# finally start vdr
@@ -79,7 +79,7 @@ stop() {
 
 	load_addons_prefixed pre-stop
 
-	ebegin "Stopping vdr-${vdrversion}"
+	ebegin "Stopping vdr-${VDRVERSION}"
 
 	# Use --name here to allow us to kill vdr even after a new emerge
 	start-stop-daemon --stop --quiet --retry 15 --name vdr
