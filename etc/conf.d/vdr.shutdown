@@ -41,7 +41,7 @@
 # Use cron to control pending jobs.
 # Controlled shutdown may be realized using SVDRP command "down".
 # NOTE: If your job takes longer time than VDRs inactivity
-# timer, add them to SHUTDOWN_CHECK_ADDITIONAL_PROGRAMS above!
+# timer, add them to SHUTDOWN_CHECK_ADDITIONAL_PROGRAMS below!
 # 
 # Example crontab entry:
 # # Schedule daily backup, shutdown when the job is done

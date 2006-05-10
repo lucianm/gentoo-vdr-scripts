@@ -2,6 +2,10 @@
 # $Id$
 
   10 May 2006; Matthias Schwarzott <zzam@gentoo.org>
+  etc/conf.d/vdr.shutdown:
+  Corrected reference to other shutdown setting in comment.
+
+  10 May 2006; Matthias Schwarzott <zzam@gentoo.org>
   +usr/lib/vdr/shutdown/pre-shutdown-05-fixed-wakeup.sh,
   etc/conf.d/vdr.shutdown:
   Added code for daily wakeup. Code by Michael Brakemeier
