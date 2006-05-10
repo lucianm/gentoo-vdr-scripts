@@ -207,7 +207,11 @@ fi
 
 
 SUDO=/usr/bin/sudo
-${SUDO} /usr/lib/vdr/bin/vdrshutdown-really.sh ${VDR_TIMER_NEXT}
+if [[ -z ${DRY_SHUTDOWN} ]]; then
+	${SUDO} /usr/lib/vdr/bin/vdrshutdown-really.sh ${VDR_TIMER_NEXT}
+else
+	logger DRY_SHUTDOWN shutdown, vdrshutdown-really.sh ${VDR_TIMER_NEXT}
+fi
 
 date +%s > ${shutdown_data_dir}/shutdown-time-written
 exit_cleanup 0

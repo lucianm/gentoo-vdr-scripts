@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  10 May 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/bin/vdrshutdown-gate.sh:
+  Added code to block shutdown when debugging.
+
   10 May 2006; Matthias Schwarzott <zzam@gentoo.org> etc/init.d/vdr,
   usr/lib/vdr/inc/functions.sh, usr/lib/vdr/inc/message-functions.sh:
   Fixed writing vdr-start-log
