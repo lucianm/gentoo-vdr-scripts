@@ -21,6 +21,42 @@
 #WAKEUP_METHOD="nvram"
 
 ###########################################################
+#          Wake up once every day                         #
+###########################################################
+#
+# Here you can enable a daily vdr-wakeup
+
+#
+# Enable daily wakeup
+#   allowed values: yes no
+#   default: no
+#FIXED_WAKEUP="yes"
+
+
+# Next wakeup at FIXED_WAKEUP_TIME
+# VDR wakeup will be scheduled for FIXED_WAKEUP_TIME
+# or the next VDR timer, whatever comes earlier.
+#
+
+# Use cron to control pending jobs.
+# Controlled shutdown may be realized using SVDRP command "down".
+# NOTE: If your job takes longer time than VDRs inactivity
+# timer, add them to SHUTDOWN_CHECK_ADDITIONAL_PROGRAMS above!
+# 
+# Example crontab entry:
+# # Schedule daily backup, shutdown when the job is done
+# # 05 2  * * *  mybackup.sh; svdrpsend.pl "down" > /var/tmp/backup.log 2>&1
+#
+
+
+# Set the time at which the vdr should wake up every day
+#   allowed values: strings describing the daily wakeup time
+#   default: "02:00:00" - wakeup every day at 2 a.m.
+#FIXED_WAKEUP_TIME="02:00:00"
+
+
+
+###########################################################
 #          nvram Settings                                 #
 ###########################################################
 #
