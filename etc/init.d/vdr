@@ -13,6 +13,9 @@ depend() {
 }
 
 start() {
+	VDR_WRITE_STARTLOG=1
+	include message-functions
+
 	einfo "Preparing start of vdr:"
 	getvdrversion
 	init_params
@@ -74,6 +77,7 @@ start() {
 }
 
 stop() {
+	include message-functions
 	getvdrversion
 
 	load_addons_prefixed pre-stop

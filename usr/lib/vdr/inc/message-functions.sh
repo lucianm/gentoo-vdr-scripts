@@ -2,8 +2,8 @@
 
 init_vdr_log()
 {
-	VDR_LOG_FILE=/var/vdr/vdr-start-log
-	echo "Startlog for VDR" > ${VDR_LOG_FILE}
+	[[ ${VDR_WRITE_STARTLOG} = 1 ]] && VDR_LOG_FILE=/var/vdr/vdr-start-log
+	[[ -n ${VDR_LOG_FILE} ]] && echo "Startlog for VDR" > ${VDR_LOG_FILE}
 	LOG_MSG_COUNT=0
 	LOG_ERROR_COUNT=0
 }
