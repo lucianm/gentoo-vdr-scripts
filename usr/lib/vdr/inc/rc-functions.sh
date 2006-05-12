@@ -1,5 +1,7 @@
 # $Id$
 
+include message-functions
+
 : ${vdr_rcdir:=/usr/lib/vdr/rcscript}
 : ${SCRIPT_DEBUG_LEVEL:=0}
 SCRIPT_API=2
@@ -26,6 +28,8 @@ getvdrversion()
 	APIVERSION=$(awk -F'"' '/define APIVERSION/ {print $2}' /usr/include/vdr/config.h)
 	[[ -z ${APIVERSION} ]] && APIVERSION="${VDRVERSION}"
 }
+
+getvdrversion
 
 init_daemonctrl_params()
 {

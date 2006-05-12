@@ -13,11 +13,9 @@ depend() {
 }
 
 start() {
-	VDR_WRITE_STARTLOG=1
-	include message-functions
+	init_vdr_start_log
 
 	einfo "Preparing start of vdr:"
-	getvdrversion
 	init_params
 	init_daemonctrl_params
 
@@ -73,13 +71,11 @@ start() {
 	if [[ "${exitcode}" == "0" ]]; then
 		load_addons_prefixed post-start || exitcode=1
 	fi
+	finish_vdr_start_log
 	return $exitcode
 }
 
 stop() {
-	include message-functions
-	getvdrversion
-
 	load_addons_prefixed pre-stop
 
 	ebegin "Stopping vdr-${VDRVERSION}"
