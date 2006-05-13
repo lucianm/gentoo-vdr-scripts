@@ -1,6 +1,12 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  13 May 2006; Matthias Schwarzott <zzam@gentoo.org>
+  -usr/lib/vdr/shutdown/pre-shutdown-05-fixed-wakeup.sh,
+  +usr/lib/vdr/shutdown/pre-shutdown-05-time-calculations.sh,
+  usr/lib/vdr/bin/vdrshutdown-gate.sh:
+  Catch running timer and block shutdown in that case
+
   12 May 2006; Matthias Schwarzott <zzam@gentoo.org> etc/init.d/vdr,
   usr/lib/vdr/inc/message-functions.sh, usr/lib/vdr/inc/rc-functions.sh:
   Better handling of vdr-start-log. Explicitly state now that no errors occured.

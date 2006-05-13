@@ -8,6 +8,21 @@ print_localtime ()
 	date --date="1970-01-01 UTC ${1} seconds"
 }
 
+catch_running_timer()
+{
+	local NOW=$(date +%s)
+
+	# Do not wake up on events in past
+	# Better strategy would be to manually scan the list of timers
+	# for the first active in future
+	# for now abort the shutdown
+	if [[ ${VDR_TIMER_NEXT} < ${NOW} ]]; then
+		#VDR_TIMER_NEXT=0
+		disable_auto_retry
+		shutdown_abort "timer is running"
+	fi
+}
+
 calculate_wakeup_timer ()
 {
 	local NEXT_FIXED_WAKEUP=$(date --date=${FIXED_WAKEUP_TIME} +%s)
@@ -27,6 +42,7 @@ calculate_wakeup_timer ()
 	fi
 }
 
+catch_running_timer
 if [[ "${FIXED_WAKEUP:-no}" == "yes" ]]; then
 	calculate_wakeup_timer
 fi

@@ -184,10 +184,10 @@ if [[ "${SHUTDOWN_ABORT}" == "1" ]]; then
 		mesg_q "You can force a shutdown with pressing power again"
 	fi
 
-	if [[ ${MAX_TRY_AGAIN} -gt 0 ]]; then
+	if [[ ${MAX_TRY_AGAIN} -gt 0 && ${ENABLE_AUTO_RETRY} == 1 ]]; then
 		queue_add_wait 1s
 		mesg_q "Shutdown is retried soon"
-		[[ ${ENABLE_AUTO_RETRY} == 1 ]] && retry_shutdown ${MAX_TRY_AGAIN}
+		retry_shutdown ${MAX_TRY_AGAIN}
 	fi
 
 	exit_cleanup 0
