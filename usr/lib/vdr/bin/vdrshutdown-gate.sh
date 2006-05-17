@@ -42,7 +42,7 @@ svdrp_add_queue() {
 svdrp_queue_handler() {
 	exec >/dev/null 2>/dev/null </dev/null
 
-	for ((i=1; i < qindex ; i++))
+	for ((i=1; i -lt qindex ; i++))
 	do
 		# retry until success
 		while ! ${svdrpqueue[$i]}; do
