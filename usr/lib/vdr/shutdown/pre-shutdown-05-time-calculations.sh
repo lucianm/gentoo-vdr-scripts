@@ -16,7 +16,9 @@ catch_running_timer()
 	# Better strategy would be to manually scan the list of timers
 	# for the first active in future
 	# for now abort the shutdown
-	if [[ ${VDR_TIMER_NEXT} < ${NOW} ]]; then
+
+	# if timer_exists && timer in past; then
+	if [[ ${VDR_TIMER_NEXT} -ne 0 && ${VDR_TIMER_NEXT} -le ${NOW} ]]; then
 		#VDR_TIMER_NEXT=0
 		disable_auto_retry
 		shutdown_abort "timer is running"
@@ -28,13 +30,13 @@ calculate_wakeup_timer ()
 	local NEXT_FIXED_WAKEUP=$(date --date=${FIXED_WAKEUP_TIME} +%s)
 	local NOW=$(date +%s)
 
-	if [[ ${NOW} > ${NEXT_FIXED_WAKEUP} ]]; then
+	if [[ ${NOW} -gt ${NEXT_FIXED_WAKEUP} ]]; then
 		NEXT_FIXED_WAKEUP=$(date --date="tomorrow ${FIXED_WAKEUP_TIME}" +%s)
 	fi
 
 	logger "Next timer at $(print_localtime ${VDR_TIMER_NEXT})"
-	if [[ ${NEXT_FIXED_WAKEUP} < ${VDR_TIMER_NEXT} \
-	      || ${NOW} > ${VDR_TIMER_NEXT} ]]; then
+	if [[ ${NEXT_FIXED_WAKEUP} -lt ${VDR_TIMER_NEXT} \
+	      || ${NOW} -gt ${VDR_TIMER_NEXT} ]]; then
 		VDR_TIMER_NEXT=${NEXT_FIXED_WAKEUP}
 		logger "Modified wakeup time to $(print_localtime ${VDR_TIMER_NEXT})"
 	else

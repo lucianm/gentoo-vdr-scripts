@@ -1,6 +1,18 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-0.3.3 (17 Mai 2006)
+
+  17 May 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/shutdown/pre-shutdown-05-time-calculations.sh,
+  usr/lib/vdr/bin/vdrshutdown-gate.sh:
+  corrected invalid use of < and > to compare integers
+
+  17 May 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/shutdown/pre-shutdown-05-time-calculations.sh:
+  Do not abort shutdown when there is no next timer defined. Fix by PanamaJack
+  from vdr-portal.de.
+
 *gentoo-vdr-scripts-0.3.2 (13 Mai 2006)
 
   13 May 2006; Matthias Schwarzott <zzam@gentoo.org>
