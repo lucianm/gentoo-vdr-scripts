@@ -16,7 +16,9 @@ catch_running_timer()
 	# Better strategy would be to manually scan the list of timers
 	# for the first active in future
 	# for now abort the shutdown
-	if [[ ${VDR_TIMER_NEXT} < ${NOW} ]]; then
+
+	# if timer_exists && timer in past; then
+	if [[ ${VDR_TIMER_NEXT} != 0 && ${VDR_TIMER_NEXT} < ${NOW} ]]; then
 		#VDR_TIMER_NEXT=0
 		disable_auto_retry
 		shutdown_abort "timer is running"

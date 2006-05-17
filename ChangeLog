@@ -1,6 +1,11 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  17 May 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/shutdown/pre-shutdown-05-time-calculations.sh:
+  Do not abort shutdown when there is no next timer defined. Fix by PanamaJack
+  from vdr-portal.de.
+
 *gentoo-vdr-scripts-0.3.2 (13 Mai 2006)
 
   13 May 2006; Matthias Schwarzott <zzam@gentoo.org>
