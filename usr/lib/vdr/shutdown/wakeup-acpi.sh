@@ -8,7 +8,7 @@ ACPI_WAKEUP=/usr/sbin/acpi-wakeup.sh
 
 # is acpi in kernel activated?
 if [[ ! -f /proc/acpi/alarm ]]; then
-	error_mesg "no acpi-driver installed"
+	error_mesg "No acpi-driver installed, /proc/acpi/alarm does not exist!"
 	SHUTDOWN_EXITCODE=1
 	return
 fi
