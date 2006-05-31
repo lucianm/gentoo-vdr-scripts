@@ -1,6 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-0.3.4 (31 Mai 2006)
+
   31 May 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/rcscript/pre-start-45-utf8-check.sh, etc/conf.d/vdr:
   new utf8-wipeout strategy, relocated IR-setting in conf-file.
