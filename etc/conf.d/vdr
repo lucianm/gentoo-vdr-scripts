@@ -17,6 +17,25 @@
 #    Either as _EXTRAOPTS="--option1 --option2". Or if special
 #    config variables are prepared these can be used.) 
 
+# What IR control should be used. Override the default set at
+# compile time
+# (Usable at vdr version starting from 1.3.28)
+#   allowed values: lirc rcu
+#   default: use no remote
+#            (up to vdr-1.3.36-r2: use what was selected by use-flag)
+#IR_CTRL="lirc"
+
+
+###########################################################
+#          Language Settings                              #
+###########################################################
+
+# Set the sort-order vdr uses
+#   allowed values: locale-definitions listed by locale -a
+#                   e.g. de_DE, en_GB, ...
+#   default: glibc-default order (posix)
+#VDR_SORT_ORDER="de_DE"
+
 
 ###########################################################
 #          Special Audio Options                          #
@@ -32,6 +51,7 @@
 #   default: no
 #MUTE="1"
 
+
 ###########################################################
 #          Startup Options                                #
 ###########################################################
@@ -45,6 +65,7 @@
 #   allowed values: valid channel number in vdr
 #   default: leave channel unchanged
 #STARTUP_CHANNEL="1"
+
 
 ###########################################################
 #          Terminal Output / Keyboard Input               #
@@ -63,6 +84,7 @@
 #   default: no
 #SWITCH_TO_TERMINAL="yes"
 
+
 ###########################################################
 #          Debug Options                                  #
 ###########################################################
@@ -71,6 +93,7 @@
 #   allowed values: 0 1 2
 #   default: 0
 #SCRIPT_DEBUG_LEVEL="1"
+
 
 ###########################################################
 #          Expert Settings                                #
@@ -105,14 +128,6 @@
 
 # If you seek the settings for the extern watchdog look
 # in /etc/conf.d/vdr.watchdogd.
-
-# What IR control should be used. Override the default set at
-# compile time
-# (Usable at vdr version starting from 1.3.28)
-#   allowed values: lirc rcu
-#   default: use no remote
-#            (up to vdr-1.3.36-r2: use what was selected by use-flag)
-#IR_CTRL="lirc"
 
 # Change the filename-format to be vfat and samba compatible. Only necessary if
 # not set at compile time.
