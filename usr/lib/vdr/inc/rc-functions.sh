@@ -73,12 +73,16 @@ load_addons_prefixed()
 	addon_prefix=${1}
 	local call_func=${2:-addon_main}
 	local basename=""
-	abort=0
+	local ret=0
 	for addon in ${vdr_rcdir}/${addon_prefix}-*.sh; do
 		load_addon ${addon} ${call_func}
-		[[ "$abort" != "0" ]] && break
+		ret="$?"
+		if [[ "${ret}" != "0" ]]; then
+			einfo_level2 Addon ${addon} failed.
+			break
+		fi
 	done
-	return $abort
+	return $ret
 }
 
 load_addon()
@@ -96,7 +100,8 @@ load_addon()
 
 	# execute requested function
 	eval ${call_func}
-	return $abort
+	local ret="$?"
+	return $ret
 }
 
 einfo_level1() {

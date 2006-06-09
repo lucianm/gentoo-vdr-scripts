@@ -13,6 +13,8 @@ depend() {
 }
 
 start() {
+	local exitcode
+
 	init_vdr_start_log
 
 	einfo "Preparing start of vdr:"
@@ -69,7 +71,10 @@ start() {
 	eend $exitcode "Failed to start vdr."
 
 	if [[ "${exitcode}" == "0" ]]; then
-		load_addons_prefixed post-start || exitcode=1
+		load_addons_prefixed post-start
+		if [[ "$?" != "0" ]]; then
+			exitcode=1
+		fi
 	fi
 	finish_vdr_start_log
 	return $exitcode

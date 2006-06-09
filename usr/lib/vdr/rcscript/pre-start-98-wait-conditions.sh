@@ -1,5 +1,6 @@
 # $Id$
 addon_main() {
+	local exitcode=0
 	if [[ "${waitconditions}" ]]; then
 		ebegin "  Prerequisits (devices nodes etc.)" 
 		waitfor 10 wait_for_multiple_condition
@@ -13,7 +14,8 @@ addon_main() {
 				exitmsg="${exitmsg}: Timeout, ${condition_msg}"
 				;;
 		esac
-		eend "$exitcode" "${exitmsg}" || return
+		eend "$exitcode" "${exitmsg}"
 	fi
+	return $exitcode
 }
 
