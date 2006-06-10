@@ -1,6 +1,14 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  10 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
+  +usr/lib/vdr/shutdown/pre-shutdown-40-time.sh,
+  usr/lib/vdr/shutdown/pre-shutdown-10-check-allowed.sh ->
+  usr/lib/vdr/shutdown/pre-shutdown-10-check-enabled.sh,
+  etc/conf.d/vdr.shutdown, +usr/lib/vdr/inc/time.sh:
+  Added option to forbid shutdowns in specified time-intervals. Renamed one
+  script
+
   09 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/rcscript/post-start-50-svdrp.sh,
   usr/lib/vdr/rcscript/pre-start-98-wait-conditions.sh, etc/init.d/vdr,
