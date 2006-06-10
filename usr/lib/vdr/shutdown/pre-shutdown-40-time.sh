@@ -1,10 +1,10 @@
 # $Id$
 
 do_check_time() {
-	if [[ -n ${BLOCK_SHUTDOWN_TIME} ]]; then
+	if [[ -n ${BLOCK_SHUTDOWN_INTERVALS} ]]; then
 		include time
-		check_interval NOW "${BLOCK_SHUTDOWN_TIME}"
-		shutdown_abort_can_force "shutdown forbidden at the moment"
+		check_interval NOW "${BLOCK_SHUTDOWN_INTERVALS}"
+		shutdown_abort "shutdown forbidden time"
 	fi
 }
 

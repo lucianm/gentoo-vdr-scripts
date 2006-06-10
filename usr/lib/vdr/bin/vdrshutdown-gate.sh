@@ -7,6 +7,18 @@
 # some ideas from ctvdr's shutdownvdr by Tobias Grimm <tg@e-tobi.net>
 #
 
+#fork to background
+if [[ -z ${EXECUTED_BY_VDR_BG} ]]; then
+	exec /usr/lib/vdr/bin/vdr-bg.sh $0 ${@}
+	exit
+fi
+
+if [[ ${DEBUG} -ge 1 ]]; then
+	set -x
+	exec </dev/null >/var/vdr/shutdown-data/log 2>&1
+	echo Started debug output of $0 $@
+fi
+
 # should be default paths on a machine build with vdr ebuilds
 SVDRPCMD=/usr/bin/svdrpsend.pl
 NVRAM_WAKEUP=/usr/bin/nvram-wakeup
@@ -40,9 +52,7 @@ svdrp_add_queue() {
 }
 
 svdrp_queue_handler() {
-	exec >/dev/null 2>/dev/null </dev/null
-
-	for ((i=1; i -lt qindex ; i++))
+	for ((i=1; i < qindex ; i++))
 	do
 		# retry until success
 		while ! ${svdrpqueue[$i]}; do

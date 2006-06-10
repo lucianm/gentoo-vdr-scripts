@@ -2,6 +2,11 @@
 # $Id$
 
   10 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/shutdown/pre-shutdown-40-time.sh, usr/lib/vdr/bin/vdr-bg.sh,
+  usr/lib/vdr/bin/vdrrecord-gate.sh, usr/lib/vdr/bin/vdrshutdown-gate.sh:
+  Fork all processes started by vdr to background. Fixed some 1 line bugs.
+
+  10 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
   +usr/lib/vdr/shutdown/pre-shutdown-40-time.sh,
   usr/lib/vdr/shutdown/pre-shutdown-10-check-allowed.sh ->
   usr/lib/vdr/shutdown/pre-shutdown-10-check-enabled.sh,
