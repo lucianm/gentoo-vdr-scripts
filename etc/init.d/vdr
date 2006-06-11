@@ -8,7 +8,7 @@ source /usr/lib/vdr/inc/functions.sh
 include rc-functions
 
 depend() {
-	use lircd dvbsplash net
+	use lircd dvbsplash net coldplug
 	after checkroot
 }
 

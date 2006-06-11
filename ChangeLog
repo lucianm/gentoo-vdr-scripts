@@ -1,6 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  11 Jun 2006; Matthias Schwarzott <zzam@gentoo.org> etc/init.d/vdr:
+  Startscript now soft-depends on coldplug to ensure it started before.
+
   10 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/shutdown/pre-shutdown-40-time.sh, usr/lib/vdr/bin/vdr-bg.sh,
   usr/lib/vdr/bin/vdrrecord-gate.sh, usr/lib/vdr/bin/vdrshutdown-gate.sh:
