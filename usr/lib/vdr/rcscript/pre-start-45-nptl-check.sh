@@ -9,5 +9,6 @@ addon_main() {
 			einfo "vdr: You use a NPTL only system, using nptl and hoping the best."
 		fi
 	fi
+	return 0
 }
 

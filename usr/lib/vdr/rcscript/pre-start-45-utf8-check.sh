@@ -15,5 +15,6 @@ addon_main() {
 	if [[ -n ${VDR_SORT_ORDER} ]]; then
 		export LC_COLLATE="${VDR_SORT_ORDER}"
 	fi
+	return 0
 }
 

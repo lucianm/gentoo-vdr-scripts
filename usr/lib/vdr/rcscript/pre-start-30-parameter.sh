@@ -34,4 +34,5 @@ addon_main() {
 	if [[ -n "${VDR_EXTRA_OPTIONS}" ]]; then
 		add_param ${VDR_EXTRA_OPTIONS}
 	fi
+	return 0
 }

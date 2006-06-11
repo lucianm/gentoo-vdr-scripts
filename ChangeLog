@@ -1,6 +1,23 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  11 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/rcscript/post-stop-05-plugins.sh,
+  usr/lib/vdr/rcscript/post-start-05-plugins.sh,
+  usr/lib/vdr/rcscript/pre-start-10-chuid.sh,
+  usr/lib/vdr/rcscript/pre-stop-10-watchdog.sh,
+  usr/lib/vdr/rcscript/pre-start-20-dvb-device.sh,
+  usr/lib/vdr/rcscript/watchdog-restart-20-modules.sh,
+  usr/lib/vdr/rcscript/pre-start-30-parameter.sh,
+  usr/lib/vdr/rcscript/pre-start-40-config-files.sh,
+  usr/lib/vdr/rcscript/pre-start-45-nptl-check.sh,
+  usr/lib/vdr/rcscript/pre-start-45-utf8-check.sh,
+  usr/lib/vdr/rcscript/pre-start-50-shutdown.sh,
+  usr/lib/vdr/rcscript/post-start-90-watchdog.sh,
+  usr/lib/vdr/rcscript/pre-stop-95-plugins.sh,
+  usr/lib/vdr/rcscript/pre-start-95-plugins.sh:
+  Every addon now returns a proper exitcode.
+
   11 Jun 2006; Matthias Schwarzott <zzam@gentoo.org> etc/init.d/vdr:
   Startscript now soft-depends on coldplug to ensure it started before.
 

@@ -14,5 +14,6 @@ addon_main() {
 			add_daemonctrl_param --chuid vdr
 		fi
 	fi
+	return 0
 }
 

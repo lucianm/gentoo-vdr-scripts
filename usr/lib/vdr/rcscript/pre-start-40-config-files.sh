@@ -22,4 +22,5 @@ addon_main() {
 	fi
 
 	eend 0
+	return 0
 }

@@ -14,5 +14,6 @@ addon_main() {
 
 		add_param "${vdrplugin_opts[*]} ${_EXTRAOPTS}"
 	done
+	return 0
 }
 

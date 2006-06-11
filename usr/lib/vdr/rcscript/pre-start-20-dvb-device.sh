@@ -11,5 +11,6 @@ addon_main() {
 	if [[ "${DEVICE_CHECK}" == "yes" ]]; then
 		add_wait_condition check_dvbdevice
 	fi
+	return 0
 }
 

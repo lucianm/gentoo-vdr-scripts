@@ -80,5 +80,6 @@ addon_main() {
 		restart_load
 		sleep 1
 	fi
+	return 0
 }
 
