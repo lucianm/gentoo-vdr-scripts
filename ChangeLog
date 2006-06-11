@@ -2,6 +2,11 @@
 # $Id$
 
   11 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/bin/vdr-bg.sh, usr/lib/vdr/bin/vdrrecord-gate.sh,
+  usr/lib/vdr/bin/vdrshutdown-gate.sh:
+  Better quoting of . Better debug support.
+
+  11 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/rcscript/post-stop-05-plugins.sh,
   usr/lib/vdr/rcscript/post-start-05-plugins.sh,
   usr/lib/vdr/rcscript/pre-start-10-chuid.sh,

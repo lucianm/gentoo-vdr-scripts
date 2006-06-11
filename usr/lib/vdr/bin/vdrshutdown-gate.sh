@@ -9,14 +9,19 @@
 
 #fork to background
 if [[ -z ${EXECUTED_BY_VDR_BG} ]]; then
-	exec /usr/lib/vdr/bin/vdr-bg.sh $0 ${@}
+	exec /usr/lib/vdr/bin/vdr-bg.sh "${0}" "${@}"
 	exit
 fi
 
 if [[ ${DEBUG} -ge 1 ]]; then
-	set -x
 	exec </dev/null >/var/vdr/shutdown-data/log 2>&1
 	echo Started debug output of $0 $@
+	nr=0
+	for f; do
+		: $((nr++))
+		echo "param #${nr} - ${f}"
+	done
+	set -x
 fi
 
 # should be default paths on a machine build with vdr ebuilds
