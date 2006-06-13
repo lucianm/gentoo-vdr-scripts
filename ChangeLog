@@ -2,6 +2,11 @@
 # $Id$
 
   13 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
+  etc/conf.d/vdr.shutdown:
+  Corrected typo in description of BLOCK_SHUTDOWN_INTERVALS, reported by
+  Roland May <tinitus@web.de>.
+
+  13 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/rcscript/pre-start-30-parameter.sh, etc/conf.d/vdr:
   Modified parameter MUTE, to act like described in comment, reported by
   Roland May <tinitus@web.de>.
