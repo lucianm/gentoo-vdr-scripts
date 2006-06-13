@@ -2,7 +2,7 @@
 addon_main() {
 	add_param "--watchdog=${INTERNAL_WATCHDOG:-60}"
 	[[ -n "${AC3_AUDIO}" ]] && add_param "--audio=${AC3_AUDIO}"
-	[[ -n "${MUTE}" ]] && add_param "--mute"
+	[[ ${MUTE} == yes ]] && add_param "--mute"
 	[[ -n "${CONFIG}" ]] && add_param "--config=${CONFIG}"
 	[[ -n "${DEVICE}" ]] && for i in ${DEVICE}; do add_param "--device=${i}"; done
 	[[ -n "${EPGFILE}" ]] && add_param "--epgfile=${EPGFILE}"

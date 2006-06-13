@@ -1,6 +1,11 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  13 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/rcscript/pre-start-30-parameter.sh, etc/conf.d/vdr:
+  Modified parameter MUTE, to act like described in comment, reported by
+  Roland May <tinitus@web.de>.
+
   11 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/bin/vdr-bg.sh, usr/lib/vdr/bin/vdrrecord-gate.sh,
   usr/lib/vdr/bin/vdrshutdown-gate.sh:

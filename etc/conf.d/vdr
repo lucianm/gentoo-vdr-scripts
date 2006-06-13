@@ -49,7 +49,7 @@
 # mute audio of the primary DVB device at startup
 #   allowed values: yes no
 #   default: no
-#MUTE="1"
+#MUTE="yes"
 
 
 ###########################################################
