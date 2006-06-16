@@ -11,7 +11,9 @@ if [[ -z ${EXECUTED_BY_VDR_BG} ]]; then
 fi
 
 SVDRPCMD=/usr/bin/svdrpsend.pl
-HOOKDIR=/usr/lib/vdr/record
+
+HOOKDIR=/usr/share/vdr/record
+OLD_HOOKDIR=/usr/lib/vdr/record
 
 source /usr/share/vdr/inc/functions.sh
 
@@ -22,6 +24,6 @@ mesg() {
 VDR_RECORD_STATE="${1}"
 VDR_RECORD_NAME="${2}"
 
-for HOOK in $HOOKDIR/record-*.sh; do
+for HOOK in ${HOOKDIR}/record-*.sh ${OLD_HOOKDIR}/record-*.sh; do
 	[[ -f "${HOOK}" ]] && source "${HOOK}" "${VDR_RECORD_STATE}" "${VDR_RECORD_NAME}"
 done

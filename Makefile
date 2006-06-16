@@ -43,8 +43,8 @@ endif
 	mkdir -p $(DESTDIR)/usr/share/vdr/inc
 	install -m 0644 -o root -g root usr/share/vdr/inc/*.sh $(DESTDIR)/usr/share/vdr/inc/
 	
-	mkdir -p $(DESTDIR)/usr/lib/vdr/record
-	install -m 0644 -o root -g root usr/lib/vdr/record/*.sh $(DESTDIR)/usr/lib/vdr/record/
+	mkdir -p $(DESTDIR)/usr/share/vdr/record
+	install -m 0644 -o root -g root usr/share/vdr/record/*.sh $(DESTDIR)/usr/share/vdr/record/
 
 	mkdir -p $(DESTDIR)/usr/lib/vdr/bin
 	install -m 0755 -o root -g root usr/lib/vdr/bin/*.sh $(DESTDIR)/usr/lib/vdr/bin/

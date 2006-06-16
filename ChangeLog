@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  16 Jun 2006; Matthias Schwarzott <zzam@gentoo.org> Makefile,
+  usr/lib/vdr/bin/vdrrecord-gate.sh, usr/lib/vdr/record -> usr/share/vdr/record:
+  Moved record-dir to /usr/share
+
   16 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/inc -> usr/share/vdr/inc
   usr/share/vdr/rcscript/pre-start-40-config-files.sh, Makefile,
