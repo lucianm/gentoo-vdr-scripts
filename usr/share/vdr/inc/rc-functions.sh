@@ -2,7 +2,8 @@
 
 include message-functions
 
-: ${vdr_rcdir:=/usr/lib/vdr/rcscript}
+: ${vdr_rc_dir:=/usr/share/vdr/rcscript}
+: ${vdr_old_rc_dir:=/usr/lib/vdr/rcscript}
 : ${SCRIPT_DEBUG_LEVEL:=0}
 SCRIPT_API=2
 
@@ -71,7 +72,8 @@ load_addons_prefixed()
 	local call_func=${2:-addon_main}
 	local basename=""
 	local ret=0
-	for addon in ${vdr_rcdir}/${addon_prefix}-*.sh; do
+
+	for addon in ${vdr_rc_dir}/${addon_prefix}-*.sh; do
 		load_addon ${addon} ${call_func}
 		ret="$?"
 		if [[ "${ret}" != "0" ]]; then
@@ -89,10 +91,12 @@ load_addon()
 	eval "${call_func}() { :; }"
 
 	# source addon
-	if [[ -f "${addon}" ]]; then
-		source ${addon}
-	else
-		[[ -f "${vdr_rcdir}/${addon}.sh" ]] && source "${vdr_rcdir}/${addon}.sh"
+	if [[ ( "${addon:0:1}" == "/" ) && ( -f ${addon} ) ]]; then
+		source "${addon}"
+	elif [[ -f ${vdr_rc_dir}/${addon}.sh ]]; then
+		source "${vdr_rc_dir}/${addon}.sh"
+	elif [[ -f ${vdr_old_rc_dir}/${addon}.sh ]]; then
+		source "${vdr_old_rc_dir}/${addon}.sh"
 	fi
 
 	# execute requested function

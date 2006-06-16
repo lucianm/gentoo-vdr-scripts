@@ -2,6 +2,11 @@
 # $Id$
 
   16 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/rcscripts -> usr/share/vdr/rcscripts, Makefile,
+  README.vdrcaps, usr/share/vdr/inc/rc-functions.sh:
+  Moved rcscript-dir to /usr/share
+
+  16 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/shutdown -> usr/share/vdr/shutdown, Makefile,
   README.shutdown, usr/lib/vdr/bin/vdrshutdown-gate.sh,
   usr/lib/vdr/bin/vdrshutdown-periodic-thread.sh,

@@ -29,8 +29,8 @@ install:
 	#mkdir -p $(DESTDIR)/usr/bin
 	#install -m 0755 -o root -g root usr/bin/vdr-start $(DESTDIR)/usr/bin
 
-	mkdir -p $(DESTDIR)/usr/lib/vdr/rcscript
-	install -m 0644 -o root -g root usr/lib/vdr/rcscript/*.sh $(DESTDIR)/usr/lib/vdr/rcscript/
+	mkdir -p $(DESTDIR)/usr/share/vdr/rcscript
+	install -m 0644 -o root -g root usr/share/vdr/rcscript/*.sh $(DESTDIR)/usr/share/vdr/rcscript/
 
 	mkdir -p $(DESTDIR)/usr/share/vdr/shutdown
 	install -m 0644 -o root -g root usr/share/vdr/shutdown/{shutdown,pre,periodic}*.sh $(DESTDIR)/usr/share/vdr/shutdown/
