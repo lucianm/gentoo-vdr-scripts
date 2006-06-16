@@ -36,6 +36,10 @@ install:
 	install -m 0644 -o root -g root usr/lib/vdr/shutdown/{shutdown,pre,periodic}*.sh $(DESTDIR)/usr/lib/vdr/shutdown/
 	install -m 0644 -o root -g root usr/lib/vdr/shutdown/wakeup-acpi.sh $(DESTDIR)/usr/lib/vdr/shutdown/
 
+ifdef NVRAM
+	install -m 0644 -o root -g root usr/lib/vdr/shutdown/wakeup-nvram.sh $(DESTDIR)/usr/lib/vdr/shutdown/
+endif
+
 	mkdir -p $(DESTDIR)/usr/lib/vdr/inc
 	install -m 0644 -o root -g root usr/lib/vdr/inc/*.sh $(DESTDIR)/usr/lib/vdr/inc/
 	
@@ -54,8 +58,6 @@ install:
 	install -m 0644 -o vdr -g vdr etc/vdr/reccmds/reccmds.*.conf $(DESTDIR)/etc/vdr/reccmds
 	chown vdr:vdr -R $(DESTDIR)/etc/vdr
 
-install-nvram:
-	install -m 0644 -o root -g root usr/lib/vdr/shutdown/wakeup-nvram.sh $(DESTDIR)/usr/lib/vdr/shutdown/
 
 snapshot:
 	svn export . gentoo-vdr-scripts-snapshot

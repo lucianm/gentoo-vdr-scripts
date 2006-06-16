@@ -1,6 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  16 Jun 2006; Matthias Schwarzott <zzam@gentoo.org> Makefile:
+  changed makefile to only one install-target
+
   13 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
   etc/conf.d/vdr.shutdown:
   Corrected typo in description of BLOCK_SHUTDOWN_INTERVALS, reported by
