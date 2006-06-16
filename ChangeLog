@@ -2,6 +2,10 @@
 # $Id$
 
   16 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/inc/functions.sh:
+  Can read capabilities-file from new location under /usr/share
+
+  16 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/inc/plugin-functions.sh, usr/lib/vdr/inc/rc-functions.sh:
   Autodetect path to vdr-plugins from vdr-Make.config.
 

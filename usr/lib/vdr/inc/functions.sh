@@ -13,7 +13,12 @@ include()
 
 read_caps()
 {
-	local capfile=/usr/lib/vdr/rcscript/vdr-capabilities.sh
-	[[ -f "${capfile}" ]] && source ${capfile}
+	local capfile
+	for capfile in /usr/share/vdr/capabilities.sh /usr/lib/vdr/rcscript/vdr-capabilities.sh; do
+		if [[ -f "${capfile}" ]]; then
+			source ${capfile}
+			break
+		fi
+	done
 }
 
