@@ -4,7 +4,7 @@
 #   Matthias Schwarzott <zzam@gmx.de>
 #
 
-source /usr/lib/vdr/inc/functions.sh
+source /usr/share/vdr/inc/functions.sh
 include shutdown-functions
 
 if [[ "${UID}" != "0" ]]; then

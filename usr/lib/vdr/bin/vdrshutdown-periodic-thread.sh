@@ -1,7 +1,7 @@
 #!/bin/bash
 # $Id$
 
-source /usr/lib/vdr/inc/functions.sh
+source /usr/share/vdr/inc/functions.sh
 include shutdown-functions
 read_caps
 

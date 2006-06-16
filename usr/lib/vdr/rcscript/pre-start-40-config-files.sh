@@ -1,5 +1,5 @@
 # $Id$
-source /usr/lib/vdr/inc/commands-functions.sh
+source /usr/share/vdr/inc/commands-functions.sh
 
 addon_main() {
 	ebegin "  config files"

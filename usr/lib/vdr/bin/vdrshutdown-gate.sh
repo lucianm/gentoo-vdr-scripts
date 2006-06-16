@@ -29,7 +29,7 @@ SVDRPCMD=/usr/bin/svdrpsend.pl
 NVRAM_WAKEUP=/usr/bin/nvram-wakeup
 HOOKDIR=/usr/lib/vdr/shutdown
 
-source /usr/lib/vdr/inc/functions.sh
+source /usr/share/vdr/inc/functions.sh
 include shutdown-functions
 
 read_caps
