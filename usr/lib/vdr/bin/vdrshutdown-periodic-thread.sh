@@ -5,7 +5,7 @@ source /usr/share/vdr/inc/functions.sh
 include shutdown-functions
 read_caps
 
-THREAD_DIR=/usr/lib/vdr/shutdown
+THREAD_DIR=/usr/share/vdr/shutdown
 PERIODIC_THREAD_ENDTIME=${shutdown_data_dir}/periodic_thread_last_ended
 
 SVDRPSEND=/usr/bin/svdrpsend.pl

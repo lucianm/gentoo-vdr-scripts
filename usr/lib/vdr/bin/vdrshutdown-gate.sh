@@ -27,7 +27,7 @@ fi
 # should be default paths on a machine build with vdr ebuilds
 SVDRPCMD=/usr/bin/svdrpsend.pl
 NVRAM_WAKEUP=/usr/bin/nvram-wakeup
-HOOKDIR=/usr/lib/vdr/shutdown
+HOOKDIR=/usr/share/vdr/shutdown
 
 source /usr/share/vdr/inc/functions.sh
 include shutdown-functions

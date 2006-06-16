@@ -2,7 +2,7 @@ API description for shutdown
 
 
 Almost all code related to shutdown is stored under
-/usr/lib/vdr/shutdown/
+/usr/share/vdr/shutdown/
 
 =================
 = wakeup-modules:

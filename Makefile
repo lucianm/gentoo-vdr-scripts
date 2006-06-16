@@ -32,12 +32,12 @@ install:
 	mkdir -p $(DESTDIR)/usr/lib/vdr/rcscript
 	install -m 0644 -o root -g root usr/lib/vdr/rcscript/*.sh $(DESTDIR)/usr/lib/vdr/rcscript/
 
-	mkdir -p $(DESTDIR)/usr/lib/vdr/shutdown
-	install -m 0644 -o root -g root usr/lib/vdr/shutdown/{shutdown,pre,periodic}*.sh $(DESTDIR)/usr/lib/vdr/shutdown/
-	install -m 0644 -o root -g root usr/lib/vdr/shutdown/wakeup-acpi.sh $(DESTDIR)/usr/lib/vdr/shutdown/
+	mkdir -p $(DESTDIR)/usr/share/vdr/shutdown
+	install -m 0644 -o root -g root usr/share/vdr/shutdown/{shutdown,pre,periodic}*.sh $(DESTDIR)/usr/share/vdr/shutdown/
+	install -m 0644 -o root -g root usr/share/vdr/shutdown/wakeup-acpi.sh $(DESTDIR)/usr/share/vdr/shutdown/
 
 ifdef NVRAM
-	install -m 0644 -o root -g root usr/lib/vdr/shutdown/wakeup-nvram.sh $(DESTDIR)/usr/lib/vdr/shutdown/
+	install -m 0644 -o root -g root usr/share/vdr/shutdown/wakeup-nvram.sh $(DESTDIR)/usr/share/vdr/shutdown/
 endif
 
 	mkdir -p $(DESTDIR)/usr/share/vdr/inc
