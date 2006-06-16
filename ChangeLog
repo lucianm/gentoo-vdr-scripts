@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  16 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/inc/plugin-functions.sh, usr/lib/vdr/inc/rc-functions.sh:
+  Autodetect path to vdr-plugins from vdr-Make.config.
+
   16 Jun 2006; Matthias Schwarzott <zzam@gentoo.org> Makefile:
   changed makefile to only one install-target
 

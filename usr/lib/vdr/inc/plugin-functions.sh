@@ -13,7 +13,14 @@ init_plugin_loader() {
 		chown vdr:vdr /var/vdr/tmp
 	fi
 
-	vdr_checksum=/usr/lib/vdr/checksums/header-md5-vdr
+
+	plugin_dir=$(awk '/^PLUGINLIBDIR/{ print $3 }' /usr/include/vdr/Make.config)
+	if [[ -n ${plugin_dir} ]]; then
+		plugin_dir=/usr/lib/vdr/plugins
+	fi
+
+	vdr_checksum_dir="${plugin_dir%/plugins}/checksums"
+	vdr_checksum=${vdr_checksum_dir}/header-md5-vdr
 
 	if [[ ! -f ${vdr_checksum} ]]; then
 		vdr_checksum=/var/vdr/tmp/header-md5-vdr
@@ -37,7 +44,7 @@ check_plugin() {
 		return
 	fi
 
-	local plugin_checksum_file=/usr/lib/vdr/checksums/header-md5-vdr-${PLUGIN}
+	local plugin_checksum_file=${vdr_checksum_dir}/header-md5-vdr-${PLUGIN}
 	if [[ "${PLUGIN_CHECK_MD5}" == "yes" && -e ${plugin_checksum_file} ]]; then
 		if ! diff ${vdr_checksum} ${plugin_checksum_file} >/dev/null; then
 			skip_plugin "${PLUGIN}" "wrong vdr-patchlevel"

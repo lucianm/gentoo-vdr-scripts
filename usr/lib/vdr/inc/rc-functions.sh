@@ -6,9 +6,6 @@ include message-functions
 : ${SCRIPT_DEBUG_LEVEL:=0}
 SCRIPT_API=2
 
-plugin_dir=/usr/lib/vdr/plugins
-test -d ${plugin_dir} || plugin_dir=/usr/lib/vdr
-
 pidof=/sbin/pidof
 test -x /bin/pidof && pidof=/bin/pidof
 
