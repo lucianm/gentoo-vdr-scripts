@@ -49,7 +49,7 @@ endif
 	mkdir -p $(DESTDIR)/usr/lib/vdr/bin
 	install -m 0755 -o root -g root usr/lib/vdr/bin/*.sh $(DESTDIR)/usr/lib/vdr/bin/
 
-	mkdir -p $(DESTDIR)/var/vdr/{video,shutdown-data,merged-config-files}
+	mkdir -p $(DESTDIR)/var/vdr/{shutdown-data,merged-config-files}
 	chown vdr:vdr -R $(DESTDIR)/var/vdr
 
 	mkdir -p $(DESTDIR)/etc/vdr/commands
