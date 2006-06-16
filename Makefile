@@ -40,8 +40,8 @@ ifdef NVRAM
 	install -m 0644 -o root -g root usr/lib/vdr/shutdown/wakeup-nvram.sh $(DESTDIR)/usr/lib/vdr/shutdown/
 endif
 
-	mkdir -p $(DESTDIR)/usr/lib/vdr/inc
-	install -m 0644 -o root -g root usr/lib/vdr/inc/*.sh $(DESTDIR)/usr/lib/vdr/inc/
+	mkdir -p $(DESTDIR)/usr/share/vdr/inc
+	install -m 0644 -o root -g root usr/share/vdr/inc/*.sh $(DESTDIR)/usr/share/vdr/inc/
 	
 	mkdir -p $(DESTDIR)/usr/lib/vdr/record
 	install -m 0644 -o root -g root usr/lib/vdr/record/*.sh $(DESTDIR)/usr/lib/vdr/record/

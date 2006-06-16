@@ -2,6 +2,15 @@
 # $Id$
 
   16 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/lib/vdr/inc -> usr/share/vdr/inc
+  usr/share/vdr/rcscript/pre-start-40-config-files.sh, Makefile,
+  etc/init.d/vdr, usr/lib/vdr/bin/vdrrecord-gate.sh,
+  usr/lib/vdr/bin/vdrshutdown-gate.sh,
+  usr/lib/vdr/bin/vdrshutdown-periodic-thread.sh,
+  usr/lib/vdr/bin/vdrshutdown-really.sh:
+  Moved include-dir to /usr/share
+
+  16 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/inc/functions.sh:
   Can read capabilities-file from new location under /usr/share
 

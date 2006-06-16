@@ -4,7 +4,7 @@
 
 opts="${opts} watchdogrestart"
 
-source /usr/lib/vdr/inc/functions.sh
+source /usr/share/vdr/inc/functions.sh
 include rc-functions
 
 depend() {
