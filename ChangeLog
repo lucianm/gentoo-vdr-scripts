@@ -2,6 +2,11 @@
 # $Id$
 
   16 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/shutdown/pre-shutdown-40-time.sh:
+  Bugfix forbidden-times shutdown stopper. Reported by Roland May
+  <tinitus@web.de>.
+
+  16 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/lib/vdr/rcscripts -> usr/share/vdr/rcscripts, Makefile,
   README.vdrcaps, usr/share/vdr/inc/rc-functions.sh:
   Moved rcscript-dir to /usr/share
