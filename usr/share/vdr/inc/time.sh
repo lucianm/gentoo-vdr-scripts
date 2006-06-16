@@ -8,9 +8,11 @@ time2min() {
 
 	# alles vor :
 	local h=${t%:*}
+	h=${h##0}
 
 	# alles nach :
 	local m=${t#*:}
+	m=${m##0}
 
 	# Wenn die Zeit kein ":" enthaelt
 	[[ $m == $t ]] && m=0
@@ -40,7 +42,7 @@ check_interval() {
 			start=$(time2min $start)
 			stop=$(time2min $stop)
 
-			if [[ $start -lt $stop ]]; then
+			if [[ $start -le $stop ]]; then
 				# if (start <= testtime <= stop)
 				if [[ ( $start -le $testtime ) && ( $testtime -le $stop ) ]]; then
 					HIT=1
@@ -64,6 +66,10 @@ check_interval() {
 			: $((INSIDE++))
 		fi
 	done
-	[[ $INSIDE -gt 0 ]]
+	if [[ $INSIDE -gt 0 ]]; then
+		return 0
+	else
+		return 1
+	fi
 }
 
