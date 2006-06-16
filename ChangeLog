@@ -1,6 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  16 Jun 2006; Matthias Schwarzott <zzam@gentoo.org> Makefile:
+  Do not create /var/vdr/video
+
   16 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/inc/time.sh:
   More bufixes for the forbidden-time-check.
