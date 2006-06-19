@@ -1,6 +1,11 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  19 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-95-plugins.sh,
+  usr/share/vdr/inc/plugin-functions.sh:
+  Make SKIP_PLUGIN work also for stopping vdr, not only for start.
+
 *gentoo-vdr-scripts-0.3.5 (16 Jun 2006)
 
   16 Jun 2006; Matthias Schwarzott <zzam@gentoo.org> Makefile:

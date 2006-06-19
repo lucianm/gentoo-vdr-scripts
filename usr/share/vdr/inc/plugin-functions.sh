@@ -36,6 +36,7 @@ init_plugin_loader() {
 }
 
 check_plugin() {
+	SKIP_PLUGIN=0
 	local PLUGIN="${1}"
 	local plugin_file="${plugin_dir}/libvdr-${PLUGIN}.so.${APIVERSION}"
 
