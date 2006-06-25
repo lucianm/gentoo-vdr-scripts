@@ -1,6 +1,11 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  25 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
+  etc/conf.d/vdr.shutdown:
+  Changed default-conf-filename for nvram-wakeup to nvram-wakeup.conf to match
+  other distros and wiki.
+
   19 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/pre-start-95-plugins.sh,
   usr/share/vdr/inc/plugin-functions.sh:

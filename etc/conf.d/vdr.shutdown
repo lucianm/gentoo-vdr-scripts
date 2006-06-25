@@ -67,7 +67,7 @@
 # and you created your own configuration file.
 #   allowed values: filenames
 #   default: do not use any additional configuration file
-#NVRAM_CONFIG="/etc/nvram.conf"
+#NVRAM_CONFIG="/etc/nvram-wakeup.conf"
 
 #
 # Set this if you need additional command line options for nvram-wakeup.
