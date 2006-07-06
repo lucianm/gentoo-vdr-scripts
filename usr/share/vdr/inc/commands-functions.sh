@@ -41,6 +41,8 @@ EOT
 		echo >> "${mergedfile}"
 	done
 
+	chown vdr:vdr "${mergedfile}"
+
 	# link it to real location
 	if [[ -L "${destfile}" ]]; then
 		# remove link

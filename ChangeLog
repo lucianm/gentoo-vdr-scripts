@@ -1,6 +1,11 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  06 Jul 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/inc/commands-functions.sh:
+  Chown the merged commands-file to vdr:vdr, solves problems with restrictive
+  umask-value, reported by timonator at #gentoo-vdr.
+
   25 Jun 2006; Matthias Schwarzott <zzam@gentoo.org>
   etc/conf.d/vdr.shutdown:
   Changed default-conf-filename for nvram-wakeup to nvram-wakeup.conf to match
