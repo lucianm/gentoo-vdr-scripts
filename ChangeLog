@@ -1,6 +1,15 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  09 Jul 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-30-parameter.sh,
+  usr/share/vdr/rcscript/pre-start-50-shutdown.sh,
+  usr/share/vdr/shutdown/pre-shutdown-99-periodic-thread.sh, Makefile,
+  usr/share/vdr/bin/vdrrecord-gate.sh,
+  usr/share/vdr/bin/vdrshutdown-gate.sh,
+  usr/share/vdr/inc/message-functions.sh:
+  Changed every reference to /usr/lib/vdr/bin.
+
   09 Jul 2006; Matthias Schwarzott <zzam@gentoo.org> -usr/lib/vdr/bin
   +usr/share/vdr/bin:
   Moved usr/lib/vdr/bin to usr/share/vdr/bin

@@ -6,7 +6,7 @@
 
 #fork to background
 if [[ -z ${EXECUTED_BY_VDR_BG} ]]; then
-	exec /usr/lib/vdr/bin/vdr-bg.sh "${0}" "${@}"
+	exec /usr/share/vdr/bin/vdr-bg.sh "${0}" "${@}"
 	exit
 fi
 

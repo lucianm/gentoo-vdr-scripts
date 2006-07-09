@@ -16,7 +16,7 @@ finish_vdr_start_log()
 	if [[ ${LOG_ERROR_COUNT} = 0 ]]; then
 		vdr_log_generic "NO problems at start."
 	else
-		/usr/lib/vdr/bin/vdr-bg.sh svdrpsend.pl mesg "Errors: View via Commands / View VDR Start Log"
+		/usr/share/vdr/bin/vdr-bg.sh svdrpsend.pl mesg "Errors: View via Commands / View VDR Start Log"
 	fi
 	VDR_LOG_FILE=""
 }

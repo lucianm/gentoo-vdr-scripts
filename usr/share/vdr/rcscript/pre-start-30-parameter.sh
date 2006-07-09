@@ -29,7 +29,7 @@ addon_main() {
 		add_param "--vfat"
 	fi
 
-	add_param "--record=/usr/lib/vdr/bin/vdrrecord-gate.sh"
+	add_param "--record=/usr/share/vdr/bin/vdrrecord-gate.sh"
 
 	if [[ -n "${VDR_EXTRA_OPTIONS}" ]]; then
 		add_param ${VDR_EXTRA_OPTIONS}

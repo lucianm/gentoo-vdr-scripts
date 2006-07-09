@@ -28,11 +28,14 @@ addon_main() {
 	# no custum shutdown-script
 
 	# test for good sudo-configuration
-	if ! grep -q /usr/lib/vdr/bin/vdrshutdown-really.sh /etc/sudoers; then
+	if ! grep -q /usr/share/vdr/bin/vdrshutdown-really.sh /etc/sudoers; then
 		vdr_ewarn "  missing entry in /etc/sudoers"
 		vdr_einfo
 		vdr_einfo "  please add this line to your /etc/sudoers file"
-		vdr_einfo "  vdr ALL=NOPASSWD:/usr/lib/vdr/bin/vdrshutdown-really.sh"
+		vdr_einfo "  vdr ALL=NOPASSWD:/usr/share/vdr/bin/vdrshutdown-really.sh"
+		vdr_einfo
+		vdr_einfo "  or call emerge --config gentoo-vdr-scripts"
+		vdr_einfo
 		shutdown_disabled
 		return 0
 	fi
@@ -53,7 +56,7 @@ addon_main() {
 		return 0
 	fi
 
-	add_param "--shutdown=/usr/lib/vdr/bin/vdrshutdown-gate.sh"
+	add_param "--shutdown=/usr/share/vdr/bin/vdrshutdown-gate.sh"
 	return 0
 }
 

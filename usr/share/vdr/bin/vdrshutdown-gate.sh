@@ -9,7 +9,7 @@
 
 #fork to background
 if [[ -z ${EXECUTED_BY_VDR_BG} ]]; then
-	exec /usr/lib/vdr/bin/vdr-bg.sh "${0}" "${@}"
+	exec /usr/share/vdr/bin/vdr-bg.sh "${0}" "${@}"
 	exit
 fi
 
@@ -216,14 +216,17 @@ fi
 
 # You have to edit sudo-permissions to grant vdr permission to execute
 # privileged commands. Start visudo and add a line like
-#   vdr     ALL= NOPASSWD: /usr/lib/vdr/bin/vdrshutdown-really.sh
+#   vdr     ALL= NOPASSWD: /usr/share/vdr/bin/vdrshutdown-really.sh
 
 #mesg_q "Dummy - Real shutdown not working"
 
 
 SUDO=/usr/bin/sudo
 if [[ -z ${DRY_SHUTDOWN} ]]; then
-	${SUDO} /usr/lib/vdr/bin/vdrshutdown-really.sh ${VDR_TIMER_NEXT}
+	if ! ${SUDO} /usr/share/vdr/bin/vdrshutdown-really.sh ${VDR_TIMER_NEXT}; then
+		mesg_q "sudo failed"
+		mesg_q "call emerge --config gentoo-vdr-scripts"
+	fi
 else
 	logger DRY_SHUTDOWN shutdown, vdrshutdown-really.sh ${VDR_TIMER_NEXT}
 fi

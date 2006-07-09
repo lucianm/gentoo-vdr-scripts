@@ -46,8 +46,8 @@ endif
 	mkdir -p $(DESTDIR)/usr/share/vdr/record
 	install -m 0644 -o root -g root usr/share/vdr/record/*.sh $(DESTDIR)/usr/share/vdr/record/
 
-	mkdir -p $(DESTDIR)/usr/lib/vdr/bin
-	install -m 0755 -o root -g root usr/lib/vdr/bin/*.sh $(DESTDIR)/usr/lib/vdr/bin/
+	mkdir -p $(DESTDIR)/usr/share/vdr/bin
+	install -m 0755 -o root -g root usr/share/vdr/bin/*.sh $(DESTDIR)/usr/share/vdr/bin/
 
 	mkdir -p $(DESTDIR)/var/vdr/{shutdown-data,merged-config-files}
 	chown vdr:vdr -R $(DESTDIR)/var/vdr

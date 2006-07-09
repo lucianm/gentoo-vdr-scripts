@@ -43,7 +43,7 @@ check_periodic_thread()
 	disable_auto_retry
 
 	# can take longer time
-	/usr/lib/vdr/bin/vdr-bg.sh /usr/lib/vdr/bin/vdrshutdown-periodic-thread.sh &
+	/usr/share/vdr/bin/vdr-bg.sh /usr/share/vdr/bin/vdrshutdown-periodic-thread.sh &
 }
 
 check_periodic_thread
