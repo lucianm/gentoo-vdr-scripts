@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  09 Jul 2006; Matthias Schwarzott <zzam@gentoo.org> -usr/lib/vdr/bin
+  +usr/share/vdr/bin:
+  Moved usr/lib/vdr/bin to usr/share/vdr/bin
+
   06 Jul 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/inc/commands-functions.sh:
   Chown the merged commands-file to vdr:vdr, solves problems with restrictive
