@@ -1,6 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-0.3.6 (09 Jul 2006)
+
   09 Jul 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/pre-start-30-parameter.sh,
   usr/share/vdr/rcscript/pre-start-50-shutdown.sh,
