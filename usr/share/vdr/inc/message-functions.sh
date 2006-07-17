@@ -1,5 +1,10 @@
 # $Id$
 
+#
+# Used to log error-messages in startscript to show them on
+# OSD later when choosing apropriate point in commands.
+#
+
 VDR_LOG_FILE=""
 
 init_vdr_start_log()

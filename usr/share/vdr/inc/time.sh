@@ -1,5 +1,10 @@
 # $Id$
 
+#
+# Only contains checking of time-intervals for
+# shutdown-check called BLOCK_SHUTDOWN_INTERVALS
+#
+
 time2min() {
 	local t=${1}
 	if [[ $t == NOW ]]; then

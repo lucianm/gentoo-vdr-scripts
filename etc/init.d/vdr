@@ -92,6 +92,8 @@ stop() {
 	load_addons_prefixed post-stop
 }
 
+# gets called by watchdog to restart vdr
+# and possibly reload modules
 watchdogrestart() {
 
 	export WATCHDOG_RESTART="1"

@@ -1,5 +1,7 @@
 # $Id$
 
+# Handle inclusion of script-helper-files
+
 include()
 {
 	local name="${1}"
@@ -11,6 +13,8 @@ include()
 	eval ${vname}=1
 }
 
+# Read file with definitions of capabilities of vdr-binary
+# e.g. svdrp-down-command / some patches
 read_caps()
 {
 	local capfile

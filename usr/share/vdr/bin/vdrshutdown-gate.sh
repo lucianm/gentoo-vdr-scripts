@@ -7,6 +7,14 @@
 # some ideas from ctvdr's shutdownvdr by Tobias Grimm <tg@e-tobi.net>
 #
 
+# This script is called by vdr when triggering shutdown
+# called from vdr with: vdr -s vdrshutdown-gate.sh
+
+# It calls all shell-scripts located under /usr/share/vdr/shutdown
+# for checking if shutdown should be allowed.
+# A lot of functions defined in here can be used
+# from within these scripts.
+
 #fork to background
 if [[ -z ${EXECUTED_BY_VDR_BG} ]]; then
 	exec /usr/share/vdr/bin/vdr-bg.sh "${0}" "${@}"

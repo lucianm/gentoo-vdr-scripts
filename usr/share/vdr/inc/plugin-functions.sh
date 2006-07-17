@@ -1,5 +1,17 @@
 # $Id$
 
+# Manages loading of plugins (i.e. creating command-line-options for vdr)
+#
+# Main entry-points are:
+#  load_plugin - Checks for loadable Plugin and calls functions
+#                in Plugin-rc-addon when existing
+#  init_plugin_params - Prepares list of command-line-options for one plugin
+#                       Adds --plugin="${NAME}" option
+#
+# Function callable by plugin rc-addon:
+#   add_plugin_param "-v -d /directory1"  - This adds these options to command-line of plugin
+#
+
 
 init_plugin_loader() {
 	PLUGIN_CHECK_MD5=no

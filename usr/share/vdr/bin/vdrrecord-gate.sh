@@ -3,6 +3,10 @@
 # Author:
 #   Matthias Schwarzott <zzam@gmx.de>
 #
+# This is a multiplexer for all things vdr can call with vdr -r script (e.g. noad ...)
+# It calls all shell-scripts located in /usr/share/vdr/record in alphabetical order
+
+
 
 #fork to background
 if [[ -z ${EXECUTED_BY_VDR_BG} ]]; then

@@ -1,6 +1,13 @@
 #!/bin/bash
 # $Id$
 
+#
+# Called from shutdown to execute some tasks before
+# shutting down the system (when activated).
+#
+# There are some bugs concerning abort of these tasks.
+#
+
 source /usr/share/vdr/inc/functions.sh
 include shutdown-functions
 read_caps

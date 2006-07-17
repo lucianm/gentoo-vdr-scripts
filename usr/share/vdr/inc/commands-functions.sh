@@ -1,6 +1,10 @@
 # $Id$
 include language-functions
 
+# merging the files under /etc/vdr/commands/ to one single file under /var/vdr/merged-config-files/ and links
+# it to /etc/vdr/commands.conf.
+# This merged file can then be used by the vdr process.
+
 merge_commands_conf() {
 	[[ -z ${VDR_LANGUAGE} ]] && read_vdr_language
 
@@ -59,6 +63,7 @@ EOT
 
 }
 
+#Usage example
 # merge_commands_conf /etc/vdr/commands /etc/vdr/commands.conf "${ORDER_COMMANDS}"
 # merge_commands_conf /etc/vdr/reccmds /etc/vdr/reccmds.conf "${ORDER_RECCMDS}"
 

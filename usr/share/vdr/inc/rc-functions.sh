@@ -1,5 +1,12 @@
 # $Id$
 
+# Contains:
+#   manage all vdr-command-line-options
+#   Loading of rc-script addons
+#   General routine to wait for conditions (svdrp/existing dvb-device-nodes ...)
+#   Starting and stopping of external watchdog
+#
+
 include message-functions
 
 : ${vdr_rc_dir:=/usr/share/vdr/rcscript}

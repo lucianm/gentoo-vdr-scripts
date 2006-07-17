@@ -1,4 +1,9 @@
 # $Id$
+
+#
+# Reload modules on a watchdogrestart
+#
+
 do_unload() {
 	local mod=${1}
 	modprobe -r ${mod}

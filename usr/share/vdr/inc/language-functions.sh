@@ -1,4 +1,10 @@
 # $Id$
+
+# Reads the language setting of vdr to localize the messages
+# of start/shutdown-scripts
+#
+# At the moment only used for choosing localized commands.conf-files.
+
 read_vdr_language() {
 	local OSDLANG
 	local LANG_TAB

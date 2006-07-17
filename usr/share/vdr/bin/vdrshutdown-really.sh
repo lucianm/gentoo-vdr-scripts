@@ -4,6 +4,12 @@
 #   Matthias Schwarzott <zzam@gmx.de>
 #
 
+#
+# This script is called from vdrshutdown-gate.sh over sudo to
+# have root-permissions for setting wakeup-time and triggering
+# real shutdown/reboot.
+#
+
 source /usr/share/vdr/inc/functions.sh
 include shutdown-functions
 
