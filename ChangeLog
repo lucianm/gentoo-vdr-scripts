@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  05 Oct 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-45-nptl-check.sh:
+  Removed warning about nptl-only system.
+
   17 Jul 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/watchdog-restart-20-modules.sh, etc/init.d/vdr,
   usr/share/vdr/bin/vdrrecord-gate.sh,

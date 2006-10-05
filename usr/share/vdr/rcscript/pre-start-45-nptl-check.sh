@@ -5,8 +5,6 @@ addon_main() {
 		if LD_ASSUME_KERNEL=2.4.1 /bin/true 2>/dev/null; then
 			export LD_ASSUME_KERNEL=2.4.1
 			einfo_level2 "Forcing NPTL off"
-		else
-			einfo "vdr: You use a NPTL only system, using nptl and hoping the best."
 		fi
 	fi
 	return 0
