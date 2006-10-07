@@ -66,6 +66,11 @@
 #   default: leave channel unchanged
 #STARTUP_CHANNEL="1"
 
+# show vdr-version number when starting vdr
+# some people like this :)
+#   allowed values: yes no
+#   default: no
+#SHOW_VDR_VERSION=no
 
 ###########################################################
 #          Terminal Output / Keyboard Input               #

@@ -32,6 +32,11 @@ getvdrversion()
 	VDRVERSION=$(awk -F'"' '/define VDRVERSION/ {print $2}' /usr/include/vdr/config.h)
 	APIVERSION=$(awk -F'"' '/define APIVERSION/ {print $2}' /usr/include/vdr/config.h)
 	[[ -z ${APIVERSION} ]] && APIVERSION="${VDRVERSION}"
+
+	case ${SHOW_VDR_VERSION:=no} in
+		yes)	VDRNAME=vdr ;;
+		*)	VDRNAME=vdr-${VDRVERSION} ;;
+	esac
 }
 
 getvdrversion

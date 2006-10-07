@@ -1,6 +1,11 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  07 Oct 2006; Matthias Schwarzott <zzam@gentoo.org> etc/conf.d/vdr,
+  etc/init.d/vdr, usr/share/vdr/inc/rc-functions.sh:
+  Make showing vdr-version number at startup-time configurable, but disabled
+  by default.
+
   07 Oct 2006; Matthias Schwarzott <zzam@gentoo.org> etc/init.d/vdr,
   usr/share/vdr/inc/rc-functions.sh:
   Changed debug-code to write out a correctly quoted command-line, suggested
