@@ -120,6 +120,22 @@ einfo_level2() {
 	[[ ${SCRIPT_DEBUG_LEVEL} -ge 2 ]] && einfo "debug2:  $@"
 }
 
+quote_parameters() {
+	local item
+	local txt=""
+	for item; do
+		case "${item}" in
+			*\ *)
+				txt="${txt} \"${item}\""
+				;;
+			*)
+				txt="${txt} ${item}"
+				;;
+		esac
+	done
+	echo "${txt}"
+}
+
 # int waitfor (int waittime, void (*condition)(void))
 # returns
 #   0 when condition returns true
