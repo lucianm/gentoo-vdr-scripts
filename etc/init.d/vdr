@@ -13,6 +13,7 @@ depend() {
 }
 
 start() {
+	cd /
 	local exitcode
 
 	init_vdr_start_log
@@ -81,6 +82,7 @@ start() {
 }
 
 stop() {
+	cd /
 	load_addons_prefixed pre-stop
 
 	ebegin "Stopping vdr-${VDRVERSION}"
@@ -95,6 +97,7 @@ stop() {
 # gets called by watchdog to restart vdr
 # and possibly reload modules
 watchdogrestart() {
+	cd /
 
 	export WATCHDOG_RESTART="1"
 	/etc/init.d/vdr pause

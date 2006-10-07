@@ -1,6 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  07 Oct 2006; Matthias Schwarzott <zzam@gentoo.org> etc/init.d/vdr:
+  Change to root directory when starting/stoping vdr.
+
   05 Oct 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/pre-start-45-nptl-check.sh:
   Removed warning about nptl-only system.
