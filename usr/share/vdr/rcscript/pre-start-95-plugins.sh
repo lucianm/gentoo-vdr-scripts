@@ -10,7 +10,11 @@ addon_main() {
 		load_plugin ${PLUGIN} plugin_pre_vdr_start
 		[[ "${SKIP_PLUGIN}" == "1" ]] && continue
 
-		add_param "${vdrplugin_opts[*]} ${_EXTRAOPTS}"
+		if [[ -z ${_EXTRAOPTS} ]]; then
+			add_param "${vdrplugin_opts[*]}"
+		else
+			add_param "${vdrplugin_opts[*]} ${_EXTRAOPTS}"
+		fi
 	done
 	return 0
 }
