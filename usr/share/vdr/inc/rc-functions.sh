@@ -34,8 +34,8 @@ getvdrversion()
 	[[ -z ${APIVERSION} ]] && APIVERSION="${VDRVERSION}"
 
 	case ${SHOW_VDR_VERSION:=no} in
-		yes)	VDRNAME=vdr ;;
-		*)	VDRNAME=vdr-${VDRVERSION} ;;
+		yes)	VDRNAME=vdr-${VDRVERSION}  ;;
+		*)	VDRNAME=vdr ;;
 	esac
 }
 
