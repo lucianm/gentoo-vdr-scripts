@@ -2,7 +2,7 @@
 addon_main() {
 	local exitcode=0
 	if [[ "${waitconditions}" ]]; then
-		ebegin "  Prerequisits (devices nodes etc.)" 
+		ebegin "  Waiting for prerequisits (devices nodes etc.)" 
 		waitfor 10 wait_for_multiple_condition
 		exitcode="$?"
 		exitmsg="could not start vdr"

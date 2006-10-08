@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  08 Oct 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-98-wait-conditions.sh:
+  Changed prerequisits-message.
+
   08 Oct 2006; Matthias Schwarzott <zzam@gentoo.org> etc/init.d/vdr:
   Added prefix to cmdline-message.
 
