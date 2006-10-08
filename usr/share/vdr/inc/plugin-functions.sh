@@ -103,11 +103,6 @@ add_plugin_param()
 skip_plugin() {
 	SKIP_PLUGIN=1
 	if [[ -n "${1}" && "${addon_prefix}" == "pre-start" ]]; then
-
-		# einmal Kopfzeile anzeigen
-		[[ ${SKIP_PLUGIN_HEADER_PRINTED} != 1 ]] && vdr_eerror "Unable to load these plugins:"
-		SKIP_PLUGIN_HEADER_PRINTED=1
-		
 		vdr_eerror "  ${1}: ${2}"
 	fi
 }
