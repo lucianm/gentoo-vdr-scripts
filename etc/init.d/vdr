@@ -45,7 +45,7 @@ start() {
 
 	cd ${vdr_home}
 
-	einfo_level2 start-stop-daemon $(quote_parameters "${daemonctrl_opts[@]}" "--" "${vdr_opts[@]}")
+	einfo_level2 "  CMDLINE:" start-stop-daemon $(quote_parameters "${daemonctrl_opts[@]}" "--" "${vdr_opts[@]}")
 
 	if [[ -z "${TERMINAL}" ]]; then
 		start-stop-daemon "${daemonctrl_opts[@]}" \
