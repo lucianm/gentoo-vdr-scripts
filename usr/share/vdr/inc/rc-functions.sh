@@ -125,6 +125,10 @@ einfo_level2() {
 	[[ ${SCRIPT_DEBUG_LEVEL} -ge 2 ]] && einfo "$@"
 }
 
+einfo_debug() {
+	[[ ${SCRIPT_DEBUG_LEVEL} -ge 3 ]] && einfo "$@"
+}
+
 quote_parameters() {
 	local item
 	local txt=""
@@ -160,8 +164,8 @@ waitfor() {
 	while [[ "${waited}" -lt "${waittime}" ]]; do
 		eval ${cond}
 		case "$?" in
-			0) einfo_level1 waited ${waited} seconds; return 0 ;;
-			2) einfo_level1 waited ${waited} seconds; return 2 ;;
+			0) einfo_debug waited ${waited} seconds; return 0 ;;
+			2) einfo_debug waited ${waited} seconds; return 2 ;;
 		esac
 		waited=$[waited+1]
 		sleep 1
