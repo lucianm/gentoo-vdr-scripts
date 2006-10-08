@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  08 Oct 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/inc/rc-functions.sh:
+  Removed prefix from einfo_level1 and 2.
+
   07 Oct 2006; Matthias Schwarzott <zzam@gentoo.org> etc/conf.d/vdr,
   etc/init.d/vdr, usr/share/vdr/inc/rc-functions.sh:
   Make showing vdr-version number at startup-time configurable, but disabled

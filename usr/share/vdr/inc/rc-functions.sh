@@ -118,11 +118,11 @@ load_addon()
 }
 
 einfo_level1() {
-	[[ ${SCRIPT_DEBUG_LEVEL} -ge 1 ]] && einfo "debug1:  $@"
+	[[ ${SCRIPT_DEBUG_LEVEL} -ge 1 ]] && einfo "$@"
 }
 
 einfo_level2() {
-	[[ ${SCRIPT_DEBUG_LEVEL} -ge 2 ]] && einfo "debug2:  $@"
+	[[ ${SCRIPT_DEBUG_LEVEL} -ge 2 ]] && einfo "$@"
 }
 
 quote_parameters() {
