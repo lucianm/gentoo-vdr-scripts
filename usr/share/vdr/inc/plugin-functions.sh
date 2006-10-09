@@ -103,7 +103,8 @@ add_plugin_param()
 skip_plugin() {
 	SKIP_PLUGIN=1
 	if [[ -n "${1}" && "${addon_prefix}" == "pre-start" ]]; then
-		vdr_eerror "  ${1}: ${2}"
+		einfo_level1 "  ${1}: ${2}"
+		vdr_log_generic "I: ${1}: ${2}"
 	fi
 }
 

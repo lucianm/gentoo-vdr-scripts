@@ -117,6 +117,10 @@ load_addon()
 	return $ret
 }
 
+has_debuglevel() {
+	[[ ${SCRIPT_DEBUG_LEVEL} -ge ${1} ]]
+}
+
 einfo_level1() {
 	[[ ${SCRIPT_DEBUG_LEVEL} -ge 1 ]] && einfo "$@"
 }
