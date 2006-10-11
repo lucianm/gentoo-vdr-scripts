@@ -1,6 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  11 Oct 2006; Matthias Schwarzott <zzam@gentoo.org> Makefile:
+  Now also create directories via the install-command.
+
   11 Oct 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/pre-start-95-plugins.sh:
   More nicer indenting.
