@@ -1,6 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  11 Oct 2006; Matthias Schwarzott <zzam@gentoo.org> README:
+  Incrementing version-number to 0.3.7.
+
   11 Oct 2006; Matthias Schwarzott <zzam@gentoo.org> Makefile:
   Now also create directories via the install-command.
 
