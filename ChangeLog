@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  11 Oct 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-95-plugins.sh:
+  More nicer indenting.
+
   09 Oct 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/pre-start-95-plugins.sh,
   usr/share/vdr/inc/plugin-functions.sh, usr/share/vdr/inc/rc-functions.sh:
