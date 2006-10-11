@@ -108,5 +108,16 @@ skip_plugin() {
 	fi
 }
 
+add_plugin_params_to_vdr_call() {
+	if [[ "${SKIP_PLUGIN}" == "0" ]]; then
+		# for not-skipped plugins, add the param to the vdr-call
+		if [[ -z ${_EXTRAOPTS} ]]; then
+			add_param "${vdrplugin_opts[*]}"
+		else
+			add_param "${vdrplugin_opts[*]} ${_EXTRAOPTS}"
+		fi
+	fi
+}
+
 init_plugin_loader
 

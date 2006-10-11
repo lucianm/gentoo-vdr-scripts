@@ -1,6 +1,11 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  11 Oct 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-95-plugins.sh, etc/conf.d/vdr,
+  +etc/conf.d/vdr.plugins, usr/share/vdr/inc/plugin-functions.sh:
+  Now read plugins to load from a dedicated config-file.
+
   11 Oct 2006; Matthias Schwarzott <zzam@gentoo.org> README:
   Incrementing version-number to 0.3.7.
 

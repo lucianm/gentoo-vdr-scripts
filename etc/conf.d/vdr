@@ -6,16 +6,12 @@
 #          General Settings                               #
 ###########################################################
 
-# load a plugin defined by the given options
-# list all plugins you want to be loaded, seperated by space
-#   allowed values: set of plugin names
-#   default: load no plugins
-#PLUGINS="femon"
-
-#   (Put only the name of the plugin inside PLUGINS. Additional command
-#    line options for plugins are put into /etc/conf.d/vdr.PLUGINNAME
-#    Either as _EXTRAOPTS="--option1 --option2". Or if special
-#    config variables are prepared these can be used.) 
+# The list of Plugins to load has been moved to a
+# seperate file and can no longer be set in here.
+# Now it is set in /etc/conf.d/vdr.plugins
+#
+# The ebuild should have copied all Plugins listed
+# in here to the new location.
 
 # What IR control should be used. Override the default set at
 # compile time
