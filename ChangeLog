@@ -1,6 +1,12 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  18 Oct 2006; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-95-plugins.sh,
+  usr/share/vdr/inc/plugin-functions.sh:
+  Moved the reader for new plugin-conf-system to correct place, as then only
+  start-rcaddons will work.
+
   18 Oct 2006; Matthias Schwarzott <zzam@gentoo.org> Makefile:
   Make VERSION overwritable for developer.
 
