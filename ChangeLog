@@ -1,6 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  18 Oct 2006; Matthias Schwarzott <zzam@gentoo.org> Makefile:
+  Make VERSION overwritable for developer.
+
   11 Oct 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/pre-start-95-plugins.sh, etc/conf.d/vdr,
   +etc/conf.d/vdr.plugins, usr/share/vdr/inc/plugin-functions.sh:

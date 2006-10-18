@@ -3,7 +3,7 @@
 all:
 	@echo nothing to compile
 
-VERSION = $(shell grep '^Version' README | awk '{ print $$2 }')
+VERSION := $(shell grep '^Version' README | awk '{ print $$2 }')
 TMPDIR = /tmp
 ARCHIVE = gentoo-vdr-scripts-$(VERSION)
 PACKAGE = $(ARCHIVE)
