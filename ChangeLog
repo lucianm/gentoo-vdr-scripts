@@ -1,6 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-0.3.7 (07 Nov 2006)
+
   18 Oct 2006; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/pre-start-95-plugins.sh,
   usr/share/vdr/inc/plugin-functions.sh:
