@@ -7,11 +7,13 @@ $Id$
   (for example when calling "init 0")
 
 * Create possibility to start vdr under x (for softdevice etc.)
+  without starting vdr as daemon and connecting a client program
 
 * Sort commands.conf files by user-preferences and not strictly alphabetically.
 * Skip some commands.conf files or specific entries out of some files by
   special criteria.
 * nice sperators between commands-files
+* converting files from utf8 to latin1 if they happen to be in utf8
 
 * writing an API-document for all addon-scripts
   + plugin-rc-addons (run under root normally)
@@ -22,5 +24,10 @@ $Id$
 
 * documentation
 
-* log more errors to special log-file
+* rewrite logging part, log more errors to special log-file
+
+* make "/etc/init.d/vdr stop" execute the stop-addons for all loaded plugins
+  even if list of plugins to load was changed while vdr is running.
+
+* Cleanup positions of temporary files
 
