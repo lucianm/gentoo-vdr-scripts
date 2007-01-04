@@ -6,19 +6,19 @@
 
 ACPI_WAKEUP=/usr/sbin/acpi-wakeup.sh
 
-# is acpi in kernel activated?
-if [[ ! -f /proc/acpi/alarm ]]; then
-	error_mesg "No acpi-driver installed, /proc/acpi/alarm does not exist!"
-	SHUTDOWN_EXITCODE=1
-	return
-fi
-if [[ ! -x ${ACPI_WAKEUP} ]]; then
-	error_mesg "acpi-wakeup.sh not found"
-	SHUTDOWN_EXITCODE=1
-	return
-fi
+wakeup_check() {
+	# is acpi in kernel activated?
+	if [[ ! -f /proc/acpi/alarm ]]; then
+		error_mesg "No acpi-driver installed, /proc/acpi/alarm does not exist!"
+		return 1
+	fi
+	if [[ ! -x ${ACPI_WAKEUP} ]]; then
+		error_mesg "acpi-wakeup.sh not found"
+		return 1
+	fi
+	return 0
+}
 
-set_wakeup() {
+wakeup_set() {
 	${ACPI_WAKEUP} ${1}
-	SHUTDOWN_EXITCODE=$?
 }

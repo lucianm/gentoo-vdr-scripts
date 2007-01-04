@@ -31,7 +31,6 @@ error_mesg() {
 	mesg "Error: $@"
 }
 
-SHUTDOWN_EXITCODE=0
 
 set_reboot_needed() {
 	date +%s > ${shutdown_data_dir}/shutdown-need-reboot
@@ -55,12 +54,11 @@ read_reboot_setting() {
 if [[ -f ${shutdown_script_dir}/wakeup-${WAKEUP_METHOD}.sh ]]; then
 	source ${shutdown_script_dir}/wakeup-${WAKEUP_METHOD}.sh
 
-	set_wakeup "${VDR_WAKEUP_TIME}"
+	wakeup_check || exit 1
+	wakeup_set "${VDR_WAKEUP_TIME}" || exit 1
 else
-	SHUTDOWN_EXITCODE=2
+	exit 2
 fi
-
-[[ "${SHUTDOWN_EXITCODE}" != "0" ]] && exit ${SHUTDOWN_EXITCODE}
 
 
 if [[ "${DUMMY}" == "1" ]]; then

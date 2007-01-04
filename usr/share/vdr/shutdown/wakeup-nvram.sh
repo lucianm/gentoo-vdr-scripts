@@ -6,13 +6,16 @@
 
 NVRAM_WAKEUP=/usr/bin/nvram-wakeup
 
+wakeup_check() {
+	if [[ ! -x ${NVRAM_WAKEUP} ]]; then
+		error_mesg "no nvram-wakeup installed"
+		return 1
+	fi
 
-if [[ ! -x ${NVRAM_WAKEUP} ]]; then
-	error_mesg "no nvram-wakeup installed"
-	SHUTDOWN_EXITCODE=1
-fi
+	return 0
+}
 
-set_wakeup() {
+wakeup_set() {
 	local CMD="${NVRAM_WAKEUP} --syslog"
 
 	[[ -n "${NVRAM_CONFIG}" ]] && CMD="${CMD} -C ${NVRAM_CONFIG}"
@@ -27,7 +30,7 @@ set_wakeup() {
 	case $PIPESTATUS in
 		0) 
 		# all went ok
-		SHUTDOWN_EXITCODE=0
+		return 0
 		;;
 		
 		1) 
@@ -39,16 +42,22 @@ set_wakeup() {
 		#
 		# for some other boards, we only need this after changing the
 		# status flag, i.e. from enabled to disabled or the other way.
-		SHUTDOWN_EXITCODE=0
 		set_reboot_needed
+		return 0
 		;;
 
 		2) 
 		# something went wrong
-		# don't do anything - just exit with status 1
-		SHUTDOWN_EXITCODE=1
 
 		error_mesg "Something went wrong, please check your config files of nvram-wakeup"
+		# don't do anything - just exit with status 1
+		return 1
+		;;
+		*)
+		# should not happen anyway.
+
+		error_mesg "Something went wrong, should never happen"
+		return 1
 		;;
 	esac
 }

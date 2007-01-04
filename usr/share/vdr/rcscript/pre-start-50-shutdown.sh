@@ -4,8 +4,9 @@ list_wakeup_methods() {
 	local methods
 	local m
 	for m in ${shutdown_script_dir}/wakeup-*.sh; do
-		m=${m//*\/wakeup-/}
-		methods="${methods} ${m/.sh/}"
+		m="${m##*wakeup-}"
+		m="${m%.sh}"
+		methods="${methods} ${m}"
 	done
 	vdr_einfo "    Available shutdown methods:${methods}"
 	vdr_einfo "    There are some useflags to enable more shutdown methods."
@@ -41,10 +42,10 @@ addon_main() {
 	fi
 
 	if [[ -f ${shutdown_script_dir}/wakeup-${WAKEUP_METHOD}.sh ]]; then
-		# test if needed programs are there
-		SHUTDOWN_EXITCODE=0
 		source ${shutdown_script_dir}/wakeup-${WAKEUP_METHOD}.sh
-		if [[ "${SHUTDOWN_EXITCODE}" != "0" ]]; then
+
+		# test if needed programs are there
+		if ! wakeup_check; then
 			list_wakeup_methods
 			shutdown_disabled
 			return 0

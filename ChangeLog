@@ -1,6 +1,14 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  04 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-50-shutdown.sh, README.shutdown,
+  usr/share/vdr/bin/vdrshutdown-really.sh,
+  usr/share/vdr/shutdown/wakeup-acpi.sh,
+  usr/share/vdr/shutdown/wakeup-nvram.sh:
+  Removed using a variable for return-values (SHUTDOWN_EXITCODE). Renamed
+  function set_wakeup to wakeup_set. Added function wakeup_check.
+
   21 Dec 2006; Matthias Schwarzott <zzam@gentoo.org> TODO:
   Updated TODO-file.
 

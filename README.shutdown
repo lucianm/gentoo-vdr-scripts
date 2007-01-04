@@ -19,8 +19,29 @@ The module is sourced by the bash. The wakeup-module is executed as user root.
 
 The Main part of the wakeup-module:
 
-The main part (executed when sourcing) should only check weather a shutdown with this module is possible.
-i.e. check for existence of used programms ...
+A wakeup-module should do nothing in its main part.
+
+
+Return values of functions:
+	== 0 	- success
+	<> 0	- failure
+
+
+
+
+Functions to be defined:
+
+wakeup_check:
+	Should return 0 when setting wakeup is possible
+	else it should return a non-zero return value
+	and set an error-message.
+	i.e. check for existence of used programms ...
+
+set_wakeup:
+	Do the real work. It gets the time to wakeup as
+	first parameter and should do whatever necessary
+	to let the system be up at that time.
+
 
 Usable functions:
 
@@ -28,25 +49,20 @@ void error_mesg(string message)
 	Sets an error message
 
 
-Output variables:
-	SHUTDOWN_EXITCODE - When set to nonzero this means shutdown/setting wakeup time is not possible
-
-
 
 Example:
 
-if [[ ! -x needed_program ]]; then
-	error_mesg "no acpi-driver installed"
-	SHUTDOWN_EXITCODE=1
-fi
+wakeup_check() {
+	if [[ ! -x needed_program ]]; then
+		error_mesg "no acpi-driver installed"
+		return 1
+	fi
 
+	return 0
+}
 
-The function set_wakeup:
-
-
-set_wakeup()
-{
-	# add code here
+wakeup_set() {
+	pass_wakeup_time_to_hardware "${1}"
 }
 
 Usable functions:
@@ -59,9 +75,6 @@ void set_reboot_needed(void)
 
 Input Variables:
 	VDR_WAKEUP_TIME - Time to wakeup in Unix-Format (Seconds since 1970-01-01 UTC)
-
-Output Variables:
-	SHUTDOWN_EXITCODE - For signaling that wakeup-time could not be set
 
 
 =====================
