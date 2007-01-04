@@ -32,6 +32,11 @@ error_mesg() {
 }
 
 
+# A little bit complicated, but this is used to really check if a reboot is needed
+# nvram gets confused when setting the same time a second time
+# (when first shutdown-try fails for some reason).
+
+# to be called from wakeup-method to signalize need for reboot
 set_reboot_needed() {
 	date +%s > ${shutdown_data_dir}/shutdown-need-reboot
 }
@@ -50,6 +55,8 @@ read_reboot_setting() {
 		NEED_REBOOT=1
 	fi
 }
+
+
 
 if [[ -f ${shutdown_script_dir}/wakeup-${WAKEUP_METHOD}.sh ]]; then
 	source ${shutdown_script_dir}/wakeup-${WAKEUP_METHOD}.sh

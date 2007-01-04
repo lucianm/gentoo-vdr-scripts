@@ -22,7 +22,7 @@ wakeup_set() {
 
 	[[ -n "${NVRAM_EXTRA_OPTIONS}" ]] && CMD="${CMD} ${NVRAM_EXTRA_OPTIONS}"
 
-	CMD="${CMD} -s ${VDR_WAKEUP_TIME}"
+	CMD="${CMD} -s ${1}"
 
 	${CMD}
 

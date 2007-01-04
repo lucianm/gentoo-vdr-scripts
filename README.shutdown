@@ -39,7 +39,8 @@ wakeup_check:
 
 set_wakeup:
 	Do the real work. It gets the time to wakeup as
-	first parameter and should do whatever necessary
+	first parameter in Unix-Format (Seconds since 1970-01-01 UTC)
+	and should do whatever necessary
 	to let the system be up at that time.
 
 
@@ -71,10 +72,9 @@ void error_mesg(string message)
 	Sets an error message
 
 void set_reboot_needed(void)
-	Call when you must to reboot for setting the time.
+	Call in wakeup_set when you need to reboot
+	for setting the time.
 
-Input Variables:
-	VDR_WAKEUP_TIME - Time to wakeup in Unix-Format (Seconds since 1970-01-01 UTC)
 
 
 =====================
