@@ -269,7 +269,7 @@ fi
 
 
 SUDO=/usr/bin/sudo
-if [[ -z ${DRY_SHUTDOWN} ]]; then
+if [[ -z ${DRY_SHUTDOWN_GATE} ]]; then
 	if ! ${SUDO} /usr/share/vdr/bin/vdrshutdown-really.sh ${VDR_TIMER_NEXT}; then
 		mesg_q "sudo failed"
 		mesg_q "call emerge --config gentoo-vdr-scripts"

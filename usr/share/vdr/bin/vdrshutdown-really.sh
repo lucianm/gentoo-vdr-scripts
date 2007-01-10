@@ -68,8 +68,8 @@ else
 fi
 
 
-if [[ "${DUMMY}" == "1" ]]; then
-	mesg "Dummy - not shutting down"
+if [[ "${DRY_SHUTDOWN_REAL}" == "1" ]]; then
+	mesg "Dry-run - not shutting down"
 	exit 0
 fi
 
