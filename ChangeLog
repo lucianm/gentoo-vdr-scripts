@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  10 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-50-shutdown.sh:
+  No longer hard disable shutdown if there are things todo, warn only now.
+
   04 Jan 2007; Matthias Schwarzott <zzam@gentoo.org> README.shutdown,
   usr/share/vdr/bin/vdrshutdown-really.sh,
   usr/share/vdr/shutdown/wakeup-nvram.sh:
