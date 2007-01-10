@@ -2,6 +2,10 @@
 # $Id$
 
   10 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/bin/vdrshutdown-gate.sh:
+  Move check for user shutdown into forced-shutdown-check-function.
+
+  10 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/pre-start-50-shutdown.sh:
   No longer hard disable shutdown if there are things todo, warn only now.
 

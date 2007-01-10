@@ -139,6 +139,11 @@ shutdown_abort_can_force() {
 }
 
 init_shutdown_force() {
+	# only continue if user-shutdown
+	if ! is_user_shutdown; then
+		return 0
+	fi
+
 	# detect if this could be a forced shutdown
 	local shutdown_force_file=${shutdown_data_dir}/last-shutdown-abort
 
@@ -179,9 +184,7 @@ disable_auto_retry() {
 	ENABLE_AUTO_RETRY=0
 }
 
-if is_user_shutdown; then
-	init_shutdown_force
-fi
+init_shutdown_force
 
 for HOOK in $HOOKDIR/pre-shutdown-*.sh; do
 	TRY_AGAIN=0
