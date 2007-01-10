@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  10 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/bin/vdrshutdown-gate.sh:
+  Moved some code into dedicated functions.
+
   10 Jan 2007; Matthias Schwarzott <zzam@gentoo.org> README.shutdown,
   usr/share/vdr/bin/vdrshutdown-gate.sh:
   Remove global TRY_AGAIN variable from interface to pre-shutdown-hooks.

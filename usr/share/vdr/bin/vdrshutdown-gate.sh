@@ -117,6 +117,14 @@ is_forced_shutdown() {
 	test "${THIS_SHUTDOWN_IS_FORCED}" == "1"
 }
 
+is_shutdown_aborted() {
+	[[ "${SHUTDOWN_ABORT}" == "1" ]]
+}
+
+forced_tests_count_greater_zero() {
+	[[ $SHUTDOWN_FORCE_COUNT -gt 0 ]]
+}
+
 set_retry_time() {
 	local TIME="${1}"
 	if [[ ${TRY_AGAIN} -lt ${TIME} ]]; then
@@ -132,14 +140,14 @@ shutdown_common() {
 
 shutdown_abort() {
 	shutdown_common "${1}"
-	SHUTDOWN_CAN_FORCE="0"
+	disable_forced_shutdown
 }
 
 shutdown_abort_can_force() {
-	if [[ "${THIS_SHUTDOWN_IS_FORCED}" == "1" ]]; then
+	if is_forced_shutdown; then
 		# this is the forced way, ignore this abort
 		echo FORCED: ${1}
-		FORCE_COUNT=$[FORCE_COUNT+1]
+		SHUTDOWN_FORCE_COUNT=$[SHUTDOWN_FORCE_COUNT+1]
 	else
 		shutdown_common "${1}"
 	fi
@@ -153,11 +161,19 @@ shutdown_abort_exit() {
 	exit_cleanup ${EXITCODE}
 }
 
-init_shutdown_force() {
+
+
+
+init_forced_shutdown() {
+	SHUTDOWN_CAN_FORCE=0
+	THIS_SHUTDOWN_IS_FORCED="0"
+
 	# only continue if user-shutdown
 	if ! is_user_shutdown; then
 		return 0
 	fi
+
+
 
 	# detect if this could be a forced shutdown
 	local shutdown_force_file=${shutdown_data_dir}/last-shutdown-abort
@@ -173,13 +189,25 @@ init_shutdown_force() {
 	fi
 
 	[[ -f "${shutdown_force_file}" ]] && rm "${shutdown_force_file}"
-	FORCE_COUNT=0
+	SHUTDOWN_FORCE_COUNT=0
 	SHUTDOWN_CAN_FORCE=1
+}
+
+disable_forced_shutdown() {
+	SHUTDOWN_CAN_FORCE="0"
 }
 
 write_force_file() {
 	local shutdown_force_file=${shutdown_data_dir}/last-shutdown-abort
 	echo "${NOW}" > "${shutdown_force_file}"
+}
+
+check_forced_shutdown_possible_next_time() {
+	if [[ "${SHUTDOWN_CAN_FORCE}" == "1" ]]; then
+		write_force_file
+		queue_add_wait 1s
+		mesg_q "You can force a shutdown with pressing power again"
+	fi
 }
 
 exit_cleanup() {
@@ -196,37 +224,38 @@ execute_hooks() {
 	done
 }
 
-THIS_SHUTDOWN_IS_FORCED="0"
-SHUTDOWN_ABORT=0
-SHUTDOWN_CAN_FORCE=0
-TRY_AGAIN=0
-ENABLE_AUTO_RETRY=1
-
-disable_auto_retry() {
-	ENABLE_AUTO_RETRY=0
-}
-
-init_shutdown_force
-execute_hooks
-
-if [[ "${SHUTDOWN_ABORT}" == "1" ]]; then
-	mesg_q "Shutdown stopped, because ${ABORT_MESSAGE}"
-	if [[ "${SHUTDOWN_CAN_FORCE}" == "1" ]]; then
-		write_force_file
-		queue_add_wait 1s
-		mesg_q "You can force a shutdown with pressing power again"
-	fi
-
+check_auto_retry() {
 	if [[ ${TRY_AGAIN} -gt 0 && ${ENABLE_AUTO_RETRY} == 1 ]]; then
 		queue_add_wait 1s
 		mesg_q "Shutdown is retried soon"
 		retry_shutdown ${TRY_AGAIN}
 	fi
+}
 
+disable_auto_retry() {
+	ENABLE_AUTO_RETRY=0
+}
+
+init() {
+	SHUTDOWN_ABORT=0
+	TRY_AGAIN=0
+	ENABLE_AUTO_RETRY=1
+}
+
+
+init
+init_forced_shutdown
+execute_hooks
+
+if is_shutdown_aborted; then
+	mesg_q "Shutdown stopped, because ${ABORT_MESSAGE}"
+	check_forced_shutdown_possible_next_time
+	check_auto_retry
+	
 	exit_cleanup 0
 fi
 
-if [[ "${THIS_SHUTDOWN_IS_FORCED}" == "1" && "${FORCE_COUNT}" -gt 0 ]]; then
+if is_forced_shutdown && forced_tests_count_greater_zero; then
 	mesg_q "Shutting down, shutdown forced by user."
 else
 	mesg_q "Shutting down now"
