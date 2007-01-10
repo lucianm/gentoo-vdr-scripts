@@ -101,6 +101,10 @@ void shutdown_abort_can_force(string message)
 	But if user presses the power-button again inside a minute (configurable) then shutdown
 	is forced meaning this condition will not stop shutdown then.
 
+void shutdown_abort_exit(string message)
+	For special cases!
+	Immediately exit shutdown-process with exitcode 1.
+
 bool is_forced_shutdown(void)
 	Returns true if this shutdown has been forced in the sense of shutdown_abort_can_force.
 
@@ -111,6 +115,5 @@ void disable_auto_retry(void)
 
 Ouput Variables:
 	TRY_AGAIN - Sets the time in minutes to wait before shutdown is retried.
-	EXITCODE - Used for special abort cases
 
 

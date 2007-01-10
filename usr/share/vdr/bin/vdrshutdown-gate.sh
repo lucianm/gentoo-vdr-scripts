@@ -138,6 +138,14 @@ shutdown_abort_can_force() {
 	fi
 }
 
+shutdown_abort_exit() {
+	local ABORT_MESSAGE="${1}"
+	local EXITCODE=1
+
+	mesg_q "Shutdown aborted: ${ABORT_MESSAGE}"
+	exit_cleanup ${EXITCODE}
+}
+
 init_shutdown_force() {
 	# only continue if user-shutdown
 	if ! is_user_shutdown; then
@@ -174,7 +182,6 @@ exit_cleanup()
 }
 
 THIS_SHUTDOWN_IS_FORCED="0"
-EXITCODE="-"
 SHUTDOWN_ABORT=0
 SHUTDOWN_CAN_FORCE=0
 MAX_TRY_AGAIN=0
@@ -189,11 +196,6 @@ init_shutdown_force
 for HOOK in $HOOKDIR/pre-shutdown-*.sh; do
 	TRY_AGAIN=0
 	[[ -f "${HOOK}" ]] && source "${HOOK}" $@
-
-	if [[ "${EXITCODE}" != "-" ]]; then
-		mesg_q "Shutdown aborted: ${ABORT_MESSAGE}"
-		exit_cleanup ${EXITCODE} 
-	fi
 
 	if [[ ${TRY_AGAIN} -gt 0 ]]; then
 		if [[ ${MAX_TRY_AGAIN} -lt ${TRY_AGAIN} ]]; then

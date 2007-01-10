@@ -2,6 +2,11 @@
 # $Id$
 
   10 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/shutdown/pre-shutdown-10-check-enabled.sh, README.shutdown,
+  usr/share/vdr/bin/vdrshutdown-gate.sh:
+  Remove global EXITCODE variable.
+
+  10 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/bin/vdrshutdown-gate.sh:
   Move check for user shutdown into forced-shutdown-check-function.
 
