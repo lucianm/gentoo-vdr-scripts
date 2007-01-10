@@ -83,7 +83,7 @@ mesg_q() {
 }
 
 retry_shutdown() {
-	local when=${MAX_TRY_AGAIN}
+	local when=${TRY_AGAIN}
 
 	if [[ -n "${CAP_SHUTDOWN_SVDRP}" ]]; then
 		if [[ ${when} -gt 5 ]]; then
@@ -117,10 +117,17 @@ is_forced_shutdown() {
 	test "${THIS_SHUTDOWN_IS_FORCED}" == "1"
 }
 
+set_retry_time() {
+	local TIME="${1}"
+	if [[ ${TRY_AGAIN} -lt ${TIME} ]]; then
+		TRY_AGAIN=${TIME}
+	fi
+}
+
 shutdown_common() {
 	ABORT_MESSAGE="${1}"
 	SHUTDOWN_ABORT="1"
-	TRY_AGAIN="${SHUTDOWN_DEFAULT_RETRY_TIME}"
+	set_try_again "${SHUTDOWN_DEFAULT_RETRY_TIME}"
 }
 
 shutdown_abort() {
@@ -175,16 +182,24 @@ write_force_file() {
 	echo "${NOW}" > "${shutdown_force_file}"
 }
 
-exit_cleanup()
-{
+exit_cleanup() {
 	svdrp_queue_handler &
 	exit ${1}
+}
+
+execute_hooks() {
+	local HOOK
+	for HOOK in $HOOKDIR/pre-shutdown-*.sh; do
+		if [[ -f "${HOOK}" ]]; then
+			source "${HOOK}"
+		fi
+	done
 }
 
 THIS_SHUTDOWN_IS_FORCED="0"
 SHUTDOWN_ABORT=0
 SHUTDOWN_CAN_FORCE=0
-MAX_TRY_AGAIN=0
+TRY_AGAIN=0
 ENABLE_AUTO_RETRY=1
 
 disable_auto_retry() {
@@ -192,17 +207,7 @@ disable_auto_retry() {
 }
 
 init_shutdown_force
-
-for HOOK in $HOOKDIR/pre-shutdown-*.sh; do
-	TRY_AGAIN=0
-	[[ -f "${HOOK}" ]] && source "${HOOK}" $@
-
-	if [[ ${TRY_AGAIN} -gt 0 ]]; then
-		if [[ ${MAX_TRY_AGAIN} -lt ${TRY_AGAIN} ]]; then
-			MAX_TRY_AGAIN=${TRY_AGAIN}
-		fi
-	fi
-done
+execute_hooks
 
 if [[ "${SHUTDOWN_ABORT}" == "1" ]]; then
 	mesg_q "Shutdown stopped, because ${ABORT_MESSAGE}"
@@ -212,10 +217,10 @@ if [[ "${SHUTDOWN_ABORT}" == "1" ]]; then
 		mesg_q "You can force a shutdown with pressing power again"
 	fi
 
-	if [[ ${MAX_TRY_AGAIN} -gt 0 && ${ENABLE_AUTO_RETRY} == 1 ]]; then
+	if [[ ${TRY_AGAIN} -gt 0 && ${ENABLE_AUTO_RETRY} == 1 ]]; then
 		queue_add_wait 1s
 		mesg_q "Shutdown is retried soon"
-		retry_shutdown ${MAX_TRY_AGAIN}
+		retry_shutdown ${TRY_AGAIN}
 	fi
 
 	exit_cleanup 0

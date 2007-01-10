@@ -112,8 +112,7 @@ bool is_forced_shutdown(void)
 void disable_auto_retry(void)
 	Disables the auto-retry of a failed shutdown. Most times only for internal usage.
 
-
-Ouput Variables:
-	TRY_AGAIN - Sets the time in minutes to wait before shutdown is retried.
+void set_retry_time(int time_minutes)
+	Tells shutdown-script to retry not before time_minutes minutes.
 
 
