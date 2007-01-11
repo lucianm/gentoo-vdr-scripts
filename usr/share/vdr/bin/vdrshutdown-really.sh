@@ -15,7 +15,7 @@ include shutdown-functions
 
 if [[ "${UID}" != "0" ]]; then
 	echo "This program should be run as root"
-	exit 1
+	exit 99
 fi
 
 VDR_WAKEUP_TIME="${1}"
@@ -61,10 +61,10 @@ read_reboot_setting() {
 if [[ -f ${shutdown_script_dir}/wakeup-${WAKEUP_METHOD}.sh ]]; then
 	source ${shutdown_script_dir}/wakeup-${WAKEUP_METHOD}.sh
 
-	wakeup_check || exit 1
-	wakeup_set "${VDR_WAKEUP_TIME}" || exit 1
+	wakeup_check || exit 99
+	wakeup_set "${VDR_WAKEUP_TIME}" || exit 99
 else
-	exit 2
+	exit 98
 fi
 
 

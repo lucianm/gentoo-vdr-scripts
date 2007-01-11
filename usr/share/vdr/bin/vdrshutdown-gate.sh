@@ -270,12 +270,17 @@ fi
 
 SUDO=/usr/bin/sudo
 if [[ -z ${DRY_SHUTDOWN_GATE} ]]; then
-	if ! ${SUDO} /usr/share/vdr/bin/vdrshutdown-really.sh ${VDR_TIMER_NEXT}; then
-		mesg_q "sudo failed"
+	${SUDO} /usr/share/vdr/bin/vdrshutdown-really.sh ${VDR_TIMER_NEXT}
+	case $? in
+	0)	;;
+	1)	mesg_q "sudo failed"
 		mesg_q "call emerge --config gentoo-vdr-scripts"
-	fi
+		;;
+	*)	mesg_q "setting wakeup time not successful"
+		;;
+	esac
 else
-	logger DRY_SHUTDOWN shutdown, vdrshutdown-really.sh ${VDR_TIMER_NEXT}
+	mesg_q "stopping DRY_SHUTDOWN_GATE=1 - ${VDR_TIMER_NEXT}"
 fi
 
 date +%s > ${shutdown_data_dir}/shutdown-time-written
