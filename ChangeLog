@@ -2,6 +2,11 @@
 # $Id$
 
   11 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/bin/vdrshutdown-gate.sh,
+  +usr/share/vdr/shutdown/wakeup-none.sh:
+  Added first version of no-operation wakeup. Moved shutdown-now message around.
+
+  11 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
   trunk/usr/share/vdr/bin/vdrshutdown-gate.sh,
   trunk/usr/share/vdr/bin/vdrshutdown-really.sh:
   Use exitcodes different from sudo.

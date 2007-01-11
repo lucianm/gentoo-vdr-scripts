@@ -255,12 +255,6 @@ if is_shutdown_aborted; then
 	exit_cleanup 0
 fi
 
-if is_forced_shutdown && forced_tests_count_greater_zero; then
-	mesg_q "Shutting down, shutdown forced by user."
-else
-	mesg_q "Shutting down now"
-fi
-
 # You have to edit sudo-permissions to grant vdr permission to execute
 # privileged commands. Start visudo and add a line like
 #   vdr     ALL= NOPASSWD: /usr/share/vdr/bin/vdrshutdown-really.sh
@@ -284,5 +278,12 @@ else
 fi
 
 date +%s > ${shutdown_data_dir}/shutdown-time-written
+
+if is_forced_shutdown && forced_tests_count_greater_zero; then
+	mesg_q "Shutting down, shutdown forced by user."
+else
+	mesg_q "Shutting down now"
+fi
+
 exit_cleanup 0
 
