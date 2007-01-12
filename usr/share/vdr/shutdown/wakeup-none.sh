@@ -14,8 +14,14 @@ wakeup_check() {
 wakeup_set() {
 	if [[ ${1} != 0 ]]; then
 		# it is not possible to wakeup the system!
-		error_mesg "You have some timer set. System will not wakeup on its own!"
-		return 0
+		if [[ ${NONE_WAKEUP_IGNORE_TIMER:-0} == 1 ]]; then
+			# ignoring set timers
+			:
+		else
+			# Aborting
+			error_mesg "You have some timer set. System will not wakeup on its own!"
+			return 1
+		fi
 	fi
 
 	return 0

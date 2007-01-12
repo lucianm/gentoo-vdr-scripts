@@ -16,7 +16,10 @@
 
 #
 # Method to set wakeup-time
-#   allowed values: acpi nvram
+# "none" is for use of client-only VDR-systems or at least
+# systems that should not wakeup for timer-recordings or
+# anything else.
+#   allowed values: acpi nvram none
 #   default: acpi
 #WAKEUP_METHOD="nvram"
 
@@ -100,6 +103,23 @@
 #   allowed values: name of entry in config-file
 #   default: no good default, stops shutdown
 #REBOOT_ENTRY_LILO="PowerOff"
+
+
+###########################################################
+#          none-wakeup Settings                           #
+###########################################################
+#
+# Only used when WAKEUP_METHOD="none".
+#
+
+#
+# Normally none-wakeup-method will refuse to shutdown
+# when there are any timers set.
+# You can enable this setting to allow shutdown in that
+# case.
+#   allowed values: yes no
+#   default: no
+#NONE_WAKEUP_IGNORE_TIMER=yes
 
 
 ###########################################################

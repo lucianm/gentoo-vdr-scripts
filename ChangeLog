@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  12 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  etc/conf.d/vdr.shutdown, usr/share/vdr/shutdown/wakeup-none.sh:
+  Added option to control behaviour of none-wakeup-method when timers exist.
+
   11 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/bin/vdrshutdown-gate.sh:
   Some text cleanups.
