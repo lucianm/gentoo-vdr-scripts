@@ -22,5 +22,10 @@ addon_main() {
 	fi
 
 	eend 0
+	if [[ ! -e /etc/vdr/channels.conf ]]; then
+		ewarn "    /etc/vdr/channels.conf missing, creating empty file."
+		touch /etc/vdr/channels.conf
+		chown vdr:vdr /etc/vdr/channels.conf
+	fi
 	return 0
 }
