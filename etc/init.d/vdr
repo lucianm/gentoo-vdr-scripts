@@ -13,6 +13,7 @@ depend() {
 }
 
 start() {
+	INIT_PHASE=start
 	cd /
 	local exitcode
 
@@ -82,6 +83,7 @@ start() {
 }
 
 stop() {
+	INIT_PHASE=stop
 	cd /
 	load_addons_prefixed pre-stop
 

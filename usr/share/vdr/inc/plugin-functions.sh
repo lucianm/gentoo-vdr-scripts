@@ -52,6 +52,15 @@ init_plugin_loader() {
 	# now this gets cleared in here
 	PLUGINS=""
 
+	# Load list of plugins which were started to exec correct rcaddons
+	local LOADED_PLUGINS=/var/vdr/tmp/loaded_plugins
+	if [[ ${INIT_PHASE} == "stop" && -e ${LOADED_PLUGINS} ]]; then
+		PLUGINS=$(< ${LOADED_PLUGINS} )
+		return
+	else
+		rm -f ${LOADED_PLUGINS}
+	fi
+
 	# new conf-system - /etc/conf.d/vdr.plugins
 	local PLUGIN_CONF=/etc/conf.d/vdr.plugins
 	if [[ -f ${PLUGIN_CONF} ]]; then
@@ -66,6 +75,8 @@ init_plugin_loader() {
 		exec 3<&-
 	fi
 
+	# Store list of loaded plugins
+	echo ${PLUGINS} > ${LOADED_PLUGINS}
 }
 
 check_plugin() {

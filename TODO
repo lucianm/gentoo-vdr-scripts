@@ -26,8 +26,5 @@ $Id$
 
 * rewrite logging part, log more errors to special log-file
 
-* make "/etc/init.d/vdr stop" execute the stop-addons for all loaded plugins
-  even if list of plugins to load was changed while vdr is running.
-
 * Cleanup positions of temporary files
 
