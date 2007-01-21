@@ -9,7 +9,8 @@ VDR_LOG_FILE=""
 
 init_vdr_start_log()
 {
-	VDR_LOG_FILE=/var/vdr/vdr-start-log
+	[[ -e /var/vdr/vdr-start-log ]] && rm -f /var/vdr/vdr-start-log
+	VDR_LOG_FILE=/var/vdr/tmp/vdr-start-log
 	echo "Startlog for VDR" > ${VDR_LOG_FILE}
 	LOG_MSG_COUNT=0
 	LOG_ERROR_COUNT=0
