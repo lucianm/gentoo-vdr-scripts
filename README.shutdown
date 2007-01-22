@@ -116,3 +116,22 @@ void set_retry_time(int time_minutes)
 	Tells shutdown-script to retry not before time_minutes minutes.
 
 
+
+===============================
+= storage-format for tmp-files:
+===============================
+
+Tmp-files for shutdown are stored under /var/vdr/shutdown-data
+All stored times are unix-timestamps
+
+$datadir/shutdown-need-reboot:
+  stores time a wakeup-method requested to reboot
+  Is then compared to the uptime of the system.
+
+$datadir/shutdown-time-written
+  stores the time a wakeup-time was written to the
+  hardware.
+
+$datadir/last-shutdown-abort
+  stores the time whenever a shutdown is aborted because
+  of some pre-shutdown hooks and the tests can be forced
