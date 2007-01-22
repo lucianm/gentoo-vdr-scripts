@@ -9,44 +9,44 @@ do_unload() {
 	modprobe -r ${mod}
 }
 
-reverse() {
-	local stack=""
-	local item 
-	for item; do
-		stack="${item} ${stack}"
-	done
-	echo "${stack}"
-}
-
 rec_unload() {
 	local mod="${1}"
 	local mod_deps
+	local mod_usage
 	local mod_line
 	local mod_tried=""
-	while mod_line=$(grep "^${mod} " /proc/modules); do
+
+	# unload all modules depending on $mod
+	while true; do
+		mod_line=$(grep "^${mod} " /proc/modules)
+		if [[ -z $mod_line ]]; then
+			# module not loaded
+			return
+		fi
 
 		mod_deps=$(echo "$mod_line" | awk '{ gsub(","," ",$4); print $4 }')
-		if [[ ${mod_deps} == "-" ]]; then
-			# no more deps
-			einfo "  unloading ${mod}"
-			do_unload ${mod}
-			MODULE_LIST="${mod} ${MODULE_LIST}"
-			return
-		else
-			# another recursion
-			mod_deps=$(reverse ${mod_deps})
-			einfo_level2 "rec_unload ${mod} (dependency of ${mod_deps})"
 
+		if [[ ${mod_deps} == "-" ]]; then
+			# no more users
+			einfo "  unloading ${mod}"
+			if do_unload ${mod}; then
+				MODULE_LIST="${mod} ${MODULE_LIST}"
+			else
+				ewarn "rmmod ${mod} failed"
+				return
+			fi
+		else
+			# module has more users
+			einfo_level2 "${mod} has these users: ${mod_deps}"
 			local dep
 			for dep in ${mod_deps}; do
 				if [[ ${mod_tried} == ${dep} ]]; then
 					ewarn "break infinite recursion at ${dep}"
 					return
 				fi
+				# try to unload each
 				rec_unload ${dep}
 				mod_tried=${dep}
-				# handle only first entry in this inner loop
-				break
 			done
 		fi
 	done
