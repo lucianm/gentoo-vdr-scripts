@@ -8,7 +8,16 @@ do_unload() {
 	local mod=${1}
 	modprobe -r ${mod}
 }
-	
+
+reverse() {
+	local stack=""
+	local item 
+	for item; do
+		stack="${item} ${stack}"
+	done
+	echo "${stack}"
+}
+
 rec_unload() {
 	local mod="${1}"
 	local mod_deps
@@ -17,14 +26,17 @@ rec_unload() {
 	while mod_line=$(grep "^${mod} " /proc/modules); do
 
 		mod_deps=$(echo "$mod_line" | awk '{ gsub(","," ",$4); print $4 }')
-		einfo_level2 "rec_unload ${mod} (dependency of ${mod_deps})"
-
-		if [[ "${mod_deps}" == "-" ]]; then
+		if [[ ${mod_deps} == "-" ]]; then
+			# no more deps
 			einfo "  unloading ${mod}"
 			do_unload ${mod}
 			MODULE_LIST="${mod} ${MODULE_LIST}"
 			return
 		else
+			# another recursion
+			mod_deps=$(reverse ${mod_deps})
+			einfo_level2 "rec_unload ${mod} (dependency of ${mod_deps})"
+
 			local dep
 			for dep in ${mod_deps}; do
 				if [[ ${mod_tried} == ${dep} ]]; then

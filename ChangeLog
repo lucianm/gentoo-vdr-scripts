@@ -1,6 +1,11 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  22 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/watchdog-restart-20-modules.sh:
+  Reverse list of modules for watchdog-reloading them, to solve problem with
+  not explicite depends for dvb_attach.
+
   22 Jan 2007; Matthias Schwarzott <zzam@gentoo.org> README.shutdown:
   Add description of used shutdown-tmp-files.
 
