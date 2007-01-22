@@ -1,6 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  22 Jan 2007; Matthias Schwarzott <zzam@gentoo.org> etc/conf.d/vdr:
+  Set default log-level to 3 to make logs more usefull.
+
   22 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/post-start-50-svdrp.sh, etc/conf.d/vdr:
   Make the time to wait for running vdr configurable.

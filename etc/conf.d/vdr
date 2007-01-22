@@ -186,7 +186,7 @@
 # LOG_USER, add '.n' to LEVEL, as in 3.7 (n=0..7)
 #   allowed values: 0 1 2 3
 #   default: 1
-#LOG="1"
+LOG="3"
 
 # give additional options to vdr process
 # should not be necessary in normal cases.
