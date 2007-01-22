@@ -14,16 +14,20 @@ wait_for_svdrp() {
 	ebegin "  Waiting for working vdr"
 
 	# Warten auf offenen svdrp port
-	waitfor 20 svdrpready
+	: ${START_SVDRP_WAIT_SECONDS:=40}
+	waitfor ${START_SVDRP_WAIT_SECONDS} svdrpready
 	ret=$?
 
 	local msg_for_error="aborted, please check logfile"
 
 	case "$ret" in
 	1)	eend ${ret} "timeout, hoping its running good nevertheless"
+		einfo
 		einfo "Ignore this if you connected new remote/keyboard which gets learned."
 		einfo "If your computer is very slow it is possible that vdr"
-		einfo "needs more than 20 seconds to be up and going."
+		einfo "needs more than ${START_SVDRP_WAIT_SECONDS} seconds to be up and going."
+		einfo "You can enlarge that value inside /etc/conf.d/vdr (START_SVDRP_WAIT_SECONDS)."
+		einfo
 		ret=0
 		# continue with state "started"
 		;;

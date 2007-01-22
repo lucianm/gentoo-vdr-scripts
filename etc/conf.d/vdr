@@ -144,6 +144,11 @@
 #   default: 2001
 #SVDRP_PORT="2001"
 
+# seconds to wait for a running vdr
+#   allowed values: numbers
+#   default: 40
+# START_SVDRP_WAIT_SECONDS="40"
+
 # check 5 seconds for existing dvb devices, for example for slow udev
 # you need to disable this for systems which only use network input
 #   allowed values: yes no

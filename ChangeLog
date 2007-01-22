@@ -2,6 +2,10 @@
 # $Id$
 
   22 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/post-start-50-svdrp.sh, etc/conf.d/vdr:
+  Make the time to wait for running vdr configurable.
+
+  22 Jan 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/watchdog-restart-20-modules.sh:
   Other fix for reloading modules as reverse does not work.
 
