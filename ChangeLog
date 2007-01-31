@@ -1,6 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-0.3.8 (31 Jan 2007)
+
   22 Jan 2007; Matthias Schwarzott <zzam@gentoo.org> etc/conf.d/vdr:
   Set default log-level to 3 to make logs more usefull.
 
