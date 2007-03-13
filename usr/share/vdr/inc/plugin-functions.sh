@@ -24,7 +24,7 @@ init_plugin_loader() {
 		plugin_dir=/usr/lib/vdr/plugins
 	fi
 
-	if which md5sum >/dev/null 2>&1; then
+	if type -p md5sum >/dev/null 2>&1; then
 		vdr_checksum_dir="${plugin_dir%/plugins}/checksums"
 		vdr_checksum=${vdr_checksum_dir}/header-md5-vdr
 
