@@ -1,3 +1,4 @@
+
 # /etc/conf.d/vdr:
 # $Id$
 # Global config file for vdr rc-scripts
@@ -90,11 +91,19 @@
 #          Debug Options                                  #
 ###########################################################
 
+# set log level
+# 0 = no logging, 1 = errors only,
+# 2 = errors and info, 3 = errors, info and debug
+# if logging should be done to LOG_LOCALn instead of
+# LOG_USER, add '.n' to LEVEL, as in 3.7 (n=0..7)
+#   allowed values: 0 1 2 3
+#   default: 1
+LOG="3"
+
 # switch startskript to debug-mode, set debug-level
 #   allowed values: 0 1 2
 #   default: 0
 #SCRIPT_DEBUG_LEVEL="1"
-
 
 ###########################################################
 #          Expert Settings                                #
@@ -178,15 +187,6 @@
 #   allowed values: set of numbers
 #   default: use all DVB devices
 #DEVICE=""
-
-# set log level
-# 0 = no logging, 1 = errors only,
-# 2 = errors and info, 3 = errors, info and debug
-# if logging should be done to LOG_LOCALn instead of
-# LOG_USER, add '.n' to LEVEL, as in 3.7 (n=0..7)
-#   allowed values: 0 1 2 3
-#   default: 1
-LOG="3"
 
 # give additional options to vdr process
 # should not be necessary in normal cases.
