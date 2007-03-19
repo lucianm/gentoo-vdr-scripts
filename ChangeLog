@@ -1,6 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  19 Mar 2007; Joerg Bornkessel <hd_brummy@gentoo.org> ChangeLog:
+  moved 'set log level' from Expert Settings to Debug Options
+
   13 Mar 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/inc/plugin-functions.sh:
   Replaced which by bash-builtin type -p, as which is not garanteed to exist.
