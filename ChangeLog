@@ -1,6 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  15 Apr 2007; Matthias Schwarzott <zzam@gentoo.org> etc/init.d/vdr:
+  Completely remove dvbsplash support to finally stop all problems.
+
   19 Mar 2007; Joerg Bornkessel <hd_brummy@gentoo.org> ChangeLog:
   moved 'set log level' from Expert Settings to Debug Options
 
