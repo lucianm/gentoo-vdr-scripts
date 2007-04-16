@@ -25,9 +25,10 @@ mesg() {
 	${SVDRPCMD} MESG "\"$@\""
 }
 
-VDR_RECORD_STATE="${1}"
-VDR_RECORD_NAME="${2}"
+VDR_RECORD_STATE="$1"
+VDR_RECORD_NAME="$2"
+VDR_RECORD_NEW_NAME="$3"
 
 for HOOK in ${HOOKDIR}/record-*.sh ${OLD_HOOKDIR}/record-*.sh; do
-	[ -f "${HOOK}" ] && . "${HOOK}" "${VDR_RECORD_STATE}" "${VDR_RECORD_NAME}"
+	[ -f "${HOOK}" ] && . "${HOOK}" "$@"
 done
