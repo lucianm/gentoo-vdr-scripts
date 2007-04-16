@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # $Id$
 #
 # Distributed under the GPL
@@ -24,9 +24,9 @@ sig_hup()
 trap sig_hup SIGHUP
 
 periodic_function() {
-	[[ -f /tmp/no-vdr-watchdog ]] && return
+	[ -f /tmp/no-vdr-watchdog ] && return
 
-	[[ "$signal_stopped" == "1" ]] && return
+	[ "$signal_stopped" = "1" ] && return
 
 	if ! pidof /usr/bin/vdr > /dev/null; then
 		logger -i -t vdrwatchdog -p local0.info "initializing full VDR restart"

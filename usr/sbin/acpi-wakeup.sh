@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # $Id$
 
 ##
@@ -15,7 +15,7 @@
 
 PROC_ALARM="/proc/acpi/alarm"
 #DEBUG=1
-[[ -z "$DEBUG" ]] && DEBUG=0
+[ -z "$DEBUG" ] && DEBUG=0
 
 die()
 {
@@ -26,18 +26,18 @@ die()
 checkUTC()
 {
 	unset CLOCK
-	if [[ -f /etc/conf.d/clock ]]; then
+	if [ -f /etc/conf.d/clock ]; then
 		CLOCK=$(source /etc/conf.d/clock; echo ${CLOCK})
 	else
 		CLOCK=$(source /etc/rc.conf; echo ${CLOCK})
 	fi
-	test "${DEBUG}" == "1" && echo CLOCK-MODE: ${CLOCK}
+	[ "${DEBUG}" = "1" ] && echo CLOCK-MODE: ${CLOCK}
 }
 
 saveTime()
 {
 	local param
-	[[ "$DEBUG" == "1" ]] || param=--quiet
+	[ "$DEBUG" = "1" ] || param=--quiet
 	/etc/init.d/clock $param save
 }
 
@@ -45,29 +45,29 @@ setAlarm()
 {
 	checkUTC
 	local timestr
-	if [[ "${Next}" -gt 0 ]]; then
+	if [ "${Next}" -gt 0 ]; then
 		# abort if recording less then 10min in future
 		local now=$(date +%s)
-		[[ "${Next}" -lt "$[now+600]" ]] && die "wakeup time too near, alarm not set"
+		[ "${Next}" -lt "$[now+600]" ] && die "wakeup time too near, alarm not set"
 
 		# boot 5min (=300s) before recording
 		local t=$[Next-300]
 
-		[[ "${CLOCK}" == "UTC" ]] && dateparam="-u"
+		[ "${CLOCK}" = "UTC" ] && dateparam="-u"
 		timestr=$(date ${dateparam} --date="1970-01-01 UTC ${t} seconds" +"%Y-%m-%d %H:%M:00")
 	else
 		# This hopefully deactivates wakeup
 		timestr="2003-10-20 99:00:00"
 	fi
 
-	[[ -z "${timestr}" ]] && return
+	[ -z "${timestr}" ] && return
 
 	saveTime
 
 	echo ${timestr} > ${PROC_ALARM} 
 	echo ${timestr} > ${PROC_ALARM} 
 
-	if [[ "${DEBUG}" == "1" ]]; then
+	if [ "${DEBUG}" = "1" ]; then
 		echo ${timestr} > /tmp/a
 		echo Wakeup at ${timestr} >> /tmp/a
 	fi

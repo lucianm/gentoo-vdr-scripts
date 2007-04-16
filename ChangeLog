@@ -2,6 +2,11 @@
 # $Id$
 
   16 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/sbin/acpi-wakeup.sh, usr/sbin/vdr-inform-watchdog.sh,
+  usr/sbin/vdr-watchdogd:
+  Removed bash specific code.
+
+  16 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/shutdown/pre-shutdown-05-time-calculations.sh,
   usr/share/vdr/shutdown/pre-shutdown-10-check-enabled.sh,
   usr/share/vdr/shutdown/pre-shutdown-30-check-logins.sh,
