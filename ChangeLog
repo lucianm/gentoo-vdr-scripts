@@ -2,6 +2,10 @@
 # $Id$
 
   16 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/inc/rc-functions.sh:
+  Check shell syntax before executing an addon.
+
+  16 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/bin/vdrrecord-gate.sh:
   Giving $@ as parameter to the record-hook scripts to also support more
   parameters the future can bring, suggested by Markus Holter

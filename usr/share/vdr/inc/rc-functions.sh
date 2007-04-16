@@ -102,14 +102,18 @@ load_addon()
 	local call_func=${2:-addon_main}
 	eval "${call_func}() { :; }"
 
-	# source addon
+	local fname
 	if [ "${addon#/}" != "${addon}" ] && [ -f "${addon}" ]; then
-		. "${addon}"
+		fname="${addon}"
 	elif [ -f "${vdr_rc_dir}/${addon}.sh" ]; then
-		. "${vdr_rc_dir}/${addon}.sh"
+		fname="${vdr_rc_dir}/${addon}.sh"
 	elif [ -f "${vdr_old_rc_dir}/${addon}.sh" ]; then
-		. "${vdr_old_rc_dir}/${addon}.sh"
+		fname="${vdr_old_rc_dir}/${addon}.sh"
 	fi
+	
+	# source addon
+	sh -n "${fname}" || return 1
+	. "${fname}" || return 1
 
 	# execute requested function
 	eval ${call_func}
