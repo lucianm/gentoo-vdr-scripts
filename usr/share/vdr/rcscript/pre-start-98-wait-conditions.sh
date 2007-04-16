@@ -1,7 +1,7 @@
 # $Id$
 addon_main() {
 	local exitcode=0
-	if [[ "${waitconditions}" ]]; then
+	if [ "${waitconditions}" ]; then
 		ebegin "  Waiting for prerequisits (devices nodes etc.)" 
 		waitfor 10 wait_for_multiple_condition
 		exitcode="$?"

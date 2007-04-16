@@ -2,6 +2,28 @@
 # $Id$
 
   16 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-10-chuid.sh,
+  usr/share/vdr/rcscript/pre-stop-10-watchdog.sh,
+  usr/share/vdr/rcscript/pre-start-20-dvb-device.sh,
+  usr/share/vdr/rcscript/watchdog-restart-20-modules.sh,
+  usr/share/vdr/rcscript/pre-start-30-parameter.sh,
+  usr/share/vdr/rcscript/pre-start-40-config-files.sh,
+  usr/share/vdr/rcscript/pre-start-45-nptl-check.sh,
+  usr/share/vdr/rcscript/pre-start-45-utf8-check.sh,
+  usr/share/vdr/rcscript/pre-start-50-shutdown.sh,
+  usr/share/vdr/rcscript/post-start-50-svdrp.sh,
+  usr/share/vdr/rcscript/post-start-90-watchdog.sh,
+  usr/share/vdr/rcscript/pre-start-95-plugins.sh,
+  usr/share/vdr/rcscript/pre-start-98-wait-conditions.sh, README.shutdown,
+  etc/init.d/vdr, etc/init.d/wakeup-reboot-halt, usr/sbin/acpi-wakeup.sh,
+  usr/share/vdr/inc/commands-functions.sh, usr/share/vdr/inc/functions.sh,
+  usr/share/vdr/inc/language-functions.sh,
+  usr/share/vdr/inc/message-functions.sh,
+  usr/share/vdr/inc/plugin-functions.sh, usr/share/vdr/inc/rc-functions.sh,
+  usr/share/vdr/inc/shutdown-functions.sh, usr/share/vdr/inc/time.sh:
+  Removed more bash specific code.
+
+  16 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/sbin/acpi-wakeup.sh, usr/sbin/vdr-inform-watchdog.sh,
   usr/sbin/vdr-watchdogd:
   Removed bash specific code.

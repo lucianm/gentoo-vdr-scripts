@@ -4,7 +4,7 @@
 
 opts="${opts} watchdogrestart"
 
-source /usr/share/vdr/inc/functions.sh
+. /usr/share/vdr/inc/functions.sh
 include rc-functions
 
 depend() {
@@ -23,7 +23,7 @@ start() {
 	init_params
 	init_daemonctrl_params
 
-	[[ -z "${VDR_BIN}" ]] && VDR_BIN=/usr/bin/vdr
+	[ -z "${VDR_BIN}" ] && VDR_BIN=/usr/bin/vdr
 
 	add_daemonctrl_param --start --chdir ~vdr --exec ${VDR_BIN}
 
@@ -47,7 +47,7 @@ start() {
 
 	einfo_level2 "  CMDLINE:" start-stop-daemon $(quote_parameters "${daemonctrl_opts[@]}" "--" "${vdr_opts[@]}")
 
-	if [[ -z "${TERMINAL}" ]]; then
+	if [ -z "${TERMINAL}" ]; then
 		start-stop-daemon "${daemonctrl_opts[@]}" \
 			-- --daemon "${vdr_opts[@]}"
 		exitcode=$?
@@ -61,7 +61,7 @@ start() {
 
 		# strange commandline, to be fixed in next versions
 		openvt_opts=""
-		if [[ "${SWITCH_TO_TERMINAL}" == "yes" ]]; then
+		if [ "${SWITCH_TO_TERMINAL}" = "yes" ]; then
 			openvt_opts="${openvt_opts} -s"
 		fi
 		openvt -c ${TERMINAL} ${openvt_opts} -- \
@@ -71,9 +71,9 @@ start() {
 	fi
 	eend $exitcode "Failed to start vdr."
 
-	if [[ "${exitcode}" == "0" ]]; then
+	if [ "${exitcode}" = "0" ]; then
 		load_addons_prefixed post-start
-		if [[ "$?" != "0" ]]; then
+		if [ "$?" != "0" ]; then
 			exitcode=1
 		fi
 	fi

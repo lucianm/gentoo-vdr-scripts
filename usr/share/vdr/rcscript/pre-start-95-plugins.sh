@@ -20,14 +20,14 @@ addon_main() {
 		add_plugin_params_to_vdr_call
 
 		# count the skipped ones
-		if [[ "${SKIP_PLUGIN}" == "1" ]]; then
+		if [ "${SKIP_PLUGIN}" = "1" ]; then
 			: $(( SKIP_COUNT++ ))
 		fi
 
 	done
 
 
-	if [[ ${SKIP_COUNT} > 0 ]]; then
+	if [ "${SKIP_COUNT}" -gt 0 ]; then
 		if has_debuglevel 1; then
 			eerror "  ${SKIP_COUNT} Plugins out of ${PLUGIN_COUNT} could not be loaded!"
 		else

@@ -7,7 +7,7 @@
 
 time2min() {
 	local t=${1}
-	if [[ $t == NOW ]]; then
+	if [ "$t" = "NOW" ]; then
 		t=$(date +%H:%M)
 	fi
 
@@ -20,7 +20,7 @@ time2min() {
 	m=${m##0}
 
 	# Wenn die Zeit kein ":" enthaelt
-	[[ $m == $t ]] && m=0
+	[ "$m" = "$t" ] && m=0
 
 	echo $(( ( h*60 + m ) % 1440 ))
 }
@@ -47,31 +47,31 @@ check_interval() {
 			start=$(time2min $start)
 			stop=$(time2min $stop)
 
-			if [[ $start -le $stop ]]; then
+			if [ "$start" -le "$stop" ]; then
 				# if (start <= testtime <= stop)
-				if [[ ( $start -le $testtime ) && ( $testtime -le $stop ) ]]; then
+				if [ ( "$start" -le "$testtime" ) -a ( "$testtime" -le "$stop" ) ]; then
 					HIT=1
 				fi
 			else
 				# itervall ueber mitternacht
 				# if ( 0 <= testtime <= stop ) || ( start <= testtime <= midnight)
-				if [[ ( $testtime -le $stop ) || ( $start -le $testtime ) ]]; then
+				if [ ( "$testtime" -le "$stop" ) -o ( "$start" -le "$testtime" ) ]]; then
 					HIT=1
 				fi
 			fi
 			;;
 		*)
 			local point=$(time2min $i)
-			if [[ $start -eq $testtime ]]; then
+			if [ "$start" -eq "$testtime" ]; then
 				HIT=1
 			fi
 			;;
 		esac
-		if [[ $HIT == 1 ]]; then
+		if [ "$HIT" = 1 ]; then
 			: $((INSIDE++))
 		fi
 	done
-	if [[ $INSIDE -gt 0 ]]; then
+	if [ "$INSIDE" -gt 0 ]; then
 		return 0
 	else
 		return 1

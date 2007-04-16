@@ -14,13 +14,13 @@
 
 
 init_plugin_loader() {
-	if [[ ! -d /var/vdr/tmp ]]; then
+	if [ ! -d /var/vdr/tmp ]; then
 		mkdir /var/vdr/tmp
 		chown vdr:vdr /var/vdr/tmp
 	fi
 
 	plugin_dir=$(awk '/^PLUGINLIBDIR/{ print $3 }' /usr/include/vdr/Make.config)
-	if [[ -n ${plugin_dir} ]]; then
+	if [ -n "${plugin_dir}" ]; then
 		plugin_dir=/usr/lib/vdr/plugins
 	fi
 
@@ -28,7 +28,7 @@ init_plugin_loader() {
 		vdr_checksum_dir="${plugin_dir%/plugins}/checksums"
 		vdr_checksum=${vdr_checksum_dir}/header-md5-vdr
 
-		if [[ ! -f ${vdr_checksum} ]]; then
+		if [ ! -f "${vdr_checksum}" ]; then
 			vdr_checksum=/var/vdr/tmp/header-md5-vdr
 
 			rm ${vdr_checksum} 2>/dev/null
@@ -51,19 +51,19 @@ init_plugin_loader() {
 
 	# Load list of plugins which were started to exec correct rcaddons
 	local LOADED_PLUGINS_FILE=/var/vdr/tmp/loaded_plugins
-	if [[ ${INIT_PHASE} == "stop" && -e ${LOADED_PLUGINS_FILE} ]]; then
+	if [ "${INIT_PHASE}" = "stop" ] && [ -e "${LOADED_PLUGINS_FILE}" ]; then
 		PLUGINS=$(< ${LOADED_PLUGINS_FILE} )
 	else
 		rm -f ${LOADED_PLUGINS_FILE}
 
 		# new conf-system - /etc/conf.d/vdr.plugins
 		local PLUGIN_CONF=/etc/conf.d/vdr.plugins
-		if [[ -f ${PLUGIN_CONF} ]]; then
+		if [ -f "${PLUGIN_CONF}" ]; then
 			local line
 			exec 3<${PLUGIN_CONF}
 			while read -u 3 line; do
-				[[ ${line} == "" ]] && continue
-				[[ ${line:0:1} == "#" ]] && continue
+				[ "${line}" = "" ] && continue
+				[ "${line:0:1}" = "#" ] && continue
 				PLUGIN="${line}"
 				PLUGINS="${PLUGINS} ${PLUGIN}"
 			done
@@ -79,13 +79,13 @@ check_plugin() {
 	local PLUGIN="${1}"
 	local plugin_file="${plugin_dir}/libvdr-${PLUGIN}.so.${APIVERSION}"
 
-	if [[ ! -f "${plugin_file}" ]]; then
+	if [ ! -f "${plugin_file}" ]; then
 		skip_plugin "${PLUGIN}" "plugin not found"
 		return
 	fi
 
 	local plugin_checksum_file=${vdr_checksum_dir}/header-md5-vdr-${PLUGIN}
-	if [[ "${PLUGIN_CHECK_MD5}" == "yes" && -e ${plugin_checksum_file} ]]; then
+	if [ "${PLUGIN_CHECK_MD5}" = "yes" ] && [ -e "${plugin_checksum_file}" ]; then
 		if ! diff ${vdr_checksum} ${plugin_checksum_file} >/dev/null; then
 			skip_plugin "${PLUGIN}" "wrong vdr-patchlevel"
 			return
@@ -105,14 +105,14 @@ load_plugin()
 	SKIP_PLUGIN=0
 
 	# Only check when starting vdr
-	if [[ ${INIT_PHASE} != "stop" ]]; then
+	if [ "${INIT_PHASE}" != "stop" ]; then
 		check_plugin ${PLUGIN}
 	fi
-	[[ "${SKIP_PLUGIN}" == "1" ]] && return
+	[ "${SKIP_PLUGIN}" = "1" ] && return
 
 	unset _EXTRAOPTS
-	if [[ -f /etc/conf.d/vdr.${PLUGIN} ]]; then
-		source /etc/conf.d/vdr.${PLUGIN}
+	if [ -f "/etc/conf.d/vdr.${PLUGIN}" ]; then
+		. /etc/conf.d/vdr.${PLUGIN}
 	fi
 
 	load_addon plugin-${PLUGIN} ${call_func}
@@ -133,16 +133,16 @@ add_plugin_param()
 
 skip_plugin() {
 	SKIP_PLUGIN=1
-	if [[ -n "${1}" && "${addon_prefix}" == "pre-start" ]]; then
+	if [ -n "${1}" ] && [ "${addon_prefix}" = "pre-start" ]; then
 		einfo_level1 "  ${1}: ${2}"
 		vdr_log_generic "I: ${1}: ${2}"
 	fi
 }
 
 add_plugin_params_to_vdr_call() {
-	if [[ "${SKIP_PLUGIN}" == "0" ]]; then
+	if [ "${SKIP_PLUGIN}" = "0" ]; then
 		# for not-skipped plugins, add the param to the vdr-call
-		if [[ -z ${_EXTRAOPTS} ]]; then
+		if [ -z "${_EXTRAOPTS}" ]; then
 			add_param "${vdrplugin_opts[*]}"
 		else
 			add_param "${vdrplugin_opts[*]} ${_EXTRAOPTS}"

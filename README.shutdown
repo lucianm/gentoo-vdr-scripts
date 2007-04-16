@@ -54,7 +54,7 @@ void error_mesg(string message)
 Example:
 
 wakeup_check() {
-	if [[ ! -x needed_program ]]; then
+	if [ ! -x needed_program ]; then
 		error_mesg "no acpi-driver installed"
 		return 1
 	fi

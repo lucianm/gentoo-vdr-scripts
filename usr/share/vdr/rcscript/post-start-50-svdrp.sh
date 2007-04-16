@@ -3,9 +3,9 @@ wait_for_svdrp() {
 	local ret=0
 	SVDRP_PORT="${SVDRP_PORT:-2001}"
 	SVDRP_HOSTNAME="${SVDRP_HOSTNAME:-localhost}"
-	[[ "${SVDRP_PORT}" == "0" ]] && return 0
+	[ "${SVDRP_PORT}" = "0" ] && return 0
 
-	if [[ ! -e /etc/vdr/remote.conf ]]; then
+	if [ ! -e /etc/vdr/remote.conf ]; then
 		einfo "First start of vdr: No check for running vdr possible"
 		einfo "until control device (remote/keyboard) keys are learnt!"
 		return 0

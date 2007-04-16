@@ -6,7 +6,7 @@ include language-functions
 # This merged file can then be used by the vdr process.
 
 merge_commands_conf() {
-	[[ -z ${VDR_LANGUAGE} ]] && read_vdr_language
+	[ -z "${VDR_LANGUAGE}" ] && read_vdr_language
 
 	local CONFIG="${CONFIG:-/etc/vdr}"
 	local sdir="${1}"
@@ -17,7 +17,7 @@ merge_commands_conf() {
 	local mergedfile="/var/vdr/merged-config-files/${bname}"
 
 	# merging files
-	if [[ -f "${mergedfile}" ]]; then
+	if [ -f "${mergedfile}" ]; then
 		if ! rm "${mergedfile}"; then
 			ewarn "  Could not change ${mergedfile}"
 			return
@@ -35,10 +35,10 @@ EOT
 	local f
 	local inputf
 	for f in ${SFILES}; do
-		[[ -f "${f}" ]] || continue
+		[ -f "${f}" ] || continue
 		inputf="${f}"
 
-		[[ -f "${f}.${VDR_LANGUAGE}" ]] && inputf="${f}.${VDR_LANGUAGE}"
+		[ -f "${f}.${VDR_LANGUAGE}" ] && inputf="${f}.${VDR_LANGUAGE}"
 
 		echo "# source : ${inputf}" >> "${mergedfile}"
 		cat "${inputf}" >> "${mergedfile}"
@@ -48,12 +48,12 @@ EOT
 	chown vdr:vdr "${mergedfile}"
 
 	# link it to real location
-	if [[ -L "${destfile}" ]]; then
+	if [ -L "${destfile}" ]; then
 		# remove link
 		rm "${destfile}"
 	else
 		# no link
-		if [[ -f "${destfile}" ]]; then
+		if [ -f "${destfile}" ]; then
 			mv "${destfile}" "${destfile}.backup"
 			einfo "  Saved original ${destfile} as ${destfile}.backup"
 		fi

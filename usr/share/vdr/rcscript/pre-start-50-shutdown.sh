@@ -15,9 +15,9 @@ list_wakeup_methods() {
 
 addon_main() {
 	include shutdown-functions
-	[[ "${SHUTDOWN_ACTIVE}" == "no" ]] && return 0
+	[ "${SHUTDOWN_ACTIVE}" = "no" ] && return 0
 
-	if [[ -n "${USER_SHUTDOWN_SCRIPT}" ]]; then
+	if [ -n "${USER_SHUTDOWN_SCRIPT}" ]; then
 		add_param "--shutdown=${USER_SHUTDOWN_SCRIPT}"
 		return 0
 	fi
@@ -36,8 +36,8 @@ addon_main() {
 		vdr_ewarn
 	fi
 
-	if [[ -f ${shutdown_script_dir}/wakeup-${WAKEUP_METHOD}.sh ]]; then
-		source ${shutdown_script_dir}/wakeup-${WAKEUP_METHOD}.sh
+	if [ -f "${shutdown_script_dir}/wakeup-${WAKEUP_METHOD}.sh" ]; then
+		. ${shutdown_script_dir}/wakeup-${WAKEUP_METHOD}.sh
 
 		# test if needed programs are there
 		if ! wakeup_check; then

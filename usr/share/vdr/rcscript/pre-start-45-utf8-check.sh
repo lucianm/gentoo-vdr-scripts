@@ -12,7 +12,7 @@ addon_main() {
 	done
 
 	# set sort-order if specified in conf-file
-	if [[ -n ${VDR_SORT_ORDER} ]]; then
+	if [ -n "${VDR_SORT_ORDER}" ]; then
 		export LC_COLLATE="${VDR_SORT_ORDER}"
 	fi
 	return 0

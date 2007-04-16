@@ -9,7 +9,7 @@ VDR_LOG_FILE=""
 
 init_vdr_start_log()
 {
-	[[ -e /var/vdr/vdr-start-log ]] && rm -f /var/vdr/vdr-start-log
+	[ -e /var/vdr/vdr-start-log ] && rm -f /var/vdr/vdr-start-log
 	VDR_LOG_FILE=/var/vdr/tmp/vdr-start-log
 	echo "Startlog for VDR" > ${VDR_LOG_FILE}
 	LOG_MSG_COUNT=0
@@ -19,7 +19,7 @@ init_vdr_start_log()
 finish_vdr_start_log()
 {
 	# wenn nachrichten vorhanden sind
-	if [[ ${LOG_ERROR_COUNT} = 0 ]]; then
+	if [ "${LOG_ERROR_COUNT}" = 0 ]; then
 		vdr_log_generic "NO problems at start."
 	else
 		/usr/share/vdr/bin/vdr-bg.sh svdrpsend.pl mesg "Errors: View via Commands / View VDR Start Log"
@@ -29,7 +29,7 @@ finish_vdr_start_log()
 
 vdr_log_generic()
 {
-	[[ -n ${VDR_LOG_FILE} ]] || return
+	[ -n "${VDR_LOG_FILE}" ] || return
 	
 	echo "$@" >> ${VDR_LOG_FILE}
 	: $((LOG_MSG_COUNT++))

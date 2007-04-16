@@ -27,9 +27,9 @@ checkUTC()
 {
 	unset CLOCK
 	if [ -f /etc/conf.d/clock ]; then
-		CLOCK=$(source /etc/conf.d/clock; echo ${CLOCK})
+		CLOCK=$(. /etc/conf.d/clock; echo ${CLOCK})
 	else
-		CLOCK=$(source /etc/rc.conf; echo ${CLOCK})
+		CLOCK=$(. /etc/rc.conf; echo ${CLOCK})
 	fi
 	[ "${DEBUG}" = "1" ] && echo CLOCK-MODE: ${CLOCK}
 }

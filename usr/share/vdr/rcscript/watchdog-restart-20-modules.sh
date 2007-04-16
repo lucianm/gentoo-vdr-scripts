@@ -19,14 +19,14 @@ rec_unload() {
 	# unload all modules depending on $mod
 	while true; do
 		mod_line=$(grep "^${mod} " /proc/modules)
-		if [[ -z $mod_line ]]; then
+		if [ -z "$mod_line" ]; then
 			# module not loaded
 			return
 		fi
 
 		mod_deps=$(echo "$mod_line" | awk '{ gsub(","," ",$4); print $4 }')
 
-		if [[ ${mod_deps} == "-" ]]; then
+		if [ "${mod_deps}" = "-" ]; then
 			# no more users
 			einfo "  unloading ${mod}"
 			if do_unload ${mod}; then
@@ -40,7 +40,7 @@ rec_unload() {
 			einfo_level2 "${mod} has these users: ${mod_deps}"
 			local dep
 			for dep in ${mod_deps}; do
-				if [[ ${mod_tried} == ${dep} ]]; then
+				if [ "${mod_tried}" = "${dep}" ]; then
 					ewarn "break infinite recursion at ${dep}"
 					return
 				fi
@@ -53,14 +53,14 @@ rec_unload() {
 }
 
 kill_dvb_video_users() {
-	[[ -d /sys ]] || return
+	[ -d /sys ] || return
 	einfo_level2 "Killing programms accessing video device of dvb cards"
 	local dev bname name
 	for dev in /sys/class/video4linux/video?; do
-		[[ -f "${dev}/name" ]] || continue
+		[ -f "${dev}/name" ] || continue
 		
 		name=$(cat "${dev}/name")
-		[[ ${name/av7110/} == ${name} ]] && continue
+		[ "${name/av7110/}" = "${name}" ] && continue
 
 		bname=${dev/*\//}
 		einfo_level2 "  Killing users of device ${bname} (Name: ${name})"
@@ -90,7 +90,7 @@ restart_load() {
 
 addon_main() {
 	: ${WATCHDOG_RELOAD_DVB_MODULES:=no}
-	if [[ "${WATCHDOG_RELOAD_DVB_MODULES}" == "yes" ]]; then
+	if [ "${WATCHDOG_RELOAD_DVB_MODULES}" = "yes" ]; then
 		sleep 2
 		restart_unload
 		sleep 2

@@ -17,7 +17,7 @@ SCRIPT_API=2
 pidof=/sbin/pidof
 test -x /bin/pidof && pidof=/bin/pidof
 
-source /etc/conf.d/vdr.watchdogd
+. /etc/conf.d/vdr.watchdogd
 ENABLE_EXTERNAL_WATCHDOG=${ENABLE_EXTERNAL_WATCHDOG:-no}
 
 read_caps
@@ -31,7 +31,7 @@ getvdrversion()
 {
 	VDRVERSION=$(awk -F'"' '/define VDRVERSION/ {print $2}' /usr/include/vdr/config.h)
 	APIVERSION=$(awk -F'"' '/define APIVERSION/ {print $2}' /usr/include/vdr/config.h)
-	[[ -z ${APIVERSION} ]] && APIVERSION="${VDRVERSION}"
+	[ -z "${APIVERSION}" ] && APIVERSION="${VDRVERSION}"
 
 	case ${SHOW_VDR_VERSION:=no} in
 		yes)	VDRNAME=vdr-${VDRVERSION}  ;;
@@ -51,7 +51,7 @@ init_daemonctrl_params()
 
 add_daemonctrl_param()
 {
-	while [[ -n "$1" ]]; do
+	while [ -n "$1" ]; do
 		daemonctrl_opts[daemonctrl_idx]="$1"
 		daemonctrl_idx=$[daemonctrl_idx+1]
 		shift;
@@ -68,7 +68,7 @@ init_params()
 
 add_param()
 {
-	while [[ -n "$1" ]]; do
+	while [ -n "$1" ]; do
 		vdr_opts[vdr_idx]="$1"
 		vdr_idx=$[vdr_idx+1]
 		shift
@@ -88,7 +88,7 @@ load_addons_prefixed()
 	for addon in ${vdr_rc_dir}/${addon_prefix}-*.sh; do
 		load_addon ${addon} ${call_func}
 		ret="$?"
-		if [[ "${ret}" != "0" ]]; then
+		if [ "${ret}" != "0" ]; then
 			einfo_level2 Addon ${addon} failed.
 			break
 		fi
@@ -103,12 +103,12 @@ load_addon()
 	eval "${call_func}() { :; }"
 
 	# source addon
-	if [[ ( "${addon:0:1}" == "/" ) && ( -f ${addon} ) ]]; then
-		source "${addon}"
-	elif [[ -f ${vdr_rc_dir}/${addon}.sh ]]; then
-		source "${vdr_rc_dir}/${addon}.sh"
-	elif [[ -f ${vdr_old_rc_dir}/${addon}.sh ]]; then
-		source "${vdr_old_rc_dir}/${addon}.sh"
+	if [ ( "${addon:0:1}" = "/" ) -a ( -f ${addon} ) ]; then
+		. "${addon}"
+	elif [ -f "${vdr_rc_dir}/${addon}.sh" ]; then
+		. "${vdr_rc_dir}/${addon}.sh"
+	elif [ -f "${vdr_old_rc_dir}/${addon}.sh" ]; then
+		. "${vdr_old_rc_dir}/${addon}.sh"
 	fi
 
 	# execute requested function
@@ -118,19 +118,19 @@ load_addon()
 }
 
 has_debuglevel() {
-	[[ ${SCRIPT_DEBUG_LEVEL} -ge ${1} ]]
+	[ "${SCRIPT_DEBUG_LEVEL}" -ge "${1}" ]
 }
 
 einfo_level1() {
-	[[ ${SCRIPT_DEBUG_LEVEL} -ge 1 ]] && einfo "$@"
+	has_debuglevel 1 && einfo "$@"
 }
 
 einfo_level2() {
-	[[ ${SCRIPT_DEBUG_LEVEL} -ge 2 ]] && einfo "$@"
+	has_debuglevel 2 && einfo "$@"
 }
 
 einfo_debug() {
-	[[ ${SCRIPT_DEBUG_LEVEL} -ge 3 ]] && einfo "$@"
+	has_debuglevel 3 && einfo "$@"
 }
 
 quote_parameters() {
@@ -165,7 +165,7 @@ waitfor() {
 	local cond="${2}"
 	local ok
 	local waited=0
-	while [[ "${waited}" -lt "${waittime}" ]]; do
+	while [ "${waited}" -lt "${waittime}" ]; do
 		eval ${cond}
 		case "$?" in
 			0) einfo_debug waited ${waited} seconds; return 0 ;;
@@ -203,7 +203,7 @@ wait_for_multiple_condition() {
 }
 
 stop_watchdog() {
-	if [[ "${ENABLE_EXTERNAL_WATCHDOG}" == "yes" ]]; then
+	if [ "${ENABLE_EXTERNAL_WATCHDOG}" = "yes" ]; then
 		ebegin "Stopping vdr watchdog"
 		start-stop-daemon --stop --pidfile /var/run/vdrwatchdog.pid
 		eend $? "failed stopping watchdog"
@@ -211,7 +211,7 @@ stop_watchdog() {
 }
 
 start_watchdog() {
-	if [[ "${ENABLE_EXTERNAL_WATCHDOG}" == "yes" ]]; then
+	if [ "${ENABLE_EXTERNAL_WATCHDOG}" = "yes" ]; then
 		WATCHDOG_LOGFILE=${WATCHDOG_LOGFILE:-/dev/null}
 		ebegin "Starting vdr watchdog"
 		start-stop-daemon \
