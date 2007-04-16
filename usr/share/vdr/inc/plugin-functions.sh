@@ -63,7 +63,7 @@ init_plugin_loader() {
 			exec 3<${PLUGIN_CONF}
 			while read -u 3 line; do
 				[ "${line}" = "" ] && continue
-				[ "${line:0:1}" = "#" ] && continue
+				[ "${line#"#"}" != "${line}" ] && continue
 				PLUGIN="${line}"
 				PLUGINS="${PLUGINS} ${PLUGIN}"
 			done

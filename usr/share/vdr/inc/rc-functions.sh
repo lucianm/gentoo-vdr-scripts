@@ -103,7 +103,7 @@ load_addon()
 	eval "${call_func}() { :; }"
 
 	# source addon
-	if [ "${addon:0:1}" = "/" ] && [ -f "${addon}" ]; then
+	if [ "${addon#/}" != "${addon}" ] && [ -f "${addon}" ]; then
 		. "${addon}"
 	elif [ -f "${vdr_rc_dir}/${addon}.sh" ]; then
 		. "${vdr_rc_dir}/${addon}.sh"

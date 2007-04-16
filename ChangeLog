@@ -2,6 +2,11 @@
 # $Id$
 
   16 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/bin/vdrshutdown-gate.sh, usr/share/vdr/inc/functions.sh,
+  usr/share/vdr/inc/plugin-functions.sh, usr/share/vdr/inc/rc-functions.sh:
+  Removed more bash specific code.
+
+  16 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/watchdog-restart-20-modules.sh, etc/init.d/vdr,
   usr/share/vdr/inc/language-functions.sh, usr/share/vdr/inc/time.sh:
   Removed more bash specific code.

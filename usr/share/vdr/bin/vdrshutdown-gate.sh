@@ -53,24 +53,27 @@ VDR_USERSHUTDOWN="${5}"
 
 queue_add_wait() {
 	: ${qindex:=1}
-	svdrpqueue[${qindex}]="sleep ${1}"
+	eval svdrpqueue_${qindex}="sleep $1"
 	qindex=$((qindex+1))
 }
 
 svdrp_add_queue() {
 	: ${qindex:=1}
-	logger "vdrshutdown-gate sending per svdrp: ${1}"
-	svdrpqueue[${qindex}]="${SVDRPCMD} ${1}"
+	logger "vdrshutdown-gate sending per svdrp: $1"
+	eval svdrpqueue_${qindex}="${SVDRPCMD} $1"
 	qindex=$((qindex+1))
 }
 
 svdrp_queue_handler() {
-	for ((i=1; i < qindex ; i++))
-	do
+	local i=1
+	local ITEM
+	while [ $i -lt $qindex ]; do
 		# retry until success
-		while ! ${svdrpqueue[$i]}; do
+		eval ITEM=\$svdrpqueue_${i}
+		while ! ${ITEM}; do
 			sleep 1
 		done
+		i=$((i+1))
 	done
 }
 
