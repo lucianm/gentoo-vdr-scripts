@@ -62,7 +62,7 @@ kill_dvb_video_users() {
 		name=$(cat "${dev}/name")
 		[ "${name##*av7110}" = "${name}" ] && continue
 
-		bname=${dev/*\//}
+		bname=${dev##*/}
 		einfo_level2 "  Killing users of device ${bname} (Name: ${name})"
 		fuser -s -k -TERM /dev/${bname}
 	done
