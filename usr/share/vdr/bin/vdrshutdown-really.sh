@@ -49,7 +49,7 @@ read_reboot_setting() {
 
 	local REBOOT_SET_AGO=$(( NOW-TSTAMP ))
 	local UPTIME=$(</proc/uptime)
-	UPTIME=${UPTIME/.*/}
+	UPTIME=${UPTIME%%.*}
 
 	if [ "${REBOOT_SET_AGO}" -lt "${UPTIME}" ]; then
 		NEED_REBOOT=1
