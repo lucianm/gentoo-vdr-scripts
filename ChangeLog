@@ -2,6 +2,11 @@
 # $Id$
 
   16 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/sbin/acpi-wakeup.sh, usr/share/vdr/bin/vdrshutdown-gate.sh,
+  usr/share/vdr/inc/plugin-functions.sh, usr/share/vdr/inc/rc-functions.sh:
+  Replaced bash specific arithmetics.
+
+  16 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/shutdown/periodic-50-epgscan.sh,
   usr/share/vdr/shutdown/pre-shutdown-99-periodic-thread.sh,
   README.shutdown, usr/share/vdr/bin/vdr-bg.sh,

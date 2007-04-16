@@ -53,7 +53,7 @@ add_daemonctrl_param()
 {
 	while [ -n "$1" ]; do
 		daemonctrl_opts[daemonctrl_idx]="$1"
-		daemonctrl_idx=$[daemonctrl_idx+1]
+		daemonctrl_idx=$((daemonctrl_idx+1))
 		shift;
 	done
 }
@@ -70,7 +70,7 @@ add_param()
 {
 	while [ -n "$1" ]; do
 		vdr_opts[vdr_idx]="$1"
-		vdr_idx=$[vdr_idx+1]
+		vdr_idx=$((vdr_idx+1))
 		shift
 	done
 }
@@ -171,7 +171,7 @@ waitfor() {
 			0) einfo_debug waited ${waited} seconds; return 0 ;;
 			2) einfo_debug waited ${waited} seconds; return 2 ;;
 		esac
-		waited=$[waited+1]
+		waited=$((waited+1))
 		sleep 1
 	done
 	einfo_level1 waited ${waited} seconds

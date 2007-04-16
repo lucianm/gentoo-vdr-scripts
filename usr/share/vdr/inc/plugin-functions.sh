@@ -128,7 +128,7 @@ init_plugin_params()
 add_plugin_param()
 {
 	vdrplugin_opts[plugin_opt_idx]="$1"
-	plugin_opt_idx=$[plugin_opt_idx+1]
+	plugin_opt_idx=$((plugin_opt_idx+1))
 }
 
 skip_plugin() {

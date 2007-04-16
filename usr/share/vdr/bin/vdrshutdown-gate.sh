@@ -148,7 +148,7 @@ shutdown_abort_can_force() {
 	if is_forced_shutdown; then
 		# this is the forced way, ignore this abort
 		echo FORCED: ${1}
-		SHUTDOWN_FORCE_COUNT=$[SHUTDOWN_FORCE_COUNT+1]
+		SHUTDOWN_FORCE_COUNT=$((SHUTDOWN_FORCE_COUNT+1))
 	else
 		shutdown_common "${1}"
 	fi
@@ -184,7 +184,7 @@ init_forced_shutdown() {
 		LAST_SHUTDOWN_ABORT=$(cat "${shutdown_force_file}")
 	fi
 	NOW=$(date +%s)
-	local DISTANCE=$[NOW-LAST_SHUTDOWN_ABORT]
+	local DISTANCE=$((NOW-LAST_SHUTDOWN_ABORT))
 	if [ "${DISTANCE}" -lt "${SHUTDOWN_FORCE_DETECT_INTERVALL}" ]; then
 		THIS_SHUTDOWN_IS_FORCED="1"
 	fi
