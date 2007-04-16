@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  16 Apr 2007; Matthias Schwarzott <zzam@gentoo.org> etc/init.d/vdr,
+  usr/share/vdr/inc/plugin-functions.sh, usr/share/vdr/inc/rc-functions.sh:
+  Removed bash specific array code.
+
   16 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/inc/rc-functions.sh:
   Removed more bash specific code.

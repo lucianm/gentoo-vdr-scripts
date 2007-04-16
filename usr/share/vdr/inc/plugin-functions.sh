@@ -120,15 +120,14 @@ load_plugin()
 
 init_plugin_params()
 {
-	# init array for parameters
-	plugin_opt_idx=1
-	vdrplugin_opts=("--plugin=${1}")
+	# init list of plugin parameters
+	vdrplugin_opts="--plugin=$1"
 }
 
 add_plugin_param()
 {
-	vdrplugin_opts[plugin_opt_idx]="$1"
-	plugin_opt_idx=$((plugin_opt_idx+1))
+	# append new parameter
+	vdrplugin_opts="${vdrplugin_opts} $1"
 }
 
 skip_plugin() {
@@ -142,11 +141,7 @@ skip_plugin() {
 add_plugin_params_to_vdr_call() {
 	if [ "${SKIP_PLUGIN}" = "0" ]; then
 		# for not-skipped plugins, add the param to the vdr-call
-		if [ -z "${_EXTRAOPTS}" ]; then
-			add_param "${vdrplugin_opts[*]}"
-		else
-			add_param "${vdrplugin_opts[*]} ${_EXTRAOPTS}"
-		fi
+		add_param "${vdrplugin_opts} ${_EXTRAOPTS}"
 	fi
 }
 

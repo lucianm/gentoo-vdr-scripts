@@ -43,34 +43,28 @@ getvdrversion
 
 init_daemonctrl_params()
 {
-	# init array for parameters
-	daemonctrl_idx=0
-	unset daemonctrl_opts
-	declare -a daemonctrl_opts
+	# init variable for parameters
+	daemonctrl_opts=""
 }
 
 add_daemonctrl_param()
 {
 	while [ -n "$1" ]; do
-		daemonctrl_opts[daemonctrl_idx]="$1"
-		daemonctrl_idx=$((daemonctrl_idx+1))
+		daemonctrl_opts="${daemonctrl_opts} '$1'"
 		shift;
 	done
 }
 
 init_params()
 {
-	# init array for parameters
-	vdr_idx=0
-	unset vdr_opts
-	declare -a vdr_opts
+	# init variable for parameters
+	vdr_opts=""
 }
 
 add_param()
 {
 	while [ -n "$1" ]; do
-		vdr_opts[vdr_idx]="$1"
-		vdr_idx=$((vdr_idx+1))
+		vdr_opts="${vdr_opts} '$1'"
 		shift
 	done
 }
