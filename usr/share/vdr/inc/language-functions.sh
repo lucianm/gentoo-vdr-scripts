@@ -13,7 +13,10 @@ read_vdr_language() {
 	else
 		OSDLANG="0"
 	fi
-	LANG_TAB=("en" "de")
-	VDR_LANGUAGE=${LANG_TAB[OSDLANG]}
+	case "$OSDLANG" in
+	0) VDR_LANGUAGE="en" ;;
+	1) VDR_LANGUAGE="de" ;;
+	*) VDR_LANGUAGE="" ;;
+	esac
 }
 

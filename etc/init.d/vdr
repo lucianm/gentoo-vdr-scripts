@@ -52,7 +52,7 @@ start() {
 			-- --daemon "${vdr_opts[@]}"
 		exitcode=$?
 	else
-		TERMINAL=${TERMINAL/\/dev\/tty/}
+		TERMINAL=${TERMINAL##/dev/tty}
 		TERMINAL_DEVICE=/dev/tty${TERMINAL}
 		{
 			clear

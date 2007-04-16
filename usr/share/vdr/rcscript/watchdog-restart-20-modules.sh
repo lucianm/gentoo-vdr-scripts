@@ -60,7 +60,7 @@ kill_dvb_video_users() {
 		[ -f "${dev}/name" ] || continue
 		
 		name=$(cat "${dev}/name")
-		[ "${name/av7110/}" = "${name}" ] && continue
+		[ "${name##*av7110}" = "${name}" ] && continue
 
 		bname=${dev/*\//}
 		einfo_level2 "  Killing users of device ${bname} (Name: ${name})"

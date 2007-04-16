@@ -49,13 +49,13 @@ check_interval() {
 
 			if [ "$start" -le "$stop" ]; then
 				# if (start <= testtime <= stop)
-				if [ ( "$start" -le "$testtime" ) -a ( "$testtime" -le "$stop" ) ]; then
+				if [ "$start" -le "$testtime" ] && [ "$testtime" -le "$stop" ]; then
 					HIT=1
 				fi
 			else
 				# itervall ueber mitternacht
 				# if ( 0 <= testtime <= stop ) || ( start <= testtime <= midnight)
-				if [ ( "$testtime" -le "$stop" ) -o ( "$start" -le "$testtime" ) ]]; then
+				if [ "$testtime" -le "$stop" ] || [ "$start" -le "$testtime" ]; then
 					HIT=1
 				fi
 			fi
