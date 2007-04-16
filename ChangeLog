@@ -3,6 +3,10 @@
 
   16 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/inc/rc-functions.sh:
+  Removed more bash specific code.
+
+  16 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/inc/rc-functions.sh:
   Check shell syntax before executing an addon.
 
   16 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>

@@ -183,17 +183,23 @@ waitfor() {
 }
 
 add_wait_condition() {
-	waitconditions="${waitconditions} ${1} "
+	eval cond_done_$1=0
+	waitconditions="${waitconditions} $1 "
 }
 
 wait_for_multiple_condition() {
+	local already_done
 	ret=0
 	condition_msg=""
 	for cond in ${waitconditions}; do
+		# check if marked as done
+		eval already_done=\$cond_done_${cond}
+		[ "${already_done}" = 1 ] && continue
+
 		eval ${cond}
 		case "$?" in
 			0)
-				waitconditions=${waitconditions/${cond} /}
+				eval cond_done_${cond}=1
 				;;
 			1)
 				ret=1
