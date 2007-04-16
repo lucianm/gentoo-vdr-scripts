@@ -7,7 +7,7 @@
 NVRAM_WAKEUP=/usr/bin/nvram-wakeup
 
 wakeup_check() {
-	if [[ ! -x ${NVRAM_WAKEUP} ]]; then
+	if [ ! -x "${NVRAM_WAKEUP}" ]; then
 		error_mesg "no nvram-wakeup installed"
 		return 1
 	fi
@@ -18,9 +18,9 @@ wakeup_check() {
 wakeup_set() {
 	local CMD="${NVRAM_WAKEUP} --syslog"
 
-	[[ -n "${NVRAM_CONFIG}" ]] && CMD="${CMD} -C ${NVRAM_CONFIG}"
+	[ -n "${NVRAM_CONFIG}" ] && CMD="${CMD} -C ${NVRAM_CONFIG}"
 
-	[[ -n "${NVRAM_EXTRA_OPTIONS}" ]] && CMD="${CMD} ${NVRAM_EXTRA_OPTIONS}"
+	[ -n "${NVRAM_EXTRA_OPTIONS}" ] && CMD="${CMD} ${NVRAM_EXTRA_OPTIONS}"
 
 	CMD="${CMD} -s ${1}"
 

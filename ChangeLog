@@ -1,6 +1,19 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  16 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/shutdown/pre-shutdown-05-time-calculations.sh,
+  usr/share/vdr/shutdown/pre-shutdown-10-check-enabled.sh,
+  usr/share/vdr/shutdown/pre-shutdown-30-check-logins.sh,
+  usr/share/vdr/shutdown/pre-shutdown-40-time.sh,
+  usr/share/vdr/shutdown/periodic-50-epgscan.sh,
+  usr/share/vdr/shutdown/pre-shutdown-99-periodic-thread.sh,
+  usr/share/vdr/shutdown/shutdown-reboot.sh,
+  usr/share/vdr/shutdown/wakeup-acpi.sh,
+  usr/share/vdr/shutdown/wakeup-none.sh,
+  usr/share/vdr/shutdown/wakeup-nvram.sh:
+  Removed bash specific code.
+
   15 Apr 2007; Matthias Schwarzott <zzam@gentoo.org> etc/init.d/vdr:
   Completely remove dvbsplash support to finally stop all problems.
 

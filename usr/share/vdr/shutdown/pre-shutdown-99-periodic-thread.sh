@@ -8,7 +8,7 @@ check_periodic_thread()
 {
 	# test if periodic thread is activated
 	: ${ENABLE_SHUTDOWN_PERIODIC_JOBS:=no}
-	[[ ${ENABLE_SHUTDOWN_PERIODIC_JOBS} == "yes" ]] || return
+	[ "${ENABLE_SHUTDOWN_PERIODIC_JOBS}" = "yes" ] || return
 
 	# when periodic-thread runs
 	local PIDOF=pidof
@@ -31,12 +31,12 @@ check_periodic_thread()
 	local MINIMAL_THREAD_CALL_DELTA=$(( 3600*20 ))
 
 	local LAST_THREAD_END=0
-	[[ -f ${PERIODIC_THREAD_ENDTIME} ]] && LAST_THREAD_END=$(<${PERIODIC_THREAD_ENDTIME})
+	[ -f "${PERIODIC_THREAD_ENDTIME}" ] && LAST_THREAD_END=$(<${PERIODIC_THREAD_ENDTIME})
 	
 	local DELTA=$(( NOW-LAST_THREAD_END ))
 
 	# do not start if has been run in the last 20 hours
-	[[ ${DELTA} -lt ${MINIMAL_THREAD_CALL_DELTA} ]] && return
+	[ "${DELTA}" -lt "${MINIMAL_THREAD_CALL_DELTA}" ] && return
 
 	# starting thread aborts shutdown
 	shutdown_abort_can_force "periodic jobs are waiting"

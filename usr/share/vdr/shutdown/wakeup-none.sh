@@ -12,9 +12,9 @@ wakeup_check() {
 }
 
 wakeup_set() {
-	if [[ ${1} != 0 ]]; then
+	if [ "${1}" != 0 ]; then
 		# it is not possible to wakeup the system!
-		if [[ ${NONE_WAKEUP_IGNORE_TIMER:-no} == yes ]]; then
+		if [ "${NONE_WAKEUP_IGNORE_TIMER:-no}" = "yes" ]; then
 			# ignoring set timers
 			:
 		else
