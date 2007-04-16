@@ -6,7 +6,8 @@ include()
 {
 	local name="${1}"
 	local vname=loaded_$(echo ${name} | tr '-' '_')
-	local check=${!vname}
+	local check
+	eval check=\$${vname}
 	[ "${check:-0}" = "1" ] && return
 
 	. /usr/share/vdr/inc/${name}.sh

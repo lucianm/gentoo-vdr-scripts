@@ -2,6 +2,10 @@
 # $Id$
 
   16 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/inc/functions.sh:
+  Removed more bash specific code.
+
+  16 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/bin/vdrshutdown-gate.sh, usr/share/vdr/inc/functions.sh,
   usr/share/vdr/inc/plugin-functions.sh, usr/share/vdr/inc/rc-functions.sh:
   Removed more bash specific code.
