@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # $Id$
 # Author:
 #   Matthias Schwarzott <zzam@gmx.de>
@@ -16,12 +16,12 @@
 # from within these scripts.
 
 #fork to background
-if [[ -z ${EXECUTED_BY_VDR_BG} ]]; then
+if [ -z "${EXECUTED_BY_VDR_BG}" ]; then
 	exec /usr/share/vdr/bin/vdr-bg.sh "${0}" "${@}"
 	exit
 fi
 
-if [[ ${DEBUG} -ge 1 ]]; then
+if [ "${DEBUG}" -ge 1 ]; then
 	exec </dev/null >/var/vdr/shutdown-data/log 2>&1
 	echo Started debug output of $0 $@
 	nr=0
@@ -37,7 +37,7 @@ SVDRPCMD=/usr/bin/svdrpsend.pl
 NVRAM_WAKEUP=/usr/bin/nvram-wakeup
 HOOKDIR=/usr/share/vdr/shutdown
 
-source /usr/share/vdr/inc/functions.sh
+. /usr/share/vdr/inc/functions.sh
 include shutdown-functions
 
 read_caps
@@ -85,8 +85,8 @@ mesg_q() {
 retry_shutdown() {
 	local when=${TRY_AGAIN}
 
-	if [[ -n "${CAP_SHUTDOWN_SVDRP}" ]]; then
-		if [[ ${when} -gt 5 ]]; then
+	if [ -n "${CAP_SHUTDOWN_SVDRP}" ]; then
+		if [ "${when}" -gt 5 ]; then
 			svdrp_add_queue "DOWN $((when-5))"
 		else
 			svdrp_add_queue "DOWN"
@@ -94,7 +94,7 @@ retry_shutdown() {
 		return
 	fi
 
-	if [[ "${CAP_SHUTDOWN_AUTO_RETRY:-0}" == "1" ]]; then
+	if [ "${CAP_SHUTDOWN_AUTO_RETRY:-0}" = "1" ]; then
 		# vdr itself will retry shutdown in a reasonable time
 		return
 	fi
@@ -107,28 +107,28 @@ retry_shutdown() {
 }
 															
 is_auto_shutdown() {
-	test "${VDR_USERSHUTDOWN}" == "0"
+	[ "${VDR_USERSHUTDOWN}" = "0" ]
 }
 
 is_user_shutdown() {
-	test "${VDR_USERSHUTDOWN}" == "1"
+	[ "${VDR_USERSHUTDOWN}" = "1" ]
 }
 
 is_forced_shutdown() {
-	test "${THIS_SHUTDOWN_IS_FORCED}" == "1"
+	[ "${THIS_SHUTDOWN_IS_FORCED}" = "1" ]
 }
 
 is_shutdown_aborted() {
-	[[ "${SHUTDOWN_ABORT}" == "1" ]]
+	[ "${SHUTDOWN_ABORT}" = "1" ]
 }
 
 forced_tests_count_greater_zero() {
-	[[ $SHUTDOWN_FORCE_COUNT -gt 0 ]]
+	[ "${SHUTDOWN_FORCE_COUNT}" -gt 0 ]
 }
 
 set_retry_time() {
 	local TIME="${1}"
-	if [[ ${TRY_AGAIN} -lt ${TIME} ]]; then
+	if [ "${TRY_AGAIN}" -lt "${TIME}" ]; then
 		TRY_AGAIN=${TIME}
 	fi
 }
@@ -180,16 +180,16 @@ init_forced_shutdown() {
 	local shutdown_force_file=${shutdown_data_dir}/last-shutdown-abort
 
 	local LAST_SHUTDOWN_ABORT=0
-	if [[ -f "${shutdown_force_file}" ]]; then
+	if [ -f "${shutdown_force_file}" ]; then
 		LAST_SHUTDOWN_ABORT=$(cat "${shutdown_force_file}")
 	fi
 	NOW=$(date +%s)
 	local DISTANCE=$[NOW-LAST_SHUTDOWN_ABORT]
-	if [[ "${DISTANCE}" -lt "${SHUTDOWN_FORCE_DETECT_INTERVALL}" ]]; then
+	if [ "${DISTANCE}" -lt "${SHUTDOWN_FORCE_DETECT_INTERVALL}" ]; then
 		THIS_SHUTDOWN_IS_FORCED="1"
 	fi
 
-	[[ -f "${shutdown_force_file}" ]] && rm "${shutdown_force_file}"
+	[ -f "${shutdown_force_file}" ] && rm "${shutdown_force_file}"
 	SHUTDOWN_FORCE_COUNT=0
 	SHUTDOWN_CAN_FORCE=1
 }
@@ -204,7 +204,7 @@ write_force_file() {
 }
 
 check_forced_shutdown_possible_next_time() {
-	if [[ "${SHUTDOWN_CAN_FORCE}" == "1" ]]; then
+	if [ "${SHUTDOWN_CAN_FORCE}" = "1" ]; then
 		write_force_file
 		queue_add_wait 1s
 		mesg_q "You can force a shutdown with pressing power again"
@@ -219,14 +219,14 @@ exit_cleanup() {
 execute_hooks() {
 	local HOOK
 	for HOOK in $HOOKDIR/pre-shutdown-*.sh; do
-		if [[ -f "${HOOK}" ]]; then
-			source "${HOOK}"
+		if [ -f "${HOOK}" ]; then
+			. "${HOOK}"
 		fi
 	done
 }
 
 check_auto_retry() {
-	if [[ ${TRY_AGAIN} -gt 0 && ${ENABLE_AUTO_RETRY} == 1 ]]; then
+	if [ "${TRY_AGAIN}" -gt 0 -a "${ENABLE_AUTO_RETRY}" = 1 ]; then
 		queue_add_wait 1s
 		mesg_q "Shutdown is retried soon"
 		retry_shutdown ${TRY_AGAIN}
@@ -262,7 +262,7 @@ fi
 
 
 SUDO=/usr/bin/sudo
-if [[ -z ${DRY_SHUTDOWN_GATE} ]]; then
+if [ -z "${DRY_SHUTDOWN_GATE}" ]; then
 	${SUDO} /usr/share/vdr/bin/vdrshutdown-really.sh ${VDR_TIMER_NEXT}
 	case $? in
 	0)	;;

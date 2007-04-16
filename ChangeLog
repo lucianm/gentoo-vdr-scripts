@@ -2,6 +2,16 @@
 # $Id$
 
   16 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/shutdown/periodic-50-epgscan.sh,
+  usr/share/vdr/shutdown/pre-shutdown-99-periodic-thread.sh,
+  README.shutdown, usr/share/vdr/bin/vdr-bg.sh,
+  usr/share/vdr/bin/vdrrecord-gate.sh,
+  usr/share/vdr/bin/vdrshutdown-gate.sh,
+  usr/share/vdr/bin/vdrshutdown-periodic-thread.sh,
+  usr/share/vdr/bin/vdrshutdown-really.sh:
+  Removed more bash specific code.
+
+  16 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/pre-start-10-chuid.sh,
   usr/share/vdr/rcscript/pre-stop-10-watchdog.sh,
   usr/share/vdr/rcscript/pre-start-20-dvb-device.sh,

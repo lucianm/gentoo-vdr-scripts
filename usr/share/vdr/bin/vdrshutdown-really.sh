@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # $Id$
 # Author:
 #   Matthias Schwarzott <zzam@gmx.de>
@@ -10,10 +10,10 @@
 # real shutdown/reboot.
 #
 
-source /usr/share/vdr/inc/functions.sh
+. /usr/share/vdr/inc/functions.sh
 include shutdown-functions
 
-if [[ "${UID}" != "0" ]]; then
+if [ "${UID}" != "0" ]; then
 	echo "This program should be run as root"
 	exit 99
 fi
@@ -43,7 +43,7 @@ set_reboot_needed() {
 
 read_reboot_setting() {
 	NEED_REBOOT=0
-	[[ -e ${shutdown_data_dir}/shutdown-need-reboot ]] || return
+	[ -e "${shutdown_data_dir}/shutdown-need-reboot" ] || return
 	local TSTAMP=$(<${shutdown_data_dir}/shutdown-need-reboot)
 	local NOW=$(date +%s)
 
@@ -51,15 +51,15 @@ read_reboot_setting() {
 	local UPTIME=$(</proc/uptime)
 	UPTIME=${UPTIME/.*/}
 
-	if [[ ${REBOOT_SET_AGO} -lt ${UPTIME} ]]; then
+	if [ "${REBOOT_SET_AGO}" -lt "${UPTIME}" ]; then
 		NEED_REBOOT=1
 	fi
 }
 
 
 
-if [[ -f ${shutdown_script_dir}/wakeup-${WAKEUP_METHOD}.sh ]]; then
-	source ${shutdown_script_dir}/wakeup-${WAKEUP_METHOD}.sh
+if [ -f "${shutdown_script_dir}/wakeup-${WAKEUP_METHOD}.sh" ]; then
+	. ${shutdown_script_dir}/wakeup-${WAKEUP_METHOD}.sh
 
 	wakeup_check || exit 99
 	wakeup_set "${VDR_WAKEUP_TIME}" || exit 99
@@ -68,7 +68,7 @@ else
 fi
 
 
-if [[ "${DRY_SHUTDOWN_REAL}" == "1" ]]; then
+if [ "${DRY_SHUTDOWN_REAL}" = "1" ]; then
 	mesg "Dry-run - not shutting down"
 	exit 0
 fi
@@ -76,6 +76,6 @@ fi
 read_reboot_setting
 
 case "${NEED_REBOOT}" in
-	1)	source ${shutdown_script_dir}/shutdown-reboot.sh ;;
-	0)	source ${shutdown_script_dir}/shutdown-halt.sh ;;
+	1)	. ${shutdown_script_dir}/shutdown-reboot.sh ;;
+	0)	. ${shutdown_script_dir}/shutdown-halt.sh ;;
 esac

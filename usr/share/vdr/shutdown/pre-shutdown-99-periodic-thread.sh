@@ -1,5 +1,5 @@
 # $Id$
-source /etc/conf.d/vdr.periodic.general
+. /etc/conf.d/vdr.periodic.general
 
 PERIODIC_THREAD_ENDTIME=${shutdown_data_dir}/periodic_thread_last_ended
 

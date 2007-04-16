@@ -14,7 +14,7 @@ Wakeup-modules are named wakeup-${NAME}.sh
 The used wakeup-module is selected by WAKEUP_METHOD in /etc/conf.d/vdr.shutdown.
 Here acpi is used by default if nothing has been set.
 
-The module is sourced by the bash. The wakeup-module is executed as user root.
+The module is sourced by the shell. The wakeup-module is executed as user root.
 
 
 The Main part of the wakeup-module:
@@ -23,7 +23,7 @@ A wakeup-module should do nothing in its main part.
 
 
 Return values of functions:
-	== 0 	- success
+	=  0 	- success
 	<> 0	- failure
 
 

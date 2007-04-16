@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # $Id$
 
 #
@@ -8,7 +8,7 @@
 # There are some bugs concerning abort of these tasks.
 #
 
-source /usr/share/vdr/inc/functions.sh
+. /usr/share/vdr/inc/functions.sh
 include shutdown-functions
 read_caps
 
@@ -25,7 +25,7 @@ sleep 15s
 mesg "periodic thread started"
 
 for HOOK in ${THREAD_DIR}/periodic-*.sh; do
-	[[ -f "${HOOK}" ]] && source "${HOOK}"
+	[ -f "${HOOK}" ] && . "${HOOK}"
 done
 
 NOW=$(date +%s)
@@ -37,7 +37,7 @@ sleep 3s
 
 svdrpsend.pl hitk back
 
-if [[ "${CAP_SHUTDOWN_SVDRP}" == "1" ]]; then
+if [ "${CAP_SHUTDOWN_SVDRP}" = "1" ]; then
 	svdrpsend.pl DOWN
 else
 	svdrpsend.pl hitk power
