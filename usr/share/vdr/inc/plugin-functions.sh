@@ -52,7 +52,7 @@ init_plugin_loader() {
 	# Load list of plugins which were started to exec correct rcaddons
 	local LOADED_PLUGINS_FILE=/var/vdr/tmp/loaded_plugins
 	if [ "${INIT_PHASE}" = "stop" ] && [ -e "${LOADED_PLUGINS_FILE}" ]; then
-		PLUGINS=$(< ${LOADED_PLUGINS_FILE} )
+		PLUGINS=$(cat ${LOADED_PLUGINS_FILE} )
 	else
 		rm -f ${LOADED_PLUGINS_FILE}
 

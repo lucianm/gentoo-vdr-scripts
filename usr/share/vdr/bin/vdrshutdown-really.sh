@@ -44,11 +44,11 @@ set_reboot_needed() {
 read_reboot_setting() {
 	NEED_REBOOT=0
 	[ -e "${shutdown_data_dir}/shutdown-need-reboot" ] || return
-	local TSTAMP=$(<${shutdown_data_dir}/shutdown-need-reboot)
+	local TSTAMP=$(cat ${shutdown_data_dir}/shutdown-need-reboot)
 	local NOW=$(date +%s)
 
 	local REBOOT_SET_AGO=$(( NOW-TSTAMP ))
-	local UPTIME=$(</proc/uptime)
+	local UPTIME=$(cat /proc/uptime)
 	UPTIME=${UPTIME%%.*}
 
 	if [ "${REBOOT_SET_AGO}" -lt "${UPTIME}" ]; then
