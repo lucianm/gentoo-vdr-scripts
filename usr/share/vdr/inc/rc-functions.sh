@@ -103,6 +103,8 @@ load_addon()
 		fname="${vdr_rc_dir}/${addon}.sh"
 	elif [ -f "${vdr_old_rc_dir}/${addon}.sh" ]; then
 		fname="${vdr_old_rc_dir}/${addon}.sh"
+	else
+		return 0
 	fi
 	
 	# source addon
