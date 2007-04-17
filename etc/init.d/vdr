@@ -48,7 +48,7 @@ start() {
 	einfo_level2 "  CMDLINE:" start-stop-daemon "${daemonctrl_opts}" "--" "${vdr_opts}"
 
 	if [ -z "${TERMINAL}" ]; then
-		start-stop-daemon ${daemonctrl_opts} \
+		eval start-stop-daemon ${daemonctrl_opts} \
 			-- --daemon ${vdr_opts}
 		exitcode=$?
 	else
@@ -64,7 +64,7 @@ start() {
 		if [ "${SWITCH_TO_TERMINAL}" = "yes" ]; then
 			openvt_opts="${openvt_opts} -s"
 		fi
-		openvt -c ${TERMINAL} ${openvt_opts} -- \
+		eval openvt -c ${TERMINAL} ${openvt_opts} -- \
 			start-stop-daemon ${daemonctrl_opts} \
 			-- ${vdr_opts}
 		exitcode=$?
