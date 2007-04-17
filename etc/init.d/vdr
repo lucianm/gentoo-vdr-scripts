@@ -4,8 +4,12 @@
 
 opts="${opts} watchdogrestart"
 
-. /usr/share/vdr/inc/functions.sh
-include rc-functions
+load_functions() {
+	cd /
+	INIT_PHASE="$1"
+	. /usr/share/vdr/inc/functions.sh
+	include rc-functions
+}
 
 depend() {
 	use lircd net coldplug
@@ -13,8 +17,7 @@ depend() {
 }
 
 start() {
-	INIT_PHASE=start
-	cd /
+	load_functions start
 	local exitcode
 
 	init_vdr_start_log
@@ -82,8 +85,7 @@ start() {
 }
 
 stop() {
-	INIT_PHASE=stop
-	cd /
+	load_functions stop
 	load_addons_prefixed pre-stop
 
 	ebegin "Stopping ${VDRNAME}"
@@ -98,7 +100,7 @@ stop() {
 # gets called by watchdog to restart vdr
 # and possibly reload modules
 watchdogrestart() {
-	cd /
+	load_functions watchdogrestart
 
 	export WATCHDOG_RESTART="1"
 	/etc/init.d/vdr pause
