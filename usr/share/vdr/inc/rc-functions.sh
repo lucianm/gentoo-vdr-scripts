@@ -211,8 +211,11 @@ wait_for_multiple_condition() {
 stop_watchdog() {
 	if [ "${ENABLE_EXTERNAL_WATCHDOG}" = "yes" ]; then
 		ebegin "Stopping vdr watchdog"
-		start-stop-daemon --stop --pidfile /var/run/vdrwatchdog.pid
+		start-stop-daemon --stop --pidfile /var/run/vdrwatchdog.pid --name vdr-watchdogd
 		eend $? "failed stopping watchdog"
+	else
+		# Also stop watchdog if conf was changed to disabled while it was running
+		start-stop-daemon --stop --pidfile /var/run/vdrwatchdog.pid --name vdr-watchdogd --quiet
 	fi
 }
 

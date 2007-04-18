@@ -3,6 +3,10 @@
 
   18 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/inc/rc-functions.sh:
+  Also stop watchdog if it was disabled while vdr was still running.
+
+  18 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/inc/rc-functions.sh:
   Make start-stop-daemon get the correct state of the watchdog.
 
   17 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
