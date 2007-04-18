@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  18 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/inc/rc-functions.sh:
+  Make start-stop-daemon get the correct state of the watchdog.
+
   17 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/shutdown/pre-shutdown-99-periodic-thread.sh,
   usr/share/vdr/bin/vdrshutdown-really.sh,

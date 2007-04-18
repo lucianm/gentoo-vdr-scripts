@@ -226,6 +226,7 @@ start_watchdog() {
 			--make-pidfile \
 			--pidfile /var/run/vdrwatchdog.pid \
 			--exec /usr/sbin/vdr-watchdogd \
+			--name vdr-watchdogd \
 			-- ${WATCHDOG_LOGFILE}
 		eend $? "failed starting vdr watchdog"
 	fi
