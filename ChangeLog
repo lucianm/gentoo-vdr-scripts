@@ -1,6 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-0.3.9 (23 Apr 2007)
+
   18 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/inc/rc-functions.sh:
   Also stop watchdog if it was disabled while vdr was still running.
