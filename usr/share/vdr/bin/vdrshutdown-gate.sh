@@ -222,9 +222,9 @@ exit_cleanup() {
 execute_hooks() {
 	local HOOK
 	for HOOK in $HOOKDIR/pre-shutdown-*.sh; do
-		if [ -f "${HOOK}" ]; then
-			. "${HOOK}"
-		fi
+		[ -r "${HOOK}" ] || continue
+		sh -n "${HOOK}" || continue
+		. "${HOOK}"
 	done
 }
 
