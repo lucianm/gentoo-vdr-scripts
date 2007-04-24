@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  24 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/bin/vdrshutdown-gate.sh:
+  Fixed quoting of the queued commands in shutdown-gate.
+
 *gentoo-vdr-scripts-0.3.9 (23 Apr 2007)
 
   18 Apr 2007; Matthias Schwarzott <zzam@gentoo.org>
