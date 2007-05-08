@@ -22,7 +22,7 @@ time2min() {
 	# Wenn die Zeit kein ":" enthaelt
 	[ "$m" = "$t" ] && m=0
 
-	echo $(( ( h*60 + m ) % 1440 ))
+	echo $(( ( $h*60 + $m ) % 1440 ))
 }
 
 #
@@ -38,7 +38,7 @@ check_interval() {
 	local nr=0
 	local INSIDE=0
 	for i in $intervals; do
-		: $((nr++))
+		nr=$(($nr+1))
 		local HIT=0
 		case ${i} in
 		*-*)
@@ -68,7 +68,7 @@ check_interval() {
 			;;
 		esac
 		if [ "$HIT" = 1 ]; then
-			: $((INSIDE++))
+			INSIDE=$(($INSIDE+1))
 		fi
 	done
 	if [ "$INSIDE" -gt 0 ]; then

@@ -35,8 +35,11 @@ install:
 	install -m 0644 -o root -g root usr/share/vdr/rcscript/*.sh $(DESTDIR)/usr/share/vdr/rcscript/
 
 	install -m 0755 -o root -g root -d $(DESTDIR)/usr/share/vdr/shutdown
-	install -m 0644 -o root -g root usr/share/vdr/shutdown/{shutdown,pre,periodic}*.sh $(DESTDIR)/usr/share/vdr/shutdown/
-	install -m 0644 -o root -g root usr/share/vdr/shutdown/wakeup-{acpi,none}.sh $(DESTDIR)/usr/share/vdr/shutdown/
+	install -m 0644 -o root -g root usr/share/vdr/shutdown/shutdown*.sh $(DESTDIR)/usr/share/vdr/shutdown/
+	install -m 0644 -o root -g root usr/share/vdr/shutdown/pre*.sh $(DESTDIR)/usr/share/vdr/shutdown/
+	install -m 0644 -o root -g root usr/share/vdr/shutdown/periodic*.sh $(DESTDIR)/usr/share/vdr/shutdown/
+	install -m 0644 -o root -g root usr/share/vdr/shutdown/wakeup-none.sh $(DESTDIR)/usr/share/vdr/shutdown/
+	install -m 0644 -o root -g root usr/share/vdr/shutdown/wakeup-acpi.sh $(DESTDIR)/usr/share/vdr/shutdown/
 
 ifdef NVRAM
 	install -m 0644 -o root -g root usr/share/vdr/shutdown/wakeup-nvram.sh $(DESTDIR)/usr/share/vdr/shutdown/
@@ -51,7 +54,8 @@ endif
 	install -m 0755 -o root -g root -d $(DESTDIR)/usr/share/vdr/bin
 	install -m 0755 -o root -g root usr/share/vdr/bin/*.sh $(DESTDIR)/usr/share/vdr/bin/
 
-	install -m 0755 -o vdr -g vdr -d $(DESTDIR)/var/vdr/{shutdown-data,merged-config-files}
+	install -m 0755 -o vdr -g vdr -d $(DESTDIR)/var/vdr/shutdown-data
+	install -m 0755 -o vdr -g vdr -d $(DESTDIR)/var/vdr/merged-config-files
 
 	install -m 0755 -o vdr -g vdr -d $(DESTDIR)/etc/vdr
 	install -m 0755 -o vdr -g vdr -d $(DESTDIR)/etc/vdr/commands

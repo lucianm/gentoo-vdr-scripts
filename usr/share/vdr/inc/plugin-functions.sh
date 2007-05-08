@@ -24,7 +24,7 @@ init_plugin_loader() {
 		plugin_dir=/usr/lib/vdr/plugins
 	fi
 
-	if type -p md5sum >/dev/null 2>&1; then
+	if type md5sum >/dev/null 2>&1; then
 		vdr_checksum_dir="${plugin_dir%/plugins}/checksums"
 		vdr_checksum=${vdr_checksum_dir}/header-md5-vdr
 
@@ -61,7 +61,7 @@ init_plugin_loader() {
 		if [ -f "${PLUGIN_CONF}" ]; then
 			local line
 			exec 3<${PLUGIN_CONF}
-			while read -u 3 line; do
+			while read line <&3; do
 				[ "${line}" = "" ] && continue
 				[ "${line#"#"}" != "${line}" ] && continue
 				PLUGIN="${line}"

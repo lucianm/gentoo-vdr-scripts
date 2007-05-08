@@ -32,7 +32,7 @@ vdr_log_generic()
 	[ -n "${VDR_LOG_FILE}" ] || return
 	
 	echo "$@" >> ${VDR_LOG_FILE}
-	: $((LOG_MSG_COUNT++))
+	LOG_MSG_COUNT=$(($LOG_MSG_COUNT+1))
 }
 	
 	
@@ -52,6 +52,6 @@ vdr_eerror()
 {
 	eerror "$@"
 	vdr_log_generic "E: $@"
-	: $((LOG_ERROR_COUNT++))
+	LOG_ERROR_COUNT=$(($LOG_ERROR_COUNT+1))
 }
 

@@ -33,7 +33,7 @@ check_periodic_thread()
 	local LAST_THREAD_END=0
 	[ -f "${PERIODIC_THREAD_ENDTIME}" ] && LAST_THREAD_END=$(cat ${PERIODIC_THREAD_ENDTIME})
 	
-	local DELTA=$(( NOW-LAST_THREAD_END ))
+	local DELTA=$(( $NOW-$LAST_THREAD_END ))
 
 	# do not start if has been run in the last 20 hours
 	[ "${DELTA}" -lt "${MINIMAL_THREAD_CALL_DELTA}" ] && return

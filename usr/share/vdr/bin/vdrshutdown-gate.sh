@@ -26,7 +26,7 @@ if [ "${DEBUG}" -ge 1 ]; then
 	echo Started debug output of $0 $@
 	nr=0
 	for f; do
-		: $((nr++))
+		nr=$(($nr+1))
 		echo "param #${nr} - ${f}"
 	done
 	set -x
@@ -54,14 +54,14 @@ VDR_USERSHUTDOWN="${5}"
 queue_add_wait() {
 	: ${qindex:=1}
 	eval svdrpqueue_${qindex}="\"sleep $1\""
-	qindex=$((qindex+1))
+	qindex=$(($qindex+1))
 }
 
 svdrp_add_queue() {
 	: ${qindex:=1}
 	logger "vdrshutdown-gate sending per svdrp: $1"
 	eval svdrpqueue_${qindex}="\"${SVDRPCMD} $1\""
-	qindex=$((qindex+1))
+	qindex=$(($qindex+1))
 }
 
 svdrp_queue_handler() {
@@ -73,7 +73,7 @@ svdrp_queue_handler() {
 		while ! ${ITEM}; do
 			sleep 1
 		done
-		i=$((i+1))
+		i=$(($i+1))
 	done
 }
 
@@ -90,7 +90,7 @@ retry_shutdown() {
 
 	if [ -n "${CAP_SHUTDOWN_SVDRP}" ]; then
 		if [ "${when}" -gt 5 ]; then
-			svdrp_add_queue "DOWN $((when-5))"
+			svdrp_add_queue "DOWN $(($when-5))"
 		else
 			svdrp_add_queue "DOWN"
 		fi
@@ -151,7 +151,7 @@ shutdown_abort_can_force() {
 	if is_forced_shutdown; then
 		# this is the forced way, ignore this abort
 		echo FORCED: ${1}
-		SHUTDOWN_FORCE_COUNT=$((SHUTDOWN_FORCE_COUNT+1))
+		SHUTDOWN_FORCE_COUNT=$(($SHUTDOWN_FORCE_COUNT+1))
 	else
 		shutdown_abort_common "${1}"
 	fi
@@ -187,7 +187,7 @@ init_forced_shutdown() {
 		LAST_SHUTDOWN_ABORT=$(cat "${shutdown_force_file}")
 	fi
 	NOW=$(date +%s)
-	local DISTANCE=$((NOW-LAST_SHUTDOWN_ABORT))
+	local DISTANCE=$(($NOW-$LAST_SHUTDOWN_ABORT))
 	if [ "${DISTANCE}" -lt "${SHUTDOWN_FORCE_DETECT_INTERVALL}" ]; then
 		THIS_SHUTDOWN_IS_FORCED="1"
 	fi

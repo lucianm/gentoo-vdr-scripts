@@ -48,10 +48,10 @@ setAlarm()
 	if [ "${Next}" -gt 0 ]; then
 		# abort if recording less then 10min in future
 		local now=$(date +%s)
-		[ "${Next}" -lt "$((now+600))" ] && die "wakeup time too near, alarm not set"
+		[ "${Next}" -lt "$(($now+600))" ] && die "wakeup time too near, alarm not set"
 
 		# boot 5min (=300s) before recording
-		local t=$((Next-300))
+		local t=$(($Next-300))
 
 		[ "${CLOCK}" = "UTC" ] && dateparam="-u"
 		timestr=$(date ${dateparam} --date="1970-01-01 UTC ${t} seconds" +"%Y-%m-%d %H:%M:00")

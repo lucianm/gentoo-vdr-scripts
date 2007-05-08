@@ -2,6 +2,15 @@
 # $Id$
 
   08 May 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-95-plugins.sh,
+  usr/share/vdr/shutdown/pre-shutdown-99-periodic-thread.sh, Makefile,
+  usr/sbin/acpi-wakeup.sh, usr/share/vdr/bin/vdrshutdown-gate.sh,
+  usr/share/vdr/inc/message-functions.sh,
+  usr/share/vdr/inc/plugin-functions.sh, usr/share/vdr/inc/rc-functions.sh,
+  usr/share/vdr/inc/time.sh:
+  Removed more bashish code.
+
+  08 May 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/bin/vdrshutdown-gate.sh:
   Rename shutdown_common to shutdown_abort_common.
 

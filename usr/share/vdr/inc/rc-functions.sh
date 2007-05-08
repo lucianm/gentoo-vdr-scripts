@@ -171,7 +171,7 @@ waitfor() {
 			0) einfo_debug waited ${waited} seconds; return 0 ;;
 			2) einfo_debug waited ${waited} seconds; return 2 ;;
 		esac
-		waited=$((waited+1))
+		waited=$(($waited+1))
 		sleep 1
 	done
 	einfo_level1 waited ${waited} seconds
