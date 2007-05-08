@@ -136,14 +136,14 @@ set_retry_time() {
 	fi
 }
 
-shutdown_common() {
+shutdown_abort_common() {
 	ABORT_MESSAGE="${1}"
 	SHUTDOWN_ABORT="1"
-	set_try_again "${SHUTDOWN_DEFAULT_RETRY_TIME}"
+	set_retry_time "${SHUTDOWN_DEFAULT_RETRY_TIME}"
 }
 
 shutdown_abort() {
-	shutdown_common "${1}"
+	shutdown_abort_common "${1}"
 	disable_forced_shutdown
 }
 
@@ -153,7 +153,7 @@ shutdown_abort_can_force() {
 		echo FORCED: ${1}
 		SHUTDOWN_FORCE_COUNT=$((SHUTDOWN_FORCE_COUNT+1))
 	else
-		shutdown_common "${1}"
+		shutdown_abort_common "${1}"
 	fi
 }
 
