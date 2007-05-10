@@ -1,6 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  10 May 2007; Matthias Schwarzott <zzam@gentoo.org> Makefile:
+  Revert old nicer Makefile, but force bash on it.
+
   08 May 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/pre-start-95-plugins.sh,
   usr/share/vdr/shutdown/pre-shutdown-99-periodic-thread.sh, Makefile,
