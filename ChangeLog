@@ -1,6 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  10 May 2007; Matthias Schwarzott <zzam@gentoo.org> usr/sbin/vdr-watchdogd:
+  Fix external watchdog with dash shell.
+
   10 May 2007; Matthias Schwarzott <zzam@gentoo.org> Makefile:
   Revert old nicer Makefile, but force bash on it.
 

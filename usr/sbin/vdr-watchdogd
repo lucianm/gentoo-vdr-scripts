@@ -21,7 +21,7 @@ sig_hup()
 	periodic_function
 }
 
-trap sig_hup SIGHUP
+trap sig_hup HUP
 
 periodic_function() {
 	[ -f /tmp/no-vdr-watchdog ] && return
