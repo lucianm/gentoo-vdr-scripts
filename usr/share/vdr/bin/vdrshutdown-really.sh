@@ -47,7 +47,7 @@ read_reboot_setting() {
 	local TSTAMP=$(cat ${shutdown_data_dir}/shutdown-need-reboot)
 	local NOW=$(date +%s)
 
-	local REBOOT_SET_AGO=$(( NOW-TSTAMP ))
+	local REBOOT_SET_AGO=$(( $NOW-$TSTAMP ))
 	local UPTIME=$(cat /proc/uptime)
 	UPTIME=${UPTIME%%.*}
 
