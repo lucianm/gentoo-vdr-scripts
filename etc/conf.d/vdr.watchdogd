@@ -11,8 +11,8 @@
 # 
 # Should the watchdog be active or not
 #   allowed values: yes no
-#   default: no
-#ENABLE_EXTERNAL_WATCHDOG="yes"
+#   default: yes
+ENABLE_EXTERNAL_WATCHDOG="yes"
 
 #
 # Should the watchdog reload the dvb modules

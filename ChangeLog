@@ -2,6 +2,10 @@
 # $Id$
 
   30 May 2007; Matthias Schwarzott <zzam@gentoo.org>
+  etc/conf.d/vdr.watchdogd, usr/share/vdr/inc/rc-functions.sh:
+  Enabled external watchdog by default.
+
+  30 May 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/watchdog-restart-20-modules.sh,
   etc/conf.d/vdr.watchdogd, etc/init.d/vdr, usr/sbin/vdr-watchdogd,
   usr/share/vdr/inc/rc-functions.sh:
