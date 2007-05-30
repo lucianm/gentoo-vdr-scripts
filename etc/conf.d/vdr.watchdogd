@@ -22,8 +22,5 @@
 #WATCHDOG_RELOAD_DVB_MODULES="yes"
 
 #
-# For debugging purposes; in which file should
-# the watchdog write a log
-#   allowed values: names of files
-#   default: only log to syslog
-#WATCHDOG_LOGFILE="/var/log/vdr-watchdogd"
+# debug watchdog - will create logfile in /tmp/vdrwatchdogd-log
+#DEBUG=1

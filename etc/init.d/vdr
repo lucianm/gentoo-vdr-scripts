@@ -85,13 +85,14 @@ start() {
 }
 
 stop() {
+	[ -z "${VDR_BIN}" ] && VDR_BIN=/usr/bin/vdr
 	load_functions stop
 	load_addons_prefixed pre-stop
 
 	ebegin "Stopping ${VDRNAME}"
 
 	# Use --name here to allow us to kill vdr even after a new emerge
-	start-stop-daemon --stop --quiet --retry 15 --name vdr
+	start-stop-daemon --stop --quiet --retry 15 --exec ${VDR_BIN} 
 	eend $? "Failed to stop vdr."
 
 	load_addons_prefixed post-stop
@@ -103,10 +104,11 @@ watchdogrestart() {
 	load_functions watchdogrestart
 
 	export WATCHDOG_RESTART="1"
-	/etc/init.d/vdr pause
-	sleep 2
-	test_vdr_process && /bin/killall -9 vdr
-	sleep 1
+	/etc/init.d/vdr --nodeps stop
+	if test_vdr_process; then
+		sleep 2
+		test_vdr_process && /bin/killall -9 vdr
+	fi
 
 	/etc/init.d/vdr zap
 

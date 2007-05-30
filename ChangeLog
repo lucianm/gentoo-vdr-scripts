@@ -1,6 +1,12 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  30 May 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/watchdog-restart-20-modules.sh,
+  etc/conf.d/vdr.watchdogd, etc/init.d/vdr, usr/sbin/vdr-watchdogd,
+  usr/share/vdr/inc/rc-functions.sh:
+  Removed sleeps for watchdogrestart. Removed logging by default for watchdog.
+
   30 May 2007; Matthias Schwarzott <zzam@gentoo.org> Makefile,
   +usr/bin/Makefile, +usr/bin/wait_on_pid.c, usr/sbin/vdr-watchdogd:
   Added some small binary to wait for a process to exit.

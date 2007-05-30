@@ -12,6 +12,13 @@
 exec < /dev/null
 exec >/dev/null 2>&1
 
+. /etc/conf.d/vdr.watchdogd
+if [ "${DEBUG}" == 1 ]; then
+	exec >/tmp/vdrwatchdogd-log 2>&1
+	date
+	set -x
+fi
+
 log() {
 	logger -i -t vdrwatchdog -p local0.info	"$@"
 }
@@ -19,7 +26,8 @@ log() {
 do_restart() {
 	log "restarting VDR"
 	/etc/init.d/vdr watchdogrestart
-	/usr/bin/svdrpsend.pl mesg "Warning: vdr was restarted by watchdog."
+	log "VDR has been restarted"
+	/usr/bin/svdrpsend.pl mesg "Warning: vdr was restarted by watchdog." &
 }
 
 is_paused() {

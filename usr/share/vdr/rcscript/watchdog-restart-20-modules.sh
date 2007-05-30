@@ -91,11 +91,8 @@ restart_load() {
 addon_main() {
 	: ${WATCHDOG_RELOAD_DVB_MODULES:=no}
 	if [ "${WATCHDOG_RELOAD_DVB_MODULES}" = "yes" ]; then
-		sleep 2
 		restart_unload
-		sleep 2
 		restart_load
-		sleep 1
 	fi
 	return 0
 }

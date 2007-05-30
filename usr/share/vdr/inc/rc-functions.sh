@@ -14,8 +14,7 @@ include message-functions
 : ${SCRIPT_DEBUG_LEVEL:=0}
 SCRIPT_API=2
 
-pidof=/sbin/pidof
-test -x /bin/pidof && pidof=/bin/pidof
+pidof=pidof
 
 . /etc/conf.d/vdr.watchdogd
 ENABLE_EXTERNAL_WATCHDOG=${ENABLE_EXTERNAL_WATCHDOG:-no}
@@ -221,7 +220,6 @@ stop_watchdog() {
 
 start_watchdog() {
 	if [ "${ENABLE_EXTERNAL_WATCHDOG}" = "yes" ]; then
-		WATCHDOG_LOGFILE=${WATCHDOG_LOGFILE:-/dev/null}
 		ebegin "Starting vdr watchdog"
 		start-stop-daemon \
 			--start \
@@ -229,8 +227,7 @@ start_watchdog() {
 			--make-pidfile \
 			--pidfile /var/run/vdrwatchdog.pid \
 			--exec /usr/sbin/vdr-watchdogd \
-			--name vdr-watchdogd \
-			-- ${WATCHDOG_LOGFILE}
+			--name vdr-watchdogd
 		eend $? "failed starting vdr watchdog"
 	fi
 }
