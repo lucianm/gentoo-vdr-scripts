@@ -18,6 +18,12 @@ if [ "${UID}" != "0" ]; then
 	exit 99
 fi
 
+if [ "${DEBUG}" -ge 1 ]; then
+	exec >/tmp/vdrshutdown-real-log 2>&1
+	echo Started debug output of $0 $@
+	set -x
+fi
+
 VDR_WAKEUP_TIME="${1}"
 
 SVDRPCMD=/usr/bin/svdrpsend.pl

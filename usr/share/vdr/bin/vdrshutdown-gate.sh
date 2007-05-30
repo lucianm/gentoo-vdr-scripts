@@ -21,17 +21,6 @@ if [ -z "${EXECUTED_BY_VDR_BG}" ]; then
 	exit
 fi
 
-if [ "${DEBUG}" -ge 1 ]; then
-	exec </dev/null >/var/vdr/shutdown-data/log 2>&1
-	echo Started debug output of $0 $@
-	nr=0
-	for f; do
-		nr=$(($nr+1))
-		echo "param #${nr} - ${f}"
-	done
-	set -x
-fi
-
 # should be default paths on a machine build with vdr ebuilds
 SVDRPCMD=/usr/bin/svdrpsend.pl
 NVRAM_WAKEUP=/usr/bin/nvram-wakeup
@@ -49,6 +38,17 @@ VDR_TIMER_FILENAME="${4}"
 VDR_USERSHUTDOWN="${5}"
 
 : ${SHUTDOWN_DEFAULT_RETRY_TIME:=10}
+
+if [ "${DEBUG}" -ge 1 ]; then
+	exec </dev/null >/tmp/vdrshutdown-gate-log 2>&1
+	echo Started debug output of $0 $@
+	nr=0
+	for f; do
+		nr=$(($nr+1))
+		echo "param #${nr} - ${f}"
+	done
+	set -x
+fi
 
 
 queue_add_wait() {

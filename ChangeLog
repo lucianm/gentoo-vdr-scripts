@@ -2,6 +2,11 @@
 # $Id$
 
   30 May 2007; Matthias Schwarzott <zzam@gentoo.org>
+  etc/conf.d/vdr.shutdown, usr/share/vdr/bin/vdrshutdown-gate.sh,
+  usr/share/vdr/bin/vdrshutdown-really.sh:
+  Added easy debug setting for shutdown.
+
+  30 May 2007; Matthias Schwarzott <zzam@gentoo.org>
   etc/conf.d/vdr.watchdogd, usr/share/vdr/inc/rc-functions.sh:
   Enabled external watchdog by default.
 
