@@ -3,7 +3,7 @@
 SHELL=/bin/bash
 
 all:
-	@echo nothing to compile
+	make -C usr/bin
 
 VERSION := $(shell grep '^Version' README | awk '{ print $$2 }')
 TMPDIR = /tmp
@@ -29,6 +29,9 @@ install:
 	install -m 0755 -o root -g root -d $(DESTDIR)/usr/sbin
 	install -m 0755 -o root -g root usr/sbin/vdr-watchdogd $(DESTDIR)/usr/sbin
 	install -m 0755 -o root -g root usr/sbin/acpi-wakeup.sh $(DESTDIR)/usr/sbin
+	
+	install -m 0755 -o root -g root -d $(DESTDIR)/usr/bin
+	install -m 0755 -o root -g root usr/bin/wait_on_pid $(DESTDIR)/usr/bin
 
 	#install -m 0755 -o root -g root -d $(DESTDIR)/usr/bin
 	#install -m 0755 -o root -g root usr/bin/vdr-start $(DESTDIR)/usr/bin

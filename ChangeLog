@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  30 May 2007; Matthias Schwarzott <zzam@gentoo.org> Makefile,
+  +usr/bin/Makefile, +usr/bin/wait_on_pid.c, usr/sbin/vdr-watchdogd:
+  Added some small binary to wait for a process to exit.
+
   12 May 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/bin/vdrshutdown-really.sh:
   Fixed last arithmetic expression.

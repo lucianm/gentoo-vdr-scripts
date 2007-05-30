@@ -4,40 +4,44 @@
 # Distributed under the GPL
 #
 # watchdog script to restart vdr after failure
-# to stop watchdog temporarily touch /tmp/nowatchdog
+# to stop watchdog temporarily touch /tmp/vdr-nowatchdog
 #
 #
 
 #detach from terminal
-LOGFILE=${1:-/dev/null}
 exec < /dev/null
-exec >>${LOGFILE} 2>&1
+exec >/dev/null 2>&1
 
-
-signal_stopped=0
-
-sig_hup()
-{
-	periodic_function
+log() {
+	logger -i -t vdrwatchdog -p local0.info	"$@"
 }
 
-trap sig_hup HUP
+do_restart() {
+	log "restarting VDR"
+	/etc/init.d/vdr watchdogrestart
+	/usr/bin/svdrpsend.pl mesg "Warning: vdr was restarted by watchdog."
+}
 
-periodic_function() {
-	[ -f /tmp/no-vdr-watchdog ] && return
+is_paused() {
+	[ -f /tmp/vdr-nowatchdog ]
+}
 
-	[ "$signal_stopped" = "1" ] && return
+VDR=/usr/bin/vdr
 
-	if ! pidof /usr/bin/vdr > /dev/null; then
-		logger -i -t vdrwatchdog -p local0.info "initializing full VDR restart"
-		date
-		/etc/init.d/vdr watchdogrestart
-		/usr/bin/svdrpsend.pl mesg "Warning: vdr was restarted by watchdog."
+log "Starting vdrwatchdog"
+while true; do
+	pid=$(pidof -s ${VDR})
+	if [ -n "${pid}" ]; then
+		/usr/bin/wait_on_pid "${pid}"
 	fi
-}
 
-echo started watchdog
-while sleep 8; do
-	periodic_function
+	while is_paused; do
+		sleep 10
+	done
+	
+	if ! pidof ${VDR} >/dev/null; then
+		do_restart
+	fi
 done
-echo ended watchdog
+log "Exiting vdrwatchdog"
+
