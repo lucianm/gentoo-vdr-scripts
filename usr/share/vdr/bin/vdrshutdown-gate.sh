@@ -277,7 +277,8 @@ if [ -z "${DRY_SHUTDOWN_GATE}" ]; then
 		exit_cleanup 1
 		;;
 	esac
-	date +%s > ${shutdown_data_dir}/shutdown-time-written
+	rm "${shutdown_data_dir}/shutdown-time-written"
+	date +%s > "${shutdown_data_dir}/shutdown-time-written"
 else
 	mesg_q "stopping DRY_SHUTDOWN_GATE=1 - ${VDR_TIMER_NEXT}"
 fi

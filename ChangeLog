@@ -2,6 +2,10 @@
 # $Id$
 
   30 May 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/bin/vdrshutdown-gate.sh:
+  remove shutdown-time-written file before rewrite it.
+
+  30 May 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/shutdown/pre-shutdown-20-check-blocking-programs.sh:
   No longer check noad at shutdown, as it now has a dedicated script.
 
