@@ -2,6 +2,10 @@
 # $Id$
 
   02 Jun 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/inc/rc-functions.sh:
+  Added einfo_level1/2 for compatibility with rcaddons using them.
+
+  02 Jun 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/pre-start-95-plugins.sh,
   usr/share/vdr/inc/message-functions.sh,
   usr/share/vdr/inc/plugin-functions.sh:

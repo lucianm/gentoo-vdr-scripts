@@ -125,6 +125,14 @@ debug_msg() {
 	has_debuglevel 1 && einfo "$@"
 }
 
+# should no longer be used
+einfo_level1() {
+	debug_msg "$@"
+}
+einfo_level2() {
+	debug_msg "$@"
+}
+
 quote_parameters() {
 	local item
 	local txt=""
