@@ -93,7 +93,7 @@ finish_plugin_loader() {
 		vdr_log "Wrong Patchlevel: ${skipped_plugins_patchlevel}"
 		echo "${skipped_plugins_patchlevel}" > "${patchlevel_tmp_file}"
 	else
-		rm "${patchlevel_tmp_file}"
+		rm -f "${patchlevel_tmp_file}"
 	fi
 	if [ -n "${skipped_plugins_not_found}" ]; then
 		print_skip_header

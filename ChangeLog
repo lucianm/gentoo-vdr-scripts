@@ -3,6 +3,10 @@
 
   02 Jun 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/inc/plugin-functions.sh:
+  Do not show error if to be deleted file does not exist.
+
+  02 Jun 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/inc/plugin-functions.sh:
   Added missing variables.
 
   02 Jun 2007; Matthias Schwarzott <zzam@gentoo.org>
