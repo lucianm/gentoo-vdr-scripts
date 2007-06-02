@@ -87,7 +87,7 @@ print_skip_header() {
 
 finish_plugin_loader() {
 	local patchlevel_tmp_file="/var/vdr/tmp/plugins_wrong_patchlevel"
-	if [ -n "{skipped_plugins_patchlevel}" ]; then
+	if [ -n "${skipped_plugins_patchlevel}" ]; then
 		print_skip_header
 		ewarn "    Wrong Patchlevel: ${skipped_plugins_patchlevel}"
 		vdr_log "Wrong Patchlevel: ${skipped_plugins_patchlevel}"
@@ -95,7 +95,7 @@ finish_plugin_loader() {
 	else
 		rm "${patchlevel_tmp_file}"
 	fi
-	if [ -n "{skipped_plugins_not_found}" ]; then
+	if [ -n "${skipped_plugins_not_found}" ]; then
 		print_skip_header
 		ewarn "    Not Existing:     ${skipped_plugins_not_found}"
 		vdr_log "Not Existing: ${skipped_plugins_not_found}"
