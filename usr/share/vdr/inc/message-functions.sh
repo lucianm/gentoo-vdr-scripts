@@ -19,7 +19,7 @@ finish_vdr_start_log()
 {
 	# wenn nachrichten vorhanden sind
 	if [ "${LOG_MSG_COUNT}" = 0 ]; then
-		vdr_log_generic "NO problems at start."
+		vdr_log "NO problems at start."
 	else
 		/usr/share/vdr/bin/vdr-bg.sh svdrpsend.pl mesg "Errors: View via Commands / View VDR Start Log"
 	fi

@@ -2,6 +2,12 @@
 # $Id$
 
   02 Jun 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-95-plugins.sh,
+  usr/share/vdr/inc/message-functions.sh,
+  usr/share/vdr/inc/plugin-functions.sh:
+  Summary view of failed plugins.
+
+  02 Jun 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/watchdog-restart-20-modules.sh,
   usr/share/vdr/rcscript/pre-start-45-nptl-check.sh,
   usr/share/vdr/rcscript/pre-start-50-shutdown.sh,

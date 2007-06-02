@@ -26,12 +26,8 @@ addon_main() {
 
 	done
 
+	finish_plugin_loader
 
-	if [ "${SKIP_COUNT}" -gt 0 ]; then
-		ewarn "  ${SKIP_COUNT} Plugins out of ${PLUGIN_COUNT} could not be loaded!"
-	else
-		debug_msg "  All ${PLUGIN_COUNT} Plugins loaded."
-	fi
 	return 0
 }
 

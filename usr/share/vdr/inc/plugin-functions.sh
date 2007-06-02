@@ -73,6 +73,33 @@ init_plugin_loader() {
 		# Store list of loaded plugins
 		echo ${PLUGINS} > ${LOADED_PLUGINS_FILE}
 	fi
+	skipped_plugins_patchlevel=""
+	skipped_plugins_not_found=""
+}
+
+print_skip_header() {
+	if [ "${skip_header_printed}" != "1" ]; then
+		ewarn "  Skipped these plugins:"
+		vdr_log "Skipped these plugins:"
+		skip_header_printed=1
+	fi
+}
+
+finish_plugin_loader() {
+	local patchlevel_tmp_file="/var/vdr/tmp/plugins_wrong_patchlevel"
+	if [ -n "{skipped_plugins_patchlevel}" ]; then
+		print_skip_header
+		ewarn "    Wrong Patchlevel: ${skipped_plugins_patchlevel}"
+		vdr_log "Wrong Patchlevel: ${skipped_plugins_patchlevel}"
+		echo "${skipped_plugins_patchlevel}" > "${patchlevel_tmp_file}"
+	else
+		rm "${patchlevel_tmp_file}"
+	fi
+	if [ -n "{skipped_plugins_not_found}" ]; then
+		print_skip_header
+		ewarn "    Not Existing:     ${skipped_plugins_not_found}"
+		vdr_log "Not Existing: ${skipped_plugins_not_found}"
+	fi
 }
 
 check_plugin() {
@@ -80,14 +107,14 @@ check_plugin() {
 	local plugin_file="${plugin_dir}/libvdr-${PLUGIN}.so.${APIVERSION}"
 
 	if [ ! -f "${plugin_file}" ]; then
-		skip_plugin "${PLUGIN}" "plugin not found"
+		skip_plugin "${PLUGIN}" "NOT_FOUND"
 		return
 	fi
 
 	local plugin_checksum_file=${vdr_checksum_dir}/header-md5-vdr-${PLUGIN}
 	if [ "${PLUGIN_CHECK_MD5}" = "yes" ] && [ -e "${plugin_checksum_file}" ]; then
 		if ! diff ${vdr_checksum} ${plugin_checksum_file} >/dev/null; then
-			skip_plugin "${PLUGIN}" "wrong vdr-patchlevel"
+			skip_plugin "${PLUGIN}" "PATCHLEVEL"
 			return
 		fi
 	fi
@@ -133,8 +160,14 @@ add_plugin_param()
 skip_plugin() {
 	SKIP_PLUGIN=1
 	if [ -n "${1}" ] && [ "${addon_prefix}" = "pre-start" ]; then
-		ewarn "  ${1}: ${2}"
-		vdr_log "Skipped ${1}: ${2}"
+		case "${2}" in
+		PATCHLEVEL)
+			skipped_plugins_patchlevel="${skipped_plugins_patchlevel} ${1}"
+			;;
+		NOT_FOUND)
+			skipped_plugins_not_found="${skipped_plugins_not_found} ${1}"
+			;;
+		esac
 	fi
 }
 
