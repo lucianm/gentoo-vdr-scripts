@@ -28,13 +28,9 @@ addon_main() {
 
 
 	if [ "${SKIP_COUNT}" -gt 0 ]; then
-		if has_debuglevel 1; then
-			eerror "  ${SKIP_COUNT} Plugins out of ${PLUGIN_COUNT} could not be loaded!"
-		else
-			eerror "  Some plugins could not be loaded!"
-		fi
+		ewarn "  ${SKIP_COUNT} Plugins out of ${PLUGIN_COUNT} could not be loaded!"
 	else
-		einfo_level2 "  All ${PLUGIN_COUNT} Plugins loaded."
+		debug_msg "  All ${PLUGIN_COUNT} Plugins loaded."
 	fi
 	return 0
 }

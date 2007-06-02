@@ -82,7 +82,8 @@ load_addons_prefixed()
 		load_addon ${addon} ${call_func}
 		ret="$?"
 		if [ "${ret}" != "0" ]; then
-			einfo_level2 Addon ${addon} failed.
+			ewarn "Addon ${addon} failed."
+			vdr_log "Addon ${addon} failed."
 			break
 		fi
 	done
@@ -120,16 +121,8 @@ has_debuglevel() {
 	[ "${SCRIPT_DEBUG_LEVEL}" -ge "${1}" ]
 }
 
-einfo_level1() {
+debug_msg() {
 	has_debuglevel 1 && einfo "$@"
-}
-
-einfo_level2() {
-	has_debuglevel 2 && einfo "$@"
-}
-
-einfo_debug() {
-	has_debuglevel 3 && einfo "$@"
 }
 
 quote_parameters() {
@@ -167,13 +160,13 @@ waitfor() {
 	while [ "${waited}" -lt "${waittime}" ]; do
 		eval ${cond}
 		case "$?" in
-			0) einfo_debug waited ${waited} seconds; return 0 ;;
-			2) einfo_debug waited ${waited} seconds; return 2 ;;
+			0) debug_msg waited ${waited} seconds; return 0 ;;
+			2) debug_msg waited ${waited} seconds; return 2 ;;
 		esac
 		waited=$(($waited+1))
 		sleep 1
 	done
-	einfo_level1 waited ${waited} seconds
+	debug_msg "waited ${waited} seconds"
 	return 1
 }
 
@@ -233,6 +226,6 @@ start_watchdog() {
 }
 
 error_mesg() {
-	logger "vdr-scripts: Error: $@"
-	vdr_eerror "$@"
+	eerror "$@"
+	vdr_log "$@"
 }

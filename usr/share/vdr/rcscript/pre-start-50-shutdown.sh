@@ -8,9 +8,9 @@ list_wakeup_methods() {
 		m="${m%.sh}"
 		methods="${methods} ${m}"
 	done
-	vdr_einfo "    Available shutdown methods:${methods}"
-	vdr_einfo "    There are some useflags to enable more shutdown methods."
-	vdr_einfo "    You have to reemerge gentoo-vdr-scripts with the new use-flags set."
+	einfo "    Available shutdown methods:${methods}"
+	einfo "    There are some useflags to enable more shutdown methods."
+	einfo "    You have to reemerge gentoo-vdr-scripts with the new use-flags set."
 }
 
 addon_main() {
@@ -27,13 +27,13 @@ addon_main() {
 
 	# some sanity warnings
 	if ! grep -q /usr/share/vdr/bin/vdrshutdown-really.sh /etc/sudoers; then
-		vdr_ewarn "  missing entry in /etc/sudoers"
-		vdr_ewarn
-		vdr_ewarn "  please add this line to your /etc/sudoers file"
-		vdr_ewarn "  vdr ALL=NOPASSWD:/usr/share/vdr/bin/vdrshutdown-really.sh"
-		vdr_ewarn
-		vdr_ewarn "  or call emerge --config gentoo-vdr-scripts"
-		vdr_ewarn
+		ewarn "  missing entry in /etc/sudoers"
+		ewarn
+		ewarn "  please add this line to your /etc/sudoers file"
+		ewarn "  vdr ALL=NOPASSWD:/usr/share/vdr/bin/vdrshutdown-really.sh"
+		ewarn
+		ewarn "  or call emerge --config gentoo-vdr-scripts"
+		ewarn
 	fi
 
 	if [ -f "${shutdown_script_dir}/wakeup-${WAKEUP_METHOD}.sh" ]; then
@@ -44,7 +44,8 @@ addon_main() {
 			list_wakeup_methods
 		fi
 	else
-		vdr_eerror "  Wakeup-Method ${WAKEUP_METHOD} not supported!"
+		eerror "  Wakeup-Method ${WAKEUP_METHOD} not supported!"
+		vdr_log "Wakeup-Method ${WAKEUP_METHOD} not supported!"
 		list_wakeup_methods
 	fi
 

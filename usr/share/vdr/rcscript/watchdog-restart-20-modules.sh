@@ -37,7 +37,7 @@ rec_unload() {
 			fi
 		else
 			# module has more users
-			einfo_level2 "${mod} has these users: ${mod_deps}"
+			debug_msg "${mod} has these users: ${mod_deps}"
 			local dep
 			for dep in ${mod_deps}; do
 				if [ "${mod_tried}" = "${dep}" ]; then
@@ -54,7 +54,7 @@ rec_unload() {
 
 kill_dvb_video_users() {
 	[ -d /sys ] || return
-	einfo_level2 "Killing programms accessing video device of dvb cards"
+	debug_msg "Killing programms accessing video device of dvb cards"
 	local dev bname name
 	for dev in /sys/class/video4linux/video?; do
 		[ -f "${dev}/name" ] || continue
@@ -63,7 +63,7 @@ kill_dvb_video_users() {
 		[ "${name##*av7110}" = "${name}" ] && continue
 
 		bname=${dev##*/}
-		einfo_level2 "  Killing users of device ${bname} (Name: ${name})"
+		debug_msg "  Killing users of device ${bname} (Name: ${name})"
 		fuser -s -k -TERM /dev/${bname}
 	done
 }
