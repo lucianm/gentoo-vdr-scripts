@@ -4,7 +4,7 @@
 
 DESCRIPTION="Manage VDR plugins"
 MAINTAINER="zzam@gentoo.org"
-SVN_DATE='$Date: $'
+SVN_DATE='$Date$'
 VERSION=$(svn_date_to_version "${SVN_DATE}")
 
 find_plugins() {
