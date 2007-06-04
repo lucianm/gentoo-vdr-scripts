@@ -12,7 +12,9 @@ load_functions() {
 }
 
 depend() {
-	use lircd net coldplug
+	need net
+	[ "${IR_CTRL}" = "lirc" ] && need lircd
+	use lircd coldplug
 	after checkroot
 }
 

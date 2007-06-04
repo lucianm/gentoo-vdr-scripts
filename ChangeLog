@@ -1,6 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  04 Jun 2007; Matthias Schwarzott <zzam@gentoo.org> etc/init.d/vdr:
+  Be sure to need net, and need lirc if configured.
+
   04 Jun 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/inc/message-functions.sh:
   Removed header-line of startlog.
