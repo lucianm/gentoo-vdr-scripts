@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  08 Jun 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/shutdown/pre-shutdown-40-time.sh:
+  Allow forcing of shutdown at forbidden times.
+
   04 Jun 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/bin/vdrshutdown-really.sh:
   Do not rely on bash variable UID.
