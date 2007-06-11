@@ -5,16 +5,15 @@ addon_main() {
 		ebegin "  Waiting for prerequisits (devices nodes etc.)" 
 		waitfor 10 wait_for_multiple_condition
 		exitcode="$?"
-		exitmsg="could not start vdr"
+		exitmsg="Can not start VDR."
 		case "$exitcode" in
 			1)
-				exitmsg="${exitmsg}: ${condition_msg}"
-				;;
-			2)
-				exitmsg="${exitmsg}: Timeout, ${condition_msg}"
+				exitmsg="Timeout, can not start VDR."
 				;;
 		esac
 		eend "$exitcode" "${exitmsg}"
+		[ -n "${condition_msg}" ] && ewarn "${condition_msg}"
+		[ "$(type -t "${condition_msg_func}")" == "function" ] && eval "${condition_msg_func}"
 	fi
 	return $exitcode
 }
