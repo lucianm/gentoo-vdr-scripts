@@ -1,5 +1,5 @@
 # $Id$
-xdvb_device_notice_func() {
+dvb_device_notice_func() {
 	ewarn "No DVB device found."
 	ewarn "If you do not have DVB hardware, then set DEVICE_CHECK=no in /etc/conf.d/vdr"
 }
