@@ -13,7 +13,7 @@ exec < /dev/null
 exec >/dev/null 2>&1
 
 . /etc/conf.d/vdr.watchdogd
-if [ "${DEBUG}" == 1 ]; then
+if [ "${DEBUG}" = 1 ]; then
 	exec >/tmp/vdrwatchdogd-log 2>&1
 	date
 	set -x

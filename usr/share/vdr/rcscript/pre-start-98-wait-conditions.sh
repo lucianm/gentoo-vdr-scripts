@@ -13,7 +13,7 @@ addon_main() {
 		esac
 		eend "$exitcode" "${exitmsg}"
 		[ -n "${condition_msg}" ] && ewarn "${condition_msg}"
-		[ "$(type -t "${condition_msg_func}")" == "function" ] && eval "${condition_msg_func}"
+		[ "$(type -t "${condition_msg_func}")" = "function" ] && eval "${condition_msg_func}"
 	fi
 	return $exitcode
 }

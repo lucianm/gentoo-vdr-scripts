@@ -2,6 +2,11 @@
 # $Id$
 
   11 Jun 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-98-wait-conditions.sh,
+  usr/sbin/vdr-watchdogd:
+  Removed some bash operators.
+
+  11 Jun 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/pre-start-20-dvb-device.sh,
   usr/share/vdr/rcscript/pre-start-98-wait-conditions.sh:
   Added a message about DEVICE_CHECK if the dvb-device check fails,
