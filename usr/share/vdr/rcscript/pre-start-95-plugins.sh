@@ -19,6 +19,8 @@ addon_main() {
 		# add to commandline
 		add_plugin_params_to_vdr_call
 
+		store_loaded_plugin ${PLUGIN}
+
 		# count the skipped ones
 		if [ "${SKIP_PLUGIN}" = "1" ]; then
 			SKIP_COUNT=$(($SKIP_COUNT+1))

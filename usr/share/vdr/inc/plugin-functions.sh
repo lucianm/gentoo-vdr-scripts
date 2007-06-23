@@ -50,7 +50,7 @@ init_plugin_loader() {
 	PLUGINS=""
 
 	# Load list of plugins which were started to exec correct rcaddons
-	local LOADED_PLUGINS_FILE=/var/vdr/tmp/loaded_plugins
+	LOADED_PLUGINS_FILE=/var/vdr/tmp/loaded_plugins
 	if [ "${INIT_PHASE}" = "stop" ] && [ -e "${LOADED_PLUGINS_FILE}" ]; then
 		PLUGINS=$(cat ${LOADED_PLUGINS_FILE} )
 	else
@@ -69,9 +69,6 @@ init_plugin_loader() {
 			done
 			exec 3<&-
 		fi
-
-		# Store list of loaded plugins
-		echo ${PLUGINS} > ${LOADED_PLUGINS_FILE}
 	fi
 	skipped_plugins_patchlevel=""
 	skipped_plugins_not_found=""
@@ -175,6 +172,13 @@ add_plugin_params_to_vdr_call() {
 	if [ "${SKIP_PLUGIN}" = "0" ]; then
 		# for not-skipped plugins, add the param to the vdr-call
 		add_param "${vdrplugin_opts} ${_EXTRAOPTS}"
+	fi
+}
+
+store_loaded_plugin() {
+	if [ "${SKIP_PLUGIN}" = "0" ]; then
+		# Store list of loaded plugins
+		echo "$1" >> "${LOADED_PLUGINS_FILE}"
 	fi
 }
 

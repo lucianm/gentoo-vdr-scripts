@@ -1,6 +1,11 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  23 Jun 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-95-plugins.sh,
+  usr/share/vdr/inc/plugin-functions.sh:
+  Only store loaded plugins for usage at stopping.
+
 *gentoo-vdr-scripts-0.3.10 (12 Jun 2007)
 
   11 Jun 2007; Matthias Schwarzott <zzam@gentoo.org>
