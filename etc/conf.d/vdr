@@ -29,8 +29,14 @@
 # Set the sort-order vdr uses
 #   allowed values: locale-definitions listed by locale -a
 #                   e.g. de_DE, en_GB, ...
-#   default: glibc-default order (posix)
+#   default: glibc-default order (posix), or value of LANG if set and >=vdr-1.5.3
 #VDR_SORT_ORDER="de_DE"
+
+# Set the locale vdr should use (starting from vdr-1.5.3)
+#   allowed values: locale-definitions listed by locale -a
+#                   e.g. de_DE, de_DE@euro, de_DE.utf8, en_GB.utf8, ...
+#   default: use system-wide setting, and if none found, guess some utf8 locale
+#LANG="en_GB.utf8"
 
 
 ###########################################################
