@@ -1,6 +1,12 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-0.4.0 (07 Jul 2007)
+
+  07 Jul 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/inc/plugin-functions.sh:
+  Do write more log files about failed plugins.
+
   03 Jul 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/pre-start-45-utf8-check.sh, etc/conf.d/vdr:
   Added locale selection for >=vdr-1.5.3, no longer drop locales to C, but
