@@ -1,6 +1,11 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  09 Jul 2007; Matthias Schwarzott <zzam@gentoo.org>
+  +usr/share/vdr/rcscript/post-start-60-check-syslog-errors.sh,
+  +usr/share/vdr/rcscript/pre-start-60-check-syslog-errors.sh:
+  Added a log parser to display critical errors that only show up in syslog.
+
 *gentoo-vdr-scripts-0.4.0 (07 Jul 2007)
 
   07 Jul 2007; Matthias Schwarzott <zzam@gentoo.org>
