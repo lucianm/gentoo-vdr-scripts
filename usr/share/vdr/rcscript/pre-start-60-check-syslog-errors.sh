@@ -1,5 +1,5 @@
 addon_main() {
-	local FILES="/var/log/everything/current /var/log/messages"
+	local FILES="/var/log/vdr.log /var/log/vdr/current /var/log/everything/current /var/log/messages"
 
 	SYSLOG_FILE=""
 	local s

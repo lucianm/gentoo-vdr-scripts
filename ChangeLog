@@ -2,6 +2,10 @@
 # $Id$
 
   10 Jul 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-60-check-syslog-errors.sh:
+  Added more possible log file names for syslog scanning.
+
+  10 Jul 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/post-start-60-check-syslog-errors.sh,
   usr/share/vdr/rcscript/pre-start-60-check-syslog-errors.sh:
   For checking syslog, do not read whole files, but just seek into them with
