@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  10 Jul 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/post-start-60-check-syslog-errors.sh:
+  Does not only show nice plugin failures, but also nicify the other errors.
+
   09 Jul 2007; Matthias Schwarzott <zzam@gentoo.org>
   +usr/share/vdr/rcscript/post-start-60-check-syslog-errors.sh,
   +usr/share/vdr/rcscript/pre-start-60-check-syslog-errors.sh:
