@@ -4,12 +4,15 @@ addon_main() {
 	SYSLOG_FILE=""
 	local s
 	for s in ${FILES}; do
-		if [ -e "${s}" ]; then
+		if [ -f "${s}" ]; then
 			SYSLOG_FILE="${s}"
 
-			# Get number of already existing lines in this file
-			SYSLOG_LINES="$(wc -l "${SYSLOG_FILE}")"
-			SYSLOG_LINES="${SYSLOG_LINES% *}"
+			# Get size of file before vdr start
+			SYSLOG_SIZE_BEFORE="$(stat -c %s "${SYSLOG_FILE}")"
+			if [ -z "${SYSLOG_SIZE_BEFORE}" ]; then
+				# disable syslog-scanning
+				SYSLOG_FILE=""
+			fi
 			return 0
 		fi
 	done

@@ -20,12 +20,12 @@ addon_main() {
 	local count=0
 
 	# extract relevant error lines out of syslog, and show up to 5 of them
-	sed "${SYSLOG_LINES}"',$!d
-		/vdr.*ERROR/!d
+	dd if="${SYSLOG_FILE}" ibs="${SYSLOG_SIZE_BEFORE}" skip=1 obs=1024 2>/dev/null \
+	| sed '/vdr.*ERROR/!d
 		s/^.* ERROR: /ERROR: /
 		/unknown config parameter:/d
 		s#ERROR: /usr/lib/vdr/plugins/#ERROR: loading plugin #
-		' "${SYSLOG_FILE}" \
+		' \
 	| while read line; do
 		count=$(($count+1))
 		if [ "${count}" -gt 5 ]; then
