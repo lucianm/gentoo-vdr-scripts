@@ -1,4 +1,4 @@
 #!/bin/sh
 # $Id$
 "$@"
-/usr/bin/killall -q --signal HUP vdr-watchdogd
+killall -q --signal HUP vdr-watchdogd

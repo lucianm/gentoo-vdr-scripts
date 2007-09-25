@@ -109,7 +109,7 @@ watchdogrestart() {
 	/etc/init.d/vdr --nodeps stop
 	if test_vdr_process; then
 		sleep 2
-		test_vdr_process && /bin/killall -9 vdr
+		test_vdr_process && killall -9 vdr
 	fi
 
 	/etc/init.d/vdr zap
