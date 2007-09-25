@@ -1,6 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  25 Sep 2007; Matthias Schwarzott <zzam@gentoo.org> etc/conf.d/vdr.cd-dvd:
+  Added burnspeed setting to vdr.cd-dvd conf file.
+
   10 Jul 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/pre-start-60-check-syslog-errors.sh:
   Added more possible log file names for syslog scanning.

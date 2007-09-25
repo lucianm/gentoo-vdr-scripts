@@ -26,3 +26,10 @@
 #   allowed values: names of devices
 #   default: /dev/dvd
 #VDR_DVDWRITER="/dev/dvd"
+
+# Limit dvd burn speed to ? N*1385KBps
+# Used by burn-scripts for dvdswitch/dvdselect
+#   allowed values: numbers
+#   default: let the firmware select
+#VDR_DVDBURNSPEED="8"
+
