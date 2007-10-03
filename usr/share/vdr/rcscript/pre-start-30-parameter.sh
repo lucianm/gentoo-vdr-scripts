@@ -1,5 +1,10 @@
 # $Id$
 addon_main() {
+	# parameters of start-stop-daemon
+	[ -n "${VDR_NICENESS}" ] && add_daemonctrl_param --nicelevel "${VDR_NICENESS}"
+
+
+	# parameters of vdr
 	add_param "--watchdog=${INTERNAL_WATCHDOG:-60}"
 	[ -n "${AC3_AUDIO}" ] && add_param "--audio=${AC3_AUDIO}"
 	[ "${MUTE}" = "yes" ] && add_param "--mute"

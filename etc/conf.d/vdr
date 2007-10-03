@@ -58,6 +58,11 @@
 #          Startup Options                                #
 ###########################################################
 
+# set niceness of vdr process
+#   allowed values: -19 .. 20
+#   default: do not change niceness
+#VDR_NICENESS="5"
+
 # set volume at start of vdr to this value
 #   allowed values: 0-255
 #   default: leave volume unchanged
