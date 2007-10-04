@@ -2,19 +2,14 @@
 
 SHELL = /bin/bash
 
-MYDIR = $(DESTDIR)/usr/bin
+MYDIR = $(DESTDIR)/usr/share/vdr/bin
 SUBDIRS =
-BINS = wait_on_pid
+BINS = $(wildcard *.sh)
 CONFS =
 
-all: compile
+all:
 
-compile: $(BINS)
-
-clean:
-	rm $(BINS)
-
-install: $(BINS)
+install:
 	@install -m 0755 -o root -g root -d $(MYDIR)
 	@install -m 0755 -o root -g root $(BINS) $(MYDIR)
 	#install -m 0644 -o root -g root $(CONFS) $(MYDIR)
