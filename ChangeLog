@@ -1,6 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-0.4.1 (04 Oct 2007)
+
   04 Oct 2007; Matthias Schwarzott <zzam@gentoo.org> usr/share/vdr/Makefile,
   +usr/share/vdr/dvdchanger/Makefile,
   +usr/share/vdr/dvdchanger/dvdchanger_readdvd.sh,
