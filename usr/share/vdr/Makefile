@@ -3,7 +3,7 @@
 SHELL = /bin/bash
 
 MYDIR = $(DESTDIR)/usr/share/vdr
-SUBDIRS = bin inc rcscript record shutdown
+SUBDIRS = bin inc rcscript record shutdown dvdchanger
 BINS =
 CONFS =
 
