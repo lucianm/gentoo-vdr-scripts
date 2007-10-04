@@ -2,9 +2,9 @@
 
 SHELL = /bin/bash
 
-MYDIR = $(DESTDIR)/usr/bin
+MYDIR = $(DESTDIR)/usr/sbin
 SUBDIRS =
-BINS = wait_on_pid
+BINS = acpi-wakeup.sh vdr-watchdogd
 CONFS =
 
 all: compile

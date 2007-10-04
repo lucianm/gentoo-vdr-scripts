@@ -1,6 +1,23 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-0.4.1 (04 Oct 2007)
+
+  04 Oct 2007; Matthias Schwarzott <zzam@gentoo.org> usr/share/vdr/Makefile,
+  +usr/share/vdr/dvdchanger/Makefile,
+  +usr/share/vdr/dvdchanger/dvdchanger_readdvd.sh,
+  +usr/share/vdr/dvdchanger/dvdchanger_writedvd.sh:
+  Added vdr-dvd-scripts.
+
+  04 Oct 2007; Matthias Schwarzott <zzam@gentoo.org> Makefile,
+  +etc/Makefile, +etc/conf.d/Makefile, +etc/init.d/Makefile,
+  +etc/vdr/Makefile, +etc/vdr/commands/Makefile, +etc/vdr/reccmds/Makefile,
+  +usr/Makefile, usr/bin/Makefile, +usr/sbin/Makefile,
+  +usr/share/vdr/Makefile, +usr/share/vdr/bin/Makefile,
+  +usr/share/vdr/inc/Makefile, +usr/share/vdr/rcscript/Makefile,
+  +usr/share/vdr/record/Makefile, +usr/share/vdr/shutdown/Makefile:
+  Make install now is distributed over makefiles in every directory.
+
   03 Oct 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/pre-start-30-parameter.sh, etc/conf.d/vdr:
   Added parameter to modify VDR niceness.
