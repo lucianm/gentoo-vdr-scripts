@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  08 Oct 2007; Matthias Schwarzott <zzam@gentoo.org> Makefile,
+  +vdrplugin-rebuild/Makefile, +vdrplugin-rebuild/vdrplugin-rebuild:
+  Added vdrplugin-rebuild to gentoo-vdr-scripts.
+
 *gentoo-vdr-scripts-0.4.1 (04 Oct 2007)
 
   04 Oct 2007; Matthias Schwarzott <zzam@gentoo.org> usr/share/vdr/Makefile,

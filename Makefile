@@ -2,7 +2,7 @@
 
 SHELL = /bin/bash
 
-SUBDIRS = etc usr
+SUBDIRS = etc usr vdrplugin-rebuild
 
 all: compile
 
