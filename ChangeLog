@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  10 Dec 2007; Matthias Schwarzott <zzam@gentoo.org>
+  usr/sbin/acpi-wakeup.sh, usr/share/vdr/shutdown/wakeup-acpi.sh:
+  Fix wakeup-call logic to work with old and new acpi/rtc interface.
+
   16 Oct 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/sbin/acpi-wakeup.sh:
   Updated acpi-wakeup to also work with new rtc-interface.

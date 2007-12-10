@@ -19,14 +19,27 @@ RTC_ALARM="/sys/class/rtc/rtc0/wakealarm"
 #DEBUG=1
 [ -z "$DEBUG" ] && DEBUG=0
 
-die()
-{
+die() {
 	echo "ERROR: $@" 1>&2
 	exit 1
 }
 
-checkUTC()
-{
+check() {
+	local RTC_OK=0
+	if [ -f "${PROC_ALARM}" ]; then
+		RTC_OK=1
+	fi
+
+	if [ -f "${RTC_ALARM}" ]; then
+		RTC_OK=1
+	fi
+
+	if [ ${RTC_OK} = 0 ]; then
+		die "Can not access acpi-rtc-clock."
+	fi
+}
+
+checkUTC() {
 	unset CLOCK
 	if [ -f /etc/conf.d/clock ]; then
 		CLOCK=$(. /etc/conf.d/clock; echo ${CLOCK})
@@ -36,15 +49,13 @@ checkUTC()
 	[ "${CLOCK}" = "UTC" ]
 }
 
-saveTime()
-{
+saveTime() {
 	local param
 	[ "$DEBUG" = "1" ] || param=--quiet
 	/etc/init.d/clock $param save
 }
 
-setAlarm()
-{
+setAlarm() {
 	local timestamp
 	if [ "${Next}" -gt 0 ]; then
 		# abort if recording less then 10min in future
@@ -88,10 +99,16 @@ setAlarm()
 		return
 	fi
 
+	# should not be triggered
 	die "Kernel does not support ACPI alarm"
 }
 
 
+check
+
+if [ "$1" = "check" ]; then
+	exit 0
+fi
 
 test $# -ge 1 || die "Wrong Parameter Count"
 Next="${1}"
