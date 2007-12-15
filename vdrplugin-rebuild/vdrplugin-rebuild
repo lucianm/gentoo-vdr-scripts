@@ -18,7 +18,7 @@ if [[ `id -u` != 0 ]]; then
 	exit 1
 fi
 
-R_VERSION="0.2"
+R_VERSION="0.3"
 R_MODULES="${ROOT}/usr/share/vdr/vdrplugin-rebuild"
 R_PORTAGEQ="`type -p portageq 2>/dev/null`"
 if [[ -z ${R_PORTAGEQ} ]]; then
@@ -29,6 +29,10 @@ R_PORTDIR=`${R_PORTAGEQ} portdir`
 R_VDBPATH=`${R_PORTAGEQ} vdb_path`
 R_OPTION_X=0;
 R_OPTION_C=0;
+
+eerror() {
+	echo -e "${C_BOLD}${C_RED}** ${@}.${C_NORM}"
+}
 
 package_valid() {
 	local package=${1}
@@ -61,15 +65,28 @@ db_module_exists() {
 	return 1
 }
 
+db_module_is_good() {
+	local package=${1} dbfile
+	dbfile=${R_MODULES}/${package/\//-}
+	grep -q ^EBUILD= "${dbfile}" && return 0
+	return 1
+}
+
 db_module_add() {
 	local package=${1}
+	dbfile=${R_MODULES}/${package/\//-}
 
-	if db_module_exists ${package}; then
+	if db_module_exists ${package} && db_module_is_good ${package}; then
 		echo -e "${C_BOLD}** Module ${package} already exists in vdrplugindb.${C_NORM}"
 		return 0
 	else
 		if package_exists ${package}; then
-			echo -e "${C_BOLD}${C_GREEN}** Adding ${package} to vdrplugindb.${C_NORM}"
+			if [[ -f ${dbfile} ]]; then
+				rm -f "${dbfile}"
+				echo -e "${C_BOLD}${C_GREEN}** Fixing db entry for ${package}.${C_NORM}"
+			else
+				echo -e "${C_BOLD}${C_GREEN}** Adding ${package} to vdrplugindb.${C_NORM}"
+			fi
 			local ebuild=${package%-[0-9]*}
 			local ebuild_v="${package#${ebuild}-}"
 			cat <<-EOT > ${R_MODULES}/${package/\//-}
@@ -108,6 +125,14 @@ db_module_list() {
 		eval $(source ${dbfile}; echo ebuild=${EBUILD}; echo ebuild_v=${EBUILD_V})
 
 		auto=1
+
+		if [[ -z ${ebuild} ]]; then
+			{
+				eerror "Error in pkg database detected"
+				echo "You need to run \"vdrplugin-rebuild populate\""
+			} >&2
+			exit 1
+		fi
 
 		if [[ ${R_OPTION_X} == 1 ]]; then
 			pkg=${ebuild}
@@ -153,7 +178,7 @@ db_module_populate() {
 	echo -e "${C_BOLD}${C_GREEN}** Populating database with installed Packages.${C_NORM}"
 	# Lets find them all
 	# chances are we will get a few dupes in here.
-	for pkg in `grep -i /usr/lib/vdr/plugins/libvdr ${R_VDBPATH}/*/*/CONTENTS`; do
+	for pkg in $(grep -l /usr/lib/vdr/plugins/libvdr ${R_VDBPATH}/*/*/CONTENTS); do
 		pad=""; x=0;
 		
 		if [[ -z ${pkg//${R_VDBPATH}*} ]]; then
@@ -161,14 +186,9 @@ db_module_populate() {
 				[[ ${pkg:${i}:1} = / ]] && x=$((${x} + 1));
 				[[ ${x} == 4 ]] || [[ ${x} == 5 ]] && pad="${pad}${pkg:${i}:1}";
 			done
-			# Remove any dupes
-			list=${list//${pad:1}}
-			list="${list} ${pad:1}"
+			pname="${pad:1}"
+			db_module_add "${pname}"
 		fi
-	done
-	
-	for pkg in ${list}; do
-		db_module_add ${pkg};
 	done
 }
 

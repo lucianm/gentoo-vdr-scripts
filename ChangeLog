@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  15 Dec 2007; Matthias Schwarzott <zzam@gentoo.org>
+  vdrplugin-rebuild/vdrplugin-rebuild:
+  Let vdrplugin-rebuild detect and fix corrupt plugin database.
+
   10 Dec 2007; Matthias Schwarzott <zzam@gentoo.org>
   usr/sbin/acpi-wakeup.sh, usr/share/vdr/shutdown/wakeup-acpi.sh:
   Fix wakeup-call logic to work with old and new acpi/rtc interface.
