@@ -2,6 +2,10 @@
 # $Id$
 
   13 Feb 2008; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/shutdown/Makefile:
+  Now always install wakeup-nvram helper.
+
+  13 Feb 2008; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/pre-start-50-shutdown.sh, README.shutdown,
   usr/sbin/Makefile, usr/sbin/acpi-wakeup.sh, +usr/sbin/rtc-wakeup.sh,
   usr/share/vdr/bin/vdrshutdown-really.sh,
