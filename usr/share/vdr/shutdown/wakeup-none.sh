@@ -4,18 +4,16 @@
 #   Various other contributors from gentoo.de
 #
 
-wakeup_set() {
-	if [ "${1}" != 0 ]; then
-		# it is not possible to wakeup the system!
-		if [ "${NONE_WAKEUP_IGNORE_TIMER:-no}" = "yes" ]; then
-			# ignoring set timers
-			:
-		else
-			# Aborting
-			error_mesg "You have some timer set. System will not wakeup on its own!"
-			return 1
-		fi
+if [ "${VDR_WAKEUP_TIME}" != 0 ]; then
+	# it is not possible to wakeup the system!
+	if [ "${NONE_WAKEUP_IGNORE_TIMER:-no}" = "yes" ]; then
+		# ignoring set timers
+		:
+	else
+		# Aborting
+		error_mesg "You have some timer set. System will not wakeup on its own!"
+		return 1
 	fi
+fi
 
-	return 0
-}
+return 0

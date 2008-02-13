@@ -2,6 +2,17 @@
 # $Id$
 
   13 Feb 2008; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-50-shutdown.sh, README.shutdown,
+  etc/conf.d/vdr.shutdown, usr/share/vdr/bin/vdrshutdown-really.sh,
+  usr/share/vdr/inc/shutdown-functions.sh,
+  usr/share/vdr/shutdown/wakeup-acpi.sh,
+  usr/share/vdr/shutdown/wakeup-none.sh,
+  usr/share/vdr/shutdown/wakeup-nvram.sh,
+  usr/share/vdr/shutdown/wakeup-rtc.sh:
+  More wakeup simplifications. Now try more than 1 wakeup-method until one
+  successes.
+
+  13 Feb 2008; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/shutdown/Makefile:
   Now always install wakeup-nvram helper.
 

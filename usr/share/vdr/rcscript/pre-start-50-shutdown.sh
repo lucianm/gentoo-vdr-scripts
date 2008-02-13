@@ -1,18 +1,5 @@
 # $Id$
 
-list_wakeup_methods() {
-	local methods
-	local m
-	for m in ${shutdown_script_dir}/wakeup-*.sh; do
-		m="${m##*wakeup-}"
-		m="${m%.sh}"
-		methods="${methods} ${m}"
-	done
-	einfo "    Available shutdown methods:${methods}"
-	einfo "    There are some useflags to enable more shutdown methods."
-	einfo "    You have to reemerge gentoo-vdr-scripts with the new use-flags set."
-}
-
 addon_main() {
 	include shutdown-functions
 	[ "${SHUTDOWN_ACTIVE}" = "no" ] && return 0
@@ -35,13 +22,6 @@ addon_main() {
 		ewarn "  or call emerge --config gentoo-vdr-scripts"
 		ewarn
 	fi
-
-	if [ ! -r "${shutdown_script_dir}/wakeup-${WAKEUP_METHOD}.sh" ]; then
-		eerror "  Wakeup-Method ${WAKEUP_METHOD} not supported!"
-		vdr_log "Wakeup-Method ${WAKEUP_METHOD} not supported!"
-		list_wakeup_methods
-	fi
-
 	return 0
 }
 

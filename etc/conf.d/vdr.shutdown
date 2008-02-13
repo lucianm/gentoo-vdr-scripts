@@ -19,9 +19,9 @@
 # "none" is for use of client-only VDR-systems or at least
 # systems that should not wakeup for timer-recordings or
 # anything else.
-#   allowed values: acpi nvram none
-#   default: acpi
-#WAKEUP_METHOD="nvram"
+#   allowed values: rtc acpi nvram none
+#   default: try all
+#WAKEUP_METHOD="rtc acpi nvram none"
 
 ###########################################################
 #          Wake up once every day                         #

@@ -63,15 +63,28 @@ read_reboot_setting() {
 }
 
 
+WAKEUP_METHOD="${WAKEUP_METHOD:-rtc acpi nvram none}"
 
-if [ -f "${shutdown_script_dir}/wakeup-${WAKEUP_METHOD}.sh" ]; then
-	. ${shutdown_script_dir}/wakeup-${WAKEUP_METHOD}.sh
+run_wakeup_method()
+{
+	local mod="$1"
+	(
+		if [ -f "${shutdown_script_dir}/wakeup-${mod}.sh" ]; then
+			. ${shutdown_script_dir}/wakeup-${mod}.sh
+		else
+			return 1
+		fi
+	)
+}
 
-	wakeup_set "${VDR_WAKEUP_TIME}" || exit 99
-else
-	exit 98
-fi
-
+wakeup_ok=0
+for method in ${WAKEUP_METHOD}; do
+	if run_wakeup_method; then
+		wakeup_ok=1
+		break
+	fi
+done
+[ ${wakeup_ok} = 0 ] && exit 99
 
 if [ "${DRY_SHUTDOWN_REAL}" = "1" ]; then
 	mesg "Dry-run - not shutting down"
