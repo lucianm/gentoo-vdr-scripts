@@ -67,7 +67,6 @@ read_reboot_setting() {
 if [ -f "${shutdown_script_dir}/wakeup-${WAKEUP_METHOD}.sh" ]; then
 	. ${shutdown_script_dir}/wakeup-${WAKEUP_METHOD}.sh
 
-	wakeup_check || exit 99
 	wakeup_set "${VDR_WAKEUP_TIME}" || exit 99
 else
 	exit 98

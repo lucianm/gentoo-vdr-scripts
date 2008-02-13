@@ -31,12 +31,6 @@ Return values of functions:
 
 Functions to be defined:
 
-wakeup_check:
-	Should return 0 when setting wakeup is possible
-	else it should return a non-zero return value
-	and set an error-message.
-	i.e. check for existence of used programms ...
-
 set_wakeup:
 	Do the real work. It gets the time to wakeup as
 	first parameter in Unix-Format (Seconds since 1970-01-01 UTC)

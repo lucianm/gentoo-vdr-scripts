@@ -4,13 +4,6 @@
 #   Various other contributors from gentoo.de
 #
 
-ACPI_WAKEUP=/usr/sbin/acpi-wakeup.sh
-
-wakeup_check() {
-	# always works
-	return 0
-}
-
 wakeup_set() {
 	if [ "${1}" != 0 ]; then
 		# it is not possible to wakeup the system!

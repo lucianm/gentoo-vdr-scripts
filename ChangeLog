@@ -1,6 +1,16 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  13 Feb 2008; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-50-shutdown.sh, README.shutdown,
+  usr/sbin/Makefile, usr/sbin/acpi-wakeup.sh, +usr/sbin/rtc-wakeup.sh,
+  usr/share/vdr/bin/vdrshutdown-really.sh,
+  usr/share/vdr/shutdown/wakeup-acpi.sh,
+  usr/share/vdr/shutdown/wakeup-none.sh,
+  usr/share/vdr/shutdown/wakeup-nvram.sh,
+  +usr/share/vdr/shutdown/wakeup-rtc.sh:
+  Simplified wakeup logic a bit. Moved rtc-wakeup to own files.
+
   15 Dec 2007; Matthias Schwarzott <zzam@gentoo.org>
   vdrplugin-rebuild/vdrplugin-rebuild:
   Let vdrplugin-rebuild detect and fix corrupt plugin database.

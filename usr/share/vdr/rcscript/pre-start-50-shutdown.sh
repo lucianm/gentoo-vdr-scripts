@@ -36,14 +36,7 @@ addon_main() {
 		ewarn
 	fi
 
-	if [ -f "${shutdown_script_dir}/wakeup-${WAKEUP_METHOD}.sh" ]; then
-		. ${shutdown_script_dir}/wakeup-${WAKEUP_METHOD}.sh
-
-		# test if needed programs are there
-		if ! wakeup_check; then
-			list_wakeup_methods
-		fi
-	else
+	if [ ! -r "${shutdown_script_dir}/wakeup-${WAKEUP_METHOD}.sh" ]; then
 		eerror "  Wakeup-Method ${WAKEUP_METHOD} not supported!"
 		vdr_log "Wakeup-Method ${WAKEUP_METHOD} not supported!"
 		list_wakeup_methods

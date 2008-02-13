@@ -14,106 +14,65 @@
 #
 
 PROC_ALARM="/proc/acpi/alarm"
-RTC_ALARM="/sys/class/rtc/rtc0/wakealarm"
 
-#DEBUG=1
-[ -z "$DEBUG" ] && DEBUG=0
-
-die() {
+die()
+{
 	echo "ERROR: $@" 1>&2
 	exit 1
 }
 
-check() {
-	local RTC_OK=0
-	if [ -f "${PROC_ALARM}" ]; then
-		RTC_OK=1
-	fi
-
-	if [ -f "${RTC_ALARM}" ]; then
-		RTC_OK=1
-	fi
-
-	if [ ${RTC_OK} = 0 ]; then
-		die "Can not access acpi-rtc-clock."
-	fi
-}
-
-checkUTC() {
+checkUTC()
+{
+	unset clock
 	unset CLOCK
 	if [ -f /etc/conf.d/clock ]; then
-		CLOCK=$(. /etc/conf.d/clock; echo ${CLOCK})
+		. /etc/conf.d/clock
 	else
-		CLOCK=$(. /etc/rc.conf; echo ${CLOCK})
+		. /etc/rc.conf
 	fi
-	[ "${CLOCK}" = "UTC" ]
+	clock="${clock:-${CLOCK}}"
+
+	[ "${clock}" = "UTC" ]
 }
 
-saveTime() {
-	local param
-	[ "$DEBUG" = "1" ] || param=--quiet
-	/etc/init.d/clock $param save
-}
-
-setAlarm() {
-	local timestamp
-	if [ "${Next}" -gt 0 ]; then
-		# abort if recording less then 10min in future
-		local now=$(date +%s)
-		[ "${Next}" -lt "$(($now+600))" ] && die "wakeup time too near, alarm not set"
-
-		# boot 5min (=300s) before recording
-		timestamp=$(($Next-300))
-	else
-		timestamp=0
-	fi
-
-	# write time to RTC now, as it may disable wakeup if done after writing alarm time
-	saveTime
-
-	# new interface Kernel 2.6.22+
-	if [ -e ${RTC_ALARM} ]; then
-		local timestr=${timestamp}
-		# maybe this needs to be adjusted if bios time is not in UTC
-
-		# clear old time
-		echo 0 > ${RTC_ALARM}
-		echo "${timestr}" > ${RTC_ALARM}
-		return
-	fi
-		
-	# old interface
-	if [ -e ${PROC_ALARM} ]; then
-		# This hopefully deactivates wakeup
-		local timestr="2003-10-20 99:00:00"
-
-		if [ ${timestamp} -gt 0 ]; then
-			checkUTC && dateparam="-u"
-			timestr=$(date ${dateparam} --date="1970-01-01 UTC ${timestamp} seconds" +"%Y-%m-%d %H:%M:00")
-			[ -z "${timestr}" ] && die "date did not return a string"
-		fi
-
-		# write 2 times
-		echo ${timestr} > ${PROC_ALARM}
-		echo ${timestr} > ${PROC_ALARM}
-		return
-	fi
-
-	# should not be triggered
-	die "Kernel does not support ACPI alarm"
+writeAlarm()
+{
+	# write 2 times (some bioses need this)
+	echo "$1" > "${PROC_ALARM}"
+	echo "$1" > "${PROC_ALARM}"
 }
 
 
-check
+# main part starts here
 
-if [ "$1" = "check" ]; then
-	exit 0
+if [ ! -w "${PROC_ALARM}" ]; then
+	die "Can not access ${PROC_ALARM}."
 fi
 
 test $# -ge 1 || die "Wrong Parameter Count"
+# time the system should be up
 Next="${1}"
-Delta="${2}"
-RecordName="${3}"
 
-setAlarm
+# write time to RTC now, as it may disable wakeup if done after writing alarm time
+/etc/init.d/clock --quiet save
+
+if [ "${Next}" -eq 0 ]; then
+	# This hopefully deactivates wakeup
+	writeAlarm "2003-10-20 99:00:00"
+	exit 0
+fi
+
+# abort if recording less then 10min in future
+now=$(date +%s)
+[ "${Next}" -lt "$(($now+600))" ] && die "wakeup time too near, alarm not set"
+
+# boot 5min (=300s) before recording
+timestamp=$(($Next-300))
+checkUTC && dateparam="-u"
+
+timestr=$(date ${dateparam} --date="1970-01-01 UTC ${timestamp} seconds" +"%Y-%m-%d %H:%M:00")
+[ -z "${timestr}" ] && die "date did not return a string"
+
+writeAlarm "${timestr}"
+
 exit 0

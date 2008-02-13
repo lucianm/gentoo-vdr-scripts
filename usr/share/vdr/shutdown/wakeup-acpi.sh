@@ -6,21 +6,16 @@
 
 ACPI_WAKEUP=/usr/sbin/acpi-wakeup.sh
 
-wakeup_check() {
-	local msg
+wakeup_set() {
 	if [ ! -x "${ACPI_WAKEUP}" ]; then
 		error_mesg "acpi-wakeup.sh not found"
 		return 1
 	fi
 
-	msg=$(${ACPI_WAKEUP} check)
-	if [ $? != 0 ]; then
-		error_mesg "${msg}"
+	if [ ! -e /proc/acpi/alarm ]; then
+		error_mesg "/proc/acpi/alarm does not exist"
 		return 1
 	fi
-	return 0
-}
 
-wakeup_set() {
-	${ACPI_WAKEUP} ${1}
+	"${ACPI_WAKEUP}" "$1"
 }
