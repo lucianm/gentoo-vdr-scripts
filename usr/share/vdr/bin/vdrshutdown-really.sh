@@ -79,7 +79,7 @@ run_wakeup_method()
 
 wakeup_ok=0
 for method in ${WAKEUP_METHOD}; do
-	if run_wakeup_method; then
+	if run_wakeup_method "${method}"; then
 		wakeup_ok=1
 		break
 	fi

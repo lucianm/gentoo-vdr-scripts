@@ -37,7 +37,7 @@ if [ "${Next}" -eq 0 ]; then
 fi
 
 # abort if recording less then 10min in future
-local now=$(date +%s)
+now=$(date +%s)
 [ "${Next}" -lt "$(($now+600))" ] && die "wakeup time too near, alarm not set"
 
 # boot 5min (=300s) before recording
