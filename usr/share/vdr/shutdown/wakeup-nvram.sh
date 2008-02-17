@@ -8,7 +8,7 @@ NVRAM_WAKEUP=/usr/bin/nvram-wakeup
 
 CMD="${NVRAM_WAKEUP} --syslog"
 if [ ! -x "${NVRAM_WAKEUP}" ]; then
-	error_mesg "no nvram-wakeup installed"
+	mesg "no nvram-wakeup installed"
 	return 1
 fi
 
@@ -43,14 +43,14 @@ case $PIPESTATUS in
 	2) 
 	# something went wrong
 
-	error_mesg "Something went wrong, please check your config files of nvram-wakeup"
+	mesg "Something went wrong, please check your config files of nvram-wakeup"
 	# don't do anything - just exit with status 1
 	return 1
 	;;
 	*)
 	# should not happen anyway.
 
-	error_mesg "Something went wrong, should never happen"
+	mesg "Something went wrong, should never happen"
 	return 1
 	;;
 esac

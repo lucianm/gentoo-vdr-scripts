@@ -7,12 +7,12 @@
 RTC_WAKEUP=/usr/sbin/rtc-wakeup.sh
 
 if [ ! -x "${RTC_WAKEUP}" ]; then
-	error_mesg "acpi-wakeup.sh not found"
+	mesg "acpi-wakeup.sh not found"
 	return 1
 fi
 
 if [ ! -e /sys/class/rtc/rtc0/wakealarm ]; then
-	error_mesg "/sys/class/rtc/rtc0/wakealarm does not exist"
+	mesg "/sys/class/rtc/rtc0/wakealarm does not exist"
 	return 1
 fi
 

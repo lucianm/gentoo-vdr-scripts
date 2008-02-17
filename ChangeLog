@@ -2,6 +2,15 @@
 # $Id$
 
   17 Feb 2008; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/bin/vdrshutdown-really.sh,
+  usr/share/vdr/shutdown/shutdown-reboot.sh,
+  usr/share/vdr/shutdown/wakeup-acpi.sh,
+  usr/share/vdr/shutdown/wakeup-none.sh,
+  usr/share/vdr/shutdown/wakeup-nvram.sh,
+  usr/share/vdr/shutdown/wakeup-rtc.sh:
+  Cleanup message handling for wakeup modules.
+
+  17 Feb 2008; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/bin/vdrshutdown-gate.sh:
   No longer write count of forced tests to osd.
 

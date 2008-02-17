@@ -29,14 +29,10 @@ VDR_WAKEUP_TIME="${1}"
 SVDRPCMD=/usr/bin/svdrpsend.pl
 
 mesg() {
-	logger $@
-	${SVDRPCMD} MESG "\"$@\""
+	if type logger >/dev/null 2>&1; then
+		logger "$@"
+	fi
 }
-
-error_mesg() {
-	mesg "Error: $@"
-}
-
 
 # A little bit complicated, but this is used to really check if a reboot is needed
 # nvram gets confused when setting the same time a second time
@@ -87,7 +83,6 @@ done
 [ ${wakeup_ok} = 0 ] && exit 99
 
 if [ "${DRY_SHUTDOWN_REAL}" = "1" ]; then
-	mesg "Dry-run - not shutting down"
 	exit 0
 fi
 
@@ -97,3 +92,6 @@ case "${NEED_REBOOT}" in
 	1)	. ${shutdown_script_dir}/shutdown-reboot.sh ;;
 	0)	. ${shutdown_script_dir}/shutdown-halt.sh ;;
 esac
+
+exit 0
+

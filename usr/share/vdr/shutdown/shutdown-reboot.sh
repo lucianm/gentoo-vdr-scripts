@@ -26,33 +26,33 @@ case "${BOOT_MANAGER}" in
 					if [ -x /sbin/grub-set-default ]; then
 						/sbin/grub-set-default "${REBOOT_ENTRY_GRUB}"
 					else
-						error_mesg "command grub-set-default not found!"
+						mesg "command grub-set-default not found!"
 					fi
 					;;
 				savedefault)
 					if [ -x /sbin/grub ]; then
 						echo "savedefault --default=${REBOOT_ENTRY_GRUB} --once" | /sbin/grub --batch
 					else
-						error_mesg "command grub-set-default not found!"
+						mesg "command grub-set-default not found!"
 					fi
 					;;
 				*)
-					error_mesg "Unknown grub method ${GRUB_SET_REBOOT_ENTRY_METHOD}."
+					mesg "Unknown grub method ${GRUB_SET_REBOOT_ENTRY_METHOD}."
 					;;
 			esac
 		else
-			error_mesg "reboot entry not set, can not reboot."
+			mesg "reboot entry not set, can not reboot."
 		fi
 		;;
 	lilo)
 		if [ -n "${REBOOT_ENTRY_LILO}" ]; then
 			/sbin/lilo -R ${REBOOT_ENTRY_LILO}
 		else
-			error_mesg "reboot entry not set, can not reboot."
+			mesg "reboot entry not set, can not reboot."
 		fi
 		;;
 	*)
-		error_mesg "Unsupported boot manager ${BOOT_MANAGER}"
+		mesg "Unsupported boot manager ${BOOT_MANAGER}"
 		return
 		;;
 esac

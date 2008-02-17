@@ -11,7 +11,7 @@ if [ "${VDR_WAKEUP_TIME}" != 0 ]; then
 		:
 	else
 		# Aborting
-		error_mesg "You have some timer set. System will not wakeup on its own!"
+		mesg "You have some timer set. System will not wakeup on its own!"
 		return 1
 	fi
 fi
