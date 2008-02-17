@@ -285,7 +285,7 @@ fi
 
 
 if is_forced_shutdown && forced_tests_count_greater_zero; then
-	mesg_q "Shutting down (forced ${SHUTDOWN_FORCE_COUNT} tests)"
+	mesg_q "Shutting down (forced)"
 else
 	mesg_q "Shutting down"
 fi

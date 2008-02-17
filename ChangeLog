@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  17 Feb 2008; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/bin/vdrshutdown-gate.sh:
+  No longer write count of forced tests to osd.
+
   13 Feb 2008; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/pre-start-50-shutdown.sh, README.shutdown,
   etc/conf.d/vdr.shutdown, usr/share/vdr/bin/vdrshutdown-really.sh,
