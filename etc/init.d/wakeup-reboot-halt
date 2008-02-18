@@ -19,9 +19,9 @@ start() {
 	# check weather this time this is a reboot and I should shutdown
 	
 	if [ -e "${STATEFILE}" ]; then
+		rm -f "${STATEFILE}"
 		einfo "This is a reboot to write the wakeup-time into the bios."
 		einfo "Shutting down now."
-		rm -f "${STATEFILE}"
 		init 0
 	fi
 }
