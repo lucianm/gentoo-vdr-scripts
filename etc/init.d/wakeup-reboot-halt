@@ -3,14 +3,21 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+extra_commands="mark_for_reboot"
+
+STATEFILE=/force_reboot_shutdown
+
 depend() {
-	need localmount
+	if [ -x /etc/init.d/root ]; then
+		need root
+	else
+		need checkroot
+	fi
 }
 
 start() {
 	# check weather this time this is a reboot and I should shutdown
 	
-	local STATEFILE=/var/vdr/shutdown-data/special_script_should_shutdown
 	if [ -e "${STATEFILE}" ]; then
 		einfo "This is a reboot to write the wakeup-time into the bios."
 		einfo "Shutting down now."
@@ -23,6 +30,7 @@ stop() {
 	:
 }
 
-restart() {
-	:
+mark_for_reboot() {
+	touch "${STATEFILE}"
 }
+

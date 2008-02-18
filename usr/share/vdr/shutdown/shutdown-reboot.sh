@@ -10,13 +10,11 @@ fi
 
 case "${BOOT_MANAGER}" in
 	none)
-		STATEFILE=/var/vdr/shutdown-data/special_script_should_shutdown
-
-		touch ${STATEFILE}
-
 		if [ ! -L /etc/runlevels/boot/wakeup-reboot-halt ]; then
 			rc-update add wakeup-reboot-halt boot
 		fi
+
+		/etc/init.d/wakeup-reboot-halt mark_for_reboot
 		;;
 	grub)
 		/bin/mount /boot 
