@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  20 Feb 2008; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/shutdown/shutdown-reboot.sh:
+  Add mount /boot for lilo, due to http://bugs.gentoo.org/show_bug.cgi?id=207105
+
   18 Feb 2008; Matthias Schwarzott <zzam@gentoo.org>
   etc/init.d/wakeup-reboot-halt, usr/share/vdr/shutdown/shutdown-reboot.sh:
   Move mark-file logic for reboot completely into init-script.

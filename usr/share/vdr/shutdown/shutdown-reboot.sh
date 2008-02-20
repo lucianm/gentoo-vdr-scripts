@@ -17,7 +17,7 @@ case "${BOOT_MANAGER}" in
 		/etc/init.d/wakeup-reboot-halt mark_for_reboot
 		;;
 	grub)
-		/bin/mount /boot 
+		mount /boot 
 		if [ -n "${REBOOT_ENTRY_GRUB}" ]; then
 			case "${GRUB_SET_REBOOT_ENTRY_METHOD:=grub-set-default}" in
 				grub-set-default)
@@ -43,6 +43,7 @@ case "${BOOT_MANAGER}" in
 		fi
 		;;
 	lilo)
+		mount /boot
 		if [ -n "${REBOOT_ENTRY_LILO}" ]; then
 			/sbin/lilo -R ${REBOOT_ENTRY_LILO}
 		else
