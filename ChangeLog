@@ -1,6 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-0.4.3 (23 Feb 2008)
+
   20 Feb 2008; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/shutdown/shutdown-reboot.sh:
   Add mount /boot for lilo, due to http://bugs.gentoo.org/show_bug.cgi?id=207105
