@@ -1,6 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  31 Mar 2008; Matthias Schwarzott <zzam@gentoo.org> etc/init.d/vdr:
+  Let init-script not silently fail at stop.
+
 *gentoo-vdr-scripts-0.4.3 (23 Feb 2008)
 
   20 Feb 2008; Matthias Schwarzott <zzam@gentoo.org>

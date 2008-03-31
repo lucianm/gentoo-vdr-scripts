@@ -95,9 +95,11 @@ stop() {
 
 	# Use --name here to allow us to kill vdr even after a new emerge
 	start-stop-daemon --stop --quiet --retry 15 --exec ${VDR_BIN} 
-	eend $? "Failed to stop vdr."
+	exitcode=$?
+	eend $exitcode "Failed to stop vdr."
 
 	load_addons_prefixed post-stop
+	return $exitcode
 }
 
 # gets called by watchdog to restart vdr
