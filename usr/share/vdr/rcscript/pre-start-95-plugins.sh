@@ -14,7 +14,7 @@ addon_main() {
 		init_plugin_params ${PLUGIN}
 
 		# call rc-addon of plugin
-		load_plugin ${PLUGIN} plugin_pre_vdr_start
+		load_plugin ${PLUGIN} plugin_pre_vdr_start || return 1
 
 		# add to commandline
 		add_plugin_params_to_vdr_call

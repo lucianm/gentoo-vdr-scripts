@@ -119,6 +119,7 @@ check_plugin() {
 	#	skip_plugin "${PLUGIN}" "unresolved deps - please use revdep-rebuild"
 	#	return
 	#fi
+	return 0
 }
 
 load_plugin()
@@ -129,7 +130,7 @@ load_plugin()
 
 	# Only check when starting vdr
 	if [ "${INIT_PHASE}" != "stop" ]; then
-		check_plugin ${PLUGIN}
+		check_plugin ${PLUGIN} || return 1
 	fi
 	[ "${SKIP_PLUGIN}" = "1" ] && return
 
@@ -162,8 +163,8 @@ skip_plugin() {
 	if [ -n "${1}" ] && [ "${addon_prefix}" = "pre-start" ]; then
 
 		local skip_tmp_file="/var/vdr/tmp/plugins_skipped"
-		echo "${PLUGIN}" >> "${skip_tmp_file}_ALL"
-		echo "${PLUGIN}" >> "${skip_tmp_file}_${ERROR}"
+		echo "${PLUGIN}" >> "${skip_tmp_file}_ALL" || return 1
+		echo "${PLUGIN}" >> "${skip_tmp_file}_${ERROR}" || return 1
 
 		case "${ERROR}" in
 		PATCHLEVEL)
@@ -174,6 +175,7 @@ skip_plugin() {
 			;;
 		esac
 	fi
+	return 0
 }
 
 add_plugin_params_to_vdr_call() {
