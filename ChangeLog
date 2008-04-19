@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  19 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-30-parameter.sh, etc/conf.d/vdr:
+  Added VDR_CHARSET_OVERRIDE support
+
   31 Mar 2008; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/post-stop-05-plugins.sh,
   usr/share/vdr/rcscript/post-start-05-plugins.sh,

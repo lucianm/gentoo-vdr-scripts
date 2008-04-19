@@ -38,6 +38,15 @@
 #   default: use system-wide setting, and if none found, guess some utf8 locale
 #LANG="en_GB.utf8"
 
+# According to "ETSI EN 300 468" the default character set fo SI data is
+# ISO6937. But unfortunately some broadcasters actually use ISO-8859-9 or
+# other encodings, but fail to correctly announce that.
+# To fix this you can set the charset VDR assumes when none is specified
+# by the broadcaster. Better: Complain at your broadcaster.
+#
+# Using vdr-1.6 you can fix it this way:
+# If you subscribed to premiere (german pay tv) you may want ISO8859-15.
+#VDR_CHARSET_OVERRIDE="ISO8859-15"
 
 ###########################################################
 #          Special Audio Options                          #

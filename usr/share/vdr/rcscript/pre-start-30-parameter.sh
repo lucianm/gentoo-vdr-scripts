@@ -3,6 +3,8 @@ addon_main() {
 	# parameters of start-stop-daemon
 	[ -n "${VDR_NICENESS}" ] && add_daemonctrl_param --nicelevel "${VDR_NICENESS}"
 
+	# Set environment
+	[ -n "${VDR_CHARSET_OVERRIDE}" ] && export VDR_CHARSET_OVERRIDE
 
 	# parameters of vdr
 	add_param "--watchdog=${INTERNAL_WATCHDOG:-60}"
