@@ -20,22 +20,27 @@ unset_all_locale_settings() {
 addon_main() {
 	if [ -n "${CAP_UTF8}" ]; then
 		# vdr supports utf8 :)
-		local charmap=$(locale charmap)
-		local l
 
-		# export LANG if it is set
+		# export LANG if it is set (before calling locale, Bug #217906)
 		[ -n "${LANG}" ] && export LANG
+
+		local charmap=$(locale charmap)
 
 		if [ "${charmap}" = "ANSI_X3.4-1968" ]; then
 			# User has not set any locale stuff
 
-			ewarn "You have not set a charmap! (LANG in /etc/env.d/02locale or /etc/conf.d/vdr)"
-
+			ewarn "Your local charmap is ANSI_X3.4-1968."
+			if [ -n "${LANG}" ]; then
+				ewarn "It seems the locale you chose does not exist on your system [LANG=${LANG}]"
+				ewarn "Please have a look at /etc/locale.gen"
+			else
+				ewarn "You have not set a charmap! (LANG in /etc/env.d/02locale or /etc/conf.d/vdr)"
+			fi
 
 			# Lets guess
 
-			# try an english utf8 locale
-			l="$(locale -a|grep utf8|grep ^en|head -n 1)"
+			# try an english utf8 locale first
+			local l="$(locale -a|grep utf8|grep ^en|head -n 1)"
 
 			if [ "${l}" = "" ]; then
 				# none found
@@ -46,6 +51,8 @@ addon_main() {
 			if [ "${l}" != "" ]; then
 				export LANG="${l}"
 				ewarn "Automatically using locale ${l} to get most of vdr utf8 support."
+			else
+				ewarn "Not found any utf8 locale, you will have problems with chars extending ASCII"
 			fi
 
 		fi

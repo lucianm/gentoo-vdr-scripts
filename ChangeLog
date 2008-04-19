@@ -2,6 +2,11 @@
 # $Id$
 
   19 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-45-utf8-check.sh:
+  Make charmap handling more verbose and fix some export/usage order. Bug
+  #217906
+
+  19 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/post-start-60-check-syslog-errors.sh:
   Print name of log-file in every case when errors are detected.
 
