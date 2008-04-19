@@ -2,6 +2,10 @@
 # $Id$
 
   19 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/post-start-60-check-syslog-errors.sh:
+  Print name of log-file in every case when errors are detected.
+
+  19 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
   etc/init.d/wakeup-reboot-halt:
   Make special option mark_for_reboot work with baselayout-1, Reported by
   gehlhajo, http://www.vdr-portal.de/board/thread.php?threadid=76283

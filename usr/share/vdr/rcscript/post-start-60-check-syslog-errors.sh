@@ -28,11 +28,14 @@ addon_main() {
 		' \
 	| while read line; do
 		count=$(($count+1))
-		if [ "${count}" -gt 5 ]; then
-			eerror "    More errors ... (see ${SYSLOG_FILE})"
-			break
+		if [ ${count} -eq 1 ]; then
+			eerror "    Errors from ${SYSLOG_FILE}:"
 		fi
 		eerror "    $line"
+		if [ "${count}" -gt 5 ]; then
+			eerror "    More errors ..."
+			break
+		fi
 	done
 
 	return 0
