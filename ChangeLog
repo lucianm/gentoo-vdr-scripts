@@ -2,6 +2,10 @@
 # $Id$
 
   19 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  etc/conf.d/vdr.shutdown, usr/share/vdr/shutdown/shutdown-reboot.sh:
+  Give an explicit name to the automagic reboot handling - auto.
+
+  19 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/pre-start-45-utf8-check.sh:
   Make charmap handling more verbose and fix some export/usage order. Bug
   #217906
