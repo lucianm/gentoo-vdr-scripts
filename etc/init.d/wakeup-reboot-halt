@@ -3,7 +3,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-extra_commands="mark_for_reboot"
+opts="${opts} mark_for_reboot"
 
 STATEFILE=/force_reboot_shutdown
 
