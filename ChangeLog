@@ -1,6 +1,19 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-0.4.4 (20 Apr 2008)
+
+  20 Apr 2008; Matthias Schwarzott <zzam@gentoo.org> Makefile, +bump.sh:
+  Added info make-target. Added bump helper script.
+
+  20 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  usr/sbin/acpi-wakeup.sh:
+  More baselayout-2 fixes for acpi wakeup. Fixes wrong utc detection.
+
+  19 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  etc/conf.d/vdr.shutdown, usr/share/vdr/shutdown/shutdown-reboot.sh:
+  Give an explicit name to the automagic reboot handling - auto.
+
   19 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/pre-start-45-utf8-check.sh:
   Make charmap handling more verbose and fix some export/usage order. Bug

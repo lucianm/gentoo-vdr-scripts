@@ -17,6 +17,12 @@ TMPDIR = /tmp
 ARCHIVE = gentoo-vdr-scripts-$(VERSION)
 PACKAGE = $(ARCHIVE)
 
+info:
+	@echo VERSION: $(VERSION)
+	@[ -d ../tags/$(VERSION) ] && echo "Already tagged in svn"
+	@echo
+	@[ -d .svn ] && svn info 
+
 dist:
 	@-rm -rf $(TMPDIR)/$(ARCHIVE)
 	@svn export . $(TMPDIR)/$(ARCHIVE)

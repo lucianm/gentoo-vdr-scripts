@@ -5,11 +5,11 @@
 #
 
 if [ -z "${BOOT_MANAGER}" ]; then
-	BOOT_MANAGER="none"
+	BOOT_MANAGER="auto"
 fi
 
 case "${BOOT_MANAGER}" in
-	none)
+	auto)
 		if [ ! -L /etc/runlevels/boot/wakeup-reboot-halt ]; then
 			rc-update add wakeup-reboot-halt boot
 		fi
