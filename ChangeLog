@@ -1,6 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-0.4.4 (20 Apr 2008)
+
   20 Apr 2008; Matthias Schwarzott <zzam@gentoo.org> Makefile, +bump.sh:
   Added info make-target. Added bump helper script.
 
