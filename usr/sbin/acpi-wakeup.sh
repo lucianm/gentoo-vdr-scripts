@@ -25,11 +25,13 @@ checkUTC()
 {
 	unset clock
 	unset CLOCK
-	if [ -f /etc/conf.d/clock ]; then
-		. /etc/conf.d/clock
-	else
-		. /etc/rc.conf
-	fi
+	local f
+	for f in /etc/conf.d/hwclock /etc/conf.d/clock /etc/rc.conf; do
+		if [ -f "${f}" ]; then
+			. "${f}"
+			break
+		fi
+	done
 	clock="${clock:-${CLOCK}}"
 
 	[ "${clock}" = "UTC" ]
@@ -54,7 +56,11 @@ test $# -ge 1 || die "Wrong Parameter Count"
 Next="${1}"
 
 # write time to RTC now, as it may disable wakeup if done after writing alarm time
-/etc/init.d/clock --quiet save
+if [ -x /etc/init.d/hwclock ]; then
+	/etc/init.d/hwclock --quiet save
+else
+	/etc/init.d/clock --quiet save
+fi
 
 if [ "${Next}" -eq 0 ]; then
 	# This hopefully deactivates wakeup

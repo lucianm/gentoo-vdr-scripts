@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  20 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
+  usr/sbin/acpi-wakeup.sh:
+  More baselayout-2 fixes for acpi wakeup. Fixes wrong utc detection.
+
   19 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
   etc/conf.d/vdr.shutdown, usr/share/vdr/shutdown/shutdown-reboot.sh:
   Give an explicit name to the automagic reboot handling - auto.
