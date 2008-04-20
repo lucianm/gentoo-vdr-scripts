@@ -1,6 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  20 Apr 2008; Matthias Schwarzott <zzam@gentoo.org> Makefile, +bump.sh:
+  Added info make-target. Added bump helper script.
+
   20 Apr 2008; Matthias Schwarzott <zzam@gentoo.org>
   usr/sbin/acpi-wakeup.sh:
   More baselayout-2 fixes for acpi wakeup. Fixes wrong utc detection.
