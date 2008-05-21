@@ -127,6 +127,8 @@ db_plug_list() {
 	fi
 }
 
+# legacy stuff - should not be needed normally
+
 db_plug_add() {
 	local package=${1}
 	dbfile=${R_DBPATH}/${package/\//-}
@@ -201,12 +203,12 @@ db_plug_merge() {
 	done
 	echo
 
-	emerge --oneshot --nodeps ${tomerge[@]}
+	emerge --oneshot --nodeps ${R_EMERGE_OPTS} ${tomerge[@]}
 }
 
 phelp() {
 cat << EOF
-vdrplugin-rebuild [options] action [category/package]
+vdrplugin-rebuild [options] action [options to emerge]
 Version: ${R_VERSION}
 
 Where options are:
@@ -219,7 +221,7 @@ Where action is one of:
 	rebuild  - Rebuild packages.
 	populate - Populate the database with any
 	           packages which currently install
-	           plugins for vdr.
+	           plugins for vdr (should not be necessary).
 
 EOF
 
@@ -238,12 +240,15 @@ check_validity() {
 	fi
 }
 
-while getopts "XC" options; do
-	case ${options} in
-		X) R_OPTION_X='1';;
-		C) R_OPTION_C='1';;
-		*) phelp; exit 1;;
+while [ -n "$1" ]; do
+	
+	case "$1" in
+		-X) R_OPTION_X='1';;
+		-C) R_OPTION_C='1';;
+		-*) phelp; exit 1;;
+		*) break;;
 	esac
+	shift
 done
 
 if [[ ${R_OPTION_C} == 0 ]]; then
@@ -258,14 +263,9 @@ else
 	C_RED=''
 fi
 
-x=0
-for i in ${@:${OPTIND}}; do
-	if [[ ${i:0:1} != - ]]; then
-		R_PARAMS[${x}]=${i}
-		x=$((${x} + 1))
-	fi
-done
-unset i x
+R_CMD="$1"
+shift
+R_EMERGE_OPTS="$@"
 
 # If the vdrplugindb doesnt exist, lets populate it automatically.
 if [[ ! -d ${R_DBPATH} ]]; then
@@ -274,10 +274,12 @@ if [[ ! -d ${R_DBPATH} ]]; then
 	mkdir -p ${R_DBPATH}
 
 	echo -e "${C_BOLD}Populating vdrplugindb...${C_NORM}"
-	R_PARAMS[0]=populate
+	if [[ ${R_CMD} != populate ]]; then
+		db_plug_populate
+	fi
 fi
 
-case ${R_PARAMS[0]} in
+case ${R_CMD} in
 	list)		db_plug_list;;
 	rebuild)	db_plug_merge;;
 	populate)	db_plug_populate;;

@@ -3,6 +3,10 @@
 
   21 May 2008; Matthias Schwarzott <zzam@gentoo.org>
   vdrplugin-rebuild/vdrplugin-rebuild:
+  Simplified cmdline parsing. Allowing to pass parameters to emerge.
+
+  21 May 2008; Matthias Schwarzott <zzam@gentoo.org>
+  vdrplugin-rebuild/vdrplugin-rebuild:
   Renamed old stuff that still had module in the name. Removed external
   commands add/del.
 
