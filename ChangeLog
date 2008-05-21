@@ -1,6 +1,12 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  21 May 2008; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/watchdog-restart-20-modules.sh, usr/sbin/Makefile,
+  +usr/sbin/dvb-reload-modules:
+  Moved code to reload dvb modules into a seperate executable called
+  dvb-reload-modules.
+
 *gentoo-vdr-scripts-0.4.4 (20 Apr 2008)
 
   20 Apr 2008; Matthias Schwarzott <zzam@gentoo.org> Makefile, +bump.sh:
