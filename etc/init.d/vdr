@@ -6,7 +6,6 @@ opts="${opts} watchdogrestart"
 
 load_functions() {
 	cd /
-	INIT_PHASE="$1"
 	. /usr/share/vdr/inc/functions.sh
 	include rc-functions
 }
@@ -19,7 +18,9 @@ depend() {
 }
 
 start() {
-	load_functions start
+	INIT_PHASE="start"
+
+	load_functions
 	local exitcode
 
 	init_vdr_start_log
@@ -87,8 +88,9 @@ start() {
 }
 
 stop() {
+	INIT_PHASE="stop"
 	[ -z "${VDR_BIN}" ] && VDR_BIN=/usr/bin/vdr
-	load_functions stop
+	load_functions
 	load_addons_prefixed pre-stop
 
 	ebegin "Stopping ${VDRNAME}"
@@ -105,7 +107,7 @@ stop() {
 # gets called by watchdog to restart vdr
 # and possibly reload modules
 watchdogrestart() {
-	load_functions watchdogrestart
+	load_functions
 
 	export WATCHDOG_RESTART="1"
 	/etc/init.d/vdr --nodeps stop

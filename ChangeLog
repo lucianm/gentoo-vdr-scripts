@@ -2,6 +2,11 @@
 # $Id$
 
   21 May 2008; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-10-chuid.sh, etc/init.d/vdr,
+  usr/share/vdr/inc/message-functions.sh:
+  Simplified code.
+
+  21 May 2008; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/watchdog-restart-20-modules.sh, usr/sbin/Makefile,
   +usr/sbin/dvb-reload-modules:
   Moved code to reload dvb modules into a seperate executable called
