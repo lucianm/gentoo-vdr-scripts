@@ -3,6 +3,10 @@
 
   21 May 2008; Matthias Schwarzott <zzam@gentoo.org>
   vdrplugin-rebuild/vdrplugin-rebuild:
+  Do not produce errors when no plugins were skipped at last start.
+
+  21 May 2008; Matthias Schwarzott <zzam@gentoo.org>
+  vdrplugin-rebuild/vdrplugin-rebuild:
   Allow to only merge plugins that are enabled, or ones that were skipped at
   last vdr start.
 

@@ -271,6 +271,11 @@ else
 	C_RED=''
 fi
 
+if [[ ${R_OPTION_SKIPPED} == 1 && ! -f ${R_PLUGINS_SKIPPED} ]]; then
+	echo -e "${C_BOLD}${C_GREEN}No Plugins skipped, nothing todo${C_NORM}"
+	exit 0
+fi
+
 R_CMD="$1"
 shift
 R_EMERGE_OPTS="$@"
