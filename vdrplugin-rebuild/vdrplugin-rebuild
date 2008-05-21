@@ -227,19 +227,6 @@ EOF
 
 }
 
-check_validity() {
-	local package=${1} strict=${2:-0} ret=1
-
-	[[ ${strict} = 0 ]] && package_valid ${package} && ret=0
-	[[ ${strict} = 1 ]] && package_valid_strict ${package} && ret=0
-	
-	if [[ ${ret} != 0 ]]; then
-		echo "** Please pass the fully qualified package. For example:"
-		echo "** media-plugins/vdr-femon-0.9.1"
-		exit 1
-	fi
-}
-
 while [ -n "$1" ]; do
 	
 	case "$1" in
