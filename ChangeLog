@@ -2,6 +2,11 @@
 # $Id$
 
   21 May 2008; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/inc/commands-functions.sh,
+  usr/share/vdr/inc/language-functions.sh:
+  Simplified code.
+
+  21 May 2008; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/pre-start-10-chuid.sh, etc/init.d/vdr,
   usr/share/vdr/inc/message-functions.sh:
   Simplified code.

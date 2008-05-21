@@ -6,6 +6,8 @@
 # At the moment only used for choosing localized commands.conf-files.
 
 read_vdr_language() {
+	[ -n ${VDR_LANGUAGE} ] && return
+
 	local OSDLANG
 	local LANG_TAB
 	if [ -f /etc/vdr/setup.conf ]; then

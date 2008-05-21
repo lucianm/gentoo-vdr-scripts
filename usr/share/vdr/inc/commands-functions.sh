@@ -6,12 +6,10 @@ include language-functions
 # This merged file can then be used by the vdr process.
 
 merge_commands_conf() {
-	[ -z "${VDR_LANGUAGE}" ] && read_vdr_language
+	read_vdr_language
 
 	local CONFIG="${CONFIG:-/etc/vdr}"
-	local sdir="${1}"
-	local destfile="${2}"
-	local order="${3}"
+	local sdir="${1}" destfile="${2}" order="${3}"
 	
 	local bname=${destfile##*/}
 	local mergedfile="/var/vdr/merged-config-files/${bname}"
@@ -32,8 +30,7 @@ merge_commands_conf() {
 EOT
 	test -d "${sdir}" || return 1
 	SFILES=$(echo ${sdir}/*.conf)
-	local f
-	local inputf
+	local f= inputf=
 	for f in ${SFILES}; do
 		[ -f "${f}" ] || continue
 		inputf="${f}"
