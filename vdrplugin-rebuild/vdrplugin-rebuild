@@ -29,6 +29,11 @@ R_PORTDIR=`${R_PORTAGEQ} portdir`
 R_VDBPATH=`${R_PORTAGEQ} vdb_path`
 R_OPTION_X=0;
 R_OPTION_C=0;
+R_OPTION_ENABLED=0;
+R_OPTION_SKIPPED=0;
+
+R_PLUGIN_ENABLE="${ROOT}/etc/conf.d/vdr.plugins"
+R_PLUGINS_SKIPPED="${ROOT}/var/vdr/tmp/plugins_skipped_ALL"
 
 eerror() {
 	echo -e "${C_BOLD}${C_RED}** ${@}.${C_NORM}"
@@ -57,27 +62,24 @@ package_exists() {
 }
 
 db_plug_exists() {
-	local package=${1} dbfile
+	local package=${1} dbfile=${R_DBPATH}/${package/\//-}
 
-	dbfile=${R_DBPATH}/${package/\//-}
-
-	[[ -e ${dbfile} ]] && grep -q VDRPLUGIN_DB ${dbfile} && return 0
+	[[ -e ${dbfile} ]] && grep -q VDRPLUGIN_DB "${dbfile}" && return 0
 	return 1
 }
 
 db_plug_is_good() {
-	local package=${1} dbfile
-	dbfile=${R_DBPATH}/${package/\//-}
+	local package=${1} dbfile=${R_DBPATH}/${package/\//-}
 	grep -q ^EBUILD= "${dbfile}" && return 0
 	return 1
 }
 
 db_plug_list() {
-	local dbfile line auto pkg a=0 b=0 ebuild ebuild_v
+	local dbfile line auto pkg a=0 b=0 ebuild ebuild_v shortname
 
-	for dbfile in $(find /usr/share/vdr/vdrplugin-rebuild/ -type f); do
-		grep -q VDRPLUGIN_DB=1 ${dbfile} || continue
-		eval $(source ${dbfile}; echo ebuild=${EBUILD}; echo ebuild_v=${EBUILD_V})
+	for dbfile in $(find "${R_DBPATH}" -type f); do
+		grep -q VDRPLUGIN_DB=1 "${dbfile}" || continue
+		eval $(source "${dbfile}"; echo ebuild=${EBUILD}; echo ebuild_v=${EBUILD_V})
 
 		auto=1
 
@@ -87,6 +89,22 @@ db_plug_list() {
 				echo "You need to run \"vdrplugin-rebuild populate\""
 			} >&2
 			exit 1
+		fi
+
+		shortname=${ebuild#*/}
+
+		if [[ ${R_OPTION_ENABLED} == 1 ]]; then
+			# match fixed strings, whole line
+			if ! fgrep -q -x ${shortname#vdr-} "${R_PLUGIN_ENABLE}"; then
+				# do not merge if not enabled
+				auto=0
+			fi
+		fi
+
+		if [[ ${R_OPTION_SKIPPED} == 1 ]]; then
+			if ! fgrep -q -x ${shortname#vdr-} "${R_PLUGINS_SKIPPED}"; then
+				auto=0
+			fi
 		fi
 
 		if [[ ${R_OPTION_X} == 1 ]]; then
@@ -130,8 +148,7 @@ db_plug_list() {
 # legacy stuff - should not be needed normally
 
 db_plug_add() {
-	local package=${1}
-	dbfile=${R_DBPATH}/${package/\//-}
+	local package=${1} dbfile=${R_DBPATH}/${package/\//-}
 
 	if db_plug_exists ${package} && db_plug_is_good ${package}; then
 		echo -e "${C_BOLD}** Plugin ${package} already exists in vdrplugindb.${C_NORM}"
@@ -146,7 +163,7 @@ db_plug_add() {
 			fi
 			local ebuild=${package%-[0-9]*}
 			local ebuild_v="${package#${ebuild}-}"
-			cat <<-EOT > ${R_DBPATH}/${package/\//-}
+			cat <<-EOT > "${dbfile}"
 				VDRPLUGIN_DB=1
 				CREATOR=vdrplugin-rebuild-POPULATE
 				EBUILD=${ebuild}
@@ -215,6 +232,8 @@ Where options are:
 	-X       - Emerge based on package names,
 	           not exact versions.
 	-C       - Disable all coloured output.
+	-e       - Only merge enabled plugins.
+	-s       - Only merge plugins that were skipped at last vdr start.
 
 Where action is one of:
 	list     - List packages to auto-rebuild.
@@ -232,6 +251,8 @@ while [ -n "$1" ]; do
 	case "$1" in
 		-X) R_OPTION_X='1';;
 		-C) R_OPTION_C='1';;
+		-e) R_OPTION_ENABLED='1';;
+		-s) R_OPTION_SKIPPED='1';;
 		-*) phelp; exit 1;;
 		*) break;;
 	esac

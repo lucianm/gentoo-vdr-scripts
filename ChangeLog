@@ -3,6 +3,11 @@
 
   21 May 2008; Matthias Schwarzott <zzam@gentoo.org>
   vdrplugin-rebuild/vdrplugin-rebuild:
+  Allow to only merge plugins that are enabled, or ones that were skipped at
+  last vdr start.
+
+  21 May 2008; Matthias Schwarzott <zzam@gentoo.org>
+  vdrplugin-rebuild/vdrplugin-rebuild:
   Remove dead code.
 
   21 May 2008; Matthias Schwarzott <zzam@gentoo.org>
