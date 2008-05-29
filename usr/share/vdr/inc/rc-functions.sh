@@ -7,8 +7,6 @@
 #   Starting and stopping of external watchdog
 #
 
-include message-functions
-
 : ${vdr_rc_dir:=/usr/share/vdr/rcscript}
 : ${vdr_old_rc_dir:=/usr/lib/vdr/rcscript}
 : ${SCRIPT_DEBUG_LEVEL:=0}
