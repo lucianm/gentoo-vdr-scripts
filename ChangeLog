@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  29 May 2008; Matthias Schwarzott <zzam@gentoo.org>
+  -usr/sbin/vdr-inform-watchdog.sh, usr/sbin/vdr-watchdogd:
+  Rewrite of vdr-watchdog.
+
   21 May 2008; Matthias Schwarzott <zzam@gentoo.org>
   vdrplugin-rebuild/vdrplugin-rebuild:
   Do not produce errors when no plugins were skipped at last start.

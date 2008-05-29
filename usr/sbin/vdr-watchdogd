@@ -13,43 +13,86 @@ exec < /dev/null
 exec >/dev/null 2>&1
 
 . /etc/conf.d/vdr.watchdogd
+DEBUG=1
+[ "$1" = "--debug" ] && DEBUG=1
+
 if [ "${DEBUG}" = 1 ]; then
-	exec >/tmp/vdrwatchdogd-log 2>&1
+	exec >/tmp/vdr-watchdogd.log 2>&1
 	date
 	set -x
 fi
+
+exit_handler() {
+	run=0
+	enabled=0
+}
+
+on_handler() {
+	log "Enabled by USR1"
+	enabled=1
+}
+
+off_handler() {
+	log "Disabled by USR2"
+	enabled=0
+}
+
+noop() {
+	:
+}
+
+trap exit_handler INT QUIT TERM
+trap on_handler USR1
+trap off_handler USR2
+trap noop HUP
+
+# hack to allow getting a signal handled immediately
+run_child() {
+	$@ &
+	child_pid=$!
+	wait || kill $child_pid
+}
 
 log() {
 	logger -i -t vdrwatchdog -p local0.info	"$@"
 }
 
-do_restart() {
+trigger_restart() {
 	log "restarting VDR"
 	/etc/init.d/vdr watchdogrestart
 	log "VDR has been restarted"
-	/usr/bin/svdrpsend.pl mesg "Warning: vdr was restarted by watchdog." &
+	svdrpsend.pl mesg "Warning: vdr was restarted by watchdog." &
 }
 
-is_paused() {
-	[ -f /tmp/vdr-nowatchdog ]
+is_enabled() {
+	[ $enabled = 0 ] && return 1
+	[ -f /tmp/vdr-nowatchdog ] && return 1
+	
+	return 0
 }
 
 VDR=/usr/bin/vdr
 
-log "Starting vdrwatchdog"
-while true; do
-	pid=$(pidof -s ${VDR})
-	if [ -n "${pid}" ]; then
-		/usr/bin/wait_on_pid "${pid}"
-	fi
+main() {
+	log "Starting vdrwatchdog"
+	run=1
+	enabled=1
+	while [ "${run}" = "1" ]; do
+		if ! is_enabled; then
+			run_child sleep 10
+			continue
+		fi
 
-	while is_paused; do
-		sleep 10
+		pid=$(pidof -s ${VDR})
+		if [ -n "${pid}" ]; then
+			run_child wait_on_pid "${pid}"
+			# pid exited, check at next loop
+		else
+			trigger_restart
+		fi
 	done
-	
-	if ! pidof ${VDR} >/dev/null; then
-		do_restart
-	fi
-done
-log "Exiting vdrwatchdog"
+	log "Exiting vdrwatchdog"
+}
+
+main
 
