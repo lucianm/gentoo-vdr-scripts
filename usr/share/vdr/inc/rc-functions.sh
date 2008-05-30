@@ -12,8 +12,6 @@
 : ${SCRIPT_DEBUG_LEVEL:=0}
 SCRIPT_API=2
 
-pidof=pidof
-
 . /etc/conf.d/vdr.watchdogd
 ENABLE_EXTERNAL_WATCHDOG=${ENABLE_EXTERNAL_WATCHDOG:-yes}
 
@@ -21,7 +19,7 @@ read_caps
 
 test_vdr_process()
 {
-	${pidof} /usr/bin/vdr >/dev/null
+	pidof "${VDR_BIN}" >/dev/null
 }
 
 getvdrversion()
@@ -36,13 +34,16 @@ getvdrversion()
 	esac
 }
 
+[ -z "${VDR_BIN}" ] && VDR_BIN=/usr/bin/vdr
 getvdrversion
 
-init_daemonctrl_params()
+init_params()
 {
-	# init variable for parameters
+	# init variables for vdr/daemonctrl parameters
+	vdr_opts=""
 	daemonctrl_opts=""
 }
+
 
 add_daemonctrl_param()
 {
@@ -50,12 +51,6 @@ add_daemonctrl_param()
 		daemonctrl_opts="${daemonctrl_opts} '$1'"
 		shift;
 	done
-}
-
-init_params()
-{
-	# init variable for parameters
-	vdr_opts=""
 }
 
 add_param()

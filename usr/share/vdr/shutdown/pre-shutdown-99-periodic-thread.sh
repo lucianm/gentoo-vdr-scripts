@@ -11,8 +11,7 @@ check_periodic_thread()
 	[ "${ENABLE_SHUTDOWN_PERIODIC_JOBS}" = "yes" ] || return
 
 	# when periodic-thread runs
-	local PIDOF=pidof
-	if ${PIDOF} -x vdrshutdown-periodic-thread.sh >/dev/null; then
+	if pidof -x vdrshutdown-periodic-thread.sh >/dev/null; then
 		# stop shutdown which can be forced
 		shutdown_abort_can_force "periodic jobs are waiting"
 

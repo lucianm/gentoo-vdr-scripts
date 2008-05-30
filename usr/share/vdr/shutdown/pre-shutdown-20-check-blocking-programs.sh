@@ -3,9 +3,8 @@ SHUTDOWN_CHECK_PROGRAMS="emerge make gcc cc1 transcode vcdimager mencoder tosvcd
 SHUTDOWN_CHECK_PROGRAMS="${SHUTDOWN_CHECK_PROGRAMS} tcmplex-panteltje vdr2ac3.sh dvdauthor mkisofs"
 SHUTDOWN_CHECK_PROGRAMS="${SHUTDOWN_CHECK_PROGRAMS} growisofs cdrdao cdrecord"
 
-PIDOF=pidof
 for PROG in ${SHUTDOWN_CHECK_PROGRAMS} ${SHUTDOWN_CHECK_ADDITIONAL_PROGRAMS}; do
-	if ${PIDOF} -x ${PROG} >/dev/null; then
+	if pidof -x ${PROG} >/dev/null; then
 		# stop shutdown
 		shutdown_abort_can_force "${PROG} is running"
 		break

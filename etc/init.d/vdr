@@ -37,15 +37,9 @@ start() {
 	rm -f "${VDR_LOG_FILE}"
 	> "${VDR_LOG_FILE}"
 
-
 	einfo "Preparing start of vdr:"
 	init_params
-	init_daemonctrl_params
-
-	[ -z "${VDR_BIN}" ] && VDR_BIN=/usr/bin/vdr
-
 	add_daemonctrl_param --start --chdir ~vdr --exec ${VDR_BIN}
-
 	
 	load_addons_prefixed pre-start || return 1
 
@@ -108,7 +102,6 @@ start() {
 
 stop() {
 	INIT_PHASE="stop"
-	[ -z "${VDR_BIN}" ] && VDR_BIN=/usr/bin/vdr
 	load_functions
 	load_addons_prefixed pre-stop
 
