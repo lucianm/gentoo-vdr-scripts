@@ -96,7 +96,6 @@ start() {
 		/usr/share/vdr/bin/vdr-bg.sh svdrpsend.pl mesg "Errors: Go to Commands/View VDR Start Log"
 	fi
 
-	finish_vdr_start_log
 	return $exitcode
 }
 
