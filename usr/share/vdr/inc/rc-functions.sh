@@ -4,16 +4,12 @@
 #   manage all vdr-command-line-options
 #   Loading of rc-script addons
 #   General routine to wait for conditions (svdrp/existing dvb-device-nodes ...)
-#   Starting and stopping of external watchdog
 #
 
 : ${vdr_rc_dir:=/usr/share/vdr/rcscript}
 : ${vdr_old_rc_dir:=/usr/lib/vdr/rcscript}
 : ${SCRIPT_DEBUG_LEVEL:=0}
 SCRIPT_API=2
-
-. /etc/conf.d/vdr.watchdogd
-ENABLE_EXTERNAL_WATCHDOG=${ENABLE_EXTERNAL_WATCHDOG:-yes}
 
 read_caps
 
@@ -199,31 +195,6 @@ wait_for_multiple_condition() {
 		esac
 	done
 	return $ret
-}
-
-stop_watchdog() {
-	if [ "${ENABLE_EXTERNAL_WATCHDOG}" = "yes" ]; then
-		ebegin "Stopping vdr watchdog"
-		start-stop-daemon --stop --pidfile /var/run/vdrwatchdog.pid --name vdr-watchdogd
-		eend $? "failed stopping watchdog"
-	else
-		# Also stop watchdog if conf was changed to disabled while it was running
-		start-stop-daemon --stop --pidfile /var/run/vdrwatchdog.pid --name vdr-watchdogd --quiet
-	fi
-}
-
-start_watchdog() {
-	if [ "${ENABLE_EXTERNAL_WATCHDOG}" = "yes" ]; then
-		ebegin "Starting vdr watchdog"
-		start-stop-daemon \
-			--start \
-			--background \
-			--make-pidfile \
-			--pidfile /var/run/vdrwatchdog.pid \
-			--exec /usr/sbin/vdr-watchdogd \
-			--name vdr-watchdogd
-		eend $? "failed starting vdr watchdog"
-	fi
 }
 
 error_mesg() {

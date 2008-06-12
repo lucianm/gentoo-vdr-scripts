@@ -4,6 +4,8 @@
 
 opts="${opts} watchdogrestart"
 
+. /etc/conf.d/vdr.watchdogd
+
 load_functions() {
 	cd /
 	. /usr/share/vdr/inc/functions.sh
@@ -27,7 +29,7 @@ depend() {
 	after checkroot
 }
 
-start() {
+start_vdr() {
 	INIT_PHASE="start"
 
 	load_functions
@@ -99,7 +101,7 @@ start() {
 	return $exitcode
 }
 
-stop() {
+stop_vdr() {
 	INIT_PHASE="stop"
 	load_functions
 	load_addons_prefixed pre-stop
@@ -115,22 +117,55 @@ stop() {
 	return $exitcode
 }
 
+start_watchdog() {
+	[ "${ENABLE_EXTERNAL_WATCHDOG:-yes}" = "yes" ] || return 0
+	ebegin "Starting vdr watchdog"
+	start-stop-daemon \
+		--start \
+		--background \
+		--make-pidfile \
+		--pidfile /var/run/vdrwatchdog.pid \
+		--exec /usr/sbin/vdr-watchdogd \
+		--name vdr-watchdogd
+	eend $? "failed starting vdr watchdog"
+	return 0
+}
+
+
+stop_watchdog() {
+	if [ "${ENABLE_EXTERNAL_WATCHDOG:-yes}" = "yes" ]; then
+		ebegin "Stopping vdr watchdog"
+		start-stop-daemon --stop --pidfile /var/run/vdrwatchdog.pid --name vdr-watchdogd
+		eend $? "failed stopping watchdog"
+	else
+		# Also stop watchdog if conf was changed to disabled while it was running
+		start-stop-daemon --stop --pidfile /var/run/vdrwatchdog.pid --name vdr-watchdogd --quiet
+	fi
+	return 0
+}
+
+start() {
+	start_vdr || return 1
+	start_watchdog || return 2
+}
+
+stop() {
+	stop_watchdog || return 2
+	stop_vdr
+}
+
 # gets called by watchdog to restart vdr
 # and possibly reload modules
 watchdogrestart() {
 	load_functions
 
-	export WATCHDOG_RESTART="1"
-	/etc/init.d/vdr --nodeps stop
+	stop_vdr
 	if test_vdr_process; then
 		sleep 2
 		test_vdr_process && killall -9 vdr
 	fi
 
-	/etc/init.d/vdr zap
-
 	load_addons_prefixed watchdog-restart
 
-	/etc/init.d/vdr start
-	unset WATCHDOG_RESTART
+	start_vdr
 }
