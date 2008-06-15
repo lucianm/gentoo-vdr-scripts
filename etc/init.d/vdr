@@ -159,7 +159,7 @@ stop() {
 watchdogrestart() {
 	load_functions
 
-	stop_vdr
+	( stop_vdr )
 	if test_vdr_process; then
 		sleep 2
 		test_vdr_process && killall -9 vdr
@@ -167,5 +167,5 @@ watchdogrestart() {
 
 	load_addons_prefixed watchdog-restart
 
-	start_vdr
+	( start_vdr )
 }
