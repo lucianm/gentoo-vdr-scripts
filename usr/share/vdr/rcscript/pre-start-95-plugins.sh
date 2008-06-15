@@ -1,15 +1,14 @@
 # $Id$
 
-include plugin-functions
 
 addon_main() {
+	include plugin-functions
+	init_plugin_loader
+	load_plugin_list
+
 	local PLUGIN
-	local SKIP_COUNT=0
-	local PLUGIN_COUNT=0
 
 	for PLUGIN in ${PLUGINS}; do
-		PLUGIN_COUNT=$(($PLUGIN_COUNT+1))
-
 		# init parameters
 		init_plugin_params ${PLUGIN}
 
@@ -20,12 +19,6 @@ addon_main() {
 		add_plugin_params_to_vdr_call
 
 		store_loaded_plugin ${PLUGIN}
-
-		# count the skipped ones
-		if [ "${SKIP_PLUGIN}" = "1" ]; then
-			SKIP_COUNT=$(($SKIP_COUNT+1))
-		fi
-
 	done
 
 	finish_plugin_loader

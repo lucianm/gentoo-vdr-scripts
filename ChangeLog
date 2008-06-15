@@ -1,6 +1,14 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  15 Jun 2008; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/post-stop-05-plugins.sh,
+  usr/share/vdr/rcscript/post-start-05-plugins.sh,
+  usr/share/vdr/rcscript/pre-stop-95-plugins.sh,
+  usr/share/vdr/rcscript/pre-start-95-plugins.sh, etc/init.d/vdr,
+  usr/share/vdr/inc/plugin-functions.sh:
+  Cleanup of plugin loading code.
+
   15 Jun 2008; Matthias Schwarzott <zzam@gentoo.org> etc/init.d/vdr:
   Fix watchdogrestart for now by running stop and start in subshells.
 

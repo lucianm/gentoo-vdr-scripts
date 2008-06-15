@@ -30,8 +30,6 @@ depend() {
 }
 
 start_vdr() {
-	INIT_PHASE="start"
-
 	load_functions
 	local exitcode
 
@@ -102,7 +100,6 @@ start_vdr() {
 }
 
 stop_vdr() {
-	INIT_PHASE="stop"
 	load_functions
 	load_addons_prefixed pre-stop
 
