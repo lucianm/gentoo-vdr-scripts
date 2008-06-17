@@ -57,28 +57,21 @@ start_vdr() {
 
 	debug_msg "  CMDLINE:" start-stop-daemon "${daemonctrl_opts}" "--" "${vdr_opts}"
 
-	if [ -z "${TERMINAL}" ]; then
-		eval start-stop-daemon ${daemonctrl_opts} \
-			-- --daemon ${vdr_opts}
-		exitcode=$?
-	else
-		TERMINAL=${TERMINAL##/dev/tty}
-		TERMINAL_DEVICE=/dev/tty${TERMINAL}
+	local _openvt= openvt_opts= TERM_DEV=/dev/tty${TERMINAL}
+	if [ -n "${TERMINAL}" -a -e "${TERM_DEV}" ]; then
+		[ "${SWITCH_TO_TERMINAL}" = "yes" ] && openvt_opts="-s"
+		_openvt="openvt -c ${TERMINAL} ${openvt_opts} --"
+
 		{
 			clear
-			einfo "Starting vdr"
-		} >${TERMINAL_DEVICE}
-
-		# strange commandline, to be fixed in next versions
-		openvt_opts=""
-		if [ "${SWITCH_TO_TERMINAL}" = "yes" ]; then
-			openvt_opts="${openvt_opts} -s"
-		fi
-		eval openvt -c ${TERMINAL} ${openvt_opts} -- \
-			start-stop-daemon ${daemonctrl_opts} \
-			-- ${vdr_opts}
-		exitcode=$?
+			einfo "Starting ${VDRNAME}"
+		} >${TERM_DEV}
+	else
+		add_param --daemon
 	fi
+
+	eval ${_openvt} start-stop-daemon ${daemonctrl_opts} -- ${vdr_opts}
+	exitcode=$?
 	eend $exitcode "Failed to start vdr."
 
 	# TODO: Anything todo if starting fails? cleanups?
@@ -87,11 +80,12 @@ start_vdr() {
 		if [ "$?" != "0" ]; then
 			exitcode=1
 		fi
-	fi
 
-	# wenn nachrichten vorhanden sind
-	if [ -s "${VDR_LOG_FILE}" ]; then
-		/usr/share/vdr/bin/vdr-bg.sh svdrpsend.pl mesg "Errors: Go to Commands/View VDR Start Log"
+		# wenn nachrichten vorhanden sind
+		if [ -s "${VDR_LOG_FILE}" ]; then
+			/usr/share/vdr/bin/vdr-bg.sh svdrpsend.pl mesg "Errors: Go to Commands/View VDR Start Log"
+		fi
+
 	fi
 
 	return $exitcode
