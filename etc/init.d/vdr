@@ -6,10 +6,19 @@ opts="${opts} watchdogrestart"
 
 . /etc/conf.d/vdr.watchdogd
 
-load_functions() {
-	cd /
+common_init() {
+	vdr_home=/var/vdr
+	cd ${vdr_home}
+
 	. /usr/share/vdr/inc/functions.sh
 	include rc-functions
+	include plugin-functions
+	VDR_LOG_FILE=/var/vdr/tmp/vdr-start-log
+}
+
+clear_logfile() {
+	rm -f "${VDR_LOG_FILE}"
+	printf "" > "${VDR_LOG_FILE}"
 }
 
 #
@@ -30,33 +39,22 @@ depend() {
 }
 
 start_vdr() {
-	load_functions
+	common_init
 	local exitcode
-
-	VDR_LOG_FILE=/var/vdr/tmp/vdr-start-log
-	rm -f "${VDR_LOG_FILE}"
-	> "${VDR_LOG_FILE}"
 
 	einfo "Preparing start of vdr:"
 	init_params
 	add_daemonctrl_param --start --chdir ~vdr --exec ${VDR_BIN}
+	init_plugin_loader start
+	clear_logfile
+
 	
 	load_addons_prefixed pre-start || return 1
 
 	ebegin "Starting ${VDRNAME}"
 
-	#
-	# finally start vdr
-	# 
 	unset MAIL
-
-	vdr_home=/var/vdr
-
-	export LOGNAME=vdr
-	export USER=vdr
-	export HOME=${vdr_home}
-
-	cd ${vdr_home}
+	export LOGNAME=vdr USER=vdr HOME="${vdr_home}"
 
 	debug_msg "  CMDLINE:" start-stop-daemon "${daemonctrl_opts}" "--" "${vdr_opts}"
 
@@ -84,6 +82,7 @@ start_vdr() {
 	fi
 	eend $exitcode "Failed to start vdr."
 
+	# TODO: Anything todo if starting fails? cleanups?
 	if [ "${exitcode}" = "0" ]; then
 		load_addons_prefixed post-start
 		if [ "$?" != "0" ]; then
@@ -100,11 +99,12 @@ start_vdr() {
 }
 
 stop_vdr() {
-	load_functions
+	common_init
+	init_plugin_loader stop
+
 	load_addons_prefixed pre-stop
 
 	ebegin "Stopping ${VDRNAME}"
-
 	# Use --name here to allow us to kill vdr even after a new emerge
 	start-stop-daemon --stop --quiet --retry 15 --exec ${VDR_BIN} 
 	exitcode=$?
@@ -154,7 +154,7 @@ stop() {
 # gets called by watchdog to restart vdr
 # and possibly reload modules
 watchdogrestart() {
-	load_functions
+	common_init
 
 	( stop_vdr )
 	if test_vdr_process; then
