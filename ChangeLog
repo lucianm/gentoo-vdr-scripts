@@ -1,6 +1,11 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  17 Jun 2008; Matthias Schwarzott <zzam@gentoo.org> etc/init.d/vdr,
+  usr/share/vdr/inc/functions.sh, usr/share/vdr/inc/plugin-functions.sh,
+  usr/share/vdr/inc/rc-functions.sh:
+  No longer check old location for addons and the caps file.
+
   17 Jun 2008; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/post-stop-05-plugins.sh,
   usr/share/vdr/rcscript/post-start-05-plugins.sh,

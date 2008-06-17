@@ -7,7 +7,6 @@
 #
 
 : ${vdr_rc_dir:=/usr/share/vdr/rcscript}
-: ${vdr_old_rc_dir:=/usr/lib/vdr/rcscript}
 : ${SCRIPT_DEBUG_LEVEL:=0}
 SCRIPT_API=2
 
@@ -81,29 +80,20 @@ load_addons_prefixed()
 
 load_addon()
 {
-	local addon=${1}
-	local call_func=${2:-addon_main}
-	eval "${call_func}() { :; }"
+	local addon=${1} func=${2:-addon_main}
+	local fname="${vdr_rc_dir}/${addon}.sh"
+	[ -f ${fname} ] || fname="${addon}"
+	[ -f "${fname}" ] || return 0
 
-	local fname
-	if [ "${addon#/}" != "${addon}" ] && [ -f "${addon}" ]; then
-		fname="${addon}"
-	elif [ -f "${vdr_rc_dir}/${addon}.sh" ]; then
-		fname="${vdr_rc_dir}/${addon}.sh"
-	elif [ -f "${vdr_old_rc_dir}/${addon}.sh" ]; then
-		fname="${vdr_old_rc_dir}/${addon}.sh"
-	else
-		return 0
-	fi
+	# fallback
+	eval "${func}() { :; }"
 	
 	# source addon
 	sh -n "${fname}" || return 1
 	. "${fname}" || return 1
 
 	# execute requested function
-	eval ${call_func}
-	local ret="$?"
-	return $ret
+	eval ${func}
 }
 
 has_debuglevel() {

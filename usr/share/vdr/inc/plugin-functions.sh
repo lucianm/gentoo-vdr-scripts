@@ -172,19 +172,24 @@ add_plugin_params_to_vdr_call() {
 
 loop_all_plugins() {
 	local PLUGIN func="$1" prepare_cmdline=0
-	[ "$func" = "plugin_pre_vdr_start" ] && prepare_cmdline=1
 
-	for PLUGIN in ${PLUGINS}; do
-		SKIP_PLUGIN=0
-		if [ "$prepare_cmdline" = "1" ]; then
+	case "$func" in
+	plugin_pre_vdr_start)
+		for PLUGIN in ${PLUGINS}; do
+			SKIP_PLUGIN=0
 			vdrplugin_opts="--plugin=${PLUGIN}"
-		fi
-		run_plugin_addon "${PLUGIN}" "${func}" || return 1
-		if [ "$prepare_cmdline" = "1" -a "${SKIP_PLUGIN}" = "0" ]; then
-	                add_plugin_params_to_vdr_call
+			run_plugin_addon "${PLUGIN}" "${func}" || return 1
+			[ "${SKIP_PLUGIN}" = 1 ] && continue
+
+        	        add_plugin_params_to_vdr_call
 			echo "${PLUGIN}" >> "${LOADED_PLUGINS_FILE}"
-		fi
-	done
+		done
+		;;
+	*)
+		for PLUGIN in ${PLUGINS}; do
+			run_plugin_addon "${PLUGIN}" "${func}" || return 1
+		done
+		;;
+	esac
 	return 0
 }
-

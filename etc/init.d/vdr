@@ -39,7 +39,6 @@ depend() {
 }
 
 start_vdr() {
-	common_init
 	local exitcode
 
 	einfo "Preparing start of vdr:"
@@ -99,7 +98,6 @@ start_vdr() {
 }
 
 stop_vdr() {
-	common_init
 	init_plugin_loader stop
 
 	load_addons_prefixed pre-stop
@@ -142,11 +140,13 @@ stop_watchdog() {
 }
 
 start() {
+	common_init
 	start_vdr || return 1
 	start_watchdog || return 2
 }
 
 stop() {
+	common_init
 	stop_watchdog || return 2
 	stop_vdr
 }

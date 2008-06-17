@@ -18,12 +18,7 @@ include()
 # e.g. svdrp-down-command / some patches
 read_caps()
 {
-	local capfile
-	for capfile in /usr/share/vdr/capabilities.sh /usr/lib/vdr/rcscript/vdr-capabilities.sh; do
-		if [ -f "${capfile}" ]; then
-			. ${capfile}
-			break
-		fi
-	done
+	local capfile=/usr/share/vdr/capabilities.sh
+	[ -f "${capfile}" ] && . ${capfile}
 }
 
