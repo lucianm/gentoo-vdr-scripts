@@ -1,6 +1,11 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  19 Jun 2008; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/watchdog-restart-20-modules.sh,
+  usr/sbin/dvb-reload-modules:
+  Add commands for reload and for only unload of modules.
+
   17 Jun 2008; Matthias Schwarzott <zzam@gentoo.org> etc/init.d/vdr:
   Simplify openvt usage.
 

@@ -97,7 +97,25 @@ do_load_all() {
 	done
 }
 
-do_unload_all
-do_load_all
+show_help() {
+	echo "Usage:"
+	echo "  $0 unload"
+	echo "  $0 reload"
+}
+
+case $1 in
+	unload)
+		do_unload_all
+		;;
+	reload)
+		do_unload_all
+		do_load_all
+		;;
+	*)
+		show_help
+		exit 1
+		;;
+esac
+
 exit 0
 
