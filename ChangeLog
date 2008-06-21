@@ -3,6 +3,10 @@
 
   21 Jun 2008; Matthias Schwarzott <zzam@gentoo.org>
   vdrplugin-rebuild/vdrplugin-rebuild:
+  Do not print ignored plugins.
+
+  21 Jun 2008; Matthias Schwarzott <zzam@gentoo.org>
+  vdrplugin-rebuild/vdrplugin-rebuild:
   Added option to only rebuild packages that have a different header
   checksum than current vdr.
 

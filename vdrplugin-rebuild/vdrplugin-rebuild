@@ -146,12 +146,12 @@ db_plug_list() {
 		done
 	fi
 
-	if [[ -n ${toignore[@]} ]]; then
-		echo -e "${C_BOLD}${C_GREEN}** Packages which I will ignore are:${C_NORM}"
-		for pkg in ${toignore[@]}; do
-			echo -e "\t${pkg}"
-		done
-	fi
+	#if [[ -n ${toignore[@]} ]]; then
+	#	echo -e "${C_BOLD}${C_GREEN}** Packages which I will ignore are:${C_NORM}"
+	#	for pkg in ${toignore[@]}; do
+	#		echo -e "\t${pkg}"
+	#	done
+	#fi
 }
 
 # legacy stuff - should not be needed normally
