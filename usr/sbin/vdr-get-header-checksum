@@ -1,0 +1,58 @@
+#!/bin/sh
+
+die() {
+	echo "$@" 1>&2
+	exit 1
+}
+
+verbose() {
+	[ "$verbose" -ge "1" ] && echo "$@" 1>&2
+}
+
+show_help() {
+	echo "Usage:"
+	echo "  vdr-get-header-checksum [-v] [-h]"
+}
+
+
+verbose=0
+
+for p; do
+	case "$p" in
+	-v)	verbose=1 ;;
+	-h)	show_help
+		exit 0;;
+	*)	show_help
+		exit 1;;
+	esac
+done
+
+include_dir=/usr/include/vdr
+
+verbose "Creating vdr header files checksum of ${include_dir}"
+
+plugin_dir="$(awk '/^PLUGINLIBDIR/{ print $3 }' ${include_dir}/Make.config)"
+if [ -n "${plugin_dir}" ]; then
+	plugin_dir=/usr/lib/vdr/plugins
+fi
+
+vdr_checksum_dir="${plugin_dir%/plugins}/checksums"
+vdr_checksum="${vdr_checksum_dir}/header-md5-vdr"
+
+# use pre-existing checksum file, no need to do more work :)
+if [ -f "${vdr_checksum}" ]; then
+	verbose "Using existing checksum from ${vdr_checksum}"
+	cat "${vdr_checksum}"
+else
+	verbose "Creating checksum from files"
+
+	type md5sum >/dev/null 2>&1 || die "Could not find command md5sum."
+	type sort >/dev/null 2>&1 || die "Could not find command sort"
+
+	cd ${include_dir} || die "Could not cd to ${include_dir}"
+	md5sum *.h libsi/*.h|LC_ALL=C sort --key=2
+fi
+
+verbose "Checksum created."
+exit 0
+

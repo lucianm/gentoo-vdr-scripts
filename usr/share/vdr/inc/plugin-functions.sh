@@ -10,32 +10,6 @@ init_tmp_dirs() {
 	fi
 }
 
-init_header_checksum() {
-	plugin_dir=$(awk '/^PLUGINLIBDIR/{ print $3 }' /usr/include/vdr/Make.config)
-	if [ -n "${plugin_dir}" ]; then
-		plugin_dir=/usr/lib/vdr/plugins
-	fi
-
-	if ! type md5sum >/dev/null 2>&1; then
-		PLUGIN_CHECK_MD5=no
-		return
-	fi
-
-	vdr_checksum_dir="${plugin_dir%/plugins}/checksums"
-	vdr_checksum=${vdr_checksum_dir}/header-md5-vdr
-
-	if [ ! -f "${vdr_checksum}" ]; then
-		vdr_checksum="${PL_TMP}"/header-md5-vdr
-
-		rm -f ${vdr_checksum} 2>/dev/null
-		(
-			cd /usr/include/vdr
-			md5sum *.h libsi/*.h|LC_ALL=C sort --key=2
-		) > ${vdr_checksum}
-	fi
-	PLUGIN_CHECK_MD5=yes
-}
-
 print_skip_header() {
 	if [ "${skip_header_printed}" != "1" ]; then
 		ewarn "  Skipped these plugins:"
@@ -46,8 +20,7 @@ print_skip_header() {
 
 load_plugin_list_start() {
 	rm -f "${LOADED_PLUGINS_FILE}"
-	# needed for plugin patchlevel check
-	init_header_checksum
+	prepare_plugin_checks
 
 	local PLUGIN_CONF=/etc/conf.d/vdr.plugins PLUGIN= line=
 	if [ -f "${PLUGIN_CONF}" ]; then
@@ -100,6 +73,22 @@ init_plugin_loader() {
 	esac
 }
 
+prepare_plugin_checks() {
+	# find plugin dir, needed for multilib ...
+	plugin_dir="$(awk '/^PLUGINLIBDIR/{ print $3 }' /usr/include/vdr/Make.config)"
+	if [ -n "${plugin_dir}" ]; then
+		plugin_dir=/usr/lib/vdr/plugins
+	fi
+
+	# needed for plugin patchlevel check
+	vdr_checksum_dir="${plugin_dir%/plugins}/checksums"
+	vdr_checksum="${PL_TMP}"/header-md5-vdr
+	PLUGIN_CHECK_MD5=no
+	if vdr-get-header-checksum > "${vdr_checksum}"; then
+		PLUGIN_CHECK_MD5=yes
+	fi
+}
+
 check_plugin() {
 	local PLUGIN="${1}"
 	local plugin_file="${plugin_dir}/libvdr-${PLUGIN}.so.${APIVERSION}"
@@ -111,7 +100,7 @@ check_plugin() {
 
 	local plugin_checksum_file=${vdr_checksum_dir}/header-md5-vdr-${PLUGIN}
 	if [ "${PLUGIN_CHECK_MD5}" = "yes" ] && [ -e "${plugin_checksum_file}" ]; then
-		if ! diff ${vdr_checksum} ${plugin_checksum_file} >/dev/null; then
+		if ! cmp -s ${vdr_checksum} ${plugin_checksum_file}; then
 			skip_plugin "${PLUGIN}" "PATCHLEVEL"
 			return 1
 		fi

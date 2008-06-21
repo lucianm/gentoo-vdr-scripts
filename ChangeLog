@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  21 Jun 2008; Matthias Schwarzott <zzam@gentoo.org> usr/sbin/Makefile,
+  +usr/sbin/vdr-get-header-checksum, usr/share/vdr/inc/plugin-functions.sh:
+  Factored out checksum creation to extra executable.
+
   19 Jun 2008; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/watchdog-restart-20-modules.sh,
   usr/sbin/dvb-reload-modules:
