@@ -42,20 +42,16 @@ start_vdr() {
 	local exitcode
 
 	einfo "Preparing start of vdr:"
+	clear_logfile
 	init_params
 	add_daemonctrl_param --start --chdir ~vdr --exec ${VDR_BIN}
 	init_plugin_loader start
-	clear_logfile
-
 	
 	load_addons_prefixed pre-start || return 1
 
 	ebegin "Starting ${VDRNAME}"
-
 	unset MAIL
 	export LOGNAME=vdr USER=vdr HOME="${vdr_home}"
-
-	debug_msg "  CMDLINE:" start-stop-daemon "${daemonctrl_opts}" "--" "${vdr_opts}"
 
 	local _openvt= openvt_opts= TERM_DEV=/dev/tty${TERMINAL}
 	if [ -n "${TERMINAL}" -a -e "${TERM_DEV}" ]; then
@@ -69,6 +65,8 @@ start_vdr() {
 	else
 		add_param --daemon
 	fi
+
+	debug_msg "  CMDLINE: ${_openvt} start-stop-daemon ${daemonctrl_opts} -- ${vdr_opts}"
 
 	eval ${_openvt} start-stop-daemon ${daemonctrl_opts} -- ${vdr_opts}
 	exitcode=$?

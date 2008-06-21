@@ -1,6 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  21 Jun 2008; Matthias Schwarzott <zzam@gentoo.org> etc/init.d/vdr:
+  Moved clearing of logfile to better place right at start.
+
   21 Jun 2008; Matthias Schwarzott <zzam@gentoo.org> usr/sbin/Makefile,
   +usr/sbin/vdr-get-header-checksum, usr/share/vdr/inc/plugin-functions.sh:
   Factored out checksum creation to extra executable.
