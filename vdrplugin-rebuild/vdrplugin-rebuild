@@ -31,6 +31,7 @@ R_OPTION_X=0;
 R_OPTION_C=0;
 R_OPTION_ENABLED=0;
 R_OPTION_SKIPPED=0;
+R_OPTION_PATCHLEVEL=0;
 
 R_PLUGIN_ENABLE="${ROOT}/etc/conf.d/vdr.plugins"
 R_PLUGINS_SKIPPED="${ROOT}/var/vdr/tmp/plugins_skipped_ALL"
@@ -103,6 +104,14 @@ db_plug_list() {
 
 		if [[ ${R_OPTION_SKIPPED} == 1 ]]; then
 			if ! fgrep -q -x ${shortname#vdr-} "${R_PLUGINS_SKIPPED}"; then
+				auto=0
+			fi
+		fi
+
+		if [[ ${R_OPTION_PATCHLEVEL} == 1 ]]; then
+			local p_chksum="${vdr_checksum_dir}/header-md5-${shortname}"
+			if cmp -s "${vdr_checksum}" "${p_chksum}"; then
+				# do not merge when patchlevel is equal
 				auto=0
 			fi
 		fi
@@ -184,7 +193,7 @@ db_plug_populate() {
 	echo -e "${C_BOLD}${C_GREEN}** Populating database with installed Packages.${C_NORM}"
 	# Lets find them all
 	# chances are we will get a few dupes in here.
-	for pkg in $(grep -l /usr/lib/vdr/plugins/libvdr ${R_VDBPATH}/*/*/CONTENTS); do
+	for pkg in $(grep -l ${vdr_plugin_dir}/libvdr ${R_VDBPATH}/*/*/CONTENTS); do
 		pad=""; x=0;
 		
 		if [[ -z ${pkg//${R_VDBPATH}*} ]]; then
@@ -223,6 +232,17 @@ db_plug_merge() {
 	emerge --oneshot --nodeps ${R_EMERGE_OPTS} ${tomerge[@]}
 }
 
+get_vdr_plugin_dir() {
+	local d
+	d="$(awk '/^PLUGINLIBDIR/{ print $3 }' /usr/include/vdr/Make.config)"
+	if [ -n "${d}" ]; then
+		d=/usr/lib/vdr/plugins
+	fi
+
+	echo "${d}"
+	return 0
+}
+
 phelp() {
 cat << EOF
 vdrplugin-rebuild [options] action [options to emerge]
@@ -234,6 +254,7 @@ Where options are:
 	-C       - Disable all coloured output.
 	-e       - Only merge enabled plugins.
 	-s       - Only merge plugins that were skipped at last vdr start.
+	-p       - Only merge plugins that are not compiled against this vdr.
 
 Where action is one of:
 	list     - List packages to auto-rebuild.
@@ -253,6 +274,7 @@ while [ -n "$1" ]; do
 		-C) R_OPTION_C='1';;
 		-e) R_OPTION_ENABLED='1';;
 		-s) R_OPTION_SKIPPED='1';;
+		-p) R_OPTION_PATCHLEVEL='1';;
 		-*) phelp; exit 1;;
 		*) break;;
 	esac
@@ -271,9 +293,21 @@ else
 	C_RED=''
 fi
 
+vdr_plugin_dir=$(get_vdr_plugin_dir)
+
 if [[ ${R_OPTION_SKIPPED} == 1 && ! -f ${R_PLUGINS_SKIPPED} ]]; then
 	echo -e "${C_BOLD}${C_GREEN}No Plugins skipped, nothing todo${C_NORM}"
 	exit 0
+fi
+
+if [[ ${R_OPTION_PATCHLEVEL} == 1 ]]; then
+	# needed for plugin patchlevel check
+	vdr_checksum_dir="${vdr_plugin_dir%/plugins}/checksums"
+	vdr_checksum=/var/vdr/tmp/rebuild-vdr-checksum
+	if ! vdr-get-header-checksum > "${vdr_checksum}"; then
+		echo -e "${C_BOLD}${C_RED}Could not get vdr header checksum${C_NORM}"
+		exit 1
+	fi
 fi
 
 R_CMD="$1"

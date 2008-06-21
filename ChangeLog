@@ -1,6 +1,11 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  21 Jun 2008; Matthias Schwarzott <zzam@gentoo.org>
+  vdrplugin-rebuild/vdrplugin-rebuild:
+  Added option to only rebuild packages that have a different header
+  checksum than current vdr.
+
   21 Jun 2008; Matthias Schwarzott <zzam@gentoo.org> etc/init.d/vdr:
   Moved clearing of logfile to better place right at start.
 
