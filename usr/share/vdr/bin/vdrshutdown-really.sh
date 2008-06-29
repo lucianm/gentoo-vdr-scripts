@@ -82,7 +82,7 @@ for method in ${WAKEUP_METHOD}; do
 done
 [ ${wakeup_ok} = 0 ] && exit 99
 
-if [ "${DRY_SHUTDOWN_REAL}" = "1" ]; then
+if [ "${DRY_SHUTDOWN}" = "1" ]; then
 	exit 0
 fi
 

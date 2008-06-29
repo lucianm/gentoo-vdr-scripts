@@ -1,6 +1,12 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  29 Jun 2008; Matthias Schwarzott <zzam@gentoo.org>
+  etc/conf.d/vdr.shutdown, usr/share/vdr/bin/vdrshutdown-gate.sh,
+  usr/share/vdr/bin/vdrshutdown-really.sh:
+  Remove 'Shutdown is retried soon' message. Reduce DRY_SHUTDOWN to one
+  single point.
+
   24 Jun 2008; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/pre-start-98-wait-conditions.sh:
   Fix typo.

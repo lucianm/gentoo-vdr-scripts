@@ -231,7 +231,6 @@ execute_hooks() {
 check_auto_retry() {
 	if [ "${TRY_AGAIN}" -gt 0 -a "${ENABLE_AUTO_RETRY}" = 1 ]; then
 		queue_add_wait 1s
-		mesg_q "Shutdown is retried soon"
 		retry_shutdown ${TRY_AGAIN}
 	fi
 }
@@ -252,7 +251,7 @@ init_forced_shutdown
 execute_hooks
 
 if is_shutdown_aborted; then
-	mesg_q "Shutdown stopped, because ${ABORT_MESSAGE}"
+	mesg_q "No Shutdown: ${ABORT_MESSAGE}"
 	check_forced_shutdown_possible_next_time
 	check_auto_retry
 	
@@ -264,28 +263,22 @@ fi
 #   vdr     ALL= NOPASSWD: /usr/share/vdr/bin/vdrshutdown-really.sh
 
 
-SUDO=/usr/bin/sudo
-if [ -z "${DRY_SHUTDOWN_GATE}" ]; then
-	${SUDO} /usr/share/vdr/bin/vdrshutdown-really.sh ${VDR_TIMER_NEXT}
-	case $? in
-	0)	;;
-	1)	mesg_q "sudo failed"
-		mesg_q "call emerge --config gentoo-vdr-scripts"
-		exit_cleanup 1
-		;;
-	*)	mesg_q "setting wakeup time not successful"
-		exit_cleanup 1
-		;;
-	esac
-	rm "${shutdown_data_dir}/shutdown-time-written"
-	date +%s > "${shutdown_data_dir}/shutdown-time-written"
-else
-	mesg_q "stopping DRY_SHUTDOWN_GATE=1 - ${VDR_TIMER_NEXT}"
-fi
-
+sudo /usr/share/vdr/bin/vdrshutdown-really.sh "$@"
+case $? in
+0)	;;
+1)	mesg_q "sudo failed"
+	mesg_q "call emerge --config gentoo-vdr-scripts"
+	exit_cleanup 1
+	;;
+*)	mesg_q "setting wakeup time not successful"
+	exit_cleanup 1
+	;;
+esac
+rm "${shutdown_data_dir}/shutdown-time-written"
+date +%s > "${shutdown_data_dir}/shutdown-time-written"
 
 if is_forced_shutdown && forced_tests_count_greater_zero; then
-	mesg_q "Shutting down (forced)"
+	mesg_q "User enforced shutdown"
 else
 	mesg_q "Shutting down"
 fi
