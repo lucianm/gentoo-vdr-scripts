@@ -196,6 +196,13 @@ LOG="3"
 #   default: yes
 #FORCE_OLD_THREADS="yes"
 
+# do not use vdr -u option to set user
+# and use start-stop-daemon --chuid option
+# This makes vdr behave easier with core-dumps
+#   allowed values: yes no
+#   default: no
+#FORCE_SETUID_OFF="yes"
+
 # for people who really know what they do
 # and who want to start vdr as user root
 #   allowed values: YES no

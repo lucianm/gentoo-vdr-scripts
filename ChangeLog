@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  03 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-10-chuid.sh, etc/conf.d/vdr:
+  Add config-setting to disable usage of the vdr -u option.
+
   29 Jun 2008; Matthias Schwarzott <zzam@gentoo.org>
   etc/conf.d/vdr.shutdown, usr/share/vdr/bin/vdrshutdown-gate.sh,
   usr/share/vdr/bin/vdrshutdown-really.sh:
