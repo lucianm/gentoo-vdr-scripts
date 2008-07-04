@@ -184,6 +184,12 @@ LOG="3"
 #   default: yes
 #DEVICE_CHECK="no"
 
+# check the plugin for patchlevel compatibility with current vdr version
+# it will refuse to load a not compatible plugin
+#   allowed values: yes no
+#   default: yes
+PLUGIN_CHECK_PATCHLEVEL="yes"
+
 # hostname to access vdr with svdrp
 # (this normaly should not be changed)
 #   allowed values: hostname or ip-address

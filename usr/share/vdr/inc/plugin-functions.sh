@@ -84,7 +84,9 @@ prepare_plugin_checks() {
 	vdr_checksum_dir="${plugin_dir%/plugins}/checksums"
 	vdr_checksum="${PL_TMP}"/header-md5-vdr
 	PLUGIN_CHECK_MD5=no
-	if vdr-get-header-checksum > "${vdr_checksum}"; then
+	if [ "${PLUGIN_CHECK_PATCHLEVEL:-yes}" = "yes" ] && \
+		vdr-get-header-checksum > "${vdr_checksum}"
+	then
 		PLUGIN_CHECK_MD5=yes
 	fi
 }
