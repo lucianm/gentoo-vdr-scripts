@@ -76,11 +76,14 @@ db_plug_is_good() {
 }
 
 db_plug_list() {
-	local dbfile line auto pkg a=0 b=0 ebuild ebuild_v shortname
+	local dbfile line auto pkg a=0 b=0 ebuild ebuild_v plugins shortname
 
 	for dbfile in $(find "${R_DBPATH}" -type f); do
 		grep -q VDRPLUGIN_DB=1 "${dbfile}" || continue
-		eval $(source "${dbfile}"; echo ebuild=${EBUILD}; echo ebuild_v=${EBUILD_V})
+		ebuild=""
+		ebuild_v=""
+		plugins=""
+		eval $(source "${dbfile}"; echo ebuild=\"${EBUILD}\"; echo ebuild_v=\"${EBUILD_V}\"; echo plugins=\"${PLUGINS}\")
 
 		auto=1
 
@@ -94,16 +97,37 @@ db_plug_list() {
 
 		shortname=${ebuild#*/}
 
+		if [[ ${plugins} == "" ]]; then
+			plugins=${shortname}
+		fi
+
 		if [[ ${R_OPTION_ENABLED} == 1 ]]; then
-			# match fixed strings, whole line
-			if ! fgrep -q -x ${shortname#vdr-} "${R_PLUGIN_ENABLE}"; then
+			# look if any of all plugins installed by this ebuild is enabled
+			local p= match=0
+			for p in ${plugins}; do
+				# match fixed strings, whole line
+				if fgrep -q -x ${p#vdr-} "${R_PLUGIN_ENABLE}"
+				then
+					match=1
+				fi
+			done
+			if [[ $match = 0 ]]; then
 				# do not merge if not enabled
 				auto=0
 			fi
 		fi
 
 		if [[ ${R_OPTION_SKIPPED} == 1 ]]; then
-			if ! fgrep -q -x ${shortname#vdr-} "${R_PLUGINS_SKIPPED}"; then
+			local p= match=0
+			for p in ${plugins}; do
+				if fgrep -q -x ${p#vdr-} "${R_PLUGINS_SKIPPED}"
+				then
+					match=1
+				fi
+			done
+
+			# not merge when not in list of skipped plugins
+			if [[ $match = 0 ]]; then
 				auto=0
 			fi
 		fi

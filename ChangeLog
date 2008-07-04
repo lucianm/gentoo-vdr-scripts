@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  04 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
+  vdrplugin-rebuild/vdrplugin-rebuild:
+  Let vdrplugin-rebuild match all plugins installed by an ebuild.
+
   04 Jul 2008; Matthias Schwarzott <zzam@gentoo.org> etc/conf.d/vdr,
   usr/share/vdr/inc/plugin-functions.sh:
   Add setting to disable patchlevel check.
