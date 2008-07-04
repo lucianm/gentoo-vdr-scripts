@@ -101,6 +101,9 @@ db_plug_list() {
 			plugins=${shortname}
 		fi
 
+		set -- ${plugins}
+		firstplug="$1"
+
 		if [[ ${R_OPTION_ENABLED} == 1 ]]; then
 			# look if any of all plugins installed by this ebuild is enabled
 			local p= match=0
@@ -133,7 +136,7 @@ db_plug_list() {
 		fi
 
 		if [[ ${R_OPTION_PATCHLEVEL} == 1 ]]; then
-			local p_chksum="${vdr_checksum_dir}/header-md5-${shortname}"
+			local p_chksum="${vdr_checksum_dir}/header-md5-${firstplug}"
 			if cmp -s "${vdr_checksum}" "${p_chksum}"; then
 				# do not merge when patchlevel is equal
 				auto=0

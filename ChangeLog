@@ -3,6 +3,10 @@
 
   04 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
   vdrplugin-rebuild/vdrplugin-rebuild:
+  Add hack to use an existing checksum file if plugin-name != ebuild-name.
+
+  04 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
+  vdrplugin-rebuild/vdrplugin-rebuild:
   Let vdrplugin-rebuild match all plugins installed by an ebuild.
 
   04 Jul 2008; Matthias Schwarzott <zzam@gentoo.org> etc/conf.d/vdr,
