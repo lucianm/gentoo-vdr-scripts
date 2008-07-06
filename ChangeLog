@@ -2,6 +2,14 @@
 # $Id$
 
   06 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/post-start-50-svdrp.sh,
+  usr/share/vdr/rcscript/post-start-60-check-syslog-errors.sh,
+  usr/share/vdr/rcscript/pre-start-60-check-syslog-errors.sh,
+  etc/conf.d/vdr, etc/init.d/vdr, usr/share/vdr/inc/rc-functions.sh:
+  Run post-start addons also when vdr did not start. This will print syslog
+  output then. Add config-setting to disable syslog parsing.
+
+  06 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/pre-start-20-dvb-device.sh,
   usr/share/vdr/rcscript/pre-start-40-config-files.sh,
   usr/share/vdr/rcscript/post-start-50-svdrp.sh, etc/conf.d/vdr,

@@ -60,17 +60,13 @@ add_param()
 #
 load_addons_prefixed()
 {
-	addon_prefix=${1}
-	local call_func=${2:-addon_main}
-	local basename=""
-	local ret=0
+	local addon_prefix=$1 call_func=${2:-addon_main} basename= ret=0
 
 	for addon in ${vdr_rc_dir}/${addon_prefix}-*.sh; do
 		load_addon ${addon} ${call_func}
 		ret="$?"
 		if [ "${ret}" != "0" ]; then
 			ewarn "Addon ${addon} failed."
-			vdr_log "Addon ${addon} failed."
 			break
 		fi
 	done

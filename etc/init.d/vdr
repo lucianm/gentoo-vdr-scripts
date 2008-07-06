@@ -39,8 +39,6 @@ depend() {
 }
 
 start_vdr() {
-	local exitcode
-
 	einfo "Preparing start of vdr:"
 	clear_logfile
 	init_params
@@ -69,24 +67,19 @@ start_vdr() {
 	debug_msg "  CMDLINE: ${_openvt} start-stop-daemon ${daemonctrl_opts} -- ${vdr_opts}"
 
 	eval ${_openvt} start-stop-daemon ${daemonctrl_opts} -- ${vdr_opts}
-	exitcode=$?
-	eend $exitcode "Failed to start vdr."
+	vdr_exitcode=$?
+	eend $vdr_exitcode "Failed to start vdr."
 
-	# TODO: Anything todo if starting fails? cleanups?
-	if [ "${exitcode}" = "0" ]; then
-		load_addons_prefixed post-start
-		if [ "$?" != "0" ]; then
-			exitcode=1
-		fi
+	# TODO: Anything todo if starting failed? cleanups?
 
-		# wenn nachrichten vorhanden sind
-		if [ -s "${VDR_LOG_FILE}" ]; then
-			/usr/share/vdr/bin/vdr-bg.sh svdrpsend.pl mesg "Errors: Go to Commands/View VDR Start Log"
-		fi
+	load_addons_prefixed post-start || vdr_exitcode=1
 
+	# show if we have messages
+	if [ "${vdr_exitcode}" = "0" -a -s "${VDR_LOG_FILE}" ]; then
+		/usr/share/vdr/bin/vdr-bg.sh svdrpsend.pl mesg "Errors: Go to Commands/View VDR Start Log"
 	fi
 
-	return $exitcode
+	return $vdr_exitcode
 }
 
 stop_vdr() {

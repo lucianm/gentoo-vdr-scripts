@@ -29,11 +29,11 @@ addon_main() {
 	| while read line; do
 		count=$(($count+1))
 		if [ ${count} -eq 1 ]; then
-			eerror "    Errors from ${SYSLOG_FILE}:"
+			eerror "VDR errors from ${SYSLOG_FILE}:"
 		fi
-		eerror "    $line"
+		eerror "  $line"
 		if [ "${count}" -gt 5 ]; then
-			eerror "    More errors ..."
+			eerror "More errors ..."
 			break
 		fi
 	done
