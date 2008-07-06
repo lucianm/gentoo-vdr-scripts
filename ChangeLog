@@ -2,6 +2,10 @@
 # $Id$
 
   06 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/inc/plugin-functions.sh:
+  Rename variable.
+
+  06 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/shutdown/pre-shutdown-05-time-calculations.sh,
   usr/share/vdr/shutdown/pre-shutdown-10-check-enabled.sh,
   usr/share/vdr/rcscript/pre-start-10-chuid.sh,

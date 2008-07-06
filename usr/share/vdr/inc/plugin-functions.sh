@@ -84,9 +84,9 @@ prepare_plugin_checks() {
 	vdr_checksum_dir="${plugin_dir%/plugins}/checksums"
 	vdr_checksum="${PL_TMP}"/header-md5-vdr
 
-	PLUGIN_CHECK_MD5=false
+	_PLUGIN_CHECK_HEADER=false
 	if yesno "${PLUGIN_CHECK_PATCHLEVEL:-yes}"; then
-		vdr-get-header-checksum > "${vdr_checksum}" && PLUGIN_CHECK_MD5=true
+		vdr-get-header-checksum > "${vdr_checksum}" && _PLUGIN_CHECK_HEADER=true
 	fi
 }
 
@@ -100,7 +100,7 @@ check_plugin() {
 	fi
 
 	local plugin_checksum_file=${vdr_checksum_dir}/header-md5-vdr-${PLUGIN}
-	if ${PLUGIN_CHECK_MD5} && [ -e "${plugin_checksum_file}" ]; then
+	if ${_PLUGIN_CHECK_HEADER} && [ -e "${plugin_checksum_file}" ]; then
 		if ! cmp -s ${vdr_checksum} ${plugin_checksum_file}; then
 			skip_plugin "${PLUGIN}" "PATCHLEVEL"
 			return 1
