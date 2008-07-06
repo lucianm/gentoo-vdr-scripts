@@ -1,5 +1,5 @@
 # $Id$
-wait_for_svdrp() {
+addon_main() {
 	local ret=0
 	SVDRP_PORT="${SVDRP_PORT:-2001}"
 	SVDRP_HOSTNAME="${SVDRP_HOSTNAME:-localhost}"
@@ -14,14 +14,13 @@ wait_for_svdrp() {
 	ebegin "  Waiting for working vdr"
 
 	# Warten auf offenen svdrp port
-	: ${START_SVDRP_WAIT_SECONDS:=40}
-	waitfor ${START_SVDRP_WAIT_SECONDS} svdrpready
+	START_SVDRP_WAIT_SECONDS=${START_SVDRP_WAIT_SECONDS:-40}
+
+	waitfor ${START_SVDRP_WAIT_SECONDS} svdrp_ready
 	ret=$?
 
-	local msg_for_error="aborted, please check logfile"
-
 	case "$ret" in
-	1)	eend ${ret} "timeout, hoping its running good nevertheless"
+	1)	eend ${ret} "timeout, hoping that VDR is running good nevertheless"
 		einfo
 		einfo "Ignore this if you connected new remote/keyboard which gets learned."
 		einfo "If your computer is very slow it is possible that vdr"
@@ -37,7 +36,7 @@ wait_for_svdrp() {
 	return $ret
 }
 
-svdrpready() {
+svdrp_ready() {
 	if /usr/bin/svdrpsend.pl -d ${SVDRP_HOSTNAME} -p ${SVDRP_PORT} quit 2>/dev/null|grep -q ^220; then
 		# svdrp open and ready
 		return 0
@@ -47,14 +46,5 @@ svdrpready() {
 		return 2
 	fi
 	return 1
-}
-
-addon_main() {
-	wait_for_svdrp
-	ret="$?"
-	case "$ret" in
-	1) ret=0; ;;
-	esac
-	return ${ret}
 }
 

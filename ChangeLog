@@ -2,6 +2,14 @@
 # $Id$
 
   06 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-20-dvb-device.sh,
+  usr/share/vdr/rcscript/pre-start-40-config-files.sh,
+  usr/share/vdr/rcscript/post-start-50-svdrp.sh, etc/conf.d/vdr,
+  usr/share/vdr/inc/rc-functions.sh:
+  Simplified waitfor function. Renamed DEVICE_CHECK to DVB_DEVICE_WAIT. Make
+  timeout non-fatal.
+
+  06 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/bin/vdrshutdown-really.sh,
   usr/share/vdr/inc/plugin-functions.sh, usr/share/vdr/inc/rc-functions.sh,
   usr/share/vdr/inc/shutdown-functions.sh,

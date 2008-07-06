@@ -178,11 +178,11 @@ LOG="3"
 #   default: 40
 # START_SVDRP_WAIT_SECONDS="40"
 
-# check 5 seconds for existing dvb devices, for example for slow udev
-# you need to disable this for systems which only use network input
+# wait some time for dvb device nodes to appear, caused for example by slow udev
+# you need to disable this for systems which only use network or non-dvb devices
 #   allowed values: yes no
 #   default: yes
-#DEVICE_CHECK="no"
+#DVB_DEVICE_WAIT="no"
 
 # check the plugin for patchlevel compatibility with current vdr version
 # it will refuse to load a not compatible plugin

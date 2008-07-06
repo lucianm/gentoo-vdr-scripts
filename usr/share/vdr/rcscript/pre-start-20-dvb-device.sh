@@ -1,18 +1,16 @@
 # $Id$
-dvb_device_notice_func() {
-	ewarn "No DVB device found."
-	ewarn "If you do not have DVB hardware, then set DEVICE_CHECK=no in /etc/conf.d/vdr"
-}
-
 check_dvbdevice() {
-	[ -e /dev/dvb/adapter0/frontend0 ] && return 0
-	condition_msg_func="dvb_device_notice_func"
-	return 1
+	[ -e /dev/dvb/adapter0/frontend0 ] || return 1
+	return 0
 }
 
 addon_main() {
-	if yesno "${DEVICE_CHECK:-yes}"; then
-		add_wait_condition check_dvbdevice
+	local ret
+	if yesno "${DVB_DEVICE_WAIT:-${DEVICE_CHECK:-yes}}"; then
+		ebegin "  Waiting for DVB devices"
+		waitfor 10 check_dvbdevice
+		eend "$?" "    No DVB device found."
+		[ $? = 1 ] && eerror "    If you do not use DVB hardware, then disable DVB_DEVICE_WAIT in /etc/conf.d/vdr"
 	fi
 	return 0
 }

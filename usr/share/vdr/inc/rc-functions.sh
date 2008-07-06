@@ -139,21 +139,16 @@ quote_parameters() {
 #   2 failure, break waiting
 
 waitfor() {
-	local waittime="${1}"
-	local cond="${2}"
-	local ok
-	local waited=0
-	while [ "${waited}" -lt "${waittime}" ]; do
-		eval ${cond}
-		case "$?" in
-			0) debug_msg waited ${waited} seconds; return 0 ;;
-			2) debug_msg waited ${waited} seconds; return 2 ;;
-		esac
-		waited=$(($waited+1))
-		sleep 1
+	local waittime="$1" cond="$2" waited=0 status=1
+
+	eval ${cond}; status=$?
+	while [ "${status}" = 1 -a "${waited}" -lt "${waittime}" ]; do
+		sleep 1; waited=$(($waited+1))
+
+		eval ${cond}; status=$?
 	done
-	debug_msg "waited ${waited} seconds"
-	return 1
+	debug_msg "waited ${waited} seconds on ${cond}"
+	return $status
 }
 
 add_wait_condition() {

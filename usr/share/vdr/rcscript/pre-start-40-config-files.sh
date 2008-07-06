@@ -2,7 +2,7 @@
 include commands-functions
 
 addon_main() {
-	ebegin "  config files"
+	ebegin "  Checking config files"
 	if [ ! -d /var/vdr ]; then
 		mkdir -p /var/vdr/{shutdown-data,merged-config-files}
 		chown vdr:vdr -R /var/vdr
