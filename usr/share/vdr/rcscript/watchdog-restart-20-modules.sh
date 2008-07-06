@@ -5,7 +5,7 @@
 #
 
 addon_main() {
-	if [ "${WATCHDOG_RELOAD_DVB_MODULES:-no}" = "yes" ]; then
+	if yesno "${WATCHDOG_RELOAD_DVB_MODULES}"; then
 		dvb-reload-modules reload
 	fi
 	return 0

@@ -45,7 +45,7 @@ calculate_wakeup_timer ()
 }
 
 catch_running_timer
-if [ "${FIXED_WAKEUP:-no}" = "yes" ]; then
+if yesno "${FIXED_WAKEUP}"; then
 	calculate_wakeup_timer
 fi
 

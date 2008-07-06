@@ -211,7 +211,7 @@ PLUGIN_CHECK_PATCHLEVEL="yes"
 
 # for people who really know what they do
 # and who want to start vdr as user root
-#   allowed values: YES no
+#   allowed values: yes no
 #   default: no
 #START_VDR_AS_ROOT="no"
 

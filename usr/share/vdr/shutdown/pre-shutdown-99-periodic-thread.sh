@@ -7,8 +7,7 @@ PERIODIC_THREAD_ENDTIME=${shutdown_data_dir}/periodic_thread_last_ended
 check_periodic_thread()
 {
 	# test if periodic thread is activated
-	: ${ENABLE_SHUTDOWN_PERIODIC_JOBS:=no}
-	[ "${ENABLE_SHUTDOWN_PERIODIC_JOBS}" = "yes" ] || return
+	yesno "${ENABLE_SHUTDOWN_PERIODIC_JOBS}" || return
 
 	# when periodic-thread runs
 	if pidof -x vdrshutdown-periodic-thread.sh >/dev/null; then

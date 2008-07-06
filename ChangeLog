@@ -1,6 +1,25 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  06 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/shutdown/pre-shutdown-05-time-calculations.sh,
+  usr/share/vdr/shutdown/pre-shutdown-10-check-enabled.sh,
+  usr/share/vdr/rcscript/pre-start-10-chuid.sh,
+  usr/share/vdr/rcscript/pre-start-20-dvb-device.sh,
+  usr/share/vdr/rcscript/watchdog-restart-20-modules.sh,
+  usr/share/vdr/shutdown/pre-shutdown-30-check-logins.sh,
+  usr/share/vdr/rcscript/pre-start-30-parameter.sh,
+  usr/share/vdr/rcscript/pre-start-45-nptl-check.sh,
+  usr/share/vdr/shutdown/periodic-50-epgscan.sh,
+  usr/share/vdr/rcscript/pre-start-50-shutdown.sh,
+  usr/share/vdr/shutdown/pre-shutdown-99-periodic-thread.sh, etc/conf.d/vdr,
+  etc/init.d/vdr, usr/share/vdr/bin/vdrshutdown-gate.sh,
+  usr/share/vdr/inc/functions.sh, usr/share/vdr/inc/plugin-functions.sh,
+  usr/share/vdr/inc/rc-functions.sh,
+  usr/share/vdr/inc/shutdown-functions.sh,
+  usr/share/vdr/shutdown/wakeup-none.sh:
+  Use yesno from openrc, but provide replacement for older baselayout.
+
   04 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
   vdrplugin-rebuild/vdrplugin-rebuild:
   Add hack to use an existing checksum file if plugin-name != ebuild-name.

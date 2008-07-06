@@ -11,9 +11,7 @@ check_dvbdevice() {
 }
 
 addon_main() {
-	DEVICE_CHECK=${DEVICE_CHECK:-yes}
-
-	if [ "${DEVICE_CHECK}" = "yes" ]; then
+	if yesno "${DEVICE_CHECK:-yes}"; then
 		add_wait_condition check_dvbdevice
 	fi
 	return 0

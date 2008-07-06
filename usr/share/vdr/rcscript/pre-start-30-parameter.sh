@@ -9,7 +9,7 @@ addon_main() {
 	# parameters of vdr
 	add_param "--watchdog=${INTERNAL_WATCHDOG:-60}"
 	[ -n "${AC3_AUDIO}" ] && add_param "--audio=${AC3_AUDIO}"
-	[ "${MUTE}" = "yes" ] && add_param "--mute"
+	yesno "${MUTE}" && add_param "--mute"
 	[ -n "${CONFIG}" ] && add_param "--config=${CONFIG}"
 	[ -n "${DEVICE}" ] && for i in ${DEVICE}; do add_param "--device=${i}"; done
 	[ -n "${EPGFILE}" ] && add_param "--epgfile=${EPGFILE}"
@@ -32,7 +32,7 @@ addon_main() {
 		esac
 	fi
 
-	if [ -n "${CAP_VFAT_RUNTIME_PARAM}" ] && [ "${VFAT_FILENAMES}" = "yes" ]; then
+	if [ -n "${CAP_VFAT_RUNTIME_PARAM}" ] && yesno "${VFAT_FILENAMES}"; then
 		add_param "--vfat"
 	fi
 

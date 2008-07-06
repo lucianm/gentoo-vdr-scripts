@@ -6,7 +6,7 @@
 
 if [ "${VDR_WAKEUP_TIME}" != 0 ]; then
 	# it is not possible to wakeup the system!
-	if [ "${NONE_WAKEUP_IGNORE_TIMER:-no}" = "yes" ]; then
+	if yesno "${NONE_WAKEUP_IGNORE_TIMER}"; then
 		# ignoring set timers
 		:
 	else

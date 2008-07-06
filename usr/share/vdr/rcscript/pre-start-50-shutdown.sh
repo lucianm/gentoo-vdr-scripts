@@ -2,7 +2,7 @@
 
 addon_main() {
 	include shutdown-functions
-	[ "${SHUTDOWN_ACTIVE}" = "no" ] && return 0
+	yesno "${SHUTDOWN_ACTIVE}" || return 0
 
 	if [ -n "${USER_SHUTDOWN_SCRIPT}" ]; then
 		add_param "--shutdown=${USER_SHUTDOWN_SCRIPT}"

@@ -6,6 +6,6 @@ check_logins() {
 	fi
 }
 
-if [ "${VDR_CHECK_LOGINS:-yes}" = "yes" ]; then
+if yesno "${VDR_CHECK_LOGINS:-yes}"; then
 	check_logins
 fi

@@ -22,3 +22,25 @@ read_caps()
 	[ -f "${capfile}" ] && . ${capfile}
 }
 
+if ! type yesno >/dev/null 2>&1; then
+
+yesno()
+{
+	[ -z "$1" ] && return 1
+
+	case "$1" in
+		[Yy][Ee][Ss]|[Tt][Rr][Uu][Ee]|[Oo][Nn]|1) return 0;;
+		[Nn][Oo]|[Ff][Aa][Ll][Ss][Ee]|[Oo][Ff][Ff]|0) return 1;;
+	esac
+
+	local value=
+	eval value=\$${1}
+	case "${value}" in
+		[Yy][Ee][Ss]|[Tt][Rr][Uu][Ee]|[Oo][Nn]|1) return 0;;
+		[Nn][Oo]|[Ff][Aa][Ll][Ss][Ee]|[Oo][Ff][Ff]|0) return 1;;
+		*) vewarn "\$${1} is not set properly"; return 1;;
+	esac
+}
+fi
+
+

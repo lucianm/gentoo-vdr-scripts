@@ -23,10 +23,8 @@ getvdrversion()
 	APIVERSION=$(awk -F'"' '/define APIVERSION/ {print $2}' /usr/include/vdr/config.h)
 	[ -z "${APIVERSION}" ] && APIVERSION="${VDRVERSION}"
 
-	case ${SHOW_VDR_VERSION:=no} in
-		yes)	VDRNAME=vdr-${VDRVERSION}  ;;
-		*)	VDRNAME=vdr ;;
-	esac
+	VDRNAME=vdr
+	yesno "${SHOW_VDR_VERSION}" && VDRNAME=${VDRNAME}-${VDRVERSION}
 }
 
 [ -z "${VDR_BIN}" ] && VDR_BIN=/usr/bin/vdr

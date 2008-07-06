@@ -188,7 +188,7 @@ init_forced_shutdown() {
 	fi
 	NOW=$(date +%s)
 	local DISTANCE=$(($NOW-$LAST_SHUTDOWN_ABORT))
-	if [ "${DISTANCE}" -lt "${SHUTDOWN_FORCE_DETECT_INTERVALL}" ]; then
+	if [ "${DISTANCE}" -lt "${SHUTDOWN_FORCE_DETECT_INTERVALL:-60}" ]; then
 		THIS_SHUTDOWN_IS_FORCED="1"
 	fi
 
