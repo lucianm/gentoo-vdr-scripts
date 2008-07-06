@@ -4,6 +4,7 @@ addon_main() {
 
 	if [ -n "${CAP_CHUID}" ] && ! yesno "${FORCE_SETUID_OFF}"; then
 		add_param "-u" "vdr"
+		yesno ${ALLOW_USERDUMP} && add_param "--userdump"
 	else
 		add_daemonctrl_param --chuid vdr
 	fi

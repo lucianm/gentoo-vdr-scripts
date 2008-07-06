@@ -2,6 +2,10 @@
 # $Id$
 
   06 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-10-chuid.sh, etc/conf.d/vdr:
+  Add possibility to enable --userdump.
+
+  06 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/inc/plugin-functions.sh:
   Rename variable.
 

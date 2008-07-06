@@ -209,6 +209,12 @@ PLUGIN_CHECK_PATCHLEVEL="yes"
 #   default: no
 #FORCE_SETUID_OFF="yes"
 
+# allow core-dumps when using setuid
+# This helps for debugging crashes
+#   allowed values: yes no
+#   default:no
+#ALLOW_USERDUMP="yes"
+
 # for people who really know what they do
 # and who want to start vdr as user root
 #   allowed values: yes no
