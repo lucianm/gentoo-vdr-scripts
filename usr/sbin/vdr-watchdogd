@@ -61,7 +61,6 @@ trigger_restart() {
 	log "restarting VDR"
 	/etc/init.d/vdr watchdogrestart
 	log "VDR has been restarted"
-	svdrpsend.pl mesg "Warning: vdr was restarted by watchdog." &
 }
 
 is_enabled() {

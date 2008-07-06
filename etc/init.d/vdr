@@ -150,4 +150,6 @@ watchdogrestart() {
 	load_addons_prefixed watchdog-restart
 
 	( start_vdr )
+
+	svdrpsend.pl mesg "Warning: VDR process died."
 }

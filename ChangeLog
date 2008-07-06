@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  06 Jul 2008; Matthias Schwarzott <zzam@gentoo.org> etc/init.d/vdr,
+  usr/sbin/vdr-watchdogd:
+  Changed message about died vdr process.
+
   06 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/post-start-50-svdrp.sh,
   usr/share/vdr/rcscript/post-start-60-check-syslog-errors.sh,
