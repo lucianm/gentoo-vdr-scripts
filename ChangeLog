@@ -2,6 +2,13 @@
 # $Id$
 
   06 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/bin/vdrshutdown-really.sh,
+  usr/share/vdr/inc/plugin-functions.sh, usr/share/vdr/inc/rc-functions.sh,
+  usr/share/vdr/inc/shutdown-functions.sh,
+  vdrplugin-rebuild/vdrplugin-rebuild:
+  Do not use header-path hardcoded in commands.
+
+  06 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/pre-start-10-chuid.sh, etc/conf.d/vdr:
   Add possibility to enable --userdump.
 

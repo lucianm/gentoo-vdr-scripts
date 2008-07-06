@@ -19,8 +19,9 @@ test_vdr_process()
 
 getvdrversion()
 {
-	VDRVERSION=$(awk -F'"' '/define VDRVERSION/ {print $2}' /usr/include/vdr/config.h)
-	APIVERSION=$(awk -F'"' '/define APIVERSION/ {print $2}' /usr/include/vdr/config.h)
+	local include_dir=/usr/include/vdr
+	VDRVERSION=$(awk -F'"' '/define VDRVERSION/ {print $2}' ${include_dir}/config.h)
+	APIVERSION=$(awk -F'"' '/define APIVERSION/ {print $2}' ${include_dir}/config.h)
 	[ -z "${APIVERSION}" ] && APIVERSION="${VDRVERSION}"
 
 	VDRNAME=vdr

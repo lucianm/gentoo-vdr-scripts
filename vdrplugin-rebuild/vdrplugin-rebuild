@@ -260,8 +260,8 @@ db_plug_merge() {
 }
 
 get_vdr_plugin_dir() {
-	local d
-	d="$(awk '/^PLUGINLIBDIR/{ print $3 }' /usr/include/vdr/Make.config)"
+	local d include_dir=/usr/include/vdr
+	d="$(awk '/^PLUGINLIBDIR/{ print $3 }' ${include_dir}/Make.config)"
 	if [ -n "${d}" ]; then
 		d=/usr/lib/vdr/plugins
 	fi

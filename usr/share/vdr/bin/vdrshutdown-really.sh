@@ -12,6 +12,7 @@
 
 . /usr/share/vdr/inc/functions.sh
 include shutdown-functions
+shutdown_script_dir=/usr/share/vdr/shutdown
 
 if [ "$(id -u)" != "0" ]; then
 	echo "This program should be run as root"
