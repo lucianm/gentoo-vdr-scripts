@@ -69,12 +69,19 @@ start_vdr() {
 	eval ${_openvt} start-stop-daemon ${daemonctrl_opts} -- ${vdr_opts}
 	vdr_exitcode=$?
 	eend $vdr_exitcode "Failed to start vdr."
-
+	
 	# TODO: Anything todo if starting failed? cleanups?
 
-	load_addons_prefixed post-start || vdr_exitcode=1
+	if [ $vdr_exitcode -lt 128 ]; then
+		load_addons_prefixed post-start || vdr_exitcode=1
+	fi
 
-	# show if we have messages
+	if [ $vdr_exitcode != 0 ]; then
+		# Make sure vdr really does not run
+		kill_vdr
+	fi
+
+	# show messages if we have any
 	if [ "${vdr_exitcode}" = "0" -a -s "${VDR_LOG_FILE}" ]; then
 		/usr/share/vdr/bin/vdr-bg.sh svdrpsend.pl mesg "Errors: Go to Commands/View VDR Start Log"
 	fi
@@ -93,9 +100,22 @@ stop_vdr() {
 	exitcode=$?
 	eend $exitcode "Failed to stop vdr."
 
+	if [ $exitcode != 0 ]; then
+		kill_vdr
+	fi
+
 	load_addons_prefixed post-stop
-	return $exitcode
+	return 0
 }
+
+kill_vdr() {
+	killall ${VDR_BIN}
+	if test_vdr_process; then
+		sleep 2
+		test_vdr_process && killall -9 ${VDR_BIN}
+	fi
+}
+
 
 start_watchdog() {
 	yesno "${ENABLE_EXTERNAL_WATCHDOG:-yes}" || return 0
@@ -142,10 +162,6 @@ watchdogrestart() {
 	common_init
 
 	( stop_vdr )
-	if test_vdr_process; then
-		sleep 2
-		test_vdr_process && killall -9 vdr
-	fi
 
 	load_addons_prefixed watchdog-restart
 
