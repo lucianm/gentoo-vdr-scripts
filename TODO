@@ -1,6 +1,8 @@
 TODO file for gentoo-vdr-scripts
 $Id$
 
+* improve syslog parsing code
+
 * eventually integrate settime
 
 * writing time at system-shutdown without vdr having the power button
