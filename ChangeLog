@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  29 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
+  -usr/share/vdr/rcscript/pre-start-45-utf8-check.sh, ++:
+  Renamed file that handles locales to reflect that.
+
 *gentoo-vdr-scripts-0.4.5_pre1 (07 Jul 2008)
 
   06 Jul 2008; Matthias Schwarzott <zzam@gentoo.org> etc/init.d/vdr:
