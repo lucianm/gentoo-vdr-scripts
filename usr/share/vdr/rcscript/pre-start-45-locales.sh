@@ -29,12 +29,14 @@ addon_main() {
 		if [ "${charmap}" = "ANSI_X3.4-1968" ]; then
 			# User has not set any locale stuff
 
-			ewarn "Your local charmap is ANSI_X3.4-1968."
+			ewarn "Your locale selects an ASCII only charmap."
 			if [ -n "${LANG}" ]; then
 				ewarn "It seems the locale you chose does not exist on your system [LANG=${LANG}]"
 				ewarn "Please have a look at /etc/locale.gen"
 			else
-				ewarn "You have not set a charmap! (LANG in /etc/env.d/02locale or /etc/conf.d/vdr)"
+				ewarn "You have not set a charmap!"
+				ewarn "Set LANG in either /etc/env.d/02locale or /etc/conf.d/vdr"
+				ewarn "Depending on your version of baselayout only /etc/conf.d/vdr may work"
 			fi
 
 			# Lets guess
@@ -66,9 +68,6 @@ addon_main() {
 	if [ -n "${VDR_SORT_ORDER}" ]; then
 		export LC_COLLATE="${VDR_SORT_ORDER}"
 	fi
-
-	# get error messages in english
-	export LC_MESSAGES="C"
 
 	return 0
 }

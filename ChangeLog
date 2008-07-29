@@ -2,6 +2,11 @@
 # $Id$
 
   29 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-45-locales.sh:
+  Tried to improve messages of locale handling code. Removed LC_MESSAGES=C
+  setting.
+
+  29 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
   -usr/share/vdr/rcscript/pre-start-45-utf8-check.sh, ++:
   Renamed file that handles locales to reflect that.
 
