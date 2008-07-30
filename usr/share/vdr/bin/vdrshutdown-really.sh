@@ -265,7 +265,8 @@ fi
 
 
 # TODO: Integrate code into here (+rewrite)
-vdrshutdown-wakeup-helper.sh "$@"
+# Keep VDR_TIMER_NEXT here, instead of $@, as it could have been changed
+vdrshutdown-wakeup-helper.sh "${VDR_TIMER_NEXT}"
 
 if [ $? != 0 ]; then
 	mesg_q "setting wakeup time not successful"
