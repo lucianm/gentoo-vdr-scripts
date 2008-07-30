@@ -15,10 +15,15 @@
 # A lot of functions defined in here can be used
 # from within these scripts.
 
-#fork to background
-if [ -z "${EXECUTED_BY_VDR_BG}" ]; then
-	exec /usr/share/vdr/bin/vdr-bg.sh "${0}" "${@}"
-	exit
+#fork to background already done by vdrshutdown-gate.sh for now
+#if [ -z "${EXECUTED_BY_VDR_BG}" ]; then
+#	exec /usr/share/vdr/bin/vdr-bg.sh "${0}" "${@}"
+#	exit
+#fi
+
+if [ "$UID" != "0" ]; then
+	echo "This program should be run as root"
+	exit 99
 fi
 
 # should be default paths on a machine build with vdr ebuilds
@@ -258,22 +263,15 @@ if is_shutdown_aborted; then
 	exit_cleanup 0
 fi
 
-# You have to edit sudo-permissions to grant vdr permission to execute
-# privileged commands. Start visudo and add a line like
-#   vdr     ALL= NOPASSWD: /usr/share/vdr/bin/vdrshutdown-really.sh
 
+# TODO: Integrate code into here (+rewrite)
+vdrshutdown-wakeup-helper.sh "$@"
 
-sudo /usr/share/vdr/bin/vdrshutdown-really.sh "$@"
-case $? in
-0)	;;
-1)	mesg_q "sudo failed"
-	mesg_q "call emerge --config gentoo-vdr-scripts"
+if [ $? != 0 ]; then
+	mesg_q "setting wakeup time not successful"
 	exit_cleanup 1
-	;;
-*)	mesg_q "setting wakeup time not successful"
-	exit_cleanup 1
-	;;
-esac
+fi
+
 rm "${shutdown_data_dir}/shutdown-time-written"
 date +%s > "${shutdown_data_dir}/shutdown-time-written"
 
