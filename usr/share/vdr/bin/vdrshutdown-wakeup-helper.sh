@@ -10,14 +10,14 @@
 # real shutdown/reboot.
 #
 
-. /usr/share/vdr/inc/functions.sh
-include shutdown-functions
-shutdown_script_dir=/usr/share/vdr/shutdown
-
 if [ "$UID" != "0" ]; then
 	echo "This program should be run as root"
 	exit 99
 fi
+
+. /usr/share/vdr/inc/functions.sh
+include shutdown-functions
+shutdown_script_dir=/usr/share/vdr/shutdown
 
 if [ "${DEBUG}" -ge 1 ]; then
 	exec >/tmp/vdrshutdown-real-log 2>&1
@@ -44,8 +44,7 @@ set_reboot_needed() {
 	date +%s > ${shutdown_data_dir}/shutdown-need-reboot
 }
 
-read_reboot_setting() {
-	NEED_REBOOT=0
+need_reboot() {
 	[ -e "${shutdown_data_dir}/shutdown-need-reboot" ] || return
 	local TSTAMP=$(cat ${shutdown_data_dir}/shutdown-need-reboot)
 	local NOW=$(date +%s)
@@ -55,8 +54,10 @@ read_reboot_setting() {
 	UPTIME=${UPTIME%%.*}
 
 	if [ "${REBOOT_SET_AGO}" -lt "${UPTIME}" ]; then
-		NEED_REBOOT=1
+		return 0
 	fi
+
+	return 1
 }
 
 
@@ -83,16 +84,23 @@ for method in ${WAKEUP_METHOD}; do
 done
 [ ${wakeup_ok} = 0 ] && exit 99
 
+
+SHUTDOWN_METHOD=halt
+if need_reboot; then
+	SHUTDOWN_METHOD=reboot
+fi
+
+f="${shutdown_script_dir}/shutdown-${SHUTDOWN_METHOD}.sh"
+
 if [ "${DRY_SHUTDOWN}" = "1" ]; then
+	echo "dry run: NOT executing shutdown-${SHUTDOWN_METHOD}.sh"
 	exit 0
 fi
 
-read_reboot_setting
-
-case "${NEED_REBOOT}" in
-	1)	. ${shutdown_script_dir}/shutdown-reboot.sh ;;
-	0)	. ${shutdown_script_dir}/shutdown-halt.sh ;;
-esac
+if [ -f "$f" ]; then
+	echo "Executing shutdown-${SHUTDOWN_METHOD}.sh"
+	. "$f"
+fi
 
 exit 0
 

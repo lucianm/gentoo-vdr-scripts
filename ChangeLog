@@ -2,6 +2,10 @@
 # $Id$
 
   30 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/bin/vdrshutdown-wakeup-helper.sh:
+  Simplify shutdown code a bit.
+
+  30 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
   +usr/share/vdr/bin/vdrshutdown-gate.sh,
   usr/share/vdr/bin/vdrshutdown-really.sh,
   usr/share/vdr/bin/vdrshutdown-wakeup-helper.sh:
