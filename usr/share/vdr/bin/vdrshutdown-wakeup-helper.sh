@@ -20,7 +20,7 @@ include shutdown-functions
 shutdown_script_dir=/usr/share/vdr/shutdown
 
 if [ "${DEBUG}" -ge 1 ]; then
-	exec >/tmp/vdrshutdown-real-log 2>&1
+	exec >/tmp/vdrshutdown-wakeup-helper.log 2>&1
 	echo Started debug output of $0 $@
 	set -x
 fi

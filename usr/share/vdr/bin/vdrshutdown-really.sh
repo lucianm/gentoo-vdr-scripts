@@ -45,7 +45,7 @@ VDR_USERSHUTDOWN="${5}"
 : ${SHUTDOWN_DEFAULT_RETRY_TIME:=10}
 
 if [ "${DEBUG}" -ge 1 ]; then
-	exec </dev/null >/tmp/vdrshutdown-gate-log 2>&1
+	exec </dev/null >/tmp/vdrshutdown-really.log 2>&1
 	echo Started debug output of $0 $@
 	nr=0
 	for f; do
@@ -266,7 +266,7 @@ fi
 
 # TODO: Integrate code into here (+rewrite)
 # Keep VDR_TIMER_NEXT here, instead of $@, as it could have been changed
-vdrshutdown-wakeup-helper.sh "${VDR_TIMER_NEXT}"
+/usr/share/vdr/bin/vdrshutdown-wakeup-helper.sh "${VDR_TIMER_NEXT}"
 
 if [ $? != 0 ]; then
 	mesg_q "setting wakeup time not successful"

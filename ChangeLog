@@ -2,6 +2,11 @@
 # $Id$
 
   30 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/bin/vdrshutdown-really.sh,
+  usr/share/vdr/bin/vdrshutdown-wakeup-helper.sh:
+  Add full path to wakeup-helper.
+
+  30 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/bin/vdrshutdown-really.sh:
   Fixed wakeup times did not work, fix it. Thanks to berti for noticing.
 
