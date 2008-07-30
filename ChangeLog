@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  30 Jul 2008; Matthias Schwarzott <zzam@gentoo.org> ++,
+  -usr/share/vdr/bin/vdrshutdown-really.sh:
+  Moved old root-part of shutdown to temp name.
+
   30 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/pre-start-45-locales.sh:
   Check locale setup as does all users of it, checking LC_ALL LC_CTYPE LANG.
