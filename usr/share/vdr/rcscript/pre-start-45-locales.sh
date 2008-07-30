@@ -29,14 +29,33 @@ addon_main() {
 		if [ "${charmap}" = "ANSI_X3.4-1968" ]; then
 			# User has not set any locale stuff
 
-			ewarn "Your locale selects an ASCII only charmap."
-			if [ -n "${LANG}" ]; then
-				ewarn "It seems the locale you chose does not exist on your system [LANG=${LANG}]"
-				ewarn "Please have a look at /etc/locale.gen"
+			locale _ctype= _var=
+			if [ -n "${LC_ALL}" ]; then
+				_var=LC_ALL
+			elif [ -n "${LC_CTYPE}" ]; then
+				_var=LC_CTYPE
 			else
-				ewarn "You have not set a charmap!"
-				ewarn "Set LANG in either /etc/env.d/02locale or /etc/conf.d/vdr"
-				ewarn "Depending on your version of baselayout only /etc/conf.d/vdr may work"
+				_var=LANG
+			fi
+
+			eval _ctype=\$$_var
+			if [ -n "${_ctype}" ]; then
+				ewarn "You set ${_var}=${_ctype}"
+
+				if locale -a | fgrep -x -q "${_ctype}"; then
+					ewarn "This locale wants to use just ASCII chars - this should not happen!"
+				else
+					ewarn "This locale does not exist on your system"
+					ewarn "Please have a look at /etc/locale.gen"
+				fi
+			else
+				ewarn "You have not set a locale/charmap!"
+				ewarn "Please set LANG in /etc/conf.d/vdr"
+
+				if [ ! -e /lib/librc.so ]; then
+					# baselayout1
+					ewarn "or do this system-wide in /etc/env.d/02locale"
+				fi
 			fi
 
 			# Lets guess
@@ -52,9 +71,9 @@ addon_main() {
 
 			if [ "${l}" != "" ]; then
 				export LANG="${l}"
-				ewarn "Automatically using locale ${l} to get most of vdr utf8 support."
+				einfo "Auto-selected locale: ${l}"
 			else
-				ewarn "Not found any utf8 locale, you will have problems with chars extending ASCII"
+				ewarn "Did not find an utf8 locale. You may have problems with non-ASCII characters"
 			fi
 
 		fi

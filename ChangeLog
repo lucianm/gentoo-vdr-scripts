@@ -1,6 +1,11 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  30 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-45-locales.sh:
+  Check locale setup as does all users of it, checking LC_ALL LC_CTYPE LANG.
+  Improved log output of locale setup.
+
   29 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/pre-start-45-locales.sh:
   Tried to improve messages of locale handling code. Removed LC_MESSAGES=C
