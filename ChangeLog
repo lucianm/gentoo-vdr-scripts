@@ -2,6 +2,10 @@
 # $Id$
 
   30 Jul 2008; Matthias Schwarzott <zzam@gentoo.org> ++,
+  -usr/share/vdr/bin/vdrshutdown-gate.sh:
+  Move old user-part of shutdown to sudo entry point.
+
+  30 Jul 2008; Matthias Schwarzott <zzam@gentoo.org> ++,
   -usr/share/vdr/bin/vdrshutdown-really.sh:
   Moved old root-part of shutdown to temp name.
 
