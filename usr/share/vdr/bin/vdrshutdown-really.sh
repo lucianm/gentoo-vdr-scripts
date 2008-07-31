@@ -21,7 +21,7 @@
 #	exit
 #fi
 
-if [ "$UID" != "0" ]; then
+if [ "$(id  -u)" != "0" ]; then
 	echo "This program should be run as root"
 	exit 99
 fi
@@ -221,7 +221,7 @@ check_forced_shutdown_possible_next_time() {
 
 exit_cleanup() {
 	svdrp_queue_handler &
-	exit ${1}
+	exit $1
 }
 
 execute_hooks() {

@@ -1,6 +1,15 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-0.4.5_pre3 (31 Jul 2008)
+
+  31 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/bin/vdrshutdown-really.sh,
+  usr/share/vdr/bin/vdrshutdown-wakeup-helper.sh:
+  Fix shutdown not working.
+
+*gentoo-vdr-scripts-0.4.5_pre2 (30 Jul 2008)
+
   30 Jul 2008; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/bin/vdrshutdown-really.sh,
   usr/share/vdr/bin/vdrshutdown-wakeup-helper.sh:

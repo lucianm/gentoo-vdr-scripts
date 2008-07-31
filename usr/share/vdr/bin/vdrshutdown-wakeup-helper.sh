@@ -10,7 +10,7 @@
 # real shutdown/reboot.
 #
 
-if [ "$UID" != "0" ]; then
+if [ "$(id -u)" != "0" ]; then
 	echo "This program should be run as root"
 	exit 99
 fi
