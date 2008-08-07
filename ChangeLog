@@ -2,6 +2,10 @@
 # $Id$
 
   07 Aug 2008; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/bin/vdrshutdown-really.sh:
+  Remove svdrp queue as we are already forked to background.
+
+  07 Aug 2008; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/bin/vdrshutdown-really.sh,
   usr/share/vdr/bin/vdrshutdown-wakeup-helper.sh:
   Simplify checking for needed reboot.

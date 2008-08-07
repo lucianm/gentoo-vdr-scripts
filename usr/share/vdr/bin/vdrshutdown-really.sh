@@ -55,67 +55,14 @@ if [ "${DEBUG}" -ge 1 ]; then
 	set -x
 fi
 
-
-queue_add_wait() {
-	: ${qindex:=1}
-	eval svdrpqueue_${qindex}="\"sleep $1\""
-	qindex=$(($qindex+1))
-}
-
-svdrp_add_queue() {
-	: ${qindex:=1}
-	if [ "${DEBUG}" -ge 1 ]; then
-		logger -t "vdrshutdown-really" "sending per svdrp: $1"
-	fi
-	eval svdrpqueue_${qindex}="\"${SVDRPCMD} $1\""
-	qindex=$(($qindex+1))
-}
-
-svdrp_queue_handler() {
-	local i=1
-	local ITEM
-	while [ $i -lt $qindex ]; do
-		# retry until success
-		eval ITEM=\$svdrpqueue_${i}
-		while ! ${ITEM}; do
-			sleep 1
-		done
-		i=$(($i+1))
-	done
+svdrp_send() {
+	${SVDRPCMD} "$@"
 }
 
 mesg() {
-	${SVDRPCMD} MESG ${1}
+	svdrp_send MESG ${1}
 }
 
-mesg_q() {
-	svdrp_add_queue "MESG ${1}"
-}
-
-retry_shutdown() {
-	local when=${TRY_AGAIN}
-
-	if [ -n "${CAP_SHUTDOWN_SVDRP}" ]; then
-		if [ "${when}" -gt 5 ]; then
-			svdrp_add_queue "DOWN $(($when-5))"
-		else
-			svdrp_add_queue "DOWN"
-		fi
-		return
-	fi
-
-	if [ "${CAP_SHUTDOWN_AUTO_RETRY:-0}" = "1" ]; then
-		# vdr itself will retry shutdown in a reasonable time
-		return
-	fi
-	
-	# shutdown retry must be simulated by sleep and the power key
-	#as vdr itself is not able
-	queue_add_wait ${when}m
-	svdrp_add_queue "hitk power"
-	return
-}
-															
 is_auto_shutdown() {
 	[ "${VDR_USERSHUTDOWN}" = "0" ]
 }
@@ -168,10 +115,9 @@ shutdown_abort_exit() {
 	local ABORT_MESSAGE="${1}"
 	local EXITCODE=1
 
-	mesg_q "Shutdown aborted: ${ABORT_MESSAGE}"
-	exit_cleanup ${EXITCODE}
+	mesg "Shutdown aborted: ${ABORT_MESSAGE}"
+	exit ${EXITCODE}
 }
-
 
 
 
@@ -216,14 +162,9 @@ write_force_file() {
 check_forced_shutdown_possible_next_time() {
 	if [ "${SHUTDOWN_CAN_FORCE}" = "1" ]; then
 		write_force_file
-		queue_add_wait 1s
-		mesg_q "You can force a shutdown with pressing power again"
+		sleep 1s
+		mesg "You can force a shutdown with pressing power again"
 	fi
-}
-
-exit_cleanup() {
-	svdrp_queue_handler &
-	exit $1
 }
 
 execute_hooks() {
@@ -235,9 +176,33 @@ execute_hooks() {
 	done
 }
 
+retry_shutdown() {
+	local when=${TRY_AGAIN}
+
+	if [ -n "${CAP_SHUTDOWN_SVDRP}" ]; then
+		if [ "${when}" -gt 5 ]; then
+			svdrp_send "DOWN $(($when-5))"
+		else
+			svdrp_send "DOWN"
+		fi
+		return
+	fi
+
+	if [ "${CAP_SHUTDOWN_AUTO_RETRY:-0}" = "1" ]; then
+		# vdr itself will retry shutdown in a reasonable time
+		return
+	fi
+	
+	# shutdown retry must be simulated by sleep and the power key
+	#as vdr itself is not able
+
+	# just do it here without forking as we are already in background wrt vdr
+	sleep ${when}m
+	svdrp_send "hitk power"
+}
+
 check_auto_retry() {
 	if [ "${TRY_AGAIN}" -gt 0 -a "${ENABLE_AUTO_RETRY}" = 1 ]; then
-		queue_add_wait 1s
 		retry_shutdown ${TRY_AGAIN}
 	fi
 }
@@ -258,11 +223,11 @@ init_forced_shutdown
 execute_hooks
 
 if is_shutdown_aborted; then
-	mesg_q "No Shutdown: ${ABORT_MESSAGE}"
+	mesg "No Shutdown: ${ABORT_MESSAGE}"
 	check_forced_shutdown_possible_next_time
 	check_auto_retry
 	
-	exit_cleanup 0
+	exit 0
 fi
 
 
@@ -271,18 +236,18 @@ fi
 /usr/share/vdr/bin/vdrshutdown-wakeup-helper.sh "${VDR_TIMER_NEXT}"
 
 if [ $? != 0 ]; then
-	mesg_q "setting wakeup time not successful"
-	exit_cleanup 1
+	mesg "setting wakeup time not successful"
+	exit 1
 fi
 
 rm "${shutdown_data_dir}/shutdown-time-written"
 date +%s > "${shutdown_data_dir}/shutdown-time-written"
 
 if is_forced_shutdown && forced_tests_count_greater_zero; then
-	mesg_q "User enforced shutdown"
+	mesg "User enforced shutdown"
 else
-	mesg_q "Shutting down"
+	mesg "Shutting down"
 fi
 
-exit_cleanup 0
+exit 0
 
