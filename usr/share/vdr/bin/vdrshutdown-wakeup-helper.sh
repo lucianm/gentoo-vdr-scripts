@@ -18,6 +18,7 @@ fi
 . /usr/share/vdr/inc/functions.sh
 include shutdown-functions
 shutdown_script_dir=/usr/share/vdr/shutdown
+SVDRPCMD=/usr/bin/svdrpsend.pl
 
 if [ "${DEBUG}" -ge 1 ]; then
 	exec >/tmp/vdrshutdown-wakeup-helper.log 2>&1
@@ -27,11 +28,9 @@ fi
 
 VDR_WAKEUP_TIME="${1}"
 
-SVDRPCMD=/usr/bin/svdrpsend.pl
-
 mesg() {
 	if type logger >/dev/null 2>&1; then
-		logger "$@"
+		logger -t vdrshutdown-wakeup "$@"
 	fi
 }
 
@@ -39,21 +38,28 @@ mesg() {
 # nvram gets confused when setting the same time a second time
 # (when first shutdown-try fails for some reason).
 
+reboot_mark_file="${shutdown_data_dir}"/shutdown-need-reboot
+_need_reboot=0
+
 # to be called from wakeup-method to signalize need for reboot
 set_reboot_needed() {
-	date +%s > ${shutdown_data_dir}/shutdown-need-reboot
+	date +%s > "${reboot_mark_file}"
+	_need_reboot=1
 }
 
 need_reboot() {
-	[ -e "${shutdown_data_dir}/shutdown-need-reboot" ] || return
-	local TSTAMP=$(cat ${shutdown_data_dir}/shutdown-need-reboot)
-	local NOW=$(date +%s)
+	local TSTAMP= BOOT=
 
-	local REBOOT_SET_AGO=$(( $NOW-$TSTAMP ))
-	local UPTIME=$(cat /proc/uptime)
-	UPTIME=${UPTIME%%.*}
+	# we already know we should reboot
+	[ "${_need_reboot}" = 1 ] && return 0
 
-	if [ "${REBOOT_SET_AGO}" -lt "${UPTIME}" ]; then
+	[ -e "${reboot_mark_file}" ] || return 1
+	read TSTAMP < "${reboot_mark_file}"
+	BOOT=$(stat -c %Y /proc)
+
+	# requested reboot after last boot
+	if [ "$BOOT" -lt "$TSTAMP" ]; then
+		_need_reboot=1
 		return 0
 	fi
 
@@ -75,32 +81,37 @@ run_wakeup_method()
 	)
 }
 
-wakeup_ok=0
-for method in ${WAKEUP_METHOD}; do
-	if run_wakeup_method "${method}"; then
-		wakeup_ok=1
-		break
+_set_wakeup() {
+	for method in ${WAKEUP_METHOD}; do
+		if run_wakeup_method "${method}"; then
+			return 0
+		fi
+	done
+	return 1
+}
+
+_do_shutdown() {
+	SHUTDOWN_METHOD=halt
+	if need_reboot; then
+		SHUTDOWN_METHOD=reboot
 	fi
-done
-[ ${wakeup_ok} = 0 ] && exit 99
 
+	f="${shutdown_script_dir}/shutdown-${SHUTDOWN_METHOD}.sh"
 
-SHUTDOWN_METHOD=halt
-if need_reboot; then
-	SHUTDOWN_METHOD=reboot
-fi
+	if [ "${DRY_SHUTDOWN}" = "1" ]; then
+		mesg "dry run: NOT executing shutdown-${SHUTDOWN_METHOD}.sh"
+		return 0
+	fi
 
-f="${shutdown_script_dir}/shutdown-${SHUTDOWN_METHOD}.sh"
+	if [ -f "$f" ]; then
+		mesg "Executing shutdown-${SHUTDOWN_METHOD}.sh"
+		. "$f"
+	fi
+	return 0
+}
 
-if [ "${DRY_SHUTDOWN}" = "1" ]; then
-	echo "dry run: NOT executing shutdown-${SHUTDOWN_METHOD}.sh"
-	exit 0
-fi
-
-if [ -f "$f" ]; then
-	echo "Executing shutdown-${SHUTDOWN_METHOD}.sh"
-	. "$f"
-fi
+_set_wakeup || return 98
+_do_shutdown || return 97
 
 exit 0
 

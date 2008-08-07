@@ -64,7 +64,9 @@ queue_add_wait() {
 
 svdrp_add_queue() {
 	: ${qindex:=1}
-	logger "vdrshutdown-gate sending per svdrp: $1"
+	if [ "${DEBUG}" -ge 1 ]; then
+		logger -t "vdrshutdown-really" "sending per svdrp: $1"
+	fi
 	eval svdrpqueue_${qindex}="\"${SVDRPCMD} $1\""
 	qindex=$(($qindex+1))
 }
