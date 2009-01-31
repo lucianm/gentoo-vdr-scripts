@@ -26,6 +26,7 @@ if [ "${DEBUG}" -ge 1 ]; then
 	set -x
 fi
 
+# fixed variable name, used by wakeup method
 VDR_WAKEUP_TIME="${1}"
 
 mesg() {
@@ -39,33 +40,12 @@ mesg() {
 # (when first shutdown-try fails for some reason).
 
 reboot_mark_file="${shutdown_data_dir}"/shutdown-need-reboot
-_need_reboot=0
 
 # to be called from wakeup-method to signalize need for reboot
+# wakeup-method runs in a subshell, so use a file to get result back
 set_reboot_needed() {
-	date +%s > "${reboot_mark_file}"
-	_need_reboot=1
+	printf "" > "${reboot_mark_file}"
 }
-
-need_reboot() {
-	local TSTAMP= BOOT=
-
-	# we already know we should reboot
-	[ "${_need_reboot}" = 1 ] && return 0
-
-	[ -e "${reboot_mark_file}" ] || return 1
-	read TSTAMP < "${reboot_mark_file}"
-	BOOT=$(stat -c %Y /proc)
-
-	# requested reboot after last boot
-	if [ "$BOOT" -lt "$TSTAMP" ]; then
-		_need_reboot=1
-		return 0
-	fi
-
-	return 1
-}
-
 
 WAKEUP_METHOD="${WAKEUP_METHOD:-rtc acpi nvram none}"
 
@@ -92,7 +72,7 @@ _set_wakeup() {
 
 _do_shutdown() {
 	SHUTDOWN_METHOD=halt
-	if need_reboot; then
+	if [ -e "${reboot_mark_file}" ]; then
 		SHUTDOWN_METHOD=reboot
 	fi
 
@@ -104,6 +84,7 @@ _do_shutdown() {
 	fi
 
 	if [ -f "$f" ]; then
+		rm -f "${reboot_mark_file}"
 		mesg "Executing shutdown-${SHUTDOWN_METHOD}.sh"
 		. "$f"
 	fi
