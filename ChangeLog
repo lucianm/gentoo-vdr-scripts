@@ -1,6 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-0.4.6 (31 Jan 2009)
+
   31 Jan 2009; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/bin/vdrshutdown-wakeup-helper.sh:
   Simplify marking system for reboot. No longer calc timestamps. This will
