@@ -1,6 +1,11 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  17 Nov 2009; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-30-parameter.sh, etc/init.d/vdr:
+  Use new lirc socket path if it exists. Now depend on virtual service lirc
+  to be able to use different lirc daemons.
+
 *gentoo-vdr-scripts-0.4.6 (31 Jan 2009)
 
   31 Jan 2009; Matthias Schwarzott <zzam@gentoo.org>

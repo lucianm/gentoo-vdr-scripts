@@ -28,7 +28,13 @@ addon_main() {
 
 	if [ -n "${CAP_IRCTRL_RUNTIME_PARAM}" ] && [ -n "${IR_CTRL}" ]; then
 		case "${IR_CTRL}" in
-			lirc|rcu) add_param "--${IR_CTRL}" ;;
+			lirc)	if [ -e /var/run/lirc/lircd ]; then
+					add_param "--lirc=/var/run/lirc/lircd" ;;
+				else
+					add_param "--lirc=/dev/lircd"
+				fi
+				;;
+			rcu)	add_param "--rcu" ;;
 		esac
 	fi
 
