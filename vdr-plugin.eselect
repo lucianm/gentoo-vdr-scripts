@@ -84,15 +84,11 @@ do_list() {
 	plugins=( $(find_plugins) )
 	write_list_start "Available VDR plugins:"
 
-	if [[ -n "${plugins[@]}" ]] ; then
-		for (( n = 0 ; n < ${#plugins[@]} ; ++n )) ; do
-			is_enabled ${plugins[${n}]} && \
-				plugins[${n}]="${plugins[${n}]} $(highlight '*')"
-		done
-		write_numbered_list "${plugins[@]}"
-	else
-		write_kv_list_entry "(none found)" ""
-	fi
+	for (( n = 0 ; n < ${#plugins[@]} ; ++n )) ; do
+		is_enabled ${plugins[${n}]} && \
+			plugins[${n}]=$(highlight_marker "${plugins[${n}]}")
+	done
+	write_numbered_list -m "(none found)" "${plugins[@]}"
 
 	return 0
 }
