@@ -1,6 +1,11 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  23 Feb 2010; Matthias Schwarzott <zzam@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-45-nptl-check.sh, etc/conf.d/vdr:
+  Change default of FORCE_OLD_THREADS to no. Suggested by chub in
+  #gentoo-vdr.
+
   17 Nov 2009; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/pre-start-30-parameter.sh, etc/init.d/vdr:
   Use new lirc socket path if it exists. Now depend on virtual service lirc

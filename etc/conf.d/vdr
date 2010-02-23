@@ -204,7 +204,7 @@ PLUGIN_CHECK_PATCHLEVEL="yes"
 # force the use of old linux threads
 # instead of new posix threads (NPTL)
 #   allowed values: yes no
-#   default: yes
+#   default: no
 #FORCE_OLD_THREADS="yes"
 
 # do not use vdr -u option to set user
