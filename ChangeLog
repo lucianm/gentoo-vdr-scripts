@@ -1,6 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-0.4.7 (20 Jun 2010)
+
   23 Feb 2010; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/rcscript/pre-start-45-nptl-check.sh, etc/conf.d/vdr:
   Change default of FORCE_OLD_THREADS to no. Suggested by chub in
