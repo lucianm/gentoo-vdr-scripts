@@ -31,6 +31,13 @@ getvdrversion()
 [ -z "${VDR_BIN}" ] && VDR_BIN=/usr/bin/vdr
 getvdrversion
 
+getvdrversnum()
+{
+	local include_dir=/usr/include/vdr
+	VDRVERSNUM=$(awk '/define VDRVERSNUM/ {print $3}' ${include_dir}/config.h)
+}
+getvdrversnum
+
 init_params()
 {
 	# init variables for vdr/daemonctrl parameters
