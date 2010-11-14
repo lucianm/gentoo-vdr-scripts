@@ -135,10 +135,7 @@ init_forced_shutdown() {
 	# detect if this could be a forced shutdown
 	local shutdown_force_file=${shutdown_data_dir}/last-shutdown-abort
 
-	local LAST_SHUTDOWN_ABORT=0
-	if [ -f "${shutdown_force_file}" ]; then
-		LAST_SHUTDOWN_ABORT=$(cat "${shutdown_force_file}")
-	fi
+	local LAST_SHUTDOWN_ABORT=$(read_int_from_file "${shutdown_force_file}")
 	NOW=$(date +%s)
 	local DISTANCE=$(($NOW-$LAST_SHUTDOWN_ABORT))
 	if [ "${DISTANCE}" -lt "${SHUTDOWN_FORCE_DETECT_INTERVALL:-60}" ]; then

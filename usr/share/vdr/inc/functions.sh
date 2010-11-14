@@ -22,6 +22,18 @@ read_caps()
 	[ -f "${capfile}" ] && . ${capfile}
 }
 
+# read file containing just one integer value
+# $1 filename to read
+# returns read value on stdout if successfull, else returns 0 there
+read_int_from_file()
+{
+	local fname="$1" value="0"
+	if [ -r "$fname" -a -s "$fname" ]; then
+		value="$(cat "$fname")"
+	fi
+	echo $(($value+0))
+}
+
 if ! type yesno >/dev/null 2>&1; then
 
 yesno()

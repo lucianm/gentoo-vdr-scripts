@@ -28,8 +28,7 @@ check_periodic_thread()
 	local NOW=$(date +%s)
 	local MINIMAL_THREAD_CALL_DELTA=$(( 3600*20 ))
 
-	local LAST_THREAD_END=0
-	[ -f "${PERIODIC_THREAD_ENDTIME}" ] && LAST_THREAD_END=$(cat ${PERIODIC_THREAD_ENDTIME})
+	local LAST_THREAD_END=$(read_int_from_file "${PERIODIC_THREAD_ENDTIME}")
 	
 	local DELTA=$(( $NOW-$LAST_THREAD_END ))
 
