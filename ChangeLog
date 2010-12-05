@@ -1,6 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-0.4.8_rc1 (05 Dec 2010)
+
   14 Nov 2010; Matthias Schwarzott <zzam@gentoo.org>
   usr/share/vdr/shutdown/pre-shutdown-99-periodic-thread.sh,
   usr/share/vdr/bin/vdrshutdown-really.sh, usr/share/vdr/inc/functions.sh:
