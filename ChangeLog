@@ -1,6 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  18 Dec 2010; Matthias Schwarzott <zzam@gentoo.org> etc/conf.d/vdr.shutdown:
+  Improve description of SHUTDOWN_SYSTOHC
+
 *gentoo-vdr-scripts-0.4.8_rc2 (07 Dec 2010)
 
 *gentoo-vdr-scripts-0.4.8_rc1 (05 Dec 2010)

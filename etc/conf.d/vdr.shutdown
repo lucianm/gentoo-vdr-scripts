@@ -192,9 +192,10 @@
 #SHUTDOWN_DEFAULT_RETRY_TIME="10"
 
 #
-# The option CLOCK_SYTOHC breaks in some cases the wakup time
-# setted by vdr. This fix will correct the bios time and after this
-# will be written the wakeup time. See bug #263956
+# Having the option CLOCK_SYSTOHC=yes in /etc/conf.d/{clock|hwclock} in some cases
+# disables the wakup time set by vdr.
+# Setting CLOCK_SYSTOHC=no there and SHUTDOWN_SYSTOHC=yes here, will correct the bios time
+# and after this write the wakeup time. See bug #263956
 # Set the systems hardware clock during shutdown.
 #   allowed values: yes no
 #   default: no
