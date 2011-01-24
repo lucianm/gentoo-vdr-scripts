@@ -1,6 +1,12 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-0.4.8 (25 Jan 2011)
+
+  24 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +usr/share/portage/config/sets/vdr.conf:
+  merged vdr-plugin-rebuild set for Portage-2.2; bug #331453
+
   18 Dec 2010; Matthias Schwarzott <zzam@gentoo.org> etc/conf.d/vdr.shutdown:
   Improve description of SHUTDOWN_SYSTOHC
 
