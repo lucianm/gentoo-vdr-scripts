@@ -45,7 +45,7 @@
 # by the broadcaster. Better: Complain at your broadcaster.
 #
 # Using vdr-1.6 you can fix it this way:
-# If you subscribed to premiere (german pay tv) you may want ISO8859-15.
+# If you subscribed to SKY (german pay tv) you may want ISO8859-15.
 #VDR_CHARSET_OVERRIDE="ISO8859-15"
 
 ###########################################################

@@ -1,9 +1,9 @@
 #!/sbin/runscript
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2011 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-opts="${opts} mark_for_reboot"
+extra_commands="mark_for_reboot"
 
 STATEFILE=/force_reboot_shutdown
 
