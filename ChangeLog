@@ -3,6 +3,10 @@
 
 *gentoo-vdr-scripts-0.4.9 (09 Oct 2011)
 
+  09 Oct 2011; Joerg Bornkessel <hd_brummy@gentoo.org> etc/conf.d/vdr,
+  etc/init.d/vdr, etc/init.d/wakeup-reboot-halt:
+  fix for depricated opts warning in newer openrc
+
 *gentoo-vdr-scripts-0.4.8 (25 Jan 2011)
 
   24 Jan 2011; Joerg Bornkessel <hd_brummy@gentoo.org>
