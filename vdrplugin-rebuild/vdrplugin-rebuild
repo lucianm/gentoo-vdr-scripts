@@ -32,6 +32,7 @@ R_OPTION_C=0;
 R_OPTION_ENABLED=0;
 R_OPTION_SKIPPED=0;
 R_OPTION_PATCHLEVEL=0;
+R_OPTION_PM="portage";
 
 R_PLUGIN_ENABLE="${ROOT}/etc/conf.d/vdr.plugins"
 R_PLUGINS_SKIPPED="${ROOT}/var/vdr/tmp/plugins_skipped_ALL"
@@ -256,7 +257,11 @@ db_plug_merge() {
 	done
 	echo
 
-	emerge --oneshot --nodeps ${R_EMERGE_OPTS} ${tomerge[@]}
+	case ${R_OPTION_PM} in
+		portage) emerge --ignore-default-opts --oneshot --nodeps ${R_PM_OPTS} ${tomerge[@]};;
+		paludis) cave resolve -c1x -Cs ${R_PM_OPTS} ${tomerge[@]};;
+		*) echo "** Unsupported package manager"; phelp; exit 1;;
+	esac
 }
 
 get_vdr_plugin_dir() {
@@ -282,6 +287,7 @@ Where options are:
 	-e       - Only merge enabled plugins.
 	-s       - Only merge plugins that were skipped at last vdr start.
 	-p       - Only merge plugins that are not compiled against this vdr.
+	-P <pm>	 - Specify package manager: portage(default) or paludis
 
 Where action is one of:
 	list     - List packages to auto-rebuild.
@@ -302,6 +308,7 @@ while [ -n "$1" ]; do
 		-e) R_OPTION_ENABLED='1';;
 		-s) R_OPTION_SKIPPED='1';;
 		-p) R_OPTION_PATCHLEVEL='1';;
+		-P) R_OPTION_PM="$2"; shift;;
 		-*) phelp; exit 1;;
 		*) break;;
 	esac
@@ -339,7 +346,7 @@ fi
 
 R_CMD="$1"
 shift
-R_EMERGE_OPTS="$@"
+R_PM_OPTS="$@"
 
 # If the vdrplugindb doesnt exist, lets populate it automatically.
 if [[ ! -d ${R_DBPATH} ]]; then
