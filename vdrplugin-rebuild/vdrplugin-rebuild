@@ -217,13 +217,13 @@ db_plug_add() {
 
 db_plug_populate() {
 	local i x=0 pkg version list pad
-	
+
 	echo -e "${C_BOLD}${C_GREEN}** Populating database with installed Packages.${C_NORM}"
 	# Lets find them all
 	# chances are we will get a few dupes in here.
 	for pkg in $(grep -l ${vdr_plugin_dir}/libvdr ${R_VDBPATH}/*/*/CONTENTS); do
 		pad=""; x=0;
-		
+
 		if [[ -z ${pkg//${R_VDBPATH}*} ]]; then
 			for((i=0;i<=${#pkg};i++)); do
 				[[ ${pkg:${i}:1} = / ]] && x=$((${x} + 1));
@@ -237,7 +237,7 @@ db_plug_populate() {
 
 db_plug_merge() {
 	local i pkg
-	
+
 	echo -e "${C_BOLD}** Preparing to merge plugins:${C_NORM}"
 	db_plug_list >/dev/null
 
@@ -250,7 +250,7 @@ db_plug_merge() {
 	for pkg in ${tomerge[@]}; do
 		echo -e "\t${pkg}"
 	done
-	
+
 	for((i=1;i<6;i++)); do
 		echo -en "${C_BOLD}${C_RED}$((6 - ${i})) ${C_NORM}"
 		sleep 1
@@ -301,7 +301,6 @@ EOF
 }
 
 while [ -n "$1" ]; do
-	
 	case "$1" in
 		-X) R_OPTION_X='1';;
 		-C) R_OPTION_C='1';;
