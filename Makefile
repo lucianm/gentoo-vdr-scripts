@@ -4,13 +4,7 @@ SHELL = /bin/bash
 
 SUBDIRS = etc usr vdrplugin-rebuild
 
-all: compile
-
-compile:
-	$(MAKE) -C usr/bin compile
-
-clean:
-	$(MAKE) -C usr/bin clean
+all:
 
 VERSION := $(shell grep '^Version' README | awk '{ print $$2 }')
 TMPDIR = /tmp
