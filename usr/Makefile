@@ -3,7 +3,7 @@
 SHELL = /bin/bash
 
 MYDIR = $(DESTDIR)/usr
-SUBDIRS = bin sbin share/vdr
+SUBDIRS = sbin share/vdr
 BINS =
 CONFS =
 
