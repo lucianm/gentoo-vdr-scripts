@@ -36,4 +36,3 @@ svn copy trunk "tags/${NEWVERS}"
 svn commit -m "Tagged version ${NEWVERS}" "tags/${NEWVERS}"
 cd "tags/${NEWVERS}"
 make dist
-

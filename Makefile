@@ -21,7 +21,7 @@ info:
 	@echo VERSION: $(VERSION)
 	@[ -d ../tags/$(VERSION) ] && echo "Already tagged in svn"
 	@echo
-	@[ -d .svn ] && svn info 
+	@[ -d .svn ] && svn info
 
 dist:
 	@-rm -rf $(TMPDIR)/$(ARCHIVE)
@@ -29,7 +29,7 @@ dist:
 	@tar cjf $(PACKAGE).tar.bz2 -C $(TMPDIR) $(ARCHIVE)
 	@-rm -rf $(TMPDIR)/$(ARCHIVE)
 	@echo Distribution package created as $(PACKAGE).tar.bz2
-						
+
 install:
 	@for DIR in $(SUBDIRS); do \
 		$(MAKE) -C $$DIR install; \
