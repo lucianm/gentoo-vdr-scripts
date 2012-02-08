@@ -1,6 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-0.4.10 (08 Feb 2012)
+
   08 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
   +usr/share/vdr/bin/shutdown-custom_cmd.sh, etc/conf.d/vdr.shutdown,
   etc/init.d/vdr, usr/share/vdr/bin/vdrshutdown-wakeup-helper.sh:
