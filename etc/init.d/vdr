@@ -83,7 +83,7 @@ start_vdr() {
 
 	# show messages if we have any
 	if [ "${vdr_exitcode}" = "0" -a -s "${VDR_LOG_FILE}" ]; then
-		/usr/share/vdr/bin/vdr-bg.sh svdrpsend.pl mesg "Errors: Go to Commands/View VDR Start Log"
+		/usr/share/vdr/bin/vdr-bg.sh svdrpsend mesg "Errors: Go to Commands/View VDR Start Log"
 	fi
 
 	return $vdr_exitcode
@@ -167,5 +167,5 @@ watchdogrestart() {
 
 	( start_vdr )
 
-	svdrpsend.pl mesg "Warning: VDR process died."
+	svdrpsend mesg "Warning: VDR process died."
 }

@@ -201,6 +201,19 @@
 #   default: no
 #SHUTDOWN_SYSTOHC="yes"
 
+#
+# This may be a custom shutdown command like hibernate, hibernate-ram (from
+# sys-power/hibernate-script for example) or something else
+# which will suspend to RAM (STR, S3) or to disk (STD, S4) instead of
+# powering off the machine, achieving faster startup on resuming.
+# Of course, you then have to make sure when setting up this suspend/resume
+# scenario, to stop the vdr service and unload the dvb modules before
+# suspending, and load the modules and restart vdr when resuming. When using
+# sys-power/hibernate-script, /etc/hibernate/common.conf comes handy for
+# achieving this.
+#
+#SHUTDOWN_CUSTOM_CMD=""
+
 # Debugging variables:
 #DEBUG=1
 #DRY_SHUTDOWN=1
