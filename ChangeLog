@@ -1,6 +1,21 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-0.4.10 (08 Feb 2012)
+
+  08 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +usr/share/vdr/bin/shutdown-custom_cmd.sh, etc/conf.d/vdr.shutdown,
+  etc/init.d/vdr, usr/share/vdr/bin/vdrshutdown-wakeup-helper.sh:
+  moved svdrpsend.pl to svdrpsend command, used from vdr-1.7.23
+
+  08 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +usr/share/vdr/bin/shutdown-custom_cmd.sh, etc/conf.d/vdr.shutdown,
+  etc/init.d/vdr, usr/share/vdr/bin/vdrshutdown-wakeup-helper.sh:
+  add custom shutdown command, bug 389371
+
+  07 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org> ChangeLog:
+  added paludis/cave support to vdrplugin-rebuild script, bug 394251
+
 *gentoo-vdr-scripts-0.4.9 (09 Oct 2011)
 
   09 Oct 2011; Joerg Bornkessel <hd_brummy@gentoo.org> etc/conf.d/vdr,

@@ -71,7 +71,12 @@ _set_wakeup() {
 }
 
 _do_shutdown() {
-	SHUTDOWN_METHOD=halt
+	if [ -z "${SHUTDOWN_CUSTOM_CMD}" ]; then
+		SHUTDOWN_METHOD=halt
+	else
+		SHUTDOWN_METHOD=custom_cmd
+	fi
+
 	if [ -e "${reboot_mark_file}" ]; then
 		SHUTDOWN_METHOD=reboot
 	fi
