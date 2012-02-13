@@ -1,6 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-0.4.10.1 (13 Feb 2012)
+
   13 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org> ChangeLog:
   moved now alls svdrpsend.pl to svdrpsend
 
