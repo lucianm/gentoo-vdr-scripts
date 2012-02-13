@@ -27,7 +27,7 @@ if [ "$(id  -u)" != "0" ]; then
 fi
 
 # should be default paths on a machine build with vdr ebuilds
-SVDRPCMD=/usr/bin/svdrpsend.pl
+SVDRPCMD=/usr/bin/svdrpsend
 NVRAM_WAKEUP=/usr/bin/nvram-wakeup
 HOOKDIR=/usr/share/vdr/shutdown
 

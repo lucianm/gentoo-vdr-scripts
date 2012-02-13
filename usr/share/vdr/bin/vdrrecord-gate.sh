@@ -14,7 +14,7 @@ if [ -z "${EXECUTED_BY_VDR_BG}" ]; then
 	exit
 fi
 
-SVDRPCMD=/usr/bin/svdrpsend.pl
+SVDRPCMD=/usr/bin/svdrpsend
 
 HOOKDIR=/usr/share/vdr/record
 OLD_HOOKDIR=/usr/lib/vdr/record

@@ -32,6 +32,6 @@ fi
 
 unset SUDO_COMMAND
 
-svdrpsend.pl -d localhost "MESG DVD burn initiated"
+svdrpsend -d localhost "MESG DVD burn initiated"
 "$DVD_RECORDCMD" $DVDPLUS_RECORD_OPTS -Z "$VDR_DVDWRITER"="${ISO_FILE}"
-svdrpsend.pl -d localhost "MESG DVD burn completed"
+svdrpsend -d localhost "MESG DVD burn completed"

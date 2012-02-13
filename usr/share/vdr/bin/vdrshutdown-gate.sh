@@ -15,7 +15,7 @@ if [ -z "${EXECUTED_BY_VDR_BG}" ]; then
 fi
 
 mesg() {
-	svdrpsend.pl MESG "$@"
+	svdrpsend MESG "$@"
 }
 
 sudo /usr/share/vdr/bin/vdrshutdown-really.sh "$@"

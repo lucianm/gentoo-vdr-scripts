@@ -51,7 +51,7 @@ addon_main() {
 }
 
 svdrp_ready() {
-	if /usr/bin/svdrpsend.pl -d ${SVDRP_HOSTNAME} -p ${SVDRP_PORT} quit 2>/dev/null|grep -q ^220; then
+	if /usr/bin/svdrpsend -d ${SVDRP_HOSTNAME} -p ${SVDRP_PORT} quit 2>/dev/null|grep -q ^220; then
 		# svdrp open and ready
 		return 0
 	fi

@@ -48,7 +48,7 @@
 # 
 # Example crontab entry:
 # # Schedule daily backup, shutdown when the job is done
-# # 05 2  * * *  mybackup.sh; svdrpsend.pl "down" > /var/tmp/backup.log 2>&1
+# # 05 2  * * *  mybackup.sh; svdrpsend "down" > /var/tmp/backup.log 2>&1
 #
 
 

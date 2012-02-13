@@ -15,7 +15,7 @@ read_caps
 THREAD_DIR=/usr/share/vdr/shutdown
 PERIODIC_THREAD_ENDTIME=${shutdown_data_dir}/periodic_thread_last_ended
 
-SVDRPSEND=/usr/bin/svdrpsend.pl
+SVDRPSEND=/usr/bin/svdrpsend
 
 mesg() {
 	${SVDRPSEND} mesg "${1}"
@@ -35,11 +35,11 @@ mesg "periodic thread finished"
 
 sleep 3s
 
-svdrpsend.pl hitk back
+svdrpsend hitk back
 
 if [ "${CAP_SHUTDOWN_SVDRP}" = "1" ]; then
-	svdrpsend.pl DOWN
+	svdrpsend DOWN
 else
-	svdrpsend.pl hitk power
+	svdrpsend hitk power
 fi
 

@@ -5,7 +5,7 @@
 : ${PERIODIC_EPGSCAN_DURATION:=10}
 
 if yesno "${PERIODIC_EPGSCAN}"; then
-	/usr/bin/svdrpsend.pl SCAN
+	/usr/bin/svdrpsend SCAN
 	sleep ${PERIODIC_EPGSCAN_DURATION}m
 fi
 
