@@ -1,5 +1,3 @@
-#!/bin/sh
-
 # Detect the svdrpsend.pl/svdrpsend script
 # changed in vdr-1.7.23
 

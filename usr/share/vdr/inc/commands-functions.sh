@@ -57,10 +57,8 @@ EOT
 	fi
 
 	ln -s "${mergedfile}" "${destfile}"
-
 }
 
 #Usage example
 # merge_commands_conf /etc/vdr/commands /etc/vdr/commands.conf "${ORDER_COMMANDS}"
 # merge_commands_conf /etc/vdr/reccmds /etc/vdr/reccmds.conf "${ORDER_RECCMDS}"
-

@@ -18,7 +18,6 @@ fi
 . /usr/share/vdr/inc/functions.sh
 include shutdown-functions
 shutdown_script_dir=/usr/share/vdr/shutdown
-## SVDRPCMD=/usr/bin/svdrpsend
 
 if [ "${DEBUG}" -ge 1 ]; then
 	exec >/tmp/vdrshutdown-wakeup-helper.log 2>&1
@@ -100,4 +99,3 @@ _set_wakeup || return 98
 _do_shutdown || return 97
 
 exit 0
-

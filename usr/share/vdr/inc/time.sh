@@ -77,4 +77,3 @@ check_interval() {
 		return 1
 	fi
 }
-

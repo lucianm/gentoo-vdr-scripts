@@ -28,8 +28,7 @@ if [[ -z ${EXECUTED_BY_VDR_BG} ]]; then
 fi
 
 rm -f "$1/$2"
-  
-${SVDRPCMD} -d localhost "MESG DVD einlesen gestartet"
-dd if="$3" of="$1/$2"
-${SVDRPCMD} -d localhost "MESG DVD $2 fertig"
 
+"${SVDRPCMD}" -d localhost "MESG DVD einlesen gestartet"
+dd if="$3" of="$1/$2"
+"${SVDRPCMD}" -d localhost "MESG DVD $2 fertig"

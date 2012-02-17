@@ -22,4 +22,3 @@ addon_main() {
 	fi
 	return 0
 }
-

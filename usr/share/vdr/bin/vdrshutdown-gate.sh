@@ -27,4 +27,3 @@ sudo /usr/share/vdr/bin/vdrshutdown-really.sh "$@"
 [ $? = 1 ] && mesg "sudo failed: call emerge --config gentoo-vdr-scripts"
 
 exit 0
-

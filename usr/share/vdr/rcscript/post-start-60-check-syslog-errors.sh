@@ -40,4 +40,3 @@ addon_main() {
 
 	return 0
 }
-

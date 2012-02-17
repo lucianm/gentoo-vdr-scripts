@@ -17,4 +17,3 @@ addon_main() {
 	fi
 	return $exitcode
 }
-

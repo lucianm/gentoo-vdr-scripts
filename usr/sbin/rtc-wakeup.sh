@@ -15,8 +15,7 @@
 
 RTC_ALARM="/sys/class/rtc/rtc0/wakealarm"
 
-die()
-{
+die() {
 	echo "ERROR: $@" 1>&2
 	exit 1
 }

@@ -12,13 +12,11 @@ SCRIPT_API=2
 
 read_caps
 
-test_vdr_process()
-{
+test_vdr_process() {
 	pidof "${VDR_BIN}" >/dev/null
 }
 
-getvdrversion()
-{
+getvdrversion() {
 	local include_dir=/usr/include/vdr
 	VDRVERSION=$(awk -F'"' '/define VDRVERSION/ {print $2}' ${include_dir}/config.h)
 	APIVERSION=$(awk -F'"' '/define APIVERSION/ {print $2}' ${include_dir}/config.h)
@@ -31,31 +29,27 @@ getvdrversion()
 [ -z "${VDR_BIN}" ] && VDR_BIN=/usr/bin/vdr
 getvdrversion
 
-getvdrversnum()
-{
+getvdrversnum() {
 	local include_dir=/usr/include/vdr
 	VDRVERSNUM=$(awk '/define VDRVERSNUM/ {print $3}' ${include_dir}/config.h)
 }
 getvdrversnum
 
-init_params()
-{
+init_params() {
 	# init variables for vdr/daemonctrl parameters
 	vdr_opts=""
 	daemonctrl_opts=""
 }
 
 
-add_daemonctrl_param()
-{
+add_daemonctrl_param() {
 	while [ -n "$1" ]; do
 		daemonctrl_opts="${daemonctrl_opts} '$1'"
 		shift;
 	done
 }
 
-add_param()
-{
+add_param() {
 	while [ -n "$1" ]; do
 		vdr_opts="${vdr_opts} '$1'"
 		shift
@@ -65,8 +59,7 @@ add_param()
 #
 # void load_addons_prefixed(char *prefix)
 #
-load_addons_prefixed()
-{
+load_addons_prefixed() {
 	local addon_prefix=$1 call_func=${2:-addon_main} basename= ret=0
 
 	for addon in ${vdr_rc_dir}/${addon_prefix}-*.sh; do
@@ -80,8 +73,7 @@ load_addons_prefixed()
 	return $ret
 }
 
-load_addon()
-{
+load_addon() {
 	local addon=${1} func=${2:-addon_main}
 	local fname="${vdr_rc_dir}/${addon}.sh"
 	[ -f ${fname} ] || fname="${addon}"

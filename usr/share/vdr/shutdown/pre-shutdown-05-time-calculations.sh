@@ -48,4 +48,3 @@ catch_running_timer
 if yesno "${FIXED_WAKEUP}"; then
 	calculate_wakeup_timer
 fi
-

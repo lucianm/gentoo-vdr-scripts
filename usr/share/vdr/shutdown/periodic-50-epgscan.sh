@@ -11,4 +11,3 @@ if yesno "${PERIODIC_EPGSCAN}"; then
 	${SVDRPCMD} SCAN
 	sleep ${PERIODIC_EPGSCAN_DURATION}m
 fi
-

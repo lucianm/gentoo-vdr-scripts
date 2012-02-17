@@ -55,4 +55,3 @@ fi
 
 verbose "Checksum created."
 exit 0
-

@@ -3,9 +3,7 @@
 
 PERIODIC_THREAD_ENDTIME=${shutdown_data_dir}/periodic_thread_last_ended
 
-
-check_periodic_thread()
-{
+check_periodic_thread() {
 	# test if periodic thread is activated
 	yesno "${ENABLE_SHUTDOWN_PERIODIC_JOBS}" || return
 
@@ -44,4 +42,3 @@ check_periodic_thread()
 }
 
 check_periodic_thread
-

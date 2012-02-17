@@ -64,4 +64,3 @@ svdrp_ready() {
 	fi
 	return 1
 }
-

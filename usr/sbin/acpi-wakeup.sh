@@ -15,14 +15,12 @@
 
 PROC_ALARM="/proc/acpi/alarm"
 
-die()
-{
+die() {
 	echo "ERROR: $@" 1>&2
 	exit 1
 }
 
-checkUTC()
-{
+checkUTC() {
 	unset clock
 	unset CLOCK
 	local f
@@ -37,8 +35,7 @@ checkUTC()
 	[ "${clock}" = "UTC" ]
 }
 
-writeAlarm()
-{
+writeAlarm() {
 	# write 2 times (some bioses need this)
 	echo "$1" > "${PROC_ALARM}"
 	echo "$1" > "${PROC_ALARM}"

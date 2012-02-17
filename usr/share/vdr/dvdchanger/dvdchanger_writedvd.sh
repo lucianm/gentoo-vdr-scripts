@@ -35,6 +35,6 @@ fi
 
 unset SUDO_COMMAND
 
-${SVDRPCMD} -d localhost "MESG DVD burn initiated"
+"${SVDRPCMD}" -d localhost MESG "DVD burn initiated"
 "$DVD_RECORDCMD" $DVDPLUS_RECORD_OPTS -Z "$VDR_DVDWRITER"="${ISO_FILE}"
-${SVDRPCMD} -d localhost "MESG DVD burn completed"
+"${SVDRPCMD}" -d localhost MESG "DVD burn completed"

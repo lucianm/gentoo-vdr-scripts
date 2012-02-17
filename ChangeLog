@@ -2,6 +2,36 @@
 # $Id$
 
   17 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  usr/share/vdr/rcscript/post-start-05-plugins.sh,
+  usr/share/vdr/shutdown/pre-shutdown-05-time-calculations.sh,
+  usr/share/vdr/rcscript/pre-start-10-chuid.sh,
+  usr/share/vdr/shutdown/pre-shutdown-20-check-blocking-programs.sh,
+  usr/share/vdr/rcscript/pre-start-20-dvb-device.sh,
+  usr/share/vdr/rcscript/watchdog-restart-20-modules.sh,
+  usr/share/vdr/shutdown/pre-shutdown-40-time.sh,
+  usr/share/vdr/rcscript/pre-start-45-locales.sh,
+  usr/share/vdr/rcscript/pre-start-45-nptl-check.sh,
+  usr/share/vdr/shutdown/periodic-50-epgscan.sh,
+  usr/share/vdr/rcscript/pre-start-50-shutdown.sh,
+  usr/share/vdr/rcscript/post-start-50-svdrp.sh,
+  usr/share/vdr/rcscript/post-start-60-check-syslog-errors.sh,
+  usr/share/vdr/rcscript/pre-start-60-check-syslog-errors.sh,
+  usr/share/vdr/rcscript/pre-start-98-wait-conditions.sh,
+  usr/share/vdr/shutdown/pre-shutdown-99-periodic-thread.sh,
+  usr/sbin/acpi-wakeup.sh, usr/sbin/dvb-reload-modules, usr/sbin/rtc-wakeup.sh,
+  usr/sbin/vdr-get-header-checksum, usr/sbin/vdr-watchdogd,
+  usr/share/vdr/bin/vdrrecord-gate.sh, usr/share/vdr/bin/vdrshutdown-gate.sh,
+  usr/share/vdr/bin/vdrshutdown-periodic-thread.sh,
+  usr/share/vdr/bin/vdrshutdown-really.sh,
+  usr/share/vdr/bin/vdrshutdown-wakeup-helper.sh,
+  usr/share/vdr/dvdchanger/dvdchanger_readdvd.sh,
+  usr/share/vdr/dvdchanger/dvdchanger_writedvd.sh,
+  usr/share/vdr/inc/commands-functions.sh, usr/share/vdr/inc/functions.sh,
+  usr/share/vdr/inc/rc-functions.sh, usr/share/vdr/inc/svdrpcmd.sh,
+  usr/share/vdr/inc/time.sh:
+  Qouting, whitespace, minor fixes
+
+  17 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
   usr/share/vdr/shutdown/periodic-50-epgscan.sh,
   usr/share/vdr/rcscript/post-start-50-svdrp.sh,
   +usr/share/vdr/inc/svdrpcmd.sh, usr/share/vdr/bin/vdrrecord-gate.sh,

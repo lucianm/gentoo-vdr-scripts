@@ -22,7 +22,7 @@ OLD_HOOKDIR=/usr/lib/vdr/record
 svdrp_command
 
 mesg() {
-	${SVDRPCMD} MESG "\"$@\""
+	"${SVDRPCMD}" MESG "\"$@\""
 }
 
 VDR_RECORD_STATE="$1"

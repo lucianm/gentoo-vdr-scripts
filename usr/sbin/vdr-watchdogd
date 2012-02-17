@@ -13,6 +13,7 @@ exec < /dev/null
 exec >/dev/null 2>&1
 
 . /etc/conf.d/vdr.watchdogd
+
 DEBUG=1
 [ "$1" = "--debug" ] && DEBUG=1
 
@@ -94,4 +95,3 @@ main() {
 }
 
 main
-

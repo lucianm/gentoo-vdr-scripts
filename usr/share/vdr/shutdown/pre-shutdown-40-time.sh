@@ -10,4 +10,3 @@ do_check_time() {
 }
 
 do_check_time
-

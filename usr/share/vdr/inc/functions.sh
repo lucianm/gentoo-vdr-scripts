@@ -2,8 +2,7 @@
 
 # Handle inclusion of script-helper-files
 
-include()
-{
+include() {
 	local name="${1}"
 	local vname=loaded_$(echo ${name} | tr '-' '_')
 	local check
@@ -16,8 +15,7 @@ include()
 
 # Read file with definitions of capabilities of vdr-binary
 # e.g. svdrp-down-command / some patches
-read_caps()
-{
+read_caps() {
 	local capfile=/usr/share/vdr/capabilities.sh
 	[ -f "${capfile}" ] && . ${capfile}
 }
@@ -25,8 +23,7 @@ read_caps()
 # read file containing just one integer value
 # $1 filename to read
 # returns read value on stdout if successfull, else returns 0 there
-read_int_from_file()
-{
+read_int_from_file() {
 	local fname="$1" value="0"
 	if [ -r "$fname" -a -s "$fname" ]; then
 		value="$(cat "$fname")"
@@ -36,8 +33,7 @@ read_int_from_file()
 
 if ! type yesno >/dev/null 2>&1; then
 
-yesno()
-{
+yesno() {
 	[ -z "$1" ] && return 1
 
 	case "$1" in
@@ -54,5 +50,3 @@ yesno()
 	esac
 }
 fi
-
-
