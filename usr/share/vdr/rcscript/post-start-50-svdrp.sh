@@ -2,6 +2,9 @@
 
 include rc-functions
 
+include scdrpcmd
+svdrp_command
+
 addon_main() {
 	# we already know vdr failed
 	[ "${vdr_start_failed}" = "1" ] && return 0
@@ -51,7 +54,7 @@ addon_main() {
 }
 
 svdrp_ready() {
-	if /usr/bin/svdrpsend -d ${SVDRP_HOSTNAME} -p ${SVDRP_PORT} quit 2>/dev/null|grep -q ^220; then
+	if ${SVDRPCMD} -d ${SVDRP_HOSTNAME} -p ${SVDRP_PORT} quit 2>/dev/null|grep -q ^220; then
 		# svdrp open and ready
 		return 0
 	fi

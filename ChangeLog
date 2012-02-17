@@ -1,6 +1,19 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  17 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  usr/share/vdr/shutdown/periodic-50-epgscan.sh,
+  usr/share/vdr/rcscript/post-start-50-svdrp.sh,
+  +usr/share/vdr/inc/svdrpcmd.sh, usr/share/vdr/bin/vdrrecord-gate.sh,
+  usr/share/vdr/bin/vdrshutdown-gate.sh,
+  usr/share/vdr/bin/vdrshutdown-periodic-thread.sh,
+  usr/share/vdr/bin/vdrshutdown-really.sh,
+  usr/share/vdr/bin/vdrshutdown-wakeup-helper.sh,
+  usr/share/vdr/dvdchanger/dvdchanger_readdvd.sh,
+  usr/share/vdr/dvdchanger/dvdchanger_writedvd.sh:
+  svdrpsend.pl/svdrpsend detection, command will works now with all vdr
+  versions
+
 *gentoo-vdr-scripts-0.4.10.1 (13 Feb 2012)
 
   13 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org> ChangeLog:

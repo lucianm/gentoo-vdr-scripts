@@ -8,14 +8,18 @@
 # privileged commands. Start visudo and add a line like
 #   vdr     ALL= NOPASSWD: /usr/share/vdr/bin/vdrshutdown-really.sh
 
+include svdrpcmd
+
 #fork to background
 if [ -z "${EXECUTED_BY_VDR_BG}" ]; then
 	exec /usr/share/vdr/bin/vdr-bg.sh "$0" "$@"
 	exit
 fi
 
+svdrp_command
+
 mesg() {
-	svdrpsend MESG "$@"
+	"${SVDRPCMD}" MESG "$@"
 }
 
 sudo /usr/share/vdr/bin/vdrshutdown-really.sh "$@"

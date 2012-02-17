@@ -12,13 +12,14 @@
 include shutdown-functions
 read_caps
 
+include svdrpcmd
+svdrp_command
+
 THREAD_DIR=/usr/share/vdr/shutdown
 PERIODIC_THREAD_ENDTIME=${shutdown_data_dir}/periodic_thread_last_ended
 
-SVDRPSEND=/usr/bin/svdrpsend
-
 mesg() {
-	${SVDRPSEND} mesg "${1}"
+	${SVDRPCMD} mesg "${1}"
 }
 
 sleep 15s
@@ -38,8 +39,8 @@ sleep 3s
 svdrpsend hitk back
 
 if [ "${CAP_SHUTDOWN_SVDRP}" = "1" ]; then
-	svdrpsend DOWN
+	${SVDRPCMD} DOWN
 else
-	svdrpsend hitk power
+	${SVDRPCMD} hitk power
 fi
 

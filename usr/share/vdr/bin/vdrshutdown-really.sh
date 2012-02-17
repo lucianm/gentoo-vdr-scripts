@@ -27,14 +27,15 @@ if [ "$(id  -u)" != "0" ]; then
 fi
 
 # should be default paths on a machine build with vdr ebuilds
-SVDRPCMD=/usr/bin/svdrpsend
 NVRAM_WAKEUP=/usr/bin/nvram-wakeup
 HOOKDIR=/usr/share/vdr/shutdown
 
 . /usr/share/vdr/inc/functions.sh
 include shutdown-functions
-
 read_caps
+
+include svdrpcmd
+svdrp_command
 
 VDR_TIMER_NEXT="${1}"
 VDR_TIMER_DELTA="${2}"

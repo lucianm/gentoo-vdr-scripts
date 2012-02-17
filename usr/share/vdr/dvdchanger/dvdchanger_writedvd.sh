@@ -5,6 +5,9 @@
 # 04 Mar 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
 # addaptded to gentoo-vdr-scripts
 
+include svdrpcmd
+svdrp_command
+
 if [[ -z ${EXECUTED_BY_VDR_BG} ]]; then
 	VDR_BG=/usr/share/vdr/bin/vdr-bg.sh
 	[[ -e ${VDR_BG} ]] || VDR_BG=/usr/lib/vdr/bin/vdr-bg.sh
@@ -32,6 +35,6 @@ fi
 
 unset SUDO_COMMAND
 
-svdrpsend -d localhost "MESG DVD burn initiated"
+${SVDRPCMD} -d localhost "MESG DVD burn initiated"
 "$DVD_RECORDCMD" $DVDPLUS_RECORD_OPTS -Z "$VDR_DVDWRITER"="${ISO_FILE}"
-svdrpsend -d localhost "MESG DVD burn completed"
+${SVDRPCMD} -d localhost "MESG DVD burn completed"

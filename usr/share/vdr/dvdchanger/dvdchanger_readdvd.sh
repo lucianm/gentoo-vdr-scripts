@@ -16,6 +16,9 @@
 # $2 = name of dvd
 # $3 = original dvd-device
 
+include svdrpcmd
+svdrp_command
+
 if [[ -z ${EXECUTED_BY_VDR_BG} ]]; then
 	VDR_BG=/usr/share/vdr/bin/vdr-bg.sh
 	[[ -e ${VDR_BG} ]] || VDR_BG=/usr/lib/vdr/bin/vdr-bg.sh
@@ -26,7 +29,7 @@ fi
 
 rm -f "$1/$2"
   
-svdrpsend -d localhost "MESG DVD einlesen gestartet"
+${SVDRPCMD} -d localhost "MESG DVD einlesen gestartet"
 dd if="$3" of="$1/$2"
-svdrpsend -d localhost "MESG DVD $2 fertig"
+${SVDRPCMD} -d localhost "MESG DVD $2 fertig"
 
