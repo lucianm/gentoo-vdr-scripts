@@ -1,6 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-0.5.0_rc1 (19 Feb 2012)
+
   17 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
   usr/share/vdr/rcscript/post-start-05-plugins.sh,
   usr/share/vdr/shutdown/pre-shutdown-05-time-calculations.sh,
