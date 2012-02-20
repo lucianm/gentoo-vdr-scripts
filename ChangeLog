@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  20 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  usr/share/vdr/rcscript/post-start-50-svdrp.sh:
+  typo fixed
+
 *gentoo-vdr-scripts-0.5.0_rc1 (19 Feb 2012)
 
   17 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org>

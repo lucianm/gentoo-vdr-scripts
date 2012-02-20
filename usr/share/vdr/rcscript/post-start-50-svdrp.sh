@@ -2,7 +2,7 @@
 
 include rc-functions
 
-include scdrpcmd
+include svdrpcmd
 svdrp_command
 
 addon_main() {
