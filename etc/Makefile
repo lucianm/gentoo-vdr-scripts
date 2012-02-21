@@ -3,7 +3,7 @@
 SHELL = /bin/bash
 
 MYDIR = $(DESTDIR)/etc
-SUBDIRS = conf.d init.d vdr
+SUBDIRS = conf.d init.d vdr sudoers.d
 
 all:
 
