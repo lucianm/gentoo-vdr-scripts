@@ -1,6 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  22 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org> +etc/sudoers.d/Makefile:
+  another makefile for new sudoers handling
+
   21 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org> +etc/sudoers.d/vdr,
   etc/Makefile:
   some adds for new sudoers handling
