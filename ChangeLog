@@ -1,7 +1,7 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
-*gentoo-vdr-scripts-0.5.0 (23 Feb 2012)
+*gentoo-vdr-scripts-0.5.0 (24 Feb 2012)
 
   23 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
   usr/share/vdr/rcscript/pre-start-50-shutdown.sh:
