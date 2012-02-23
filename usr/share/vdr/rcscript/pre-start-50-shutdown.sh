@@ -13,14 +13,11 @@ addon_main() {
 	add_param "--shutdown=/usr/share/vdr/bin/vdrshutdown-gate.sh"
 
 	# some sanity warnings
-	if ! grep -q /usr/share/vdr/bin/vdrshutdown-really.sh /etc/sudoers; then
-		ewarn "  depricated entry in /etc/sudoers"
-		ewarn
-		ewarn "  To keep the shutdown work correctly, remove the line from /etc/sudoers"
-		ewarn "  vdr ALL=NOPASSWD:/usr/share/vdr/bin/vdrshutdown-really.sh"
-		ewarn
-		ewarn "  or call emerge --config gentoo-vdr-scripts"
-		ewarn
+	if grep -q /usr/share/vdr/bin/vdrshutdown-really.sh /etc/sudoers; then
+		eerror "  depricated entry in /etc/sudoers"
+		eerror "  To keep the shutdown work correctly, remove the line from /etc/sudoers"
+		eerror "  vdr ALL=NOPASSWD:/usr/share/vdr/bin/vdrshutdown-really.sh"
+		eerror "  or call emerge --config gentoo-vdr-scripts"
 		logger -t vdr "ERROR: Depricated entry in /etc/sudoers, please migrate"
 	fi
 	return 0

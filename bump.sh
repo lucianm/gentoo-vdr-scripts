@@ -17,11 +17,11 @@ sed -e "3a\\
 *gentoo-vdr-scripts-${NEWVERS} (${today})\\
 " -i ChangeLog
 
-echo "Commiting bump"
-git commit -m "Bumped to version ${NEWVERS}" ChangeLog README
+echo "local bump"
+#git commit -m "Bumped to version ${NEWVERS}" ChangeLog README
 
 
-git tag gentoo-vdr-scripts-$NEWVERS
+#git tag gentoo-vdr-scripts-$NEWVERS
 #git push origin :gentoo-vdr-scripts-$NEWVERS
 
 make dist
