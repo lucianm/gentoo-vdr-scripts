@@ -1,6 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-0.5.1 (24 Feb 2012)
+
   24 Feb 2012; Joerg Bornkessel <hd_brummy@gentoo.org> bump.sh, etc/init.d/vdr:
   last changes for svdrpsend/svdrpsend.pl handling
 
