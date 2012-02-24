@@ -18,10 +18,10 @@ sed -e "3a\\
 " -i ChangeLog
 
 echo "local bump"
-#git commit -m "Bumped to version ${NEWVERS}" ChangeLog README
+git commit -m "Bumped to version ${NEWVERS}" ChangeLog README
 
 
-#git tag gentoo-vdr-scripts-$NEWVERS
+git tag gentoo-vdr-scripts-$NEWVERS
 #git push origin :gentoo-vdr-scripts-$NEWVERS
 
 make dist

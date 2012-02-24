@@ -6,6 +6,14 @@ extra_commands="watchdogrestart"
 
 . /etc/conf.d/vdr.watchdogd
 
+svdrp_command() {
+	if [ -e /usr/bin/svdrpsend.pl ]; then
+		SVDRPCMD=/usr/bin/svdrpsend.pl
+	else
+		SVDRPCMD=/usr/bin/svdrpsend
+	fi
+}
+
 common_init() {
 	vdr_home=/var/vdr
 	cd ${vdr_home}
@@ -44,7 +52,9 @@ start_vdr() {
 	init_params
 	add_daemonctrl_param --start --chdir ~vdr --exec ${VDR_BIN}
 	init_plugin_loader start
-	
+
+	svdrp_command
+
 	load_addons_prefixed pre-start || return 1
 
 	ebegin "Starting ${VDRNAME}"
@@ -83,7 +93,7 @@ start_vdr() {
 
 	# show messages if we have any
 	if [ "${vdr_exitcode}" = "0" -a -s "${VDR_LOG_FILE}" ]; then
-		/usr/share/vdr/bin/vdr-bg.sh svdrpsend mesg "Errors: Go to Commands/View VDR Start Log"
+		/usr/share/vdr/bin/vdr-bg.sh ${SVDRPCMD} mesg "Errors: Go to Commands/View VDR Start Log"
 	fi
 
 	return $vdr_exitcode
@@ -167,5 +177,7 @@ watchdogrestart() {
 
 	( start_vdr )
 
-	svdrpsend mesg "Warning: VDR process died."
+	svdrp_command
+
+	${SVDRPCMD} mesg "Warning: VDR process died."
 }
