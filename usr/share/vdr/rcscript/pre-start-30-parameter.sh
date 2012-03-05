@@ -34,7 +34,13 @@ addon_main() {
 					add_param "--lirc=/dev/lircd"
 				fi
 				;;
-			rcu)	add_param "--rcu" ;;
+			rcu)	if [ "${VDRVERSNUM}" -ge "10725" ]; then
+						eerror "rcu parameter is depricated"
+						eerror "use media-plugins/vdr-rcu"
+					else
+						add_param "--rcu"
+					fi
+					;;
 		esac
 	fi
 
