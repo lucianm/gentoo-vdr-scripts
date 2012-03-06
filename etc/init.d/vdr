@@ -6,14 +6,6 @@ extra_commands="watchdogrestart"
 
 . /etc/conf.d/vdr.watchdogd
 
-svdrp_command() {
-	if [ -e /usr/bin/svdrpsend.pl ]; then
-		SVDRPCMD=/usr/bin/svdrpsend.pl
-	else
-		SVDRPCMD=/usr/bin/svdrpsend
-	fi
-}
-
 common_init() {
 	vdr_home=/var/vdr
 	cd ${vdr_home}
@@ -21,6 +13,7 @@ common_init() {
 	. /usr/share/vdr/inc/functions.sh
 	include rc-functions
 	include plugin-functions
+	include svdrpcmd
 	VDR_LOG_FILE=/var/vdr/tmp/vdr-start-log
 }
 

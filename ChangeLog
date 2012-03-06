@@ -1,6 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  06 Mar 2012; Joerg Bornkessel <hd_brummy@gentoo.org> etc/init.d/vdr:
+  svdrp_command function now included
+
   05 Mar 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
   usr/share/vdr/rcscript/pre-start-30-parameter.sh:
   fixed --rcu handling, used from >=media-video/vdr-1.7.25 in plugin
