@@ -1,6 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-0.5.2 (14 Mar 2012)
+
   06 Mar 2012; Joerg Bornkessel <hd_brummy@gentoo.org> etc/init.d/vdr:
   svdrp_command function now included
 
