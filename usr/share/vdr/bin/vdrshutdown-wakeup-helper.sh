@@ -46,7 +46,7 @@ set_reboot_needed() {
 	printf "" > "${reboot_mark_file}"
 }
 
-WAKEUP_METHOD="${WAKEUP_METHOD:-rtc acpi nvram none}"
+WAKEUP_METHOD="${WAKEUP_METHOD:-rtc nvram none}"
 
 run_wakeup_method()
 {

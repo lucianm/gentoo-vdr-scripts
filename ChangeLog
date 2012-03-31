@@ -1,6 +1,12 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  31 Mar 2012; Joerg Bornkessel <hd_brummy@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-50-shutdown.sh, etc/conf.d/vdr.shutdown,
+  usr/share/vdr/bin/vdrshutdown-wakeup-helper.sh:
+  wakup method acpi is depricated since kernel 2.6.39, use rtc or nvram
+  instead, added a warning message/logger for using acpi wakeup method
+
 *gentoo-vdr-scripts-0.5.2 (14 Mar 2012)
 
   06 Mar 2012; Joerg Bornkessel <hd_brummy@gentoo.org> etc/init.d/vdr:

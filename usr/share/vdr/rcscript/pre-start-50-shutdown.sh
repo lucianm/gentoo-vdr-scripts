@@ -20,5 +20,15 @@ addon_main() {
 		eerror "  or call emerge --config gentoo-vdr-scripts"
 		logger -t vdr "ERROR: Depricated entry in /etc/sudoers, please migrate"
 	fi
+
+	# warning about depricated acpi wakeup kernel > 2.6.38
+	if [ "${WAKEUP_METHOD}" = acpi ]; then
+		ewarn "use of acpi wakeup method is depricated"
+		einfo "use rtc or nvram instead"
+		logger -t vdr "WARNING:"
+		logger -t vdr "use of acpi wakeup method is depricated"
+		logger -t vdr "use rtc or nvram instead"
+	fi
+
 	return 0
 }
