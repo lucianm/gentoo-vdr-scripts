@@ -259,7 +259,7 @@ db_plug_merge() {
 
 	case ${R_OPTION_PM} in
 		portage) emerge --ignore-default-opts --oneshot --nodeps ${R_PM_OPTS} ${tomerge[@]};;
-		paludis) cave resolve -c1x -Cs ${R_PM_OPTS} ${tomerge[@]};;
+		paludis) cave resolve -1x -Cs ${R_PM_OPTS} ${tomerge[@]};;
 		*) echo "** Unsupported package manager"; phelp; exit 1;;
 	esac
 }
