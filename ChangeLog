@@ -1,6 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-0.5.3 (07 Oct 2012)
+
   07 Oct 2012; Joerg Bornkessel <hd_brummy@gentoo.org> etc/conf.d/vdr.shutdown,
   usr/share/vdr/shutdown/shutdown-reboot.sh:
   grub2 support added
