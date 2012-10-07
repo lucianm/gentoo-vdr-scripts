@@ -97,10 +97,9 @@
 
 #
 # Only used for WAKEUP_METHOD nvram when motherboard needs reboot
-#   allowed values: auto grub lilo
+#   allowed values: auto grub grub2 lilo
 #   default: use auto - use a special startup-script, no need to play with boot-managers :)
 #BOOT_MANAGER="auto"
-#BOOT_MANAGER="grub"
 
 #
 # Which entry in the boot manager configuration should nvram use to
@@ -178,7 +177,7 @@
 
 #
 # This should normally not changed.
-#   allowed values: grub-set-default savedefault
+#   allowed values: grub-set-default savedefault grub2-set-default
 #   default: grub-set-default
 #GRUB_SET_REBOOT_ENTRY_METHOD="grub-set-default"
 

@@ -17,7 +17,7 @@ case "${BOOT_MANAGER}" in
 		/etc/init.d/wakeup-reboot-halt mark_for_reboot
 		;;
 	grub)
-		mount /boot 
+		mount /boot
 		if [ -n "${REBOOT_ENTRY_GRUB}" ]; then
 			case "${GRUB_SET_REBOOT_ENTRY_METHOD:=grub-set-default}" in
 				grub-set-default)
@@ -32,6 +32,25 @@ case "${BOOT_MANAGER}" in
 						echo "savedefault --default=${REBOOT_ENTRY_GRUB} --once" | /sbin/grub --batch
 					else
 						mesg "command grub-set-default not found!"
+					fi
+					;;
+				*)
+					mesg "Unknown grub method ${GRUB_SET_REBOOT_ENTRY_METHOD}."
+					;;
+			esac
+		else
+			mesg "reboot entry not set, can not reboot."
+		fi
+		;;
+	grub2)
+		mount /boot
+		if [ -n "${REBOOT_ENTRY_GRUB}" ]; then
+			case "${GRUB_SET_REBOOT_ENTRY_METHOD:=grub2-set-default}" in
+				grub2-set-default)
+					if [ -x /usr/sbin/grub2-set-default ]; then
+						/usr/sbin/grub2-set-default "${REBOOT_ENTRY_GRUB}"
+					else
+						mesg "command grub2-set-default not found!"
 					fi
 					;;
 				*)
