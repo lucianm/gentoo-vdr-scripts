@@ -147,12 +147,20 @@ LOG="3"
 #   default: /etc/vdr
 #CONFIG="/etc/vdr"
 
+# write/read cached vdr files in the given directory
+# e.g. epg.data
+#    allowed values: directory names
+#    default: /var/cache/vdr
+#CACHEDIR="/var/cache/vdr"
+
+# VDR write the EPG default in the CACHEDIR
+# overwrite this with following (no good idea)
 # write the EPG data into the given FILE; use '-E-' to disable this
 # if FILE is a directory, the default EPG file will be
 # created in that directory
-#   allowed values: file/directory names, -E- to disable
-#   default: $VIDEO/epg.data
-#EPGFILE="/var/vdr/epg.data"
+#   allowed values: -E-, file/directory names
+#   default: -E-
+#EPGFILE="-E-"
 
 # activate the (internal to vdr) watchdog timer with
 # a timeout of SEC seconds (recommended by Klaus Schmidinger)
@@ -172,11 +180,11 @@ LOG="3"
 #            (up to vdr-1.3.36-r2: use what was selected by use-flag)
 #VFAT_FILENAMES="yes"
 
-# use PORT for SVDRP (default: 2001) (>=vdr-1.7.15 default: 6419)
+# use PORT for SVDRP (default: 6419)
 # 0 turns off SVDRP
 #   allowed values: numbers for ports between 1024 and 65535
-#   default: 2001 / 6419
-#SVDRP_PORT="2001"
+#   default: 6419
+#SVDRP_PORT="6419"
 
 # seconds to wait for a running vdr
 #   allowed values: numbers

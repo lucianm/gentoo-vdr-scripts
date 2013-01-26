@@ -12,7 +12,8 @@ addon_main() {
 	yesno "${MUTE}" && add_param "--mute"
 	[ -n "${CONFIG}" ] && add_param "--config=${CONFIG}"
 	[ -n "${DEVICE}" ] && for i in ${DEVICE}; do add_param "--device=${i}"; done
-	[ -n "${EPGFILE}" ] && add_param "--epgfile=${EPGFILE}"
+	add_param "--epgfile=${EPGFILE:--E-}"
+	add_param "--cachedir=${CACHEDIR:-/var/cache/vdr}"
 	add_param "--log=${LOG:-1}"
 	[ -z "${VIDEO}" ] && VIDEO="/var/vdr/video"
 	if [ ! -d "${VIDEO}" ]; then
@@ -34,13 +35,11 @@ addon_main() {
 					add_param "--lirc=/dev/lircd"
 				fi
 				;;
-			rcu)	if [ "${VDRVERSNUM}" -ge "10725" ]; then
-						eerror "rcu parameter is depricated"
-						eerror "use media-plugins/vdr-rcu"
-					else
-						add_param "--rcu"
-					fi
-					;;
+			rcu)	eerror "rcu parameter is obsolete"
+					eerror "use media-plugins/vdr-rcu"
+					logger -t vdr "rcu parameter is obsolete"
+					logger -t vdr "use media-plugins/vdr-rcu"
+				;;
 		esac
 	fi
 
