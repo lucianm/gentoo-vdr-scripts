@@ -159,8 +159,8 @@ LOG="3"
 # if FILE is a directory, the default EPG file will be
 # created in that directory
 #   allowed values: -E-, file/directory names
-#   default: -E-
-#EPGFILE="-E-"
+#   default: unset, empty string
+#EPGFILE=""
 
 # activate the (internal to vdr) watchdog timer with
 # a timeout of SEC seconds (recommended by Klaus Schmidinger)
@@ -225,7 +225,7 @@ PLUGIN_CHECK_PATCHLEVEL="yes"
 # allow core-dumps when using setuid
 # This helps for debugging crashes
 #   allowed values: yes no
-#   default:no
+#   default: no
 #ALLOW_USERDUMP="yes"
 
 # for people who really know what they do

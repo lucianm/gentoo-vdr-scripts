@@ -12,7 +12,7 @@ addon_main() {
 	yesno "${MUTE}" && add_param "--mute"
 	[ -n "${CONFIG}" ] && add_param "--config=${CONFIG}"
 	[ -n "${DEVICE}" ] && for i in ${DEVICE}; do add_param "--device=${i}"; done
-	add_param "--epgfile=${EPGFILE:--E-}"
+	[ -n "${EPGFILE}" ] && add_param "--epgfile=${EPGFILE}"
 	add_param "--cachedir=${CACHEDIR:-/var/cache/vdr}"
 	add_param "--log=${LOG:-1}"
 	[ -z "${VIDEO}" ] && VIDEO="/var/vdr/video"

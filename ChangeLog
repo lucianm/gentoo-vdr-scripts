@@ -1,6 +1,11 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  15 Mar 2013; Joerg Bornkessel <hd_brummy@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-30-parameter.sh, bump.sh, etc/conf.d/vdr:
+  better default handling for value EPGFILE, thx to sirwio@vdr-portal.de on
+  #post 1132342
+
 *gentoo-vdr-scripts-2.0.0_rc1 (26 Jan 2013)
 
   26 Jan 2013; Joerg Bornkessel <hd_brummy@gentoo.org>
