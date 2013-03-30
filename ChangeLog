@@ -1,6 +1,14 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  30 Mar 2013; Joerg Bornkessel <hd_brummy@gentoo.org>
+  usr/share/vdr/shutdown/pre-shutdown-05-time-calculations.sh, README.vdrcaps,
+  etc/conf.d/vdr, usr/share/vdr/bin/vdr-bg.sh,
+  usr/share/vdr/bin/vdrrecord-gate.sh, usr/share/vdr/bin/vdrshutdown-gate.sh,
+  usr/share/vdr/bin/vdrshutdown-periodic-thread.sh,
+  usr/share/vdr/bin/vdrshutdown-wakeup-helper.sh:
+  cleanup from old code, depended for "old" vdr versions
+
 *gentoo-vdr-scripts-2.0.0_rc2 (16 Mar 2013)
 
   15 Mar 2013; Joerg Bornkessel <hd_brummy@gentoo.org>

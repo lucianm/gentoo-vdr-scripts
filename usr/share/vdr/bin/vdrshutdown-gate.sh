@@ -9,14 +9,13 @@
 #   vdr     ALL= NOPASSWD: /usr/share/vdr/bin/vdrshutdown-really.sh
 
 include svdrpcmd
+svdrp_command
 
 #fork to background
 if [ -z "${EXECUTED_BY_VDR_BG}" ]; then
 	exec /usr/share/vdr/bin/vdr-bg.sh "$0" "$@"
 	exit
 fi
-
-svdrp_command
 
 mesg() {
 	"${SVDRPCMD}" MESG "$@"

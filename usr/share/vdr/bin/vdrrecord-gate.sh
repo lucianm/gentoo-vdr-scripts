@@ -7,6 +7,7 @@
 # It calls all shell-scripts located in /usr/share/vdr/record in alphabetical order
 
 include svdrpcmd
+svdrp_command
 
 #fork to background
 if [ -z "${EXECUTED_BY_VDR_BG}" ]; then
@@ -18,8 +19,6 @@ HOOKDIR=/usr/share/vdr/record
 OLD_HOOKDIR=/usr/lib/vdr/record
 
 . /usr/share/vdr/inc/functions.sh
-
-svdrp_command
 
 mesg() {
 	"${SVDRPCMD}" MESG "\"$@\""

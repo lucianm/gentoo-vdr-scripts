@@ -21,7 +21,6 @@
 #            (up to vdr-1.3.36-r2: use what was selected by use-flag)
 #IR_CTRL="lirc"
 
-
 ###########################################################
 #          Language Settings                              #
 ###########################################################
@@ -29,10 +28,10 @@
 # Set the sort-order vdr uses
 #   allowed values: locale-definitions listed by locale -a
 #                   e.g. de_DE, en_GB, ...
-#   default: glibc-default order (posix), or value of LANG if set and >=vdr-1.5.3
+#   default: glibc-default order (posix), or value of LANG if set
 #VDR_SORT_ORDER="de_DE"
 
-# Set the locale vdr should use (starting from vdr-1.5.3)
+# Set the locale vdr should use
 #   allowed values: locale-definitions listed by locale -a
 #                   e.g. de_DE, de_DE@euro, de_DE.utf8, en_GB.utf8, ...
 #   default: use system-wide setting, and if none found, guess some utf8 locale
@@ -44,7 +43,7 @@
 # To fix this you can set the charset VDR assumes when none is specified
 # by the broadcaster. Better: Complain at your broadcaster.
 #
-# Using vdr-1.6 you can fix it this way:
+# Using >=vdr-1.6 you can fix it this way:
 # If you subscribed to SKY (german pay tv) you may want ISO8859-15.
 #VDR_CHARSET_OVERRIDE="ISO8859-15"
 
@@ -52,37 +51,36 @@
 #          Special Audio Options                          #
 ###########################################################
 
-# send Dolby Digital audio to stdin of command CMD
+# Send Dolby Digital audio to stdin of command CMD
 #   allowed values: names of executables
 #   default: no command
 #AC3_AUDIO=""
 
-# mute audio of the primary DVB device at startup
+# Mute audio of the primary DVB device at startup
 #   allowed values: yes no
 #   default: no
 #MUTE="yes"
-
 
 ###########################################################
 #          Startup Options                                #
 ###########################################################
 
-# set niceness of vdr process
+# Set niceness of vdr process
 #   allowed values: -19 .. 20
 #   default: do not change niceness
 #VDR_NICENESS="5"
 
-# set volume at start of vdr to this value
+# Set volume at start of vdr to this value
 #   allowed values: 0-255
 #   default: leave volume unchanged
 #STARTUP_VOLUME="255"
 
-# set channel to be switched to at start of vdr
+# Set channel to be switched to at start of vdr
 #   allowed values: valid channel number in vdr
 #   default: leave channel unchanged
 #STARTUP_CHANNEL="1"
 
-# show vdr-version number when starting vdr
+# Show vdr-version number when starting vdr
 # some people like this :)
 #   allowed values: yes no
 #   default: no
@@ -98,7 +96,7 @@
 #   default: start vdr completely in the background
 #TERMINAL="8"
 
-# switch to used terminal
+# Switch to used terminal
 # when attaching vdr to a terminal with setting TERMINAL
 # then switch to this terminal
 #   allowed values: yes no
@@ -110,7 +108,7 @@
 #          Debug Options                                  #
 ###########################################################
 
-# set log level
+# Set log level
 # 0 = no logging, 1 = errors only,
 # 2 = errors and info, 3 = errors, info and debug
 # if logging should be done to LOG_LOCALn instead of
@@ -119,12 +117,12 @@
 #   default: 1
 LOG="3"
 
-# check syslog for errors
+# Check syslog for errors
 #   allowed values: yes no
 #   default: yes
 #CHECK_SYSLOG_ERRORS="yes"
 
-# switch startskript to debug-mode, set debug-level
+# Switch startskript to debug-mode, set debug-level
 #   allowed values: 0 1 2
 #   default: 0
 #SCRIPT_DEBUG_LEVEL="1"
@@ -142,12 +140,12 @@ LOG="3"
 #   default: /var/vdr/video
 #VIDEO="/var/vdr/video"
 
-# read config files from DIR
+# Read config files from DIR
 #   allowed values: directory names
 #   default: /etc/vdr
 #CONFIG="/etc/vdr"
 
-# write/read cached vdr files in the given directory
+# Write/read cached vdr files in the given directory
 # e.g. epg.data
 #    allowed values: directory names
 #    default: /var/cache/vdr
@@ -162,7 +160,7 @@ LOG="3"
 #   default: unset, empty string
 #EPGFILE=""
 
-# activate the (internal to vdr) watchdog timer with
+# Activate the (internal to vdr) watchdog timer with
 # a timeout of SEC seconds (recommended by Klaus Schmidinger)
 # '0' disables the watchdog
 #   allowed values: 0 1 2 ...
@@ -172,75 +170,72 @@ LOG="3"
 # If you seek the settings for the extern watchdog look
 # in /etc/conf.d/vdr.watchdogd.
 
-# Change the filename-format to be vfat and samba compatible. Only necessary if
-# not set at compile time.
-# (Usable at vdr version starting from 1.3.32)
+# Change the filename-format to be vfat and samba compatible. 
 #   allowed values: yes no
 #   default: no
-#            (up to vdr-1.3.36-r2: use what was selected by use-flag)
 #VFAT_FILENAMES="yes"
 
-# use PORT for SVDRP (default: 6419)
+# Use PORT for SVDRP (default: 6419)
 # 0 turns off SVDRP
 #   allowed values: numbers for ports between 1024 and 65535
 #   default: 6419
 #SVDRP_PORT="6419"
 
-# seconds to wait for a running vdr
+# Seconds to wait for a running vdr
 #   allowed values: numbers
 #   default: 40
-# START_SVDRP_WAIT_SECONDS="40"
+#START_SVDRP_WAIT_SECONDS="40"
 
-# wait some time for dvb device nodes to appear, caused for example by slow udev
+# Wait some time for dvb device nodes to appear, caused for example by slow udev
 # you need to disable this for systems which only use network or non-dvb devices
 #   allowed values: yes no
 #   default: yes
 #DVB_DEVICE_WAIT="no"
 
-# check the plugin for patchlevel compatibility with current vdr version
+# Check the plugin for patchlevel compatibility with current vdr version
 # it will refuse to load a not compatible plugin
 #   allowed values: yes no
 #   default: yes
 PLUGIN_CHECK_PATCHLEVEL="yes"
 
-# hostname to access vdr with svdrp
+# Hostname to access vdr with svdrp
 # (this normaly should not be changed)
 #   allowed values: hostname or ip-address
 #   default: use localhost
 #SVDRP_HOSTNAME="localhost"
 
-# force the use of old linux threads
+# Force the use of old linux threads
 # instead of new posix threads (NPTL)
 #   allowed values: yes no
 #   default: no
 #FORCE_OLD_THREADS="yes"
 
-# do not use vdr -u option to set user
+# Do not use vdr -u option to set user
 # and use start-stop-daemon --chuid option
 # This makes vdr behave easier with core-dumps
 #   allowed values: yes no
 #   default: no
 #FORCE_SETUID_OFF="yes"
 
-# allow core-dumps when using setuid
+# Allow core-dumps when using setuid
 # This helps for debugging crashes
 #   allowed values: yes no
 #   default: no
 #ALLOW_USERDUMP="yes"
 
-# for people who really know what they do
+# For people who really know what they do
 # and who want to start vdr as user root
 #   allowed values: yes no
 #   default: no
 #START_VDR_AS_ROOT="no"
 
-# use only the given DVB device (NUM = 0, 1, 2...)
+# Use only the given DVB device (NUM = 0, 1, 2...)
 # there may be several NUMs options
 #   allowed values: set of numbers
 #   default: use all DVB devices
 #DEVICE=""
 
-# give additional options to vdr process
+# Give additional options to vdr process
 # should not be necessary in normal cases.
 # please contact developers if you need
 # special parameters.

@@ -9,6 +9,7 @@
 #
 
 . /usr/share/vdr/inc/functions.sh
+
 include shutdown-functions
 read_caps
 

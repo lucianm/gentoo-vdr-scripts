@@ -8,8 +8,7 @@ print_localtime ()
 	date --date="1970-01-01 UTC ${1} seconds"
 }
 
-catch_running_timer()
-{
+catch_running_timer() {
 	local NOW=$(date +%s)
 
 	# Do not wake up on events in past
@@ -25,8 +24,7 @@ catch_running_timer()
 	fi
 }
 
-calculate_wakeup_timer ()
-{
+calculate_wakeup_timer() {
 	local NEXT_FIXED_WAKEUP=$(date --date=${FIXED_WAKEUP_TIME} +%s)
 	local NOW=$(date +%s)
 

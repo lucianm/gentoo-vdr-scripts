@@ -16,6 +16,7 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 . /usr/share/vdr/inc/functions.sh
+
 include shutdown-functions
 shutdown_script_dir=/usr/share/vdr/shutdown
 
