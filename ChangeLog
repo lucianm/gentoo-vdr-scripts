@@ -1,6 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-2.0.0 (30 Mar 2013)
+
   30 Mar 2013; Joerg Bornkessel <hd_brummy@gentoo.org> +README.grub2, README,
   etc/conf.d/vdr:
   more cleanups, added example README.grub2 with example how to use grub2
