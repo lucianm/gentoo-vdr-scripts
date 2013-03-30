@@ -1,0 +1,46 @@
+# gentoo-vdr-scripts grub2 syntax
+
+# example grub2 entry for reboot and default boot kernel
+# set this
+# /boot/grub2/custom.cfg
+# or
+# /etc/grub.d/40_custom
+
+### reboot kernel
+# some Motherboards need a reboot to write the wakeup time in the BIOS
+
+# <snipp>
+
+## 0 ##
+menuentry 'NVRRAM-Poweroff' {
+set saved_entry='1'
+save_env saved_entry
+set root='(hd0,5)'
+linux (hd0,1)/kernel-default root=/dev/sda5 quiet init=/sbin/poweroff quiet
+}
+
+#</snapp>
+
+# in this case, use of init=/sbin/poweroff to stop the system reboot
+# use of init=/sbin/halt should work too, but is not supported by all Motherboard
+# iam using for boot/reboot the same kernel, the gentoo reboot kernel did not work on my system
+ 
+
+### default kernel
+# <snipp>
+
+## 1 ##
+menuentry 'VDR - Gentoo' {
+set root='(hd0,5)'
+linux (hd0,1)/kernel-x.y.z root=/dev/sda5
+}
+
+# </snapp>
+
+# in both example is
+# boot partition = /dev/sda1 = (hd0,1)
+# data partition = /dev/sda5
+
+
+# set for the reboot example on top in /etc/conf.d/vdr.shutdown
+REBOOT_ENTRY_GRUB="0"

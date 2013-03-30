@@ -7,6 +7,7 @@ This package contains all support scripts for vdr to make
 it like a real set top box.
 
 Dependencies:
+	>=vdr-1.7.36	earlier versions are not supported
 	nvram-wakeup	when being used for setting wakeup time
 
 Author:

@@ -15,10 +15,8 @@
 
 # What IR control should be used. Override the default set at
 # compile time
-# (Usable at vdr version starting from 1.3.28)
 #   allowed values: lirc rcu
 #   default: use no remote
-#            (up to vdr-1.3.36-r2: use what was selected by use-flag)
 #IR_CTRL="lirc"
 
 ###########################################################
@@ -84,7 +82,7 @@
 # some people like this :)
 #   allowed values: yes no
 #   default: no
-#SHOW_VDR_VERSION=no
+#SHOW_VDR_VERSION=yes
 
 ###########################################################
 #          Terminal Output / Keyboard Input               #

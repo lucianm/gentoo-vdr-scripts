@@ -1,6 +1,11 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  30 Mar 2013; Joerg Bornkessel <hd_brummy@gentoo.org> +README.grub2, README,
+  etc/conf.d/vdr:
+  more cleanups, added example README.grub2 with example how to use grub2
+  syntax
+
   30 Mar 2013; Joerg Bornkessel <hd_brummy@gentoo.org>
   usr/share/vdr/shutdown/pre-shutdown-05-time-calculations.sh, README.vdrcaps,
   etc/conf.d/vdr, usr/share/vdr/bin/vdr-bg.sh,
