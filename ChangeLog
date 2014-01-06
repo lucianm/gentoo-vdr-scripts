@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  06 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-50-shutdown.sh:
+  removed useless/unusable sudoers check, reported by Lucian Muresan
+
 *gentoo-vdr-scripts-2.0.0 (30 Mar 2013)
 
   30 Mar 2013; Joerg Bornkessel <hd_brummy@gentoo.org> +README.grub2, README,

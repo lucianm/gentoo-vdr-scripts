@@ -12,15 +12,6 @@ addon_main() {
 	# no custum shutdown-script
 	add_param "--shutdown=/usr/share/vdr/bin/vdrshutdown-gate.sh"
 
-	# some sanity warnings
-	if grep -q /usr/share/vdr/bin/vdrshutdown-really.sh /etc/sudoers; then
-		eerror "  depricated entry in /etc/sudoers"
-		eerror "  To keep the shutdown work correctly, remove the line from /etc/sudoers"
-		eerror "  vdr ALL=NOPASSWD:/usr/share/vdr/bin/vdrshutdown-really.sh"
-		eerror "  or call emerge --config gentoo-vdr-scripts"
-		logger -t vdr "ERROR: Depricated entry in /etc/sudoers, please migrate"
-	fi
-
 	# warning about depricated acpi wakeup kernel > 2.6.38
 	if [ "${WAKEUP_METHOD}" = acpi ]; then
 		ewarn "use of acpi wakeup method is depricated"
