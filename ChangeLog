@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  19 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org> Makefile,
+  usr/lib/systemd/system/Makefile:
+  typo
+
   19 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org> +README.systemd,
   +etc/systemd/system/vdr.service.d/00-gentoo-vdr-user.conf,
   +etc/systemd/system/vdr.service.d/Makefile, +usr/lib/systemd/system/Makefile,

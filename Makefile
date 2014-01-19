@@ -8,7 +8,7 @@ VDRSYSTEMD ?= 1
 SUBDIRS = etc usr vdrplugin-rebuild
 
 ifeq ($(VDRSYSTEMD),1)
-SUBDIRS += etc/systemd/system/vdr.services.d usr/lib/systemd/system var/vdr/tmp
+SUBDIRS += etc/systemd/system/vdr.service.d usr/lib/systemd/system var/vdr/tmp
 endif
 
 all:
