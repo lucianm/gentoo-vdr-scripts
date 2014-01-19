@@ -1,6 +1,14 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  19 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org> +README.systemd,
+  +etc/systemd/system/vdr.service.d/00-gentoo-vdr-user.conf,
+  +etc/systemd/system/vdr.service.d/Makefile, +usr/lib/systemd/system/Makefile,
+  +var/vdr/tmp/Makefile, +var/vdr/tmp/systemd_env, Makefile, README,
+  README.grub2, README.shutdown-jobs, README.vdrcaps, TODO:
+  added Makefiles for systemd relevanted files; systemd handling in main
+  Makefile added
+
   19 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
   +usr/lib/systemd/system/vdr.service,
   +usr/share/vdr/bin/vdr-systemd_helper.sh:
