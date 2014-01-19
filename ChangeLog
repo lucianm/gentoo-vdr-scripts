@@ -1,6 +1,11 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  19 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +usr/lib/systemd/system/vdr.service,
+  +usr/share/vdr/bin/vdr-systemd_helper.sh:
+  added systemd service file, systemd helper script
+
   06 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
   usr/share/vdr/rcscript/pre-start-50-shutdown.sh:
   removed useless/unusable sudoers check, reported by Lucian Muresan
