@@ -1,6 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  19 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org> Makefile:
+  systemd default disabled
+
   19 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org> Makefile,
   usr/lib/systemd/system/Makefile:
   typo

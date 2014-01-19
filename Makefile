@@ -3,7 +3,7 @@
 SHELL = /bin/bash
 
 # systemd support
-VDRSYSTEMD ?= 1
+VDRSYSTEMD ?= 0
 
 SUBDIRS = etc usr vdrplugin-rebuild
 
