@@ -1,6 +1,13 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  20 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  +usr/share/vdr/systemd/Makefile,
+  +usr/share/vdr/systemd/vdr-systemd_helper.sh,
+  -usr/share/vdr/bin/vdr-systemd_helper.sh, Makefile,
+  usr/lib/systemd/system/vdr.service, usr/share/vdr/Makefile:
+  moved systemd helper scripts in its own/new dir
+
   19 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org> Makefile:
   systemd default disabled
 
