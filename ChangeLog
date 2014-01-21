@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  20 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  usr/lib/systemd/system/vdr.service:
+  some changes again
+
   20 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org> Makefile,
   usr/share/vdr/Makefile:
   something goes wrong with last commit, again
