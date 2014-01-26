@@ -2,15 +2,10 @@
 
 SHELL = /bin/bash
 
-## systemd support
-#VDRSYSTEMD ?= 0
-
 SUBDIRS = etc usr vdrplugin-rebuild
 
-#ifeq ($(VDRSYSTEMD),1)
-SUBDIRS += etc/systemd/system/vdr.service.d usr/lib/systemd/system var/vdr/tmp
-#endif
-
+SUBDIRS +=  usr/lib/systemd/system var/vdr/tmp
+# etc/systemd/system/vdr.service.d
 all:
 
 VERSION := $(shell grep '^Version' README | awk '{ print $$2 }')

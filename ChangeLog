@@ -1,6 +1,12 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  26 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org> Makefile,
+  usr/lib/systemd/system/vdr.service,
+  usr/share/vdr/systemd/vdr-systemd_helper.sh:
+  user vdr/root for vdr systemd will read now from script set,
+  etc/systemd/system/vdr.service.d/* is obsolet
+
   20 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
   usr/lib/systemd/system/vdr.service:
   some changes again

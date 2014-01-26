@@ -3,8 +3,9 @@
 # VDR helper script for using a systemd unit together
 # with media-tv/gentoo-vdr-scripts
 #
-# Copyright 1999-2014, Lucian Muresan < lucianm AT users DOT sourceforge DOT net >
 # inspired by the old OpenRC script /etc/init.d/vdr by Mathias Schwarzott
+# Lucian Muresan < lucianm AT users DOT sourceforge DOT net >
+# Joerg Bornkessel <hd_brummy@gentoo.org>
 
 # Distributed under the terms of the GNU General Public License v2
 
@@ -24,6 +25,16 @@ VDR_LOG_FILE="${PL_TMP}/vdr-start-log"
 SYSTEMD_ENV_FILE="${PL_TMP}/systemd_env"
 
 #common_init
+
+# grep the user on who should vdr systemd running
+# 2 values, vdr or root
+run_as_user() {
+	if yesno "${START_VDR_AS_ROOT}"; then
+		systemd_vdr_user="root"
+	else
+		systemd_vdr_user="vdr"
+	fi
+}
 
 # dummy functions to make the rest of gentoo-vdr-scripts happy,
 # as we do not want to rely on openrc's implementations of these
@@ -86,8 +97,10 @@ if [ "$1" = "--start-pre" ]; then
 	init_params
 	init_plugin_loader start || eexitfail "init_plugin_loader start"
 	load_addons_prefixed pre-start || eexitfail "load_addons_prefixed pre-start"
+	run_as_user
 	# these options are what we need to start VDR from the systemd unit file
 	echo "VDR_OPTS=\"${vdr_opts}\"" > ${SYSTEMD_ENV_FILE}
+	echo "SYSTEMD_VDR_USER=\"${sytemd_vdr_user}\"" >> ${SYSTEMD_ENV_FILE}
 	sync
 	eend "--start-pre"
 elif [ "$1" = "--start-post" ]; then
