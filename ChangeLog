@@ -1,6 +1,12 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  15 Feb 2014; Joerg Bornkessel <hd_brummy@gentoo.org> Makefile,
+  etc/systemd/system/vdr.service.d/00-gentoo-vdr-user.conf,
+  usr/lib/systemd/system/vdr.service,
+  usr/share/vdr/systemd/vdr-systemd_helper.sh:
+  some fixes, reported by M.Perrudin (comment 28, #353492)
+
   26 Jan 2014; Joerg Bornkessel <hd_brummy@gentoo.org> Makefile,
   usr/lib/systemd/system/vdr.service,
   usr/share/vdr/systemd/vdr-systemd_helper.sh:
