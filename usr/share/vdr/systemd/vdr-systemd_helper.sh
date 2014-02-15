@@ -17,10 +17,13 @@
 cd /var/vdr
 unset MAIL
 . /usr/share/vdr/inc/functions.sh
+
 include rc-functions
 include plugin-functions
-init_tmp_dirs
+#init_tmp_dirs
+
 VDR_LOG_FILE="${PL_TMP}/vdr-start-log"
+
 # this is the environment file to pass user and parameters to the systemd unit file
 SYSTEMD_ENV_FILE="${PL_TMP}/systemd_env"
 
@@ -29,6 +32,8 @@ SYSTEMD_ENV_FILE="${PL_TMP}/systemd_env"
 # grep the user on who should vdr systemd running
 # 2 values, vdr or root
 run_as_user() {
+. /etc/systemd/system/vdr.service.d/00-gentoo-vdr-user.conf
+
 	if yesno "${START_VDR_AS_ROOT}"; then
 		systemd_vdr_user="root"
 	else

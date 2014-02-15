@@ -4,8 +4,8 @@ SHELL = /bin/bash
 
 SUBDIRS = etc usr vdrplugin-rebuild
 
-SUBDIRS +=  usr/lib/systemd/system var/vdr/tmp
-# etc/systemd/system/vdr.service.d
+SUBDIRS +=  usr/lib/systemd/system var/vdr/tmp etc/systemd/system/vdr.service.d
+
 all:
 
 VERSION := $(shell grep '^Version' README | awk '{ print $$2 }')

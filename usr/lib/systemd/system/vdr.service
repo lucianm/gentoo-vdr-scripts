@@ -6,7 +6,7 @@ DefaultDependencies=no
 
 
 [Service]
-User=${SYSTEMD_VDR_USER}
+User=vdr
 # this will collect the parameters and set them into the VDR_OPTS
 # variable in the EnvironmentFile
 ExecStartPre=/usr/share/vdr/systemd/vdr-systemd_helper.sh --start-pre
