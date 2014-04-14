@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  14 Apr 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdrplugin-rebuild/vdrplugin-rebuild:
+  fixed 'portageq portdir' deprecated warning
+
   15 Feb 2014; Joerg Bornkessel <hd_brummy@gentoo.org> Makefile,
   etc/systemd/system/vdr.service.d/00-gentoo-vdr-user.conf,
   usr/lib/systemd/system/vdr.service,

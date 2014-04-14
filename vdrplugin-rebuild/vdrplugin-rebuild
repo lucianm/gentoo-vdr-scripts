@@ -18,14 +18,14 @@ if [[ `id -u` != 0 ]]; then
 	exit 1
 fi
 
-R_VERSION="0.3"
+R_VERSION="0.4"
 R_DBPATH="${ROOT}/usr/share/vdr/vdrplugin-rebuild"
 R_PORTAGEQ="`type -p portageq 2>/dev/null`"
 if [[ -z ${R_PORTAGEQ} ]]; then
 	echo "** FATAL: Unable to find portageq."
 	exit 1
 fi
-R_PORTDIR=`${R_PORTAGEQ} portdir`
+R_PORTDIR=$(${R_PORTAGEQ} get_repo_path $(${R_PORTAGEQ} envvar EROOT) gentoo)
 R_VDBPATH=`${R_PORTAGEQ} vdb_path`
 R_OPTION_X=0;
 R_OPTION_C=0;
