@@ -4,7 +4,7 @@ NEWVERS="$1"
 
 echo "Updating from $OLDVERS to $NEWVERS"
 
-if [[ "$NEWVERS" == "" ]]; then
+if [ -z "${NEWVERS}" ]; then
 	echo "Please specify new version"
 	exit 1
 fi
