@@ -13,7 +13,14 @@ addon_main() {
 	[ -n "${CONFIG}" ] && add_param "--config=${CONFIG}"
 	[ -n "${DEVICE}" ] && for i in ${DEVICE}; do add_param "--device=${i}"; done
 	[ -n "${EPGFILE}" ] && add_param "--epgfile=${EPGFILE}"
+
+	if [ ! -d "${CACHEDIR:-/var/cache/vdr}" ]; then
+		mkdir -p "${CACHEDIR:-/var/cache/vdr}"
+		chown vdr:vdr "${CACHEDIR:-/var/cache/vdr}"
+		einfo "Created directory ${CACHEDIR:-/var/cache/vdr}"
+	fi
 	add_param "--cachedir=${CACHEDIR:-/var/cache/vdr}"
+
 	add_param "--log=${LOG:-1}"
 	[ -z "${VIDEO}" ] && VIDEO="/var/vdr/video"
 	if [ ! -d "${VIDEO}" ]; then

@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  11 Jul 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-30-parameter.sh:
+  create cachedir on the fly, wrt bug 4994444
+
   14 Apr 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
   vdrplugin-rebuild/vdrplugin-rebuild:
   fixed 'portageq portdir' deprecated warning
