@@ -1,6 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-2.5_rc1 (23 Sep 2014)
+
   11 Jul 2014; Joerg Bornkessel <hd_brummy@gentoo.org>
   usr/share/vdr/rcscript/pre-start-30-parameter.sh:
   create cachedir on the fly, wrt bug 4994444
