@@ -18,7 +18,7 @@ if [[ `id -u` != 0 ]]; then
 	exit 1
 fi
 
-R_VERSION="0.4"
+R_VERSION="0.5"
 R_DBPATH="${ROOT}/usr/share/vdr/vdrplugin-rebuild"
 R_PORTAGEQ="`type -p portageq 2>/dev/null`"
 if [[ -z ${R_PORTAGEQ} ]]; then
@@ -258,7 +258,7 @@ db_plug_merge() {
 	echo
 
 	case ${R_OPTION_PM} in
-		portage) emerge --ignore-default-opts --oneshot --nodeps ${R_PM_OPTS} ${tomerge[@]};;
+		portage) emerge --ignore-default-opts --oneshot --nodeps --keep-going ${R_PM_OPTS} ${tomerge[@]};;
 		paludis) cave resolve -1x -Cs ${R_PM_OPTS} ${tomerge[@]};;
 		*) echo "** Unsupported package manager"; phelp; exit 1;;
 	esac

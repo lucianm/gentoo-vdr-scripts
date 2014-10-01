@@ -1,6 +1,12 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  01 Oct 2014; Joerg Bornkessel <hd_brummy@gentoo.org> var/vdr/tmp/Makefile,
+  +var/vdr/tmp/plugins_skipped_ALL, vdrplugin-rebuild/vdrplugin-rebuild:
+  added --keep-going to vdrplugin-rebuild; added empty file plugins_skipped_ALL
+  to fix the fail on vdrplugin-rebuild -s parameter; bump to
+  vdrplugin-rebuild-0.5
+
 *gentoo-vdr-scripts-2.5_rc1 (23 Sep 2014)
 
   11 Jul 2014; Joerg Bornkessel <hd_brummy@gentoo.org>

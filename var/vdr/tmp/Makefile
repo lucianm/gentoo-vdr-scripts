@@ -5,7 +5,7 @@ SHELL = /bin/bash
 MYDIR = $(DESTDIR)/var/vdr/tmp
 SUBDIRS =
 BINS =
-CONFS = systemd_env
+CONFS = systemd_env plugins_skipped_ALL
 
 all:
 
