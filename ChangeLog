@@ -1,6 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-2.5_rc2 (18 Oct 2014)
+
   18 Oct 2014; Joerg Bornkessel <hd_brummy@gentoo.org> etc/conf.d/vdr,
   etc/systemd/system/vdr.service.d/00-gentoo-vdr-user.conf,
   usr/lib/systemd/system/vdr.service,
