@@ -1,6 +1,14 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  18 Oct 2014; Joerg Bornkessel <hd_brummy@gentoo.org> etc/conf.d/vdr,
+  etc/systemd/system/vdr.service.d/00-gentoo-vdr-user.conf,
+  usr/lib/systemd/system/vdr.service,
+  usr/share/vdr/systemd/vdr-systemd_helper.sh, var/vdr/tmp/Makefile,
+  -var/vdr/tmp/plugins_skipped_ALL:
+  reverted changes for vdrplugin-rebuild -s paramater; fixed systemd support
+  wrt bug 353492#33 ff, thx to L.Muresan
+
   01 Oct 2014; Joerg Bornkessel <hd_brummy@gentoo.org> var/vdr/tmp/Makefile,
   +var/vdr/tmp/plugins_skipped_ALL, vdrplugin-rebuild/vdrplugin-rebuild:
   added --keep-going to vdrplugin-rebuild; added empty file plugins_skipped_ALL

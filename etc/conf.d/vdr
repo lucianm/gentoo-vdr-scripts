@@ -225,6 +225,12 @@ PLUGIN_CHECK_PATCHLEVEL="yes"
 # and who want to start vdr as user root
 #   allowed values: yes no
 #   default: no
+#
+# WILL BE IGNORED IF USING SYSTEMD !!!
+# Enable the 'User=root' key under the [Service] section in
+# /etc/systemd/system/vdr.service.d/00-gentoo-vdr-user.conf
+# only if you want to run vdr as user root and use systemd
+#
 #START_VDR_AS_ROOT="no"
 
 # Use only the given DVB device (NUM = 0, 1, 2...)
