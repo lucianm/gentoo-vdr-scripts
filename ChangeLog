@@ -1,6 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  27 Nov 2014; Joerg Bornkessel <hd_brummy@gentoo.org> etc/init.d/vdr:
+  wrt bug 530828, services misusing 'need net'
+
 *gentoo-vdr-scripts-2.5_rc4 (22 Oct 2014)
 
 *gentoo-vdr-scripts-2.5_rc4 (22 Oct 2014)

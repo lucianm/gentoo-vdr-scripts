@@ -33,7 +33,6 @@ vdr_log()
 }
 
 depend() {
-	need net
 	[ "${IR_CTRL}" = "lirc" ] && need lirc
 	use lirc
 	after checkroot
