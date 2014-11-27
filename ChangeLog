@@ -1,6 +1,11 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  27 Nov 2014; Joerg Bornkessel <hd_brummy@gentoo.org> README, README.systemd,
+  etc/conf.d/vdr, etc/systemd/system/vdr.service.d/00-gentoo-vdr-user.conf:
+  systemd readme, written by L.Muresan; added L.Muresan as maintainer for
+  systemd support
+
   27 Nov 2014; Joerg Bornkessel <hd_brummy@gentoo.org> etc/init.d/vdr:
   wrt bug 530828, services misusing 'need net'
 

@@ -1,3 +1,29 @@
 # $Id: $
 
-ToDo
+Instructions for usage and configuration with systemd
+
+
+Systemd support has been implemented by re-using all the OpenRC configuration
+files of VDR and its plugins located under /etc/conf.d/ even if OpenRC is not installed
+at all.
+
+However, there is one thing which is configured differently, and this is the user under
+which the VDR daemon will run. Just as when running under OpenRC, the gentoo-vdr-scripts
+can be configured to run VDR either as user 'vdr' or as user 'root'. The difference is that
+under systemd, the setting START_VDR_AS_ROOT in /etc/conf.d/vdr is ignored on purpose, to let
+the configuration be done "the systemd way".
+  - The default is to run as user 'vdr'. If running as 'root' is desired, uncomment the 'User=root'
+  key under the [Service] section in the file
+  /etc/systemd/system/vdr.service.d/00-gentoo-vdr-user.conf
+  - *If* the plugin 'dbus2vdr' is used, the user who owns the vdr-dbus-service also has to be set to
+  'root' in /etc/dbus-1/system.d/de.tvdr.vdr.conf if running VDR as user 'root';
+
+
+
+Finally, in order to start the VDR daemon under systemd manually, execute:
+
+systemctl start vdr
+
+and if the deamon should be started on every bootup of the system, it has to be enabled:
+
+systemctl enable vdr

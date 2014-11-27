@@ -13,3 +13,4 @@ Dependencies:
 Author:
 	Matthias Schwarzott <zzam@gentoo.org>
 	Joerg Bornkessel <hd_brummy@gentoo.org>
+	Lucian Muresan <lucianm@users.sourceforge.net> ( systemd support )
