@@ -1,6 +1,13 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  01 Jan 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-45-locales.sh,
+  usr/share/vdr/systemd/vdr-systemd_helper.sh:
+  fixed LANG handling, some cleanups for baselayout1; fixed fails to set locale
+  on systemd, thx to D.Ferdinand for reporting and some hints how to fix it,
+  wrt bug #530690
+
   27 Nov 2014; Joerg Bornkessel <hd_brummy@gentoo.org> README, README.systemd,
   etc/conf.d/vdr, etc/systemd/system/vdr.service.d/00-gentoo-vdr-user.conf:
   systemd readme, written by L.Muresan; added L.Muresan as maintainer for

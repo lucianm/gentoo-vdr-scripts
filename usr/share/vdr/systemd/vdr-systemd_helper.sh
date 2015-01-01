@@ -90,11 +90,21 @@ if [ "$1" = "--start-pre" ]; then
 	init_params
 	init_plugin_loader start || eexitfail "init_plugin_loader start"
 	load_addons_prefixed pre-start || eexitfail "load_addons_prefixed pre-start"
+
 	# these options are what we need to start VDR from the systemd unit file
 	echo "VDR_OPTS=\"${vdr_opts}\"" > ${SYSTEMD_ENV_FILE}
+
+	# LANG LC_COLLATE from /etc/conf.d/vdr will be ignored, wrt bug 530690
+	echo "LANG=$LANG" >> ${SYSTEMD_ENV_FILE}
+	echo "LC_COLLATE=${VDR_SORT_ORDER}" >> ${SYSTEMD_ENV_FILE}
+	# Using LC_ALL is strongly discouraged as it can't be overridden later on.
+	# Please use it only when testing and never set it in a startup file.
+#	echo "LC_ALL=$LANG" >> ${SYSTEMD_ENV_FILE}
+
 	# remove the command line --user argument if set by the scripts so far,
 	# as the user under which vdr will run is controlled by systemd
 	sed -e "s:'-u' 'vdr' ::" -i ${SYSTEMD_ENV_FILE}
+
 	sync
 	eend "--start-pre"
 elif [ "$1" = "--start-post" ]; then
