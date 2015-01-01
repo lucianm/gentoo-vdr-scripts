@@ -1,6 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-2.5 (01 Jan 2015)
+
   01 Jan 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
   usr/share/vdr/rcscript/pre-start-45-locales.sh,
   usr/share/vdr/systemd/vdr-systemd_helper.sh:
