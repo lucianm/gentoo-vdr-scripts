@@ -3,7 +3,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $ID: $
 
-description:"Start minimal X server for VDR"
+description="Start minimal X server for VDR"
 
 source /etc/conf.d/vdr
 
