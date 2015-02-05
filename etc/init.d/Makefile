@@ -4,7 +4,7 @@ SHELL = /bin/bash
 
 MYDIR = $(DESTDIR)/etc/init.d
 SUBDIRS =
-BINS = vdr vdr-x11 vdr-frontend wakeup-reboot-halt
+BINS = vdr vdr-x11 wakeup-reboot-halt
 CONFS =
 
 all:

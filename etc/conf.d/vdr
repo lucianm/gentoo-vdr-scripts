@@ -125,6 +125,22 @@ LOG="3"
 #   default: 0
 #SCRIPT_DEBUG_LEVEL="1"
 
+###########################################################
+#          Expert X11 Settings                            #
+###########################################################
+
+# To fit
+# media-plugins/vdr-softhddevice
+# media-plugins/vdr-xineliboutput
+# we need a minimal configured X11 server
+# Please refer for detailed info to gentoo-vdr-scripts README.x11-setup
+#
+# init-file -> vdr-x11
+#
+# X lib startparamter
+#	allowed values: see 'man xorg'
+# 	default: ':0 -br -nocursor -nolisten tcp -quiet'
+#PLAIN_X=" "
 
 ###########################################################
 #          Expert Settings                                #

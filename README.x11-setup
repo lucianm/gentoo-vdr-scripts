@@ -1,1 +1,25 @@
-ToDo
+# $ID: $
+
+Instructions for usage and configuration with init script vdr-x11
+
+media-plugins/vdr-sofhddevice
+media-plugins/vdr-xineliboutput
+need a minimal X server
+
+We recommend to install a minimal X server by
+USE="minimal xorg" emerge x11-base/xorg-server -a
+Use-flag xorg is recommended!
+
+It is not part of this README how to get a working X install.
+Please refer for this to the depended xorg howto's.
+
+Is your X server setup finished, it is easy to start your x server with
+our provided init script /etc/init.d/vdr-x11.
+We add by default minimal variables to the initscript to start the x server.
+
+To fit your own setup, please refer to the man page xorg.
+
+It is simple to add your own variables by using
+/etc/conf.d/vdr  --> Variable X11_SERVER=
+This will unset all default provided variables from the init script.
+There are only variables to add, without to call the x11 lib /usr/bin/X !!!
