@@ -1,14 +1,14 @@
 #!/sbin/runscript
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $ID: $
 
 description:"Start minimal X server for VDR"
 
 source /etc/conf.d/vdr
 
 command="/usr/bin/X"
-command_args="${X11_SERVER:=\:0 -br -nocursor -nolisten tcp -quiet"
+command_args="${X11_SERVER:=\:0 -br -nocursor -nolisten tcp -quiet}"
 start_stop_daemon_args="--make-pidfile --background"
 pidfile="/var/run/vdr-x11.pid"
 
