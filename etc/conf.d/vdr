@@ -133,14 +133,14 @@ LOG="3"
 # media-plugins/vdr-softhddevice
 # media-plugins/vdr-xineliboutput
 # we need a minimal configured X11 server
-# Please refer for detailed info to gentoo-vdr-scripts README.x11-setup
+# Please refer for detailed info to media-tv/gentoo-vdr-scripts README.x11-setup
 #
 # init-file -> vdr-x11
 #
 # X lib startparamter
 #	allowed values: see 'man xorg'
 # 	default: ':0 -br -nocursor -nolisten tcp -quiet'
-#PLAIN_X=" "
+#X11_SERVER=" "
 
 ###########################################################
 #          Expert Settings                                #
