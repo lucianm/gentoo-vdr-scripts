@@ -1,0 +1,15 @@
+#!/sbin/runscript
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+command="/usr/bin/X"
+command_args="-nolisten tcp :0 -quiet -br -nocursor"
+start_stop_daemon_args="--user vdr --group vdr --make-pidfile --background"
+pidfile="/var/run/vdr-x11.pid"
+
+depend() {
+	need localmount
+	after acpid
+	before vdr
+}
