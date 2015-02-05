@@ -1,6 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  05 Feb 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
+  usr/share/portage/config/sets/vdr.conf:
+  wrong inherit in @vdr-plugin-rebuild fixed, thx to M.Dummer
+
 *gentoo-vdr-scripts-2.5 (01 Jan 2015)
 
   01 Jan 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
