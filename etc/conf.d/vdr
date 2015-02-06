@@ -129,15 +129,13 @@ LOG="3"
 #          Expert X11 Settings                            #
 ###########################################################
 
-# To fit
-# media-plugins/vdr-softhddevice
-# media-plugins/vdr-xineliboutput
-# we need a minimal configured X11 server
-# Please refer for detailed info to media-tv/gentoo-vdr-scripts README.x11-setup
+# X11 Server start
+# Please refer for detailed info to
+# media-tv/gentoo-vdr-scripts README.x11-setup
 #
 # init-file -> vdr-x11
 #
-# X lib startparamter
+# X lib start paramter
 #	allowed values: see 'man xorg'
 # 	default: ':0 -br -nocursor -nolisten tcp -quiet'
 #X11_SERVER=" "
@@ -175,7 +173,7 @@ LOG="3"
 #EPGFILE=""
 
 # Activate the (internal to vdr) watchdog timer with
-# a timeout of SEC seconds (recommended by Klaus Schmidinger)
+# a timeout of SEC seconds (recommended by upstream)
 # '0' disables the watchdog
 #   allowed values: 0 1 2 ...
 #   default: enabled / 60 seconds
@@ -243,7 +241,8 @@ PLUGIN_CHECK_PATCHLEVEL="yes"
 #   default: no
 #
 # WILL BE IGNORED IF USING SYSTEMD !!!
-# Please consult README.systemd for further details
+# Please consult media-tv/gentoo-vdr-scripts
+# README.systemd for further details
 #
 #START_VDR_AS_ROOT="no"
 

@@ -13,11 +13,11 @@ Use-flag xorg is recommended!
 It is not part of this README how to get a working X install.
 Please refer for this to the depended xorg howto's.
 
-Is your X server setup finished, it is easy to start your x server with
+Is your X server setup finished, it is easy to start your X server with
 our provided init script /etc/init.d/vdr-x11.
-We add by default minimal variables to the initscript to start the x server.
+We add by default minimal variables to the initscript to start the X server.
 
-To fit your own setup, please refer to the man page xorg.
+To fit your own setup, please refer to 'man xorg'
 
 It is simple to add your own variables by using
 /etc/conf.d/vdr  --> Variable X11_SERVER=
