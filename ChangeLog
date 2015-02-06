@@ -1,6 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-2.6 (06 Feb 2015)
+
   05 Feb 2015; Joerg Bornkessel <hd_brummy@gentoo.org> +README.x11-setup,
   etc/init.d/Makefile, +etc/init.d/vdr-frontend, +etc/init.d/vdr-x11:
   start x11 init script support
