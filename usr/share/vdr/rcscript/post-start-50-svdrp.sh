@@ -9,12 +9,8 @@ addon_main() {
 	# we already know vdr failed
 	[ "${vdr_start_failed}" = "1" ] && return 0
 
-#	if [ "${VDRVERSNUM}" -ge "10715" ]; then
-		SVDRP_PORT="${SVDRP_PORT:-6419}"
-		logger -t vdr "New default svdrp port 6419!"
-#	else
-#		SVDRP_PORT="${SVDRP_PORT:-2001}"
-#	fi
+	SVDRP_PORT="${SVDRP_PORT:-6419}"
+	logger -t vdr "New default svdrp port 6419!"
 
 	SVDRP_HOSTNAME="${SVDRP_HOSTNAME:-localhost}"
 	[ "${SVDRP_PORT}" = "0" ] && return 0

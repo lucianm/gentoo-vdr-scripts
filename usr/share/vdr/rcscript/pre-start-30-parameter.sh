@@ -1,10 +1,17 @@
 # $Id$
+include rc-functions
+
 addon_main() {
 	# parameters of start-stop-daemon
 	[ -n "${VDR_NICENESS}" ] && add_daemonctrl_param --nicelevel "${VDR_NICENESS}"
 
-	# Set environment
-	[ -n "${VDR_CHARSET_OVERRIDE}" ] && export VDR_CHARSET_OVERRIDE
+	if [ "${VDRVERSNUM}" -ge "20110" ]; then
+		# Set command line option
+		[ -n "${VDR_CHARSET_OVERRIDE}" ] && add_param "--chartab=${VDR_CHARSET_OVERRIDE}"
+	else
+		# Set environment
+		[ -n "${VDR_CHARSET_OVERRIDE}" ] && export VDR_CHARSET_OVERRIDE
+	fi
 
 	# parameters of vdr
 	add_param "--watchdog=${INTERNAL_WATCHDOG:-60}"

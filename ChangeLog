@@ -1,6 +1,11 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  11 Feb 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-30-parameter.sh,
+  usr/share/vdr/rcscript/post-start-50-svdrp.sh:
+  cleanup; adde handling new command line --chartab
+
 *gentoo-vdr-scripts-2.6 (06 Feb 2015)
 
   05 Feb 2015; Joerg Bornkessel <hd_brummy@gentoo.org> +README.x11-setup,
