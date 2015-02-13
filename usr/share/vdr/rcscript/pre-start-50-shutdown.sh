@@ -14,10 +14,10 @@ addon_main() {
 
 	# warning about depricated acpi wakeup kernel > 2.6.38
 	if [ "${WAKEUP_METHOD}" = acpi ]; then
-		ewarn "use of acpi wakeup method is depricated"
+		ewarn "use of acpi wakeup method is deprecated"
 		einfo "use rtc or nvram instead"
 		logger -t vdr "WARNING:"
-		logger -t vdr "use of acpi wakeup method is depricated"
+		logger -t vdr "use of acpi wakeup method is deprecated"
 		logger -t vdr "use rtc or nvram instead"
 	fi
 

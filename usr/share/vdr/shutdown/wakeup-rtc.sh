@@ -7,7 +7,7 @@
 RTC_WAKEUP=/usr/sbin/rtc-wakeup.sh
 
 if [ ! -x "${RTC_WAKEUP}" ]; then
-	mesg "acpi-wakeup.sh not found"
+	mesg "rtc-wakeup.sh not found"
 	return 1
 fi
 

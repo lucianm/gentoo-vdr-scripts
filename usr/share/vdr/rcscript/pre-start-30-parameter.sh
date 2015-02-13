@@ -9,7 +9,7 @@ addon_main() {
 		# Set command line option
 		[ -n "${VDR_CHARSET_OVERRIDE}" ] && add_param "--chartab=${VDR_CHARSET_OVERRIDE}"
 	else
-		# Set environment
+		# Set environment // marked as deprecated up from vdr-2.1.10
 		[ -n "${VDR_CHARSET_OVERRIDE}" ] && export VDR_CHARSET_OVERRIDE
 	fi
 

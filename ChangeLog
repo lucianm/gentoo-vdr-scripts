@@ -1,6 +1,14 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  13 Feb 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-30-parameter.sh,
+  usr/share/vdr/rcscript/pre-start-50-shutdown.sh, +COPYING,
+  etc/systemd/system/vdr.service.d/00-gentoo-vdr-user.conf,
+  usr/share/vdr/shutdown/wakeup-rtc.sh,
+  usr/share/vdr/systemd/vdr-systemd_helper.sh:
+  code review; typos; blank lines; COPYING added
+
   11 Feb 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
   usr/share/vdr/rcscript/pre-start-30-parameter.sh,
   usr/share/vdr/rcscript/post-start-50-svdrp.sh:
