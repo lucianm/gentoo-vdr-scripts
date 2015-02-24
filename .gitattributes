@@ -1,2 +1,9 @@
 *.txt ident export-subst
-
+ChangeLog ident export-subst
+README.* ident export-subst
+vdr* ident export-subst
+wakeup-reboot-halt ident export-subst
+Makefile ident export-subst
+commands.* ident export-subst
+reccmds.* ident export-subst
+*.sh ident export-subst
