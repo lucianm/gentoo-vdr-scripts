@@ -1,4 +1,4 @@
 *.txt ident export-subst
 
-$Format:%ci$
+$Format:%ci$ ($Format:%h$)
 
