@@ -1,3 +1,2 @@
 *.txt ident export-subst
-export-subst $Format:%ci$ ($Format:%h$) export-subst
 
