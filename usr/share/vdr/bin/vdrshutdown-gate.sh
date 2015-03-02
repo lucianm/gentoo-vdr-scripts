@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: vdrshutdown-gate.sh 625 2008-07-06 12:59:34Z zzam $
+# $Id$
 # Author:
 #   Matthias Schwarzott <zzam@gmx.de>
 #   Various other contributors from gentoo.de
@@ -7,6 +7,8 @@
 # You have to edit sudo-permissions to grant vdr permission to execute
 # privileged commands. Start visudo and add a line like
 #   vdr     ALL= NOPASSWD: /usr/share/vdr/bin/vdrshutdown-really.sh
+
+. /usr/share/vdr/inc/functions.sh
 
 include svdrpcmd
 svdrp_command

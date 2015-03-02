@@ -6,9 +6,6 @@
 # This is a multiplexer for all things vdr can call with vdr -r script (e.g. noad ...)
 # It calls all shell-scripts located in /usr/share/vdr/record in alphabetical order
 
-include svdrpcmd
-svdrp_command
-
 #fork to background
 if [ -z "${EXECUTED_BY_VDR_BG}" ]; then
 	exec /usr/share/vdr/bin/vdr-bg.sh "${0}" "${@}"
@@ -19,6 +16,9 @@ HOOKDIR=/usr/share/vdr/record
 OLD_HOOKDIR=/usr/lib/vdr/record
 
 . /usr/share/vdr/inc/functions.sh
+
+include svdrpcmd
+svdrp_command
 
 mesg() {
 	"${SVDRPCMD}" MESG "\"$@\""
