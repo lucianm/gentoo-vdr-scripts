@@ -1,6 +1,16 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-2.7.1 (02 Mar 2015)
+
+  02 Mar 2015; Joerg Bornkessel <hd_brummy@gentoo.org> etc/init.d/vdr,
+  etc/init.d/vdr-x11:
+  update lizense info
+
+  02 Mar 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
+  usr/share/vdr/bin/vdrrecord-gate.sh, usr/share/vdr/bin/vdrshutdown-gate.sh:
+  moved include call to later point
+
 *gentoo-vdr-scripts-2.7 (18 Feb 2015)
 
   13 Feb 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
