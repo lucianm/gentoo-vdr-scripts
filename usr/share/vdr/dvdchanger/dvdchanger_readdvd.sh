@@ -6,7 +6,7 @@
 #
 # an LinVDR angepasst, da LinVDR kein at-Kommando hat
 # modified for LinVDR, because there is no at-command
-# 
+#
 # This script will by called by the vdr-plugin dvdselect to copy a DVD to
 # the local drive.
 #

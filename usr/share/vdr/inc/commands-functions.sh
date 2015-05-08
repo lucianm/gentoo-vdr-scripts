@@ -10,7 +10,7 @@ merge_commands_conf() {
 
 	local CONFIG="${CONFIG:-/etc/vdr}"
 	local sdir="${1}" destfile="${2}" order="${3}"
-	
+
 	local bname=${destfile##*/}
 	local mergedfile="/var/vdr/merged-config-files/${bname}"
 

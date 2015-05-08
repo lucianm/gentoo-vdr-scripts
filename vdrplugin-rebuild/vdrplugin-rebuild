@@ -84,7 +84,7 @@ db_plug_list() {
 		ebuild=""
 		ebuild_v=""
 		plugins=""
-		eval $(source "${dbfile}"; echo ebuild=\"${EBUILD}\"; echo ebuild_v=\"${EBUILD_V}\"; echo plugins=\"${PLUGINS}\")
+		eval $(. "${dbfile}"; echo ebuild=\"${EBUILD}\"; echo ebuild_v=\"${EBUILD_V}\"; echo plugins=\"${PLUGINS}\")
 
 		auto=1
 

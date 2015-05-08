@@ -1,4 +1,4 @@
-# $Id: wakeup-acpi.sh 571 2007-12-10 20:50:11Z zzam $
+# $Id$
 # Author:
 #   Matthias Schwarzott <zzam@gmx.de>
 #   Various other contributors from gentoo.de

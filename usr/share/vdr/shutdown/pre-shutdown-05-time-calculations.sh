@@ -1,4 +1,4 @@
-# $Id:$
+# $Id$
 
 : ${FIXED_WAKEUP:=no}
 : ${FIXED_WAKEUP_TIME:="02:00:00"}

@@ -81,7 +81,7 @@ load_addon() {
 
 	# fallback
 	eval "${func}() { :; }"
-	
+
 	# source addon
 	sh -n "${fname}" || return 1
 	. "${fname}" || return 1

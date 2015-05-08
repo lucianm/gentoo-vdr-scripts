@@ -16,7 +16,7 @@ if [[ -z ${EXECUTED_BY_VDR_BG} ]]; then
 	exit
 fi
 
-[[ -e /etc/conf.d/vdr.cd-dvd ]] && source /etc/conf.d/vdr.cd-dvd
+[[ -e /etc/conf.d/vdr.cd-dvd ]] && . /etc/conf.d/vdr.cd-dvd
 
 ISO_FILE="${1// IMAGE/}"
 
@@ -24,7 +24,7 @@ ISO_FILE="${1// IMAGE/}"
 
 : ${VDR_DVDWRITER:=/dev/dvd}
 
-[[ -e /etc/conf.d/vdr.dvdswitch ]] && source /etc/conf.d/vdr.dvdswitch
+[[ -e /etc/conf.d/vdr.dvdswitch ]] && . /etc/conf.d/vdr.dvdswitch
 
 
 DVD_RECORDCMD="growisofs"

@@ -1,5 +1,5 @@
 #!/bin/sh
-# $Id: acpi-wakeup.sh 571 2007-12-10 20:50:11Z zzam $
+# $Id$
 
 ##
 # based on vdrshutdown-acpi.pl

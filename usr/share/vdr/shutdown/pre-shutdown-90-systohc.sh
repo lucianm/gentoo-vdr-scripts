@@ -1,4 +1,4 @@
-# $Id: $
+# $Id$
 
 if [ ! -f /etc/init.d/sysfs ]; then
 # Baselayout 1

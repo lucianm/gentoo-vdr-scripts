@@ -1,6 +1,28 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  08 May 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
+  usr/share/vdr/shutdown/pre-shutdown-05-time-calculations.sh,
+  usr/share/vdr/rcscript/pre-start-45-locales.sh,
+  usr/share/vdr/shutdown/pre-shutdown-90-systohc.sh, Makefile, README.grub2,
+  README.shutdown-jobs, README.systemd, README.vdrcaps, etc/Makefile,
+  etc/conf.d/Makefile, etc/init.d/Makefile, etc/init.d/vdr-x11,
+  etc/sudoers.d/Makefile, etc/systemd/system/vdr.service.d/Makefile,
+  etc/vdr/Makefile, etc/vdr/commands/Makefile, etc/vdr/reccmds/Makefile,
+  usr/Makefile, usr/sbin/Makefile, usr/sbin/rtc-wakeup.sh,
+  usr/share/portage/config/sets/Makefile, usr/share/vdr/Makefile,
+  usr/share/vdr/bin/Makefile, usr/share/vdr/dvdchanger/Makefile,
+  usr/share/vdr/dvdchanger/dvdchanger_readdvd.sh,
+  usr/share/vdr/dvdchanger/dvdchanger_writedvd.sh, usr/share/vdr/inc/Makefile,
+  usr/share/vdr/inc/commands-functions.sh, usr/share/vdr/inc/rc-functions.sh,
+  usr/share/vdr/rcscript/Makefile, usr/share/vdr/record/Makefile,
+  usr/share/vdr/shutdown/Makefile, usr/share/vdr/shutdown/wakeup-none.sh,
+  usr/share/vdr/shutdown/wakeup-rtc.sh, usr/share/vdr/systemd/Makefile,
+  var/vdr/tmp/Makefile, vdrplugin-rebuild/Makefile,
+  vdrplugin-rebuild/vdrplugin-rebuild:
+  whitespace; moved 'source' to '.' to be POSIX compliant, wrt bug 548550;
+  add Id tags for better versioning info
+
 *gentoo-vdr-scripts-2.7.1 (02 Mar 2015)
 
   02 Mar 2015; Joerg Bornkessel <hd_brummy@gentoo.org> etc/init.d/vdr,

@@ -3,7 +3,7 @@
 # disable all locale settings from the system
 # mostly used to get away from utf8 if vdr does
 # not support it
-source /etc/conf.d/vdr
+. /etc/conf.d/vdr
 
 unset_all_locale_settings() {
 	local LOCALE_VARS="LANG LC_CTYPE LC_NUMERIC LC_TIME LC_COLLATE LC_MONETARY

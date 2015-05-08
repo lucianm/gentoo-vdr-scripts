@@ -1,4 +1,4 @@
-# $Id: $
+# $Id$
 
 SHELL = /bin/bash
 
