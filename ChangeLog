@@ -1,6 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-2.7.2 (08 May 2015)
+
   08 May 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
   usr/share/vdr/shutdown/pre-shutdown-05-time-calculations.sh,
   usr/share/vdr/rcscript/pre-start-45-locales.sh,
