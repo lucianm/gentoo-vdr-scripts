@@ -1,17 +1,19 @@
+# $Id$
+
 SHELL = /bin/bash
 
-MYDIR = $(DESTDIR)/etc/vdr
-SUBDIRS = commands reccmds conf.avail
+MYDIR = $(DESTDIR)/etc/vdr/conf.avail
+SUBDIRS =
 BINS =
-CONFS =
+CONFS = $(wildcard vdr.conf*)
 
 all:
 
 install:
 	@install -m 0755 -o vdr -g vdr -d $(MYDIR)
 	#install -m 0755 -o vdr -g vdr $(BINS) $(MYDIR)
-	#install -m 0644 -o vdr -g vdr $(CONFS) $(MYDIR)
-	for DIR in $(SUBDIRS); do \
+	@install -m 0644 -o vdr -g vdr $(CONFS) $(MYDIR)
+	@for DIR in $(SUBDIRS); do \
 		$(MAKE) -C $$DIR install; \
 	done
 

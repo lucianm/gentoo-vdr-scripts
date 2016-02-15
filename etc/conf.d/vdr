@@ -2,23 +2,6 @@
 # Global config file for vdr rc-scripts
 
 ###########################################################
-#          General Settings                               #
-###########################################################
-
-# The list of plugins to load has been moved to a
-# separate file and can no longer be set in here.
-# Now it is set in /etc/conf.d/vdr.plugins
-#
-# The ebuild should have copied all plugins listed
-# in here to the new location.
-
-# Which IR control should be used. Override the default set at
-# compile time
-#   allowed values: lirc rcu
-#   default: use no remote
-#IR_CTRL="lirc"
-
-###########################################################
 #          Language Settings                              #
 ###########################################################
 
@@ -33,30 +16,6 @@
 #                   e.g. de_DE, de_DE@euro, de_DE.utf8, en_GB.utf8, ...
 #   default: use system-wide setting, and if none found, guess some utf8 locale
 #LANG="en_GB.utf8"
-
-# According to "ETSI EN 300 468" the default character set fo SI data is
-# ISO6937. But unfortunately some broadcasters actually use ISO-8859-9 or
-# other encodings, but fail to correctly announce that.
-# To fix this you can set the charset VDR assumes when none is specified
-# by the broadcaster. Better: Complain at your broadcaster.
-#
-# Using >=vdr-1.6 you can fix it this way:
-# If you subscribed to SKY (german pay tv) you may want ISO8859-15.
-#VDR_CHARSET_OVERRIDE="ISO8859-15"
-
-###########################################################
-#          Special Audio Options                          #
-###########################################################
-
-# Send Dolby Digital audio to stdin of command CMD
-#   allowed values: names of executables
-#   default: no command
-#AC3_AUDIO=""
-
-# Mute audio of the primary DVB device at startup
-#   allowed values: yes no
-#   default: no
-#MUTE="yes"
 
 ###########################################################
 #          Startup Options                                #
@@ -120,15 +79,6 @@
 #          Debug Options                                  #
 ###########################################################
 
-# Set log level
-# 0 = no logging, 1 = errors only,
-# 2 = errors and info, 3 = errors, info and debug
-# if logging should be done to LOG_LOCALn instead of
-# LOG_USER, add '.n' to LEVEL, as in 3.7 (n=0..7)
-#   allowed values: 0 1 2 3
-#   default: 1
-LOG="3"
-
 # Check syslog for errors
 #   allowed values: yes no
 #   default: yes
@@ -167,52 +117,6 @@ DISPLAY=:0.0
 # No need to change anything here for normal usage.
 # Every setting in here has good defaults (at least I hope so).
 
-# use DIR as video directory
-#   allowed values: directory names
-#   default: <vdr-homedir>/video
-#VIDEO="%HOME%/video"
-
-# Read config files from DIR
-#   allowed values: directory names
-#   default: /etc/vdr
-#CONFIG="/etc/vdr"
-
-# Write/read cached vdr files in the given directory
-# e.g. epg.data
-#    allowed values: directory names
-#    default: /var/cache/vdr
-#CACHEDIR="/var/cache/vdr"
-
-# VDR write the EPG default in the CACHEDIR
-# overwrite this with following (no good idea)
-# write the EPG data into the given FILE; use '-E-' to disable this
-# if FILE is a directory, the default EPG file will be
-# created in that directory
-#   allowed values: -E-, file/directory names
-#   default: unset, empty string
-#EPGFILE=""
-
-# Activate the (internal to vdr) watchdog timer with
-# a timeout of SEC seconds (recommended by upstream)
-# '0' disables the watchdog
-#   allowed values: 0 1 2 ...
-#   default: enabled / 60 seconds
-#INTERNAL_WATCHDOG="60"
-
-# If you you are looking for the settings for the external watchdog
-# look into /etc/conf.d/vdr.watchdogd
-
-# Change the filename-format to be vfat and samba compatible
-#   allowed values: yes no
-#   default: no
-#VFAT_FILENAMES="yes"
-
-# Use PORT for SVDRP (default: 6419)
-# 0 turns off SVDRP
-#   allowed values: numbers for ports between 1024 and 65535
-#   default: 6419
-#SVDRP_PORT="6419"
-
 # Seconds to wait for a running vdr
 #   allowed values: numbers
 #   default: 40
@@ -242,19 +146,6 @@ PLUGIN_CHECK_PATCHLEVEL="yes"
 #   default: no
 #FORCE_OLD_THREADS="yes"
 
-# Do not use vdr -u option to set user
-# and use start-stop-daemon --chuid option
-# This makes vdr behave easier with core-dumps
-#   allowed values: yes no
-#   default: no
-#FORCE_SETUID_OFF="yes"
-
-# Allow core-dumps when using setuid
-# This helps for debugging crashes
-#   allowed values: yes no
-#   default: no
-#ALLOW_USERDUMP="yes"
-
 # For people who really know what they do
 # and who want to start vdr as user root
 #   allowed values: yes no
@@ -265,15 +156,3 @@ PLUGIN_CHECK_PATCHLEVEL="yes"
 # /usr/share/docs/gentoo-vdr-scripts-*/README.systemd for further details
 #
 #START_VDR_AS_ROOT="no"
-
-# Use only the given DVB device (NUM = 0, 1, 2...)
-# there may be several NUMs options
-#   allowed values: set of numbers
-#   default: use all DVB devices
-#DEVICE=""
-
-# Give additional options to vdr process
-# should not be necessary in normal cases.
-# please contact developers if you need
-# special parameters.
-#VDR_EXTRA_OPTIONS=""

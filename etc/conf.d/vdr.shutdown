@@ -141,14 +141,6 @@
 #BLOCK_SHUTDOWN_INTERVALS="20-22 23:30-23:00 23:30-3:40"
 
 #
-# This option allows to override the set of shutdown scripts
-# coming with this installation. Use with care!
-# (This overwrites all settings in this file).
-#   allowed values: name of an executable
-#   default: use supplied scripts
-#USER_SHUTDOWN_SCRIPT=""
-
-#
 # Should the automatic shutdown after a while of inactivity
 # and after wakeup for recording be allowed?
 #   allowed values: yes no

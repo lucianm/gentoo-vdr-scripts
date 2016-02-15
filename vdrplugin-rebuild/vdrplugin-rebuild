@@ -14,11 +14,11 @@
 # Changed to a new db-format with seperate files for each ebuild.
 
 if [[ `id -u` != 0 ]]; then
-	echo "This application must be ran as root."
+	echo "This application must be executed as root."
 	exit 1
 fi
 
-R_VERSION="0.5"
+R_VERSION="0.6"
 R_DBPATH="${ROOT}/usr/share/vdr/vdrplugin-rebuild"
 R_PORTAGEQ="`type -p portageq 2>/dev/null`"
 if [[ -z ${R_PORTAGEQ} ]]; then
@@ -34,8 +34,9 @@ R_OPTION_SKIPPED=0;
 R_OPTION_PATCHLEVEL=0;
 R_OPTION_PM="portage";
 
-R_PLUGIN_ENABLE="${ROOT}/etc/conf.d/vdr.plugins"
+source "/usr/share/vdr/inc/argsdir-functions.sh"
 VDR_USER_HOME=$(eval echo ~vdr)
+R_PLUGINS_ENABLED="$(get_configured_plgs)"
 R_PLUGINS_SKIPPED="${ROOT}${VDR_USER_HOME}/tmp/plugins_skipped_ALL"
 
 eerror() {
@@ -111,7 +112,7 @@ db_plug_list() {
 			local p= match=0
 			for p in ${plugins}; do
 				# match fixed strings, whole line
-				if fgrep -q -x ${p#vdr-} "${R_PLUGIN_ENABLE}"
+				if fgrep -q -x ${p#vdr-} "${R_PLUGINS_ENABLED}"
 				then
 					match=1
 				fi

@@ -1,6 +1,9 @@
 
 # Manages loading of plugins (i.e. creating command-line-options for vdr)
 
+
+include argsdir-functions
+
 init_tmp_dirs() {
 	PL_TMP="${vdr_user_home}/tmp"
 	if [ ! -d "${PL_TMP}" ]; then
@@ -21,17 +24,18 @@ load_plugin_list_start() {
 	rm -f "${LOADED_PLUGINS_FILE}"
 	prepare_plugin_checks
 
-	local PLUGIN_CONF=/etc/conf.d/vdr.plugins PLUGIN= line=
-	if [ -f "${PLUGIN_CONF}" ]; then
-		exec 3<${PLUGIN_CONF}
-		while read line <&3; do
-			[ "${line}" = "" ] && continue
-			[ "${line#"#"}" != "${line}" ] && continue
-			PLUGIN="${line}"
-			check_plugin "${PLUGIN}" || continue
-			PLUGINS="${PLUGINS} ${PLUGIN}"
+	local CFG_PLG_SYMLINKS=$(get_configured_cfgs)
+	if [ -n "${CFG_PLG_SYMLINKS}" ]; then
+		for CFG_SYM in ${CFG_PLG_SYMLINKS}; do
+			PLUGIN=$(cfg_path_2_plg_name $ARGSDIR/$CFG_SYM)
+			if check_plugin "${PLUGIN}"; then
+				# list plugins only once 
+				[ "${PLUGINS/$PLUGIN}" = "$PLUGINS" ] && PLUGINS="${PLUGINS} ${PLUGIN}"
+			else
+				# move to skipped directory
+				mv -f $ARGSDIR/$CFG_SYM $DIR_SKIPPED
+			fi
 		done
-		exec 3<&-
 
 		# result of checks
 		if [ -n "${skipped_plugins_patchlevel}" ]; then
@@ -56,6 +60,7 @@ load_plugin_list_stop() {
 init_plugin_loader() {
 	local phase="$1"
 	init_tmp_dirs
+	init_skipped_dir
 
 	# Load list of plugins which were started to exec correct rcaddons
 	LOADED_PLUGINS_FILE="${PL_TMP}"/loaded_plugins
@@ -125,8 +130,9 @@ run_plugin_addon()
 
 add_plugin_param()
 {
-	# append new parameter
-	vdrplugin_opts="${vdrplugin_opts} $1"
+	# dummy, kept only for compatibility
+	local dummy_variable
+	echo $dummy_variable
 }
 
 skip_plugin() {
@@ -151,11 +157,6 @@ skip_plugin() {
 	return 0
 }
 
-add_plugin_params_to_vdr_call() {
-	# add the param to the vdr-call
-	add_param "${vdrplugin_opts} ${_EXTRAOPTS}"
-}
-
 loop_all_plugins() {
 	local PLUGIN func="$1" prepare_cmdline=0
 
@@ -163,16 +164,13 @@ loop_all_plugins() {
 	plugin_pre_vdr_start)
 		for PLUGIN in ${PLUGINS}; do
 			SKIP_PLUGIN=0
-			vdrplugin_opts="--plugin=${PLUGIN}"
 			run_plugin_addon "${PLUGIN}" "${func}" || return 1
 			[ "${SKIP_PLUGIN}" = 1 ] && continue
-
-        	        add_plugin_params_to_vdr_call
 			echo "${PLUGIN}" >> "${LOADED_PLUGINS_FILE}"
 		done
 		;;
 	*)
-		for PLUGIN in ${PLUGINS}; do
+		for PLUGIN in $(cat ${LOADED_PLUGINS_FILE}); do
 			run_plugin_addon "${PLUGIN}" "${func}" || return 1
 		done
 		;;

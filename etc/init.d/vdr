@@ -62,13 +62,14 @@ start_vdr() {
 			clear
 			einfo "Starting ${VDRNAME}"
 		} >${TERM_DEV}
+		remove_param "--daemon" "-d"
 	else
-		add_param --daemon
+		ensure_param "--daemon" "-d"
 	fi
 
-	debug_msg "  CMDLINE: ${_openvt} start-stop-daemon ${daemonctrl_opts} -- ${vdr_opts}"
+	debug_msg "  CMDLINE: ${_openvt} start-stop-daemon ${daemonctrl_opts}"
 
-	eval ${_openvt} start-stop-daemon ${daemonctrl_opts} -- ${vdr_opts}
+	eval ${_openvt} start-stop-daemon ${daemonctrl_opts}
 	vdr_exitcode=$?
 	eend $vdr_exitcode "Failed to start vdr."
 

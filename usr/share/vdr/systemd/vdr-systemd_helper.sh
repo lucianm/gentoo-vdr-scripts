@@ -21,7 +21,9 @@ unset MAIL
 
 include rc-functions
 include plugin-functions
+include runtimedirs-functions
 init_tmp_dirs
+init_skipped_dir
 
 VDR_LOG_FILE="${PL_TMP}/vdr-start-log"
 
@@ -87,33 +89,32 @@ vdr_log()
 # the console as user 'vdr'
 if [ "$1" = "--start-pre" ]; then
 	ebegin "--start-pre"
+	ensure_cache_dir
+	ensure_video_dir
 	clear_logfile
 	init_params
 	init_plugin_loader start || eexitfail "init_plugin_loader start"
 	load_addons_prefixed pre-start || eexitfail "load_addons_prefixed pre-start"
 
-	# these options are what we need to start VDR from the systemd unit file
-	echo "VDR_OPTS=\"${vdr_opts}\"" > ${SYSTEMD_ENV_FILE}
 
 	# X11 DISPLAY
 	# (needed for media-plugins/vdr-softhddevice supporting OpenGL OSD)
 	echo "DISPLAY=$DISPLAY" >> ${SYSTEMD_ENV_FILE}
-
 	# LANG LC_COLLATE from /etc/conf.d/vdr will be ignored, wrt bug 530690
 	echo "LANG=$LANG" >> ${SYSTEMD_ENV_FILE}
 	echo "LC_COLLATE=${VDR_SORT_ORDER}" >> ${SYSTEMD_ENV_FILE}
 	# Using LC_ALL is strongly discouraged as it can't be overridden later on.
 	# Please use it only when testing and never set it in a startup file.
 #	echo "LC_ALL=$LANG" >> ${SYSTEMD_ENV_FILE}
-
-	# remove the command line --user argument if set by the scripts so far,
-	# as the user under which vdr will run is controlled by systemd
-	sed -e "s:'-u' 'vdr' ::" -i ${SYSTEMD_ENV_FILE}
+	# old pthreads ?
+	[ -z "${LD_ASSUME_KERNEL}"] || echo "LD_ASSUME_KERNEL=$LD_ASSUME_KERNEL" >> ${SYSTEMD_ENV_FILE}
 
 	sudo systemctl daemon-reload
 	eend "--start-pre"
 elif [ "$1" = "--start-post" ]; then
 	ebegin "--start-post"
+	# init_plugin_loader stop will just read the list of loaded plugins from the file generated in the "--start-pre" phase
+	init_plugin_loader stop || eexitfail "init_plugin_loader stop"
 	load_addons_prefixed post-start || eexitfail "load_addons_prefixed post-start"
 	eend "--start-post"
 elif [ "$1" = "--stop-pre" ]; then
@@ -123,6 +124,7 @@ elif [ "$1" = "--stop-pre" ]; then
 	eend "--stop-pre"
 elif [ "$1" = "--stop-post" ]; then
 	ebegin "--stop-post"
+	init_plugin_loader stop || eexitfail "init_plugin_loader stop"
 	load_addons_prefixed post-stop || eexitfail "load_addons_prefixed post-stop"
 	eend "--stop-post"
 fi

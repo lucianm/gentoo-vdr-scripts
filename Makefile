@@ -22,8 +22,9 @@ install:
 	@for DIR in $(SUBDIRS); do \
 		$(MAKE) -C $$DIR install; \
 	done
-	# create directories in $(VDR_HOME)
+	# create directories in $(VDR_HOME)git@github.com:lucianm/gentoo-vdr-scripts.git
 	@install -m 0755 -o vdr -g vdr -d $(DESTDIR)/$(VDR_HOME)/{shutdown-data,merged-config-files}
+	@install -m 0755 -o vdr -g vdr -d $(DESTDIR)/var/cache/vdr
 	@install -m 0755 -o root -g root -d $(DESTDIR)/$(VDR_HOME)/tmp
 	# create empty systemd_env file, writable for user vdr
 	@install -m 0644 -o vdr -g vdr /dev/null $(DESTDIR)/$(VDR_HOME)/tmp/systemd_env

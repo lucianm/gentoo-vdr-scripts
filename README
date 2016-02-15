@@ -1,16 +1,17 @@
 README for gentoo-vdr-scripts
 
-Version 3.0_rc2
+Version 3.0_rc3
 
 This package contains all support scripts for vdr to make
 it like a real set top box.
 
 Dependencies:
-	>=vdr-1.7.36	earlier versions are not supported
-	nvram-wakeup	when being used for setting wakeup time
+	>=vdr-2.2.0      earlier versions are not supported
+	nvram-wakeup     when being used for setting wakeup time
+	media-tv/vdrcm   for managing ARGSDIR config files
 
 Authors:
 	Matthias Schwarzott <zzam@gentoo.org>
 	Joerg Bornkessel <hd_brummy@gentoo.org>
-	Lucian Muresan <lucianm@users.sourceforge.net> ( systemd support )
+	Lucian Muresan <lucianm@users.sourceforge.net> ( systemd support, ARGSDIR refactoring )
 	Martin Dummer <martin.dummer@gmx.net>

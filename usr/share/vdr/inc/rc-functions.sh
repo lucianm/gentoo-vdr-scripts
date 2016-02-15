@@ -5,6 +5,8 @@
 #   General routine to wait for conditions (svdrp/existing dvb-device-nodes ...)
 #
 
+include argsdir-functions
+
 : ${vdr_rc_dir:=/usr/share/vdr/rcscript}
 : ${SCRIPT_DEBUG_LEVEL:=0}
 SCRIPT_API=2
@@ -35,8 +37,7 @@ getvdrversnum() {
 getvdrversnum
 
 init_params() {
-	# init variables for vdr/daemonctrl parameters
-	vdr_opts=""
+	# init variables for daemonctrl parameters
 	daemonctrl_opts=""
 }
 
@@ -48,11 +49,12 @@ add_daemonctrl_param() {
 	done
 }
 
-add_param() {
-	while [ -n "$1" ]; do
-		vdr_opts="${vdr_opts} '$1'"
-		shift
-	done
+ensure_param() {
+	[ $(is_cfg_opt_on vdr $1 $2) ] || enable_cfg_opt vdr $1
+}
+
+remove_param() {
+	[ $(is_cfg_opt_on vdr $1 $2) ] && disable_cfg_opt vdr $1 $2
 }
 
 #
