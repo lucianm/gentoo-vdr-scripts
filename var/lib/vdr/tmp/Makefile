@@ -8,7 +8,7 @@ CONFS = systemd_env
 all:
 
 install:
-	@install -m 0755 -o root -g root -d $(MYDIR)
+	@install -m 0755 -o vdr -g vdr -d $(MYDIR)
 	@install -m 0644 -o vdr -g vdr $(CONFS) $(MYDIR)
 
 .PHONY: all install

@@ -1,0 +1,24 @@
+Instructions for configuring VDR and its plugins with ARGSDIR configuration files
+
+
+VDR supports quite practical, discrete INI-like *.conf files which are parsed at startup
+in the order they are named in the ARGSDIR (/etc/vdr/conf.d).
+This means, the INI sections [vdr], [plugin1], [plugin2] ... [plugin_N] are collected,
+parsed in the order in which they appear there, so for practical reasons, VDR itself and
+each plugin should deploy it's own file containing the respective section, then the
+plugin will be enabled and the keys found under that section, are passed as command-line
+arguments to VDR or the respective plugin. This has the advantage that VDR configuration
+would be performed the same way to almost 100% across any distribution. Of course, there
+still are some Gentoo-specific left-overs under /etc/conf.d like "vdr" and few more files
+named vdr.some_extension.
+
+If VDR has been patched with the --tmplargs option, it is able to generate template
+configuration files out of the CLI help message, with all options (if any) commented out,
+ready for the user or package maintainer to modify them. They are deployed under /etc/vdr/conf.avail
+and for convenience they can be symlinked to ARGSDIR in any order given by the symlink. Of course,
+copying them there would work as well.
+
+Managing activation and sort order of plugins can be easily achieved with the console dialog-based
+tool media-tv/vdrcm which lists all plugin templates found in /etc/vdr/conf.avail (because even those
+without configuration parameters should have one containing the [section] only, this should be taken
+care of by the plugin ebuilds, or by the user).

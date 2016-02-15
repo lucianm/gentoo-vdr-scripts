@@ -21,6 +21,7 @@ install:
 		$(MAKE) -C $$DIR install; \
 	done
 	@install -m 0755 -o vdr -g vdr -d $(DESTDIR)/var/lib/vdr/{shutdown-data,merged-config-files}
+	@install -m 0755 -o vdr -g vdr -d $(DESTDIR)/var/cache/vdr
 
 snapshot:
 	git archive HEAD | bzip2 gentoo-vdr-scripts-snapshot.tar.bz2
