@@ -5,7 +5,7 @@ addon_main() {
 	# parameters of start-stop-daemon
 	[ -n "${VDR_NICENESS}" ] && add_daemonctrl_param --nicelevel "${VDR_NICENESS}"
 
-	[ -n "${VDR_IONICE}" ] && add_daemonctrl_param --ionice "${VDR_OINICE}"
+	[ -n "${VDR_IONICE}" ] && add_daemonctrl_param --ionice "${VDR_IONICE}"
 
 	if [ "${VDRVERSNUM}" -ge "20110" ]; then
 		# Set command line option

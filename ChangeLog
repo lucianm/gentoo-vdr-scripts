@@ -1,9 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
-*gentoo-vdr-scripts-2.7.4 (01 May 2016)
-
-*gentoo-vdr-scripts-2.7.4 (01 May 2016)
+  01 May 2016; Joerg Bornkessel <hd_brummy@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-30-parameter.sh, etc/init.d/vdr,
+  etc/init.d/vdr-x11, etc/init.d/wakeup-reboot-halt:
+  typo; fixed init scripts to use openrc-run
 
   01 May 2016; Joerg Bornkessel <hd_brummy@gentoo.org>
   usr/share/vdr/rcscript/pre-start-30-parameter.sh, etc/conf.d/vdr:
