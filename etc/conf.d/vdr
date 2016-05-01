@@ -63,10 +63,17 @@
 #          Startup Options                                #
 ###########################################################
 
-# Set niceness of vdr process
+# Modifies the scheduling priority of vdr process
 #   allowed values: -19 .. 20
 #   default: do not change niceness
 #VDR_NICENESS="5"
+
+# Modifies the IO scheduling priority of vdr prozess.
+# Class can be 0 for none, 1 for real time, 2 for best effort and 3 for idle.
+# Data can be from 0 to 7 inclusive.
+#   values: Class:Data
+#   default: do not changes ionice
+#VDR_IONICE="2:7"
 
 # Set volume at start of vdr to this value
 #   allowed values: 0-255
