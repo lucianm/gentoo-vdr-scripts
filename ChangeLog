@@ -1,6 +1,12 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+*gentoo-vdr-scripts-2.7.4 (01 May 2016)
+
+  01 May 2016; Joerg Bornkessel <hd_brummy@gentoo.org>
+  usr/share/vdr/rcscript/pre-start-30-parameter.sh, etc/conf.d/vdr:
+  added ionice support to vdr initscript, suggested by T.Loescher
+
 *gentoo-vdr-scripts-2.7.3 (08 May 2015)
 
   08 May 2015; Joerg Bornkessel <hd_brummy@gentoo.org>
