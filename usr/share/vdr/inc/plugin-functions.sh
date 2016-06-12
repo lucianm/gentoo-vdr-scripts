@@ -74,12 +74,8 @@ init_plugin_loader() {
 }
 
 prepare_plugin_checks() {
-	# find plugin dir, needed for multilib ...
-	local include_dir=/usr/include/vdr
-	plugin_dir="$(awk '/^PLUGINLIBDIR/{ print $3 }' ${include_dir}/Make.config)"
-	if [ -n "${plugin_dir}" ]; then
-		plugin_dir=/usr/lib/vdr/plugins
-	fi
+	# find plugin lib dir, needed for multilib ...
+	plugin_dir=$(pkg-config --variable=libdir vdr)
 
 	# needed for plugin patchlevel check
 	vdr_checksum_dir="${plugin_dir%/plugins}/checksums"

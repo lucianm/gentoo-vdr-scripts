@@ -1,6 +1,11 @@
 # ChangeLog for gentoo-vdr-scripts
 # $Id$
 
+  12 Jun 2016; Joerg Bornkessel <hd_brummy@gentoo.org>
+  usr/share/vdr/inc/plugin-functions.sh:
+  rewritten plugin_dir detection, as the old test failed under arch arm64;
+  thanks to Thomas Reufer to point this out
+
 *gentoo-vdr-scripts-2.7.5 (01 May 2016)
 
 *gentoo-vdr-scripts-2.7.4 (01 May 2016)
