@@ -1,5 +1,10 @@
 # ChangeLog for gentoo-vdr-scripts
-# $Id$
+
+  12 Dec 2019 <Joerg Bornkessel> (hd_brummy@gentoo.org)
+  SYMLINK_LIB=no / 17.1 profiles wrt bug #688174
+  support for Baselayout 1 removed, this will fix wrt bug #646518
+  shuts the vdr down even if nvram-wakup fails, fix wrt bug #298785
+  white space cleanup
 
 *gentoo-vdr-scripts-2.7.5.1 (12 Jun 2016)
 

@@ -13,7 +13,7 @@ if [ -z "${EXECUTED_BY_VDR_BG}" ]; then
 fi
 
 HOOKDIR=/usr/share/vdr/record
-OLD_HOOKDIR=/usr/lib/vdr/record
+OLD_HOOKDIR="(pkg-config --variable=libdir vdr)"/../record
 
 . /usr/share/vdr/inc/functions.sh
 

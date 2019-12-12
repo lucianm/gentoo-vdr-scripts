@@ -33,7 +33,7 @@ verbose "Creating vdr header files checksum of ${include_dir}"
 
 plugin_dir="$(awk '/^PLUGINLIBDIR/{ print $3 }' ${include_dir}/Make.config)"
 if [ -n "${plugin_dir}" ]; then
-	plugin_dir=/usr/lib/vdr/plugins
+	plugin_dir="(pkg-config --variable=libdir vdr)"
 fi
 
 vdr_checksum_dir="${plugin_dir%/plugins}/checksums"

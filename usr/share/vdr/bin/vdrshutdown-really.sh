@@ -1,8 +1,9 @@
 #!/bin/sh
 # $Id$
 # Author:
-#   Matthias Schwarzott <zzam@gmx.de>
-#   Various other contributors from gentoo.de
+#	Matthias Schwarzott <zzam@gmx.de>
+#	Joerg Bornkessel <hd_brummy@gentoo.org>
+#	Various other contributors from gentoo.de
 #
 # some ideas from ctvdr's shutdownvdr by Tobias Grimm <tg@e-tobi.net>
 #
@@ -43,7 +44,9 @@ VDR_TIMER_CHANNEL="${3}"
 VDR_TIMER_FILENAME="${4}"
 VDR_USERSHUTDOWN="${5}"
 
-: ${SHUTDOWN_DEFAULT_RETRY_TIME:=10}
+# include this to override the default shutdown_default_retry_time
+. /etc/conf.d/vdr.shutdown
+: ${SHUTDOWN_DEFAULT_RETRY_TIME:=5}
 
 if [ "${DEBUG}" -ge 1 ]; then
 	exec </dev/null >/tmp/vdrshutdown-really.log 2>&1
@@ -58,6 +61,7 @@ fi
 
 svdrp_send() {
 	${SVDRPCMD} "$@"
+	logger -t mesg -p user.warn "$*"
 }
 
 mesg() {
@@ -224,7 +228,7 @@ if is_shutdown_aborted; then
 	mesg "No Shutdown: ${ABORT_MESSAGE}"
 	check_forced_shutdown_possible_next_time
 	check_auto_retry
-	
+
 	exit 0
 fi
 

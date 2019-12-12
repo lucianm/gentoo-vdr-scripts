@@ -268,7 +268,7 @@ get_vdr_plugin_dir() {
 	local d include_dir=/usr/include/vdr
 	d="$(awk '/^PLUGINLIBDIR/{ print $3 }' ${include_dir}/Make.config)"
 	if [ -n "${d}" ]; then
-		d=/usr/lib/vdr/plugins
+		d="$(pkg-config --variable=libdir vdr)"
 	fi
 
 	echo "${d}"

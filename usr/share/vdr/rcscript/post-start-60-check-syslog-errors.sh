@@ -24,7 +24,7 @@ addon_main() {
 	| sed '/vdr.*ERROR/!d
 		s/^.* ERROR: /ERROR: /
 		/unknown config parameter:/d
-		s#ERROR: /usr/lib/vdr/plugins/#ERROR: loading plugin #
+		s#ERROR: "$(pkg-config --variable=libdir vdr)"/#ERROR: loading plugin #
 		' \
 	| while read line; do
 		count=$(($count+1))

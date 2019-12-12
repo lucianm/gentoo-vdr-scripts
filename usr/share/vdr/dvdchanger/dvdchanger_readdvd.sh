@@ -21,7 +21,7 @@ svdrp_command
 
 if [[ -z ${EXECUTED_BY_VDR_BG} ]]; then
 	VDR_BG=/usr/share/vdr/bin/vdr-bg.sh
-	[[ -e ${VDR_BG} ]] || VDR_BG=/usr/lib/vdr/bin/vdr-bg.sh
+	[[ -e ${VDR_BG} ]] || VDR_BG="$(pkg-config --variable=libdir vdr)"/../vdr-bg.sh
 
 	exec "${VDR_BG}" "${0}" "${@}"
 	exit
