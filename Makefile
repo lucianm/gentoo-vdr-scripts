@@ -26,7 +26,7 @@ install:
 
 snapshot:
 	git archive HEAD | bzip2 gentoo-vdr-scripts-snapshot.tar.bz2
-	scp gentoo-vdr-scripts-snapshot.tar.bz2 dev.gentoo.org:public_html/distfiles/gentoo-vdr-scripts-snapshot.tar.bz2
+	scp gentoo-vdr-scripts-snapshot.tar.bz2 hd_brummy@dev.gentoo.org:public_html/distfiles/gentoo-vdr-scripts-snapshot.tar.bz2
 	rm gentoo-vdr-scripts-snapshot.tar.bz2
 
 .PHONY: all compile install snapshot
