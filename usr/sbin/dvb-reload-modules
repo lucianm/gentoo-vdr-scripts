@@ -5,7 +5,7 @@
 # Reload all loaded dvb modules
 #
 
-. /etc/init.d/functions.sh
+. /lib/gentoo/functions.sh
 
 : ${DEBUG:=0}
 
