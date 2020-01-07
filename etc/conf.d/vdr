@@ -98,6 +98,10 @@
 # viewing of Terminal output of vdr
 #   allowed values: number of virtual terminal
 #   default: start vdr completely in the background
+#
+# WILL BE IGNORED IF USING SYSTEMD !!!
+# Please consult media-tv/gentoo-vdr-scripts
+# /usr/share/docs/gentoo-vdr-script-*/README.systemd for further details
 #TERMINAL="8"
 
 # Switch to used terminal
@@ -105,6 +109,10 @@
 # then switch to this terminal
 #   allowed values: yes no
 #   default: no
+#
+# WILL BE IGNORED IF USING SYSTEMD !!!
+# Please consult media-tv/gentoo-vdr-scripts
+# /usr/share/docs/gentoo-vdr-scripts-*/README.systemd for further details
 #SWITCH_TO_TERMINAL="yes"
 
 
@@ -254,7 +262,7 @@ PLUGIN_CHECK_PATCHLEVEL="yes"
 #
 # WILL BE IGNORED IF USING SYSTEMD !!!
 # Please consult media-tv/gentoo-vdr-scripts
-# README.systemd for further details
+# /usr/share/docs/gentoo-vdr-scripts-*/README.systemd for further details
 #
 #START_VDR_AS_ROOT="no"
 
