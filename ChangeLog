@@ -3,8 +3,11 @@
   - removed rtc-wakeup, anounced in privius version
     Suggested-by: Lucian Muresan <lucianm@users.sourceforge.net>
   - fixed path to functions.sh
-	rather depend on sys-apps/gentoo-functions than relaying on the
+    rather depend on sys-apps/gentoo-functions than relaying on the
     existence of openrc
+    Suggested-by: Lucian Muresan <lucianm@users.sourceforge.net>
+  - added support for the DISPLAY=:0.0 environment variable
+    (needed for media-plugins/vdr-softhddevice supporting OpenGL OSD)
     Suggested-by: Lucian Muresan <lucianm@users.sourceforge.net>
 
 *gentoo-vdr-scripts-2.8 (15 Dec 2019)

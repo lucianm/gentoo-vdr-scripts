@@ -146,6 +146,12 @@ LOG="3"
 # 	default: ':0 -br -nocursor -nolisten tcp -quiet'
 #X11_SERVER=" "
 
+# X11 display
+# (needed for media-plugin/vdr-softhddevice supporting OpenGL OSD)
+# please make sure to set it matching the X11_SERVER contents above
+# and let it on, always !!!
+DISPLAY=:0.0
+
 ###########################################################
 #          Expert Settings                                #
 ###########################################################

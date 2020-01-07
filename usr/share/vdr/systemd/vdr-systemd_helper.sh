@@ -94,6 +94,10 @@ if [ "$1" = "--start-pre" ]; then
 	# these options are what we need to start VDR from the systemd unit file
 	echo "VDR_OPTS=\"${vdr_opts}\"" > ${SYSTEMD_ENV_FILE}
 
+	# X11 DISPLAY 
+	# (needed for media-plugins/vdr-softhddevice supporting OpenGL OSD)
+	echo "DISPLAY=$DISPLAY" >> ${SYSTEMD_ENV_FILE}
+
 	# LANG LC_COLLATE from /etc/conf.d/vdr will be ignored, wrt bug 530690
 	echo "LANG=$LANG" >> ${SYSTEMD_ENV_FILE}
 	echo "LC_COLLATE=${VDR_SORT_ORDER}" >> ${SYSTEMD_ENV_FILE}
