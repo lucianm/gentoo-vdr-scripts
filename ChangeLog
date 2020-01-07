@@ -1,5 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 
+  -removed rtc-wakeup, anounced in privius version
+   Suggested-by: Lucian Muresan <lucianm@users.sourceforge.net>
+
 
 *gentoo-vdr-scripts-2.8 (15 Dec 2019)
 

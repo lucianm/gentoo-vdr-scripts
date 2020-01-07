@@ -8,11 +8,10 @@ Almost all code related to shutdown is stored under
 = wakeup-modules:
 =================
 
-
 Wakeup-modules are named wakeup-${NAME}.sh
 
 The used wakeup-module is selected by WAKEUP_METHOD in /etc/conf.d/vdr.shutdown.
-Here acpi is used by default if nothing has been set.
+Here rtc and nvram is tried by default if nothing has been set.
 
 The module is sourced by the shell. The wakeup-module is executed as user root.
 

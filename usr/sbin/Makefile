@@ -4,7 +4,7 @@ SHELL = /bin/bash
 
 MYDIR = $(DESTDIR)/usr/sbin
 SUBDIRS =
-BINS = acpi-wakeup.sh rtc-wakeup.sh vdr-watchdogd dvb-reload-modules vdr-get-header-checksum
+BINS = rtc-wakeup.sh vdr-watchdogd dvb-reload-modules vdr-get-header-checksum
 CONFS =
 
 all: compile

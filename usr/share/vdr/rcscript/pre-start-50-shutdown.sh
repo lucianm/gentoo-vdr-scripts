@@ -12,14 +12,5 @@ addon_main() {
 	# no custum shutdown-script
 	add_param "--shutdown=/usr/share/vdr/bin/vdrshutdown-gate.sh"
 
-	# warning about depricated acpi wakeup kernel > 2.6.38
-	if [ "${WAKEUP_METHOD}" = acpi ]; then
-		ewarn "use of acpi wakeup method is deprecated"
-		einfo "use rtc or nvram instead"
-		logger -t vdr "WARNING:"
-		logger -t vdr "use of acpi wakeup method is deprecated"
-		logger -t vdr "use rtc or nvram instead"
-	fi
-
 	return 0
 }

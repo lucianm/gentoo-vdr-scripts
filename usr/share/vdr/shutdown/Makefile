@@ -5,7 +5,7 @@ SHELL = /bin/bash
 MYDIR = $(DESTDIR)/usr/share/vdr/shutdown
 SUBDIRS =
 BINS =
-WAKEUP = wakeup-acpi.sh wakeup-rtc.sh wakeup-nvram.sh wakeup-none.sh
+WAKEUP = wakeup-rtc.sh wakeup-nvram.sh wakeup-none.sh
 CONFS = $(wildcard shutdown*.sh pre*.sh periodic*.sh) $(WAKEUP)
 
 all:

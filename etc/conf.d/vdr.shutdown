@@ -21,12 +21,6 @@
 #   allowed values: rtc nvram none
 #   default: try all values
 #
-#   allowed value: acpi
-#   acpi wakup is deprecated since kernel > 2.6.38
-#   if you would like use it,
-#   you have to set this explicit below
-#   Note: support will removed in future versions of gentoo-vdr-scripts
-#
 #WAKEUP_METHOD=""
 
 ###########################################################

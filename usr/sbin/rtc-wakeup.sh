@@ -21,7 +21,7 @@ die() {
 }
 
 if [ ! -w "${RTC_ALARM}" ]; then
-	die "Can not access acpi-rtc-clock."
+	die "Can not access rtc-clock."
 fi
 
 test $# -ge 1 || die "Wrong Parameter Count"
