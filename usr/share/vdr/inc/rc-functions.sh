@@ -1,4 +1,3 @@
-# $Id$
 
 # Contains:
 #   manage all vdr-command-line-options

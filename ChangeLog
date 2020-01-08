@@ -9,6 +9,8 @@
   - added support for the DISPLAY=:0.0 environment variable
     (needed for media-plugins/vdr-softhddevice supporting OpenGL OSD)
     Suggested-by: Lucian Muresan <lucianm@users.sourceforge.net>
+  - whitespace, removed useless Id lines, fixed initsrcipt header to
+    Gentoo Authors
 
 *gentoo-vdr-scripts-2.8 (15 Dec 2019)
 

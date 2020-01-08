@@ -1,4 +1,4 @@
-# $Id$
+#
 # Author:
 #   Matthias Schwarzott <zzam@gmx.de>
 #   Various other contributors from gentoo.de
@@ -26,7 +26,7 @@ case $PIPESTATUS in
 	# all went ok
 	return 0
 	;;
-		
+
 	1) 
 	# all went ok - new date and time set.
 	#

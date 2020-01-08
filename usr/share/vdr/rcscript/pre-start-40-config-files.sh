@@ -1,4 +1,4 @@
-# $Id$
+
 include commands-functions
 
 addon_main() {

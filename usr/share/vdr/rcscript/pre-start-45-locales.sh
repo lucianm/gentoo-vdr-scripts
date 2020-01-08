@@ -1,4 +1,3 @@
-# $Id$
 
 # disable all locale settings from the system
 # mostly used to get away from utf8 if vdr does

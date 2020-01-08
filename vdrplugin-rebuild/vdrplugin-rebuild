@@ -9,7 +9,7 @@
 # This version is based on module-rebuild-0.5
 
 # Changed for vdrplugins by Matthias Schwarzott (zzam@gentoo.org)
-# Copyright Gentoo Linux
+# Copyright Gentoo Authors
 
 # Changed to a new db-format with seperate files for each ebuild.
 

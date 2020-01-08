@@ -1,4 +1,3 @@
-# $Id$
 
 # Manages loading of plugins (i.e. creating command-line-options for vdr)
 

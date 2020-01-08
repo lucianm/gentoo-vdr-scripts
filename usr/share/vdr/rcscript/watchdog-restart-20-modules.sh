@@ -1,4 +1,3 @@
-# $Id$
 
 #
 # Reload modules on a watchdogrestart

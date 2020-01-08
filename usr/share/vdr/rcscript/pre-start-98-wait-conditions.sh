@@ -1,4 +1,4 @@
-# $Id$
+
 addon_main() {
 	local exitcode=0
 	if [ "${waitconditions}" ]; then

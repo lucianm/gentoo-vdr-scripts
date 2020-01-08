@@ -1,5 +1,3 @@
-# $ID: $
-
 SHELL = /bin/bash
 
 MYDIR = $(DESTDIR)/usr/lib/systemd/system

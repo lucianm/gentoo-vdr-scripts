@@ -1,5 +1,4 @@
 #!/bin/sh
-# $Id: watchdog-restart-20-modules.sh 460 2007-06-02 13:27:00Z zzam $
 
 #
 # Reload all loaded dvb modules
@@ -67,7 +66,7 @@ kill_dvb_video_users() {
 	local dev bname name
 	for dev in /sys/class/video4linux/video?; do
 		[ -f "${dev}/name" ] || continue
-		
+
 		name=$(cat "${dev}/name")
 		[ "${name##*av7110}" = "${name}" ] && continue
 

@@ -1,4 +1,3 @@
-# $Id$
 
 #
 # Only contains checking of time-intervals for

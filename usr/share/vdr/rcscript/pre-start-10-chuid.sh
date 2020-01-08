@@ -1,4 +1,4 @@
-# $Id$
+
 addon_main() {
 	yesno "${START_VDR_AS_ROOT}" && return 0
 

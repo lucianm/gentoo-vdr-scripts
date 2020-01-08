@@ -1,7 +1,4 @@
 #!/bin/sh
-# $Id$
-#
-# Distributed under the GPL
 #
 # watchdog script to restart vdr after failure
 # to stop watchdog temporarily touch /tmp/vdr-nowatchdog
@@ -67,7 +64,7 @@ trigger_restart() {
 is_enabled() {
 	[ $enabled = 0 ] && return 1
 	[ -f /tmp/vdr-nowatchdog ] && return 1
-	
+
 	return 0
 }
 

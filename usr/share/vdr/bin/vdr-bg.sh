@@ -1,5 +1,4 @@
 #!/bin/sh
-# $Id$
 #
 # Start command in background and disconnects outputs.
 # Use this instead of echo "..." | at now

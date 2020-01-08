@@ -1,4 +1,4 @@
-# $Id$
+
 . /etc/conf.d/vdr.periodic.epgscan
 
 include svdrpcmd

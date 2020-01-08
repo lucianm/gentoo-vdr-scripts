@@ -1,4 +1,4 @@
-# $Id$
+
 check_dvbdevice() {
 	[ -e /dev/dvb/adapter0/frontend0 ] || return 1
 	return 0

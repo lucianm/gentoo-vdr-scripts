@@ -1,4 +1,3 @@
-# $Id$
 
 # Reads the language setting of vdr to localize the messages
 # of start/shutdown-scripts

@@ -1,5 +1,3 @@
-# $Id$
-
 # Handle inclusion of script-helper-files
 
 include() {

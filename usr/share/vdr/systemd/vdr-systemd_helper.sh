@@ -7,8 +7,6 @@
 # Lucian Muresan < lucianm AT users DOT sourceforge DOT net >
 # Joerg Bornkessel <hd_brummy@gentoo.org>
 
-# Distributed under the terms of the GNU General Public License v2
-
 # read our main options
 . /etc/conf.d/vdr
 . /etc/conf.d/vdr.watchdogd

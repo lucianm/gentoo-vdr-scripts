@@ -1,5 +1,3 @@
-# $Id$
-
 SHELL = /bin/bash
 
 MYDIR = $(DESTDIR)/usr

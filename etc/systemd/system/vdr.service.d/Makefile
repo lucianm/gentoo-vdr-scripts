@@ -1,5 +1,3 @@
-# $Id$
-
 SHELL = /bin/bash
 
 MYDIR = $(DESTDIR)/etc/systemd/system/vdr.service.d

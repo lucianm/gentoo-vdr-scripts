@@ -1,4 +1,4 @@
-# $Id$
+
 include rc-functions
 
 addon_main() {

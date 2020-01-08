@@ -1,4 +1,4 @@
-# $Id$
+#
 include language-functions
 
 # merging the files under /etc/vdr/commands/ to one single file under /var/vdr/merged-config-files/ and links

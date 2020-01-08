@@ -1,7 +1,5 @@
 #!/bin/bash
 #
-# $Header: /var/cvsroot/gentoo-x86/media-tv/vdr-dvd-scripts/files/0.0.3/dvdchanger_writedvd.sh,v 1.1 2007/07/21 22:40:13 hd_brummy Exp $
-#
 # 04 Mar 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
 # addaptded to gentoo-vdr-scripts
 

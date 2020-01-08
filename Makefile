@@ -1,5 +1,3 @@
-# $Id$
-
 SHELL = /bin/bash
 
 SUBDIRS = etc usr vdrplugin-rebuild

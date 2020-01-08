@@ -1,6 +1,4 @@
 #!/bin/sh
-# $Id$
-
 #
 # Called from shutdown to execute some tasks before
 # shutting down the system (when activated).

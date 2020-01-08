@@ -1,4 +1,3 @@
-# $Id$
 
 do_check_time() {
 	if [ -n "${BLOCK_SHUTDOWN_INTERVALS}" ]; then

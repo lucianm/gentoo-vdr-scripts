@@ -1,4 +1,5 @@
-# $Id: shutdown-custom_cmd.sh
+#
+# shutdown-custom_cmd.sh
 # Author:
 #   Lucian Muresan <lucianm@users.sourceforge.net>
 #

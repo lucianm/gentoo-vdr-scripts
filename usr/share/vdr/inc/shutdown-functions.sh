@@ -1,4 +1,3 @@
-# $Id$
 
 #
 # Reading of shutdown-config-file and setting some default-values

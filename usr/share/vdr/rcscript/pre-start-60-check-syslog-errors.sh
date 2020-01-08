@@ -1,3 +1,4 @@
+
 addon_main() {
 	yesno "${CHECK_SYSLOG_ERRORS:-yes}" || return 0
 

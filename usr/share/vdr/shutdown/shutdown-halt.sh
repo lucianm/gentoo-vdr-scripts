@@ -1,4 +1,4 @@
-# $Id$
+#
 # Author:
 #   Matthias Schwarzott <zzam@gmx.de>
 #

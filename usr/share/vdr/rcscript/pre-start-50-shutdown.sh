@@ -1,4 +1,3 @@
-# $Id$
 
 addon_main() {
 	include shutdown-functions
