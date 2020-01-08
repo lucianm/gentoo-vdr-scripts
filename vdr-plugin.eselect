@@ -1,14 +1,15 @@
-# Copyright 1999-2005 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id: bashcomp.eselect 367 2007-03-28 14:35:23Z pioto $
+# Author: Matthias Schwarzott <zzam@gentoo.org>
+# Author: Joerg Bornkessel <hd_brummy@gentoo.org>
 
 DESCRIPTION="Manage VDR plugins"
-MAINTAINER="zzam@gentoo.org"
-SVN_DATE='$Date$'
-VERSION=$(svn_date_to_version "${SVN_DATE}")
+MAINTAINER="vdr@gentoo.org"
+
+inherit multilib
 
 find_plugins() {
-	local plugins plugin f plugindir="${ROOT}/usr/lib/vdr/plugins"
+	local plugins plugin f plugindir="${EROOT}/usr/${get_libdir)/vdr/plugins"
 
 	for f in ${plugindir}/libvdr-*.so* ; do
 		[[ -e ${f} ]] || continue
@@ -22,7 +23,7 @@ find_plugins() {
 }
 
 show_enabled_plugins() {
-	local plugins line conffile="${ROOT}/etc/conf.d/vdr.plugins"
+	local plugins line conffile="${EROOT}/etc/conf.d/vdr.plugins"
 
 	exec 3<${conffile}
 	while read plugin <&3; do
@@ -35,14 +36,14 @@ show_enabled_plugins() {
 }
 
 is_enabled() {
-	local conffile="${ROOT}/etc/conf.d/vdr.plugins"
+	local conffile="${EROOT}/etc/conf.d/vdr.plugins"
 	
 	egrep -q "^${1}\$" "${conffile}" || return 1
 	return 0
 }
 
 plugin_exists() {
-	local f plugindir="${ROOT}/usr/lib/vdr/plugins"
+	local f plugindir="${EROOT}/usr/$(get_libdir)/vdr/plugins"
 
 	for f in ${plugindir}/libvdr-${1}.so.*; do
 		[[ -e "${f}" ]] && return 0
@@ -108,7 +109,7 @@ describe_enable_options() {
 }
 
 do_enable() {
-	local conffile="${ROOT}/etc/conf.d/vdr.plugins" plugins plugin
+	local conffile="${EROOT}/etc/conf.d/vdr.plugins" plugins plugin
 
 	[[ -z ${1} ]] && die -q "You didn't specify any plugins to enable."
 
@@ -165,7 +166,7 @@ describe_disable_options() {
 
 
 do_disable() {
-	local conffile="${ROOT}/etc/conf.d/vdr.plugins" plugins plugin
+	local conffile="${EROOT}/etc/conf.d/vdr.plugins" plugins plugin
 
 	[[ -z ${1} ]] && die -q "You didn't specify any plugins to disable"
 
@@ -197,5 +198,3 @@ do_disable() {
 		sed -e "/^${plugin}\$/d" -i "${conffile}"
 	done
 }
-
-# vim: set ft=eselect :
