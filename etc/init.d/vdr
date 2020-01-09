@@ -1,5 +1,6 @@
 #!/sbin/openrc-run
 # Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
 
 extra_commands="watchdogrestart"
 
@@ -70,7 +71,7 @@ start_vdr() {
 	eval ${_openvt} start-stop-daemon ${daemonctrl_opts} -- ${vdr_opts}
 	vdr_exitcode=$?
 	eend $vdr_exitcode "Failed to start vdr."
-	
+
 	# TODO: Anything todo if starting failed? cleanups?
 
 	if [ $vdr_exitcode -lt 128 ]; then
@@ -97,7 +98,7 @@ stop_vdr() {
 
 	ebegin "Stopping ${VDRNAME}"
 	# Use --name here to allow us to kill vdr even after a new emerge
-	start-stop-daemon --stop --quiet --retry 15 --exec ${VDR_BIN} 
+	start-stop-daemon --stop --quiet --retry 15 --exec ${VDR_BIN}
 	exitcode=$?
 	eend $exitcode "Failed to stop vdr."
 
