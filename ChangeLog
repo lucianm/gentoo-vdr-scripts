@@ -1,6 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 
   - removed rtc-wakeup, anounced in privius version
+*gentoo-vdr-scripts-3.0_rc1 (11 Jan 2020)
+
     Suggested-by: Lucian Muresan <lucianm@users.sourceforge.net>
   - fixed path to functions.sh
     rather depend on sys-apps/gentoo-functions than relaying on the
