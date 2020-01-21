@@ -20,7 +20,7 @@ sed -e "3a\\
 echo "local bump"
 git commit -s -m "proj/gentoo-vdr-scripts: Bumped to version ${NEWVERS}" ChangeLog README
 
-git tag gentoo-vdr-scripts-$NEWVERS
-git push --signed=yes origin :gentoo-vdr-scripts-$NEWVERS
+#git tag gentoo-vdr-scripts-$NEWVERS
+#git push --signed=yes origin :gentoo-vdr-scripts-$NEWVERS
 
-make dist
+#make dist
