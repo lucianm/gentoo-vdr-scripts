@@ -1,6 +1,6 @@
 SHELL = /bin/bash
 
-MYDIR = $(DESTDIR)/var/vdr/tmp
+MYDIR = $(DESTDIR)/var/lib/vdr/tmp
 SUBDIRS =
 BINS =
 CONFS = systemd_env

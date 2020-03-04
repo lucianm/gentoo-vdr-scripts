@@ -31,7 +31,7 @@ addon_main() {
 	add_param "--cachedir=${CACHEDIR:-/var/cache/vdr}"
 
 	add_param "--log=${LOG:-1}"
-	[ -z "${VIDEO}" ] && VIDEO="/var/vdr/video"
+	[ -z "${VIDEO}" ] && VIDEO="/var/lib/vdr/video"
 	if [ ! -d "${VIDEO}" ]; then
 		mkdir -p "${VIDEO}"
 		chown vdr:vdr "${VIDEO}"

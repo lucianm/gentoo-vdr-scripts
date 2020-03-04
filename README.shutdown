@@ -94,7 +94,7 @@ void set_retry_time(int time_minutes)
 = storage-format for tmp-files:
 ===============================
 
-Tmp-files for shutdown are stored under /var/vdr/shutdown-data
+Tmp-files for shutdown are stored under /var/lib/vdr/shutdown-data
 All stored times are unix-timestamps
 
 $datadir/shutdown-need-reboot:

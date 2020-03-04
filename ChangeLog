@@ -3,6 +3,9 @@
 
   - removed deprecated logger output for
     new svdrp port
+  - moved vdr homedir /var/vdr -> /var/lib/vdr
+    nedded for new acct/{user,group} handling
+  - moved path in all files from /var/vdr -> /var/lib/vdr
 
 *gentoo-vdr-scripts-3.0_rc1 (11 Jan 2020)
 

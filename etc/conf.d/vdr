@@ -170,7 +170,7 @@ DISPLAY=:0.0
 # use DIR as video directory
 #   allowed values: directory names
 #   default: /var/vdr/video
-#VIDEO="/var/vdr/video"
+#VIDEO="/var/lib/vdr/video"
 
 # Read config files from DIR
 #   allowed values: directory names

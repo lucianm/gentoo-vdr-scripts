@@ -2,7 +2,7 @@
 # Manages loading of plugins (i.e. creating command-line-options for vdr)
 
 init_tmp_dirs() {
-	PL_TMP=/var/vdr/tmp
+	PL_TMP=/var/lib/vdr/tmp
 	if [ ! -d "${PL_TMP}" ]; then
 		mkdir "${PL_TMP}"
 		chown vdr:vdr "${PL_TMP}"

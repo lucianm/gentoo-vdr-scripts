@@ -7,14 +7,14 @@ extra_commands="watchdogrestart"
 . /etc/conf.d/vdr.watchdogd
 
 common_init() {
-	vdr_home=/var/vdr
+	vdr_home=/var/lib/vdr
 	cd ${vdr_home}
 
 	. /usr/share/vdr/inc/functions.sh
 	include rc-functions
 	include plugin-functions
 	include svdrpcmd
-	VDR_LOG_FILE=/var/vdr/tmp/vdr-start-log
+	VDR_LOG_FILE=/var/lib/vdr/tmp/vdr-start-log
 }
 
 clear_logfile() {

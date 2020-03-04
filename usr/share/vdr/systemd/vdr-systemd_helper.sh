@@ -12,7 +12,7 @@
 . /etc/conf.d/vdr.watchdogd
 
 # inspired by the old OpenRC script /etc/init.d/vdr:
-cd /var/vdr
+cd /var/lib/vdr
 unset MAIL
 . /usr/share/vdr/inc/functions.sh
 

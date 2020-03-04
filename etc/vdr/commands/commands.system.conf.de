@@ -1,2 +1,2 @@
-VDR Start Log Anzeigen: cat /var/vdr/tmp/vdr-start-log
+VDR Start Log Anzeigen: cat /var/lib/vdr/tmp/vdr-start-log
 
