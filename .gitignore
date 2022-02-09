@@ -1,3 +1,8 @@
-.gitattributes
-.gitignore
-*.tar.bz2
+# gitignore(5) file
+
+*.tar.*
+*.diff
+*.patch
+*.bak
+*~
+.*.swp
