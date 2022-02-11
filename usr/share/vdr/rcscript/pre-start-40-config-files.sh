@@ -3,10 +3,10 @@ include commands-functions
 
 addon_main() {
 	ebegin "  Checking config files"
-	if [ ! -d /var/lib/vdr ]; then
-		mkdir -p /var/lib/vdr/{shutdown-data,merged-config-files}
-		chown vdr:vdr -R /var/lib/vdr
-		ewarn "    created /var/lib/vdr"
+	if [ ! -d "${vdr_user_home}" ]; then
+		mkdir -p "${vdr_user_home}"/{shutdown-data,merged-config-files}
+		chown vdr:vdr -R "${vdr_user_home}"
+		ewarn "    created ${vdr_user_home}"
 	fi
 	merge_commands_conf /etc/vdr/commands /etc/vdr/commands.conf "${ORDER_COMMANDS}"
 	merge_commands_conf /etc/vdr/reccmds /etc/vdr/reccmds.conf "${ORDER_RECCMDS}"

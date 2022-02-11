@@ -1,6 +1,9 @@
 # ChangeLog for gentoo-vdr-scripts
 
-
+  - change hardcoded static vdr homedir to dynamically looked-up vdr homedir
+    taken from system
+  - change in Makefile: remove directory var/lib/vdr/tmp, let install create
+    it
   - removed deprecated logger output for
     new svdrp port
   - moved vdr homedir /var/vdr -> /var/lib/vdr

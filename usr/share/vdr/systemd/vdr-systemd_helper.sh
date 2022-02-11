@@ -12,7 +12,10 @@
 . /etc/conf.d/vdr.watchdogd
 
 # inspired by the old OpenRC script /etc/init.d/vdr:
-cd /var/lib/vdr
+
+# evaluate vdr-user's $HOME
+vdr_user_home=$(eval echo ~vdr)
+cd "${vdr_user_home}"
 unset MAIL
 . /usr/share/vdr/inc/functions.sh
 

@@ -1,7 +1,7 @@
 #
 include language-functions
 
-# merging the files under /etc/vdr/commands/ to one single file under /var/lib/vdr/merged-config-files/ and links
+# merging the files under /etc/vdr/commands/ to one single file under <vdr-homedir>/merged-config-files/ and symlink
 # it to /etc/vdr/commands.conf.
 # This merged file can then be used by the vdr process.
 
@@ -12,7 +12,7 @@ merge_commands_conf() {
 	local sdir="${1}" destfile="${2}" order="${3}"
 
 	local bname=${destfile##*/}
-	local mergedfile="/var/lib/vdr/merged-config-files/${bname}"
+	local mergedfile="${vdr_user_home}/merged-config-files/${bname}"
 
 	# merging files
 	if [ -f "${mergedfile}" ]; then

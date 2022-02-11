@@ -1,3 +1,6 @@
+# evaluate vdr-user's $HOME
+vdr_user_home=$(eval echo ~vdr)
+
 # Handle inclusion of script-helper-files
 
 include() {

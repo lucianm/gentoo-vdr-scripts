@@ -35,7 +35,8 @@ R_OPTION_PATCHLEVEL=0;
 R_OPTION_PM="portage";
 
 R_PLUGIN_ENABLE="${ROOT}/etc/conf.d/vdr.plugins"
-R_PLUGINS_SKIPPED="${ROOT}/var/lib/vdr/tmp/plugins_skipped_ALL"
+VDR_USER_HOME=$(eval echo ~vdr)
+R_PLUGINS_SKIPPED="${ROOT}${VDR_USER_HOME}/tmp/plugins_skipped_ALL"
 
 eerror() {
 	echo -e "${C_BOLD}${C_RED}** ${@}.${C_NORM}"
@@ -336,7 +337,7 @@ fi
 if [[ ${R_OPTION_PATCHLEVEL} == 1 ]]; then
 	# needed for plugin patchlevel check
 	vdr_checksum_dir="${vdr_plugin_dir%/plugins}/checksums"
-	vdr_checksum=/var/lib/vdr/tmp/rebuild-vdr-checksum
+	vdr_checksum="${VDR_USER_HOME}/tmp/rebuild-vdr-checksum"
 	if ! vdr-get-header-checksum > "${vdr_checksum}"; then
 		echo -e "${C_BOLD}${C_RED}Could not get vdr header checksum${C_NORM}"
 		exit 1

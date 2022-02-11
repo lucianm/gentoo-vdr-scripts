@@ -13,8 +13,8 @@ ExecStartPre=/usr/share/vdr/systemd/vdr-systemd_helper.sh --start-pre
 
 
 # this is where we get our parameters (still manageable
-# in the /etc/conf.d/vdr.* files
-EnvironmentFile=/var/vdr/tmp/systemd_env
+# in the /etc/conf.d/vdr.* files)
+EnvironmentFile=%HOME%/tmp/systemd_env
 
 # start VDR with our desired parameters, please disable the
 # internal watchdog by setting the timeout to 0

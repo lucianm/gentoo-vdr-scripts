@@ -23,7 +23,7 @@ Missing are handlers for epg-update from outside and autotimer-kicking.
    
   This thread runs under a name for which is explicitly checked when shutdown so that
   it will not shutdown when it is not finished.
-  It writes the time it finished into a file (under /var/lib/vdr/shutdown-data)
+  It writes the time it finished into a file (under <vdr-homedir>/shutdown-data)
 
   When doing shutdown and the last finish-time read from file is not longer ago than XXmin
   then it will not be started again and shutdown continues.
