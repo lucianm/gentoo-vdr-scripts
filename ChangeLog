@@ -1,5 +1,8 @@
 # ChangeLog for gentoo-vdr-scripts
 
+
+*gentoo-vdr-scripts-3.0_rc2 (12 Feb 2022)
+
   - systemd: reload systemd after modification of EnvironmentFile
   - add config file for virtual/tmpfiles tool
   - change hardcoded static vdr homedir to dynamically looked-up vdr homedir
