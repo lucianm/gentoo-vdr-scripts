@@ -1,5 +1,6 @@
 # ChangeLog for gentoo-vdr-scripts
 
+  - add config file for virtual/tmpfiles tool
   - change hardcoded static vdr homedir to dynamically looked-up vdr homedir
     taken from system
   - change in Makefile: remove directory var/lib/vdr/tmp, let install create

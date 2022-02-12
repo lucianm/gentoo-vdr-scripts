@@ -2,7 +2,7 @@ SHELL = /bin/bash
 
 SUBDIRS = etc usr vdrplugin-rebuild
 
-SUBDIRS +=  usr/lib/systemd/system etc/systemd/system/vdr.service.d
+SUBDIRS +=  usr/lib/systemd/system etc/systemd/system/vdr.service.d usr/lib/tmpfiles.d
 
 all:
 
@@ -33,6 +33,7 @@ install:
 		$(DESTDIR)/etc/vdr/commands/commands.system.conf \
 		$(DESTDIR)/etc/vdr/commands/commands.system.conf.de \
 		$(DESTDIR)/usr/lib/systemd/system/vdr.service \
+		$(DESTDIR)/usr/lib/tmpfiles.d/gentoo-vdr-scripts.conf
 
 snapshot:
 	git archive HEAD | bzip2 gentoo-vdr-scripts-snapshot.tar.bz2
