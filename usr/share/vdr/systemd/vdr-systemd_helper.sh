@@ -110,7 +110,7 @@ if [ "$1" = "--start-pre" ]; then
 	# as the user under which vdr will run is controlled by systemd
 	sed -e "s:'-u' 'vdr' ::" -i ${SYSTEMD_ENV_FILE}
 
-	sync
+	sudo systemctl daemon-reload
 	eend "--start-pre"
 elif [ "$1" = "--start-post" ]; then
 	ebegin "--start-post"
