@@ -7,12 +7,12 @@
 # /etc/grub.d/40_custom
 
 ### reboot kernel
-# some Motherboards need a reboot to write the wakeup time in the BIOS
+# some Motherboards need a reboot to write the wakeup time into the BIOS
 
 # <snipp>
 
 ## 0 ##
-menuentry 'NVRRAM-Poweroff' {
+menuentry 'NVRAM-Poweroff' {
 set saved_entry='1'
 save_env saved_entry
 set root='(hd0,5)'
@@ -22,9 +22,10 @@ linux (hd0,1)/kernel-default root=/dev/sda5 quiet init=/sbin/poweroff quiet
 #</snapp>
 
 # in this case, use of init=/sbin/poweroff to stop the system reboot
-# use of init=/sbin/halt should work too, but is not supported by all Motherboard
-# iam using for boot/reboot the same kernel, the gentoo reboot kernel did not work on my system
- 
+# use of init=/sbin/halt should work too, but is not supported by all motherboard
+# I am using for boot/reboot the same kernel, the gentoo reboot kernel did not
+# work on my system
+
 
 ### default kernel
 # <snipp>
@@ -37,7 +38,7 @@ linux (hd0,1)/kernel-x.y.z root=/dev/sda5
 
 # </snapp>
 
-# in both example is
+# in both examples is
 # boot partition = /dev/sda1 = (hd0,1)
 # data partition = /dev/sda5
 

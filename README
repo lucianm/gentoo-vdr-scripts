@@ -9,7 +9,8 @@ Dependencies:
 	>=vdr-1.7.36	earlier versions are not supported
 	nvram-wakeup	when being used for setting wakeup time
 
-Author:
+Authors:
 	Matthias Schwarzott <zzam@gentoo.org>
 	Joerg Bornkessel <hd_brummy@gentoo.org>
 	Lucian Muresan <lucianm@users.sourceforge.net> ( systemd support )
+	Martin Dummer <martin.dummer@gmx.net>

@@ -22,12 +22,12 @@ ${CMD}
 
 # analyse
 case $PIPESTATUS in
-	0) 
+	0)
 	# all went ok
 	return 0
 	;;
 
-	1) 
+	1)
 	# all went ok - new date and time set.
 	#
 	# *** but we need to reboot. ***
@@ -40,7 +40,7 @@ case $PIPESTATUS in
 	return 0
 	;;
 
-	2) 
+	2)
 	# something went wrong
 
 	mesg "Something went wrong, please check your config files of nvram-wakeup"

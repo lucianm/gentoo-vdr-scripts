@@ -32,7 +32,7 @@ load_plugin_list_start() {
 			PLUGINS="${PLUGINS} ${PLUGIN}"
 		done
 		exec 3<&-
-	
+
 		# result of checks
 		if [ -n "${skipped_plugins_patchlevel}" ]; then
 			print_skip_header

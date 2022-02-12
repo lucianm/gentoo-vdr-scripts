@@ -95,7 +95,7 @@ if [ "$1" = "--start-pre" ]; then
 	# these options are what we need to start VDR from the systemd unit file
 	echo "VDR_OPTS=\"${vdr_opts}\"" > ${SYSTEMD_ENV_FILE}
 
-	# X11 DISPLAY 
+	# X11 DISPLAY
 	# (needed for media-plugins/vdr-softhddevice supporting OpenGL OSD)
 	echo "DISPLAY=$DISPLAY" >> ${SYSTEMD_ENV_FILE}
 

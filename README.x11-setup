@@ -18,6 +18,6 @@ We add by default minimal variables to the initscript to start the X server.
 To fit your own setup, please refer to 'man xorg'
 
 It is simple to add your own variables by using
-/etc/conf.d/vdr  --> Variable X11_SERVER=
+/etc/conf.d/vdr  --> variable X11_SERVER=
 This will unset all default provided variables from the init script.
 There are only variables to add, without to call the x11 lib /usr/bin/X !!!

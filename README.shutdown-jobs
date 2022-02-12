@@ -13,14 +13,14 @@ Missing are handlers for epg-update from outside and autotimer-kicking.
     shutdown continues
   else
     shutdown is aborted (with normal retry mechanism).
-    
+
   This thread can do various things
     + do an epg-scan svdrp-SCAN or switch channel-ranges per CHAN)
     + fetch epg from external providers tvmovie hoerzu (when online)
     + fetch epg from infosat or nxtvepg
     + go over all recordings and start noad for those which have not had it already
     + trigger the xxv oder vdradmin autotimer
-   
+
   This thread runs under a name for which is explicitly checked when shutdown so that
   it will not shutdown when it is not finished.
   It writes the time it finished into a file (under <vdr-homedir>/shutdown-data)

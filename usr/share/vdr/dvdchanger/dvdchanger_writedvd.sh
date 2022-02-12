@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # 04 Mar 2006; Joerg Bornkessel <hd_brummy@gentoo.org>
-# addaptded to gentoo-vdr-scripts
+# adapted to gentoo-vdr-scripts
 
 include svdrpcmd
 svdrp_command

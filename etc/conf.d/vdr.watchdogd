@@ -7,7 +7,7 @@
 # if you are searching for the vdr-internal watchdog look for
 # INTERNAL_WATCHDOG in /etc/conf.d/vdr
 
-# 
+#
 # Should the watchdog be active or not
 #   allowed values: yes no
 #   default: yes

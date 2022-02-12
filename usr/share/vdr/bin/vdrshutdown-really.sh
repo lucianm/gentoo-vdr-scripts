@@ -135,8 +135,6 @@ init_forced_shutdown() {
 		return 0
 	fi
 
-
-
 	# detect if this could be a forced shutdown
 	local shutdown_force_file=${shutdown_data_dir}/last-shutdown-abort
 
@@ -194,9 +192,9 @@ retry_shutdown() {
 		# vdr itself will retry shutdown in a reasonable time
 		return
 	fi
-	
+
 	# shutdown retry must be simulated by sleep and the power key
-	#as vdr itself is not able
+	# as vdr itself is not able
 
 	# just do it here without forking as we are already in background wrt vdr
 	sleep ${when}m

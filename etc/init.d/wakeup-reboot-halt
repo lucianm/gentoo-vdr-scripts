@@ -15,7 +15,7 @@ depend() {
 }
 
 start() {
-	# check weather this time this is a reboot and I should shutdown
+	# check whether this time this is a reboot and I should shutdown
 
 	if [ -e "${STATEFILE}" ]; then
 		rm -f "${STATEFILE}"

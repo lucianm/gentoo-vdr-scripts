@@ -5,14 +5,14 @@
 #          General Settings                               #
 ###########################################################
 
-# The list of Plugins to load has been moved to a
-# seperate file and can no longer be set in here.
+# The list of plugins to load has been moved to a
+# separate file and can no longer be set in here.
 # Now it is set in /etc/conf.d/vdr.plugins
 #
-# The ebuild should have copied all Plugins listed
+# The ebuild should have copied all plugins listed
 # in here to the new location.
 
-# What IR control should be used. Override the default set at
+# Which IR control should be used. Override the default set at
 # compile time
 #   allowed values: lirc rcu
 #   default: use no remote
@@ -134,7 +134,7 @@ LOG="3"
 #   default: yes
 #CHECK_SYSLOG_ERRORS="yes"
 
-# Switch startskript to debug-mode, set debug-level
+# Switch startscript to debug-mode, set debug-level
 #   allowed values: 0 1 2
 #   default: 0
 #SCRIPT_DEBUG_LEVEL="1"
@@ -199,10 +199,10 @@ DISPLAY=:0.0
 #   default: enabled / 60 seconds
 #INTERNAL_WATCHDOG="60"
 
-# If you seek the settings for the extern watchdog look
-# in /etc/conf.d/vdr.watchdogd.
+# If you you are looking for the settings for the external watchdog
+# look into /etc/conf.d/vdr.watchdogd
 
-# Change the filename-format to be vfat and samba compatible. 
+# Change the filename-format to be vfat and samba compatible
 #   allowed values: yes no
 #   default: no
 #VFAT_FILENAMES="yes"

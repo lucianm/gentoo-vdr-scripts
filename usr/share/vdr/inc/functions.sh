@@ -23,7 +23,7 @@ read_caps() {
 
 # read file containing just one integer value
 # $1 filename to read
-# returns read value on stdout if successfull, else returns 0 there
+# returns read value on stdout if successful, else return 0 there
 read_int_from_file() {
 	local fname="$1" value="0"
 	if [ -r "$fname" -a -s "$fname" ]; then
